@@ -390,12 +390,14 @@ span.post-name a,span.post-read-more a:hover {
     margin-top: 10px;
 }
 .beforefooter {
-    background: #fff100;
-    color: #111;
+    background: #F16D46;
+    color: #292b2c;
     padding: 50px 0;
     max-width: 100%;
     margin: 0px auto;
-    margin-bottom: -50px; margin-top:50px;
+    margin-bottom: -50px;
+    margin-top: 50px;
+}
 }
 .footer a {color:inherit;}
 .footer a:hover {color:#fff; text-decoration:none;}
