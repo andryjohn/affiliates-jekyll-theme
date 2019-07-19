@@ -4,8 +4,12 @@ title: Des formateurs pédagogues
 comments: true
 ---
 
-Apprenez à coder avec des personnes expérimentées dans leur domaines.
+Apprenez à coder avec des personnes passionnés.Nous sommes des développeurs passionnés venant de différents horizons.
 
-Le profil de nos formateurs sont variés, diplomé de grandes écoles d'ingénieurs, autodidacte, formateur, on à tous un point communs, nous sommes des passionnés par la tech et la nouvelle technologie.
+On fait constamment  évoluer nos ateliers en prenant en considération les besoins et le niveau de nos participants lorsqu'ils apprennent à coder.
 
-Et nous travaillons sans relache, pour amélioré, optimisé notre façon de transmettre nos conaissances.
+On vous accompagnent tout au long des évènements dans l'acquisition de vos compétences en développement Web.
+
+
+
+![work](/assets/images/head.jpg)

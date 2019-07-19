@@ -6,10 +6,11 @@ meta_description: "Développe tes compétences en assistant à nos workshops d'i
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/favicon.ico'
 paginate: 8
-baseurl: 'http://codedot.tk/'
+baseurl: ''
+url: 'https://codedot.tk/'
 email: 'Andry1287@gmail.com'
 google_analytics: 'UA-46278016-1'
-disqus: 'demowebsite'
+disqus: 'jekyll-blog'
 sharethis: '<script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5a6b2fe4fb197a0011c589f6&product=sticky-share-buttons"></script>'
 
 # Authors
@@ -26,12 +27,11 @@ authors:
   Clara:
    name: Clara Morgen
    display_name: Clara
-   gravatar: b1cc14991db7a456fcd761680bbc8f81
-   email: wowthemesnet@gmail.com
-   web: https://www.wowthemes.net/category/jekyll-themes/
-   twitter: https://twitter.com/wowthemesnet
-   description: "This is the author box. Write a short description of the author here. You are currently previewing Affiliates theme demo, a Jekyll template compatible with Github pages."
-
+   gravatar:
+   email:
+   web: https://www.claramorgeneyer.com/
+   twitter: https://twitter.com/Clara_Morgen
+   description: ""
 # Plugins
 plugins:
   - jekyll-paginate
