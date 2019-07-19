@@ -4,7 +4,7 @@ title:      Coding further project
 date:       2019-05-28
 author: Clara
 categories: [ Coding, further, tips ]
-image: images/further.jpeg
+image: images/further.jpg
 ---
 
 >[Coding further](https://github.com/ClaraMorgen/coding_further) is a project made by [Clara Morgen](https://twitter.com/Clara_Morgen) for her students who graduated from "Le Wagon coding bootcamp" and are just now exploring the world of tech.

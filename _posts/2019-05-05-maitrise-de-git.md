@@ -3,7 +3,7 @@ layout:     post
 title:     Introduction à Git
 date:       2019-05-05
 author: Andry
-image: images/git2.jpeg
+image: images/git2.png
 categories:  [ Developper skills, Git, Versionning ]
 mathjax: true
 ---
