@@ -314,7 +314,7 @@ span.post-name a,span.post-read-more a:hover {
 	cursor:pointer;
 }
 .mediumnavigation .navbar-brand img {
-	margin-right:7px;
+	  margin-right:7px;
     vertical-align: text-bottom;
     max-width:initial;
 }
@@ -780,7 +780,11 @@ background-color: #fff;
     -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.30);
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.30);
 }
-img {max-width:100%;height: auto;}
+img {
+width: 140px;
+height: 46px;
+
+}
 .bottompagination span.navigation {
 
 }
