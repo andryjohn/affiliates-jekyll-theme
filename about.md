@@ -1,10 +1,11 @@
 ---
 layout: page
-title: Qui sommes-nous?
+title: Des formateurs pédagogues
 comments: true
 ---
 
-This website is built with Jekyll and "Affiliates" (a Jekyll Template designed & developed by WowThemes.net). It is meant for demonstration purposes, so you can have an idea of how this theme looks in action so no real content can be found. Affiliates template for Jekyll is compatible with Github pages, in fact even this demo is created with Github Pages and hosted with Github. This page in example shows a page layout.
+Apprenez à coder avec des personnes expérimentées dans leur domaines.
 
+Le profil de nos formateurs sont variés, diplomé de grandes écoles d'ingénieurs, autodidacte, formateur, on à tous un point communs, nous sommes des passionnés par la tech et la nouvelle technologie.
 
-
+Et nous travaillons sans relache, pour amélioré, optimisé notre façon de transmettre nos conaissances.
