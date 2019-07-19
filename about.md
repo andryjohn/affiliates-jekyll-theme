@@ -8,7 +8,7 @@ Apprenez à coder avec des personnes passionnés.Nous sommes des développeurs p
 
 On fait constamment  évoluer nos ateliers en prenant en considération les besoins et le niveau de nos participants lorsqu'ils apprennent à coder.
 
-On vous accompagnent tout au long des évènements dans l'acquisition de vos compétences en développement Web.
+On vous accompagne tout au long des évènements, dans l'acquisition de vos compétences en développement Web.
 
 
 
