@@ -6,7 +6,7 @@ meta_description: "Développe tes compétences en assistant à nos workshops d'i
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/favicon.ico'
 paginate: 8
-baseurl: 'http://codedot.tk/'
+baseurl: 'https://github.com/andryjohn/codeasy'
 email: 'Andry1287@gmail.com'
 google_analytics: 'UA-46278016-1'
 disqus: 'demowebsite'
