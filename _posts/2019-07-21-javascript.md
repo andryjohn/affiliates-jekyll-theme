@@ -171,3 +171,19 @@ However, with dot notation, this doesn't happen. <mark>`mouse`</mark> does not h
 
 </p>
 </details>
+<style>
+mark {
+background-color: #252525;
+color: yellow;
+padding-left: 5px;
+padding-right: 5px;
+padding-bottom: 5px;
+box-shadow: 0 0 5px rgba(0,0,0,0.3);
+border-radius: 5px;
+}
+
+:focus {
+    outline: none!important;
+}
+
+</style>
