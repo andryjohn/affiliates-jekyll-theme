@@ -5,7 +5,7 @@ categories: [ Jekyll, tutorial ]
 image: assets/images/5.jpg
 categories: [ Developper skills, Jekyll, MVP, Startup ]
 mathjax: true
-featured: true
+module: true
 ---
 
 >Il faut savoir que pour créér ce site j'ai choisi d'utiliser *Jekyll* .

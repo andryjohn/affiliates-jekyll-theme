@@ -3,10 +3,9 @@ layout:     post
 title:      Few rules for non-designer who want to build well-designed products
 date:       2019-06-05
 author: Andry
-categories: [ Jekyll, tutorial ]
 image: images/dribbble.jpg
 categories: [ Egineer, Design, Skills ]
-featured: true
+module: true
 ---
 
 >I often hear engineers telling me “**they are not good at web-design**” because “**they are not artists**”.

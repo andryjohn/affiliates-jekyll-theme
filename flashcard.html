@@ -1,32 +1,21 @@
 ---
 layout: default
-title: Apprenez à coder
+title: Tester vos connaissancess
 ---
-
-<!-- Home Jumbotron
-================================================== -->
-<section class="intro full-width">
-    <div class="wrapintro">
-        <h1>Apprenez à coder</h1>
-        <h2 class="lead">"Développez vos compétences en assistant à nos workshops d'introduction au développement web"</h2>
-        <a href="https://www.eventbrite.com/e/billets-atelier-gratuit-pour-coder-son-site-web-65534235663?aff=ebdssbdestsearch" class="btn">S'inscrire</a>
-    </div>
-</section>
-
 
 <!-- Featured
 ================================================== -->
 <section class="featured-posts">
 
     <div class="section-title">
-        <h2><span>A la une</span></h2>
+        <h2><span>Modules</span></h2>
     </div>
 
     <div class="row listfeaturedtag">
 
     {% for post in site.posts %}
 
-        {% if post.module == true %}
+        {% if post.featured == true %}
 
             {% include module.html %}
 
