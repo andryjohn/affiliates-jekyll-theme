@@ -29,5 +29,20 @@ Afin de les améliorer sans cesse, nous prenons toujours en compte vos avis.
 
 Nous échangeons aussi quotidiennement avec notre communauté ce qui nous permet de repérer les attentes et tendances parmi les participants.
 
+---
+
 
 ![work](/assets/images/head.jpg)
+
+
+<footer class="center"><p>Invest In Yourself by Codedot</p></footer>
+
+
+<style>
+
+ footer  p .center{
+  font-style: italic!important;
+ }
+
+
+</style>
