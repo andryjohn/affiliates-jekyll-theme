@@ -16,7 +16,7 @@ The answers are in the collapsed sections below the questions, simply click on t
 
 ---
 
-## 1. What's the output?
+#### 1. What's the output?
 
 ```javascript
 function sayHi() {
@@ -50,7 +50,7 @@ sayHi();
 
 ---
 
-## 2. What's the output?
+#### 2. What's the output?
 
 ```javascript
 for (var i = 0; i < 3; i++) {
@@ -77,7 +77,7 @@ for (let i = 0; i < 3; i+
 
 ---
 
-## 3. What's the output?
+#### 3. What's the output?
 
 ```javascript
 const shape = {
@@ -113,7 +113,7 @@ There is no value <mark>radius</mark> on that object, which returns <mark>undefi
 
 ---
 
-## 4. What's the output?
+#### 4. What's the output?
 
 ```javascript
 +true;
@@ -138,7 +138,7 @@ The string <mark>'Lydia'</mark> is a truthy value. What we're actually asking, i
 
 ---
 
-## 5. Which one is true?
+#### 5. Which one is true?
 
 ```javascript
 const bird = {
