@@ -15,7 +15,6 @@ Components are a great way to design and develop your UI using smaller, reusable
 
 You can design some compenents, then reuse them to build your *own product very quickly*. So let's *design*!
 
-#### *"UI kit"* : *In this article, I'll show you some compenents, designed by myself*
 
 >*Most of the components have a dependency on [Bootstrap (4.3)](https://getbootstrap.com/) & [Fontawesome (5.7)](https://fontawesome.com/), so make sure you have the libraries in your project.*
 
