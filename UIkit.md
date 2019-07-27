@@ -3,8 +3,11 @@ layout: default
 title: Composants web
 mathjax: true
 ---
-
+# Components
+---
 ![airBnB](images/js.gif)
+
+---
 
 
 Components are a great way to design and develop your UI using smaller, reusable pieces with better consistency.
@@ -23,29 +26,71 @@ You can design some compenents, then reuse them to build your *own product very 
 
 So let's begin with a simple one, useful for your *profile* for example.
 
+<img class="avatar" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/cveneziani" />
+<img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+<img class="avatar-bordered" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" />
+<img class="avatar-square" alt="avatar-square" src="https://kitt.lewagon.com/placeholder/users/krokrob" />
 
-![avatar](/images/avatar.png)
+<style>
+  .avatar {
+  width: 40px;
+  border-radius: 50%;
+}
 
+.avatar-large {
+  width: 56px;
+  border-radius: 50%;
+}
+
+.avatar-bordered {
+  width: 40px;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  border: white 1px solid;
+}
+
+.avatar-square {
+  width: 40px;
+  border-radius: 0px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  border: white 1px solid;
+}
+
+</style>
 ##### HTML
 
 
 ```html
-  <div class="container">
-    <h2>Avatar design</h2>
-          <img src="./ladies.jpeg" alt="" class="avatar">
-           <img src="./ladies.jpeg" alt="" class="avatar-small">
-     </div>
+<img class="avatar" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/cveneziani" />
+<img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+<img class="avatar-bordered" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" />
+<img class="avatar-square" alt="avatar-square" src="https://kitt.lewagon.com/placeholder/users/krokrob" />
+
 ```
 ##### CSS
 ```css
 .avatar {
+  width: 40px;
   border-radius: 50%;
-  width: 70px;
 }
 
-.avatar-small {
+.avatar-large {
+  width: 56px;
   border-radius: 50%;
-  width: 50px;
+}
+
+.avatar-bordered {
+  width: 40px;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  border: white 1px solid;
+}
+
+.avatar-square {
+  width: 40px;
+  border-radius: 0px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  border: white 1px solid;
 }
 ```
 
@@ -57,6 +102,7 @@ Then, **Button**, I choose to design two kind of button, [*Medium*](https://medi
 <div class="container">
        <a href="#" class="btn-medium">Write stories</a>
          <a href="#" class="btn-treehouse">Free trial</a>
+         <a class="btn btn-gradient" href="#">Start now</a>
      </div>
 <style>
   .container {
@@ -93,7 +139,22 @@ Then, **Button**, I choose to design two kind of button, [*Medium*](https://medi
   background: #6AD58B;
   text-decoration: none;
   color: white;
-}</style>
+}
+.btn-gradient {
+  color: white;
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-weight: bold;
+  background: linear-gradient(#167FFB, #0F60C4);
+  transition: background 0.3s ease;
+  border: 1px solid #0F60C4;
+}
+
+.btn-gradient:hover {
+  background: linear-gradient(#147EFF, #0F67DA);
+  color: white;
+}
+</style>
 </html>
 
 
@@ -483,7 +544,7 @@ Let's move on! The next one is, **cards**
 }
 </style>
 
-#### HTML
+##### HTML
 
 ```html
 <div class="card-product">
@@ -494,7 +555,7 @@ Let's move on! The next one is, **cards**
    </div>
 </div>
 ```
-#### css
+##### css
 
 ```css
 .card-product {
@@ -543,7 +604,7 @@ Let's move on! The next one is, **cards**
 ```
 ---
 
-## Card trip:
+#### Card trip:
 
 <div class="card-trip">
   <img src="https://source.unsplash.com/vO0hUESehtc">
@@ -649,7 +710,7 @@ Let's move on! The next one is, **cards**
 }
   </style>
 
-#### HTML
+##### HTML
 
 ```html
 <div class="card-trip">
@@ -708,7 +769,7 @@ Let's move on! The next one is, **cards**
   </div>
 </div>
 ```
-#### CSS
+##### CSS
 
 ```css
 .card-trip {
@@ -767,52 +828,74 @@ Let's move on! The next one is, **cards**
 
 We've almost done, the last one is  **Banner**. Great for building your *landing page*!
 
-![banner](/images/Banner.png)
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+  <div class="container">
+    <h1>Learning code brings <strong>tech skills</strong> to <strong>creative people</strong>!</h1>
+    <p>Change your life and learn to code at one of our campuses around the world.</p>
+     <a href="#" class="btn-treehouse">Start now</a>
+  </div>
+</div>
+<style>
+.banner {
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0;
+}
 
+.banner h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.banner p {
+  font-size: 20px;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+</style>
 *Let's code!* [*Try it here*](https://codepen.io/andryjohn/pen/EzVoWQ)
 
 ##### HTML
 ```html
-<h2>Banner design</h2>
-      <div class="banner">
-        <div class="banner-content">
-          <h1>Coding Bootcamp in Paris</h1>
-          <p>Change your life and learn to code this summer</p>
-          <a href="#" class="btn-treehouse">Start Now</a>
-        </div>
-      </div>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+  <div class="container">
+    <h1>Learning code brings <strong>tech skills</strong> to <strong>creative people</strong>!</h1>
+    <p>Change your life and learn to code at one of our campuses around the world.</p>
+     <a href="#" class="btn-treehouse">Start now</a>
+  </div>
+</div>
 ```
 
 ##### CSS
 ```css
 .banner {
-  display: flex;
-  height: 100vh;
-  background: linear-gradient(-225deg, rgba(30,30,30,0.6) 30%, rgba(46,46,46,0.5) 80%), url("http://unsplash.it/400/300/?random");
   background-size: cover;
-  color: white;
-  text-align: center;
-  align-items: center;
-  justify-content: space-around;
+  background-position: center;
+  padding: 150px 0;
 }
 
 .banner h1 {
-  font-size: 35px;
-  font-weight: bolder;
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 32px;
+  font-weight: bold;
 }
 
 .banner p {
-  font-size: 15px;
-  font-weight: lighter;
+  font-size: 20px;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 ```
 
 
-Ok, we're done, just in case, when a component is needed in a specific part of a specific app, it might need some adjustments and modifications.
-All the source code are available on my github account [right here](https://github.com/andryjohn/UI-sprint)
-
-*This article is inspired by this workshop, you will learn to code navbars, buttons, cards, dropdown-lists, banners, badges, etc… and other UI components that you retrieve in most web apps.*
-
+<!--personnal css-->
 <style>
   .highlight {
   background-color: #F8F8F8;
@@ -821,6 +904,137 @@ All the source code are available on my github account [right here](https://gith
 }
 
 </style>
+<!--personnal css-->
 
+
+#### Notification
+<div class="container">
+<div class="notification">
+  <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
+  <div class="notification-content">
+    <p><small>14th January</small></p>
+    <p>Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipisicing elit.</p>
+  </div>
+
+  <div class="notification-actions">
+    <a href="#">Edit <i class="fas fa-pencil-alt"></i></a>
+    <a href="#">Delete <i class="far fa-trash-alt"></i></a>
+  </div>
+</div>
+
+<div class="notification">
+  <img src='https://kitt.lewagon.com/placeholder/users/Eschults' class="avatar-large"/>
+  <div class="notification-content">
+    <p><small>9th January</small></p>
+    <p>Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipisicing elit.</p>
+  </div>
+
+  <div class="notification-actions">
+    <a href="#">Edit <i class="fas fa-pencil-alt"></i></a>
+    <a href="#">Delete <i class="far fa-trash-alt"></i></a>
+  </div>
+</div>
+</div>
+<style>
+
+  .notification {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  background: white;
+  padding: 8px 16px;
+  border: 1px solid rgb(235,235,235);
+}
+
+.notification .notification-content {
+  flex-grow: 1;
+  padding: 0 24px;
+}
+
+.notification p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.notification small {
+  color: #999999;
+  font-weight: bold;
+}
+.notification .notification-actions {
+  opacity: 0;
+  display: flex;
+  transition: ease .3s;
+}
+
+.notification:hover .notification-actions {
+  opacity: 1;
+}
+
+.notification .notification-actions a {
+  color: #999999;
+  margin-left: 16px;
+  font-size: 14px;
+}
+
+.notification .notification-actions a:hover {
+  color: #555555;
+}
+</style>
+
+
+```html
+<form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+  <div class="search-form-control form-group">
+    <input class="form-control string required" type="text" name="search[query]" id="search_query" />
+    <button name="button" type="submit" class="btn btn-flat">
+      <i class="fas fa-search"></i> Search
+    </button>
+  </div>
+</form>
+```
+#### css
+
+```css
+.search-form-control {
+  position: relative;
+}
+
+.search-form-control .btn {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  right: 8px;
+}
+
+.search-form-control .form-control {
+  height: 3.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  border: 1px solid #E7E7E7;
+}
+
+.search-form-control .form-control:focus {
+  border: 1px solid #1EDD88;
+  outline: none !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+COPY
+Tabs
+Bookings
+Requests
+Conversations
+HTML
+CSS
+ <ul class="list-inline tabs-underlined">
+  <li>
+    <a href="#" class="tab-underlined active">Bookings</a>
+  </li>
+  <li>
+    <a href="#" class="tab-underlined">Requests</a>
+  </li>
+  <li>
+    <a href="#" class="tab-underlined">Conversations</a>
+  </li>
+</ul>
+```
   <footer><cite title="Workshop">Credit: Andry Rajohnson from "workshop le wagon UI"</cite></footer>
 
