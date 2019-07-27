@@ -3,9 +3,10 @@ layout:     post
 title:     Introduction à Git
 date:       2019-05-05
 author: Andry
-image: images/git2.png
+image: images/git2.gif
 categories:  [ Developper skills, Git, Versionning ]
 mathjax: true
+module: true
 ---
 
 >Le but de Git est de permettre à une équipe de développement de suivre les différentes versions d’un projet pour en gérer l’évolution

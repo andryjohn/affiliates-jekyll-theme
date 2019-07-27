@@ -2,7 +2,7 @@
 layout:     post
 title:      Pourquoi choisir Jekyll pour son site?
 categories: [ Jekyll, tutorial ]
-image: assets/images/5.jpg
+image: images/dribbble.gif
 categories: [ Developper skills, Jekyll, MVP, Startup ]
 mathjax: true
 module: true

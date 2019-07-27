@@ -1,9 +1,9 @@
 ---
 layout:     post
-title:      Few rules for non-designer who want to build well-designed products
+title:      Design for engineer
 date:       2019-06-05
 author: Andry
-image: images/dribbble.jpg
+image: images/design.gif
 categories: [ Egineer, Design, Skills ]
 module: true
 ---
@@ -14,8 +14,8 @@ And they're right, if you work in a fancy web agency making fancy websites, you 
 
 
 
-[<img src="/images/superrb.png">](https://www.superrb.com/)
-<footer>Superrb.com</footer>
+[<img src="/images/northface.gif">](https://www.northface.com/)
+
 
 But working on a functional web-app like *Airbnb*, *Facebook*, *Product Hunt*, has nothing to do with art, it’s about respecting patterns and simple graphical rules, and mainly stealing others work.
 

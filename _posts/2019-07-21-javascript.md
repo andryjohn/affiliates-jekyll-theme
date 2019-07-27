@@ -5,7 +5,7 @@ date:       2019-05-28
 author: Andry
 featured: true
 categories: [ JavaScript, interviews, test ]
-image: images/js.jpg
+image: images/js_flash.gif
 
 ---
 

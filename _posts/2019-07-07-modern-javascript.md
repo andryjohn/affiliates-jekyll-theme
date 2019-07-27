@@ -2,7 +2,7 @@
 layout:     post
 title:      Modern JavaScript for Developer
 date:       2019-07-07
-image: images/js.png
+image: images/js.gif
 author: Andry
 categories: [ Developper skills, JavaScript, Modern, Programming ]
 mathjax: true
