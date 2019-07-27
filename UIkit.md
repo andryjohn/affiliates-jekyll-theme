@@ -828,6 +828,7 @@ Let's move on! The next one is, **cards**
 
 We've almost done, the last one is  **Banner**. Great for building your *landing page*!
 
+<div class="container">
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(/images/tech.jpg);">
   <div class="container">
     <h1>Learning code brings <strong>tech skills</strong> to <strong>creative people</strong>!</h1>
@@ -835,12 +836,13 @@ We've almost done, the last one is  **Banner**. Great for building your *landing
      <a href="#" class="btn-treehouse">Start now</a>
   </div>
 </div>
+</div>
 <style>
 .banner {
   margin-bottom:  3rem;
   background-size: cover;
   background-position: center;
-  padding: 250px 110px;
+  padding: 14rem 6rem;
 
 }
 
