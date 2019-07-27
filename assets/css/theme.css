@@ -366,6 +366,8 @@ span.post-name a,span.post-read-more a:hover {
     max-width: 90%;
     margin: 0px auto;
     text-align: center;
+    opacity: 0.9;
+    border-radius: 3px;
 }
 .footer {
 	border-top:1px solid rgba(0,0,0,.05)!important;
