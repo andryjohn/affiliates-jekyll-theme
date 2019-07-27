@@ -89,11 +89,11 @@ title: Apprenez à coder
             {% for post in paginator.posts %}
 
             {% unless post.featured == true %}
-
+             {% unless post.courses == true %}
                 {% include postbox.html %}
 
             {% endunless %}
-
+ {% endunless %}
             {% endfor %}
 
         </div>
