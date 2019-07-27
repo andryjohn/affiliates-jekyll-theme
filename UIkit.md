@@ -1,9 +1,10 @@
 ---
 layout: default
-title: Composants web
+title: Composants web avec HTML et CSS
 mathjax: true
+categorie: [ Components, design, Bootstrap, HTMl, CSS ]
 ---
-# Components
+# Components From Scratch
 ---
 ![airBnB](images/js.gif)
 
