@@ -6,8 +6,9 @@ image: images/js.gif
 author: Andry
 categories: [ Developper skills, JavaScript, Modern, Programming ]
 mathjax: true
-
+courses: true
 ---
+
 >Ce document est un condensé de tout ce que vous devriez savoir sur le JavaScript que vous allez rencontrer dans des projets modernes.
 
 Ce guide n’a pas été conçu pour vous apprendre JavaScript à partir de rien, mais pour aider les développeurs ayant des connaissances basiques qui ont des problèmes avec les codebases modernes (ou pour apprendre React, par exemple) à cause des concepts JavaScript utilisés.
