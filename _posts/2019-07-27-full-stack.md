@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      La différence entre un développeur Front End/Back End/Fullstack
+title:      La différence entre un développeur Front End | Back End | Fullstack
 date:       2019-07-27
 Author: Andry
 image: images/dev.gif
