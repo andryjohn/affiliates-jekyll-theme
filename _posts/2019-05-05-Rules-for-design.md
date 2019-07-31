@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Design for engineer
+title:      Web-Design for engineer
 date:       2019-06-05
 author: Andry
 image: images/design.gif
