@@ -1,8 +1,13 @@
 ---
 layout: page
-title: Des formateurs pédagogues
+title: Manifeste
 comments: true
 ---
+
+
+![work](/images/learn.png)
+
+# Des formateurs pédagogues
 
 Apprenez à coder avec des personnes passionnés. Nous sommes des développeurs passionnés venant de différents horizons.
 
@@ -32,7 +37,7 @@ Nous échangeons aussi quotidiennement avec notre communauté ce qui nous permet
 ---
 
 
-![work](/assets/images/head.jpg)
+
 
 
 <footer class="center"><p>Invest In Yourself by Codedot</p></footer>
