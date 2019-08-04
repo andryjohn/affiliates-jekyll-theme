@@ -16,7 +16,7 @@ categories: [ data-engineering, career, fullstack, front-end, back-end ]
 
 Le terme *« frontend »* désigne les éléments d’un site que l’on voit à l’écran et avec lesquels on peut interagir depuis un navigateur.
 
-Ces outils sont: le **HTML**, le **CSS** et le **JavaScript**. Ces langages de programmation utilisés par *le développeur Front End* sont interprétés par le navigateur de votre ordinateur pour afficher un résultat *« visuel »*. Il s’agit notamment de polices, de menus déroulants, de boutons, de transitions, de curseurs, de formulaires de contact, etc.
+Ces outils sont: le **HTML**, le **CSS** et le **JavaScript**. Les langages utilisés par *le développeur Front End* sont interprétés par le navigateur de votre ordinateur pour afficher un résultat *« visuel »*. Il s’agit notamment de polices, de menus déroulants, de boutons, de transitions, de curseurs, de formulaires de contact, etc.
 
 
 ### Le developpeur Back End

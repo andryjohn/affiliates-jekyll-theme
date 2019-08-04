@@ -5,7 +5,9 @@ date:       2019-07-28
 image: images/designer.gif
 categories: [ Developper, roadmap, learn ]
 mathjax: true
+
 ---
+
 
 >In this article, you will find a set of charts demonstrating the paths that you can take and the technologies that you would want to adopt in order to become a frontend, backend or a devops.
 

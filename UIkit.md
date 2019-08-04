@@ -95,7 +95,7 @@ So let's begin with a simple one, useful for your *profile* for example.
 }
 ```
 
-#### Button design:
+#### Button:
 
 Then, **Button**, I choose to design two kind of button, [*Medium*](https://medium.com/) and [*Treehouse*](https://teamtreehouse.com/).
 
@@ -204,7 +204,7 @@ Then, **Button**, I choose to design two kind of button, [*Medium*](https://medi
 
 ---
 
-#### Alerts!
+#### Alert!
 <!--rendering Alert-->
 <div class="container">
 <div class="flash flash-success alert alert-dismissible fade show" role="alert">
@@ -307,7 +307,7 @@ Then, **Button**, I choose to design two kind of button, [*Medium*](https://medi
 ```
 ---
 
-#### Cards design:
+#### Cards grid:
 
 Let's move on! The next one is, **cards**
 <div class="container">
@@ -828,16 +828,17 @@ Let's move on! The next one is, **cards**
 #### Banner:
 
 We've almost done, the last one is  **Banner**. Great for building your *landing page*!
-
-<div class="container">
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(/images/tech.jpg);">
-  <div class="container">
-    <h1>Learning code brings <strong>tech skills</strong> to <strong>creative people</strong>!</h1>
-    <p>Change your life and learn to code at one of our campuses around the world.</p>
-     <a href="#" class="btn-treehouse">Start now</a>
-  </div>
-</div>
-</div>
+<div class="header-row" id="header-row" style="padding: 0px; overflow:hidden; height: 40em;">
+   <div class="container-fluid" style="padding: 5em;">
+      <div class="row">
+          <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(/images/tech.jpg);">
+          <h1>Learning code brings <strong>tech skills</strong> to <strong>creative people</strong>!</h1>
+          <p>Change your life and learn to code at one of our campuses around the world.</p>
+           <a href="#" class="btn-treehouse">Start now</a>
+          </div>
+      </div>
+   </div>
+ </div>
 <style>
 .banner {
   margin-bottom:  3rem;

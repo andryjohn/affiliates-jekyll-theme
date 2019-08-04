@@ -3,6 +3,7 @@ layout:     post
 title:      Pourquoi choisir Jekyll pour son site?
 categories: [ Jekyll, tutorial ]
 image: images/dribbble.gif
+Author: Andry
 categories: [ Developper skills, Jekyll, MVP, Startup ]
 mathjax: true
 module: true
@@ -13,7 +14,10 @@ Pourquoi ce choix?
 
 
 
-Tout d'abord, *Jekyll* est ecrit en [*Ruby*](https://rajohnson-andry.tk/developper/skills/2019/05/03/ruby-on-rails/) , que c’est actuellement un projet *très actif*, et qu’il est compatible avec *Github Pages*, **nativement**, c’est-à-dire que Github détecte, quand vous créez *une branche gh-pages*, que vous allez générer du contenu statique, et le met en production. Si vous voulez en savoir plus c'est [ici](https://rajohnson-andry.tk/developper/skills/2019/05/05/Host-any-front-end/)
+Jekyll est un générateur de site statique écrit en *“Ruby”* qui gagne en popularité, de Google à Netflix en passant par Mailchimp, Mapbox ou NodeJS, ils sont partout et sont devenus le choix de la raison pour les sites de contenus **à fort trafic**. Leurs usages évoluent et de nouveaux services dédiés viennent enrichir et faciliter l’expérience utilisateur des contributeurs et des développeurs.
+
+Cette stack permet aux différents intervenants de se concentrer sur l’essentiel. Les rédacteurs peuvent ainsi rédiger leurs articles au format Markdown, un format texte très simple et très lisible, qui facilité la portabilité.
+
 
 
 ## Pourquoi ne pas choisir un CMS comme Wordpress?
@@ -28,15 +32,19 @@ Du fait de sa popularité, (*je n'ai pas les chiffres en téte mais je crois que
 
 ![cms](/images/cms.jpeg)
 
+### Autre argument de taille: la vitesse du site
 
+Le couple **PHP & MySQL et hébergement mutualisé sur OVH**, si vous rajoutez des **plugins inutiles**, sa ne fait pas bon ménage! Et cela se fait ressentir.
 
->*" La vitesse du site "*: Le couple **PHP&MySQL** et **hébergement mutualisé sur OVH**, en plus si vous rajoutez des plugins inutiles, bah sa ne fait pas  bon ménage! Et cela se fait ressent, Comment? Par les temps de chargement.. Votre site qui rame comme jamais et ce n'est le top!
+Comment?
+
+Par le temps de chargement... Votre site qui rame comme jamais et ce n’est le top!
 
 ## Jekyll, comment ça marche ?
 
-Jekyll est un générateur de site statiques écrit en "Ruby".
+Comme je l'ai dit plus haut Jekyll est un générateur de site statique écrit en *Ruby*, ce qui peut paraître tout à fait absurde par rapport à un CMS mais cela apporte bien des avantages et notamment le fait qu’il peut etre couplé à git et github.
 
-Cela peut paraître tout à fait absurde par rapport à un CMS mais cela apporte bien des avantages et notamment le fait qu'il peut etre couplé à [git et github](https://rajohnson-andry.tk/developper/skills/2019/05/05/maitrise-de-git/). Et c'est la, tout l'intérets, je m'explique:
+Et c’est là, tout l’intérets, je m’explique:
 
 **Github** est une architecture qui tourne autour de **Git**, un outil open source de *versionning*, c’est-à-dire que le concept de *backup* est compris dans l’outil, en plus de la possibilité de manière assez simple de venir éditer un article comme celui-ci par exemple.
 
@@ -59,9 +67,16 @@ Et dès que vous déployez le site, si il n’y a pas d’erreurs, il est mis en
 
 Pour d’autres services, il est possible de les déployer aussi sur Github (ou d’autres outils tels que des Gitlabs), mais cela implique soit de passer par un outil de CI (Intégration Continue) qui va détecter les changements du dépôt Git et générer le site statique, ou de compiler soi-même lors de chaque modification.
 
-Enfin, Jekyll n’est pas limité aux blogs, on peut tout à fait réaliser d'autres projets, de faible envergures, j'entend, tel que les sites personnels, portefolio, site vitrines,  des pages produits en rajoutant les "layouts" correspondants. Il suffit en suite de définir dans chaque "fichier source" le layout à utiliser pour sa génération.
+## Conclusion
+
+Servir du « statique » n’est pas du tout une mode destinée à rester confidentielle parmi *les hackers*, c’est une réponse simple à des problématiques complexes. Gardez en tête que **78% des sites sous Wordpress souffrent de vulnérabilités et que quand une faille de sécurité impacte Drupal, des millions de sites sont concernés.**
+
+C’est donc une solution que vous devriez sérieusement considérer si vous souhaitez réduire vos coûts d’infrastructure sur des sites à fort trafic. Sur des sites très fréquentés le coût peut être divisé par 15 ou plus.
+
+*Le full statique* est idéal pour des sites de contenus : *présentation produit, documentation, blog ou application web (progressive) en JavaScript, en revanche il n’est pas adapté pour des sites où le contenu est majoritairement généré par les utilisateurs.*
 
 
 
 
-<footer><cite title="Workshop">Credit: Andry Rajohnson, Fullstack Developer</cite></footer>
+
+
