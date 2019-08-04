@@ -6,7 +6,7 @@ image: images/js.gif
 author: Andry
 categories: [ Developper skills, JavaScript, Modern, Programming ]
 mathjax: true
-featured: true
+courses: true
 ---
 
 >Ce document est un condensé de tout ce que vous devriez savoir sur le JavaScript que vous allez rencontrer dans des projets modernes.
