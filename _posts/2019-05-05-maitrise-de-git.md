@@ -89,4 +89,4 @@ Et c'est la toute la puissance de **Git**, telle une réalité parallèle, ou l'
 
 
 
-<footer><cite title="Workshop">Credit: Andry Rajohnson, Fullstack Developer</cite></footer>
+
