@@ -1,0 +1,69 @@
+I"<blockquote>
+  <p>Le jargon <em>“professionnel”</em> du web est <em>riche</em> et si vous avez ouvert de grands yeux interrogateurs en entendant ces mots, alors cet article est fait pour vous !</p>
+</blockquote>
+
+<h3 id="le-developpeur-front-end">Le developpeur Front End</h3>
+
+<p>Le terme <em>« frontend »</em> désigne les éléments d’un site que l’on voit à l’écran et avec lesquels on peut interagir depuis un navigateur.</p>
+
+<p>Ces outils sont: le <strong>HTML</strong>, le <strong>CSS</strong> et le <strong>JavaScript</strong>. Les langages utilisés par <em>le développeur Front End</em> sont interprétés par le navigateur de votre ordinateur pour afficher un résultat <em>« visuel »</em>. Il s’agit notamment de polices, de menus déroulants, de boutons, de transitions, de curseurs, de formulaires de contact, etc.</p>
+
+<h3 id="le-developpeur-back-end">Le developpeur Back End</h3>
+
+<p>Le <em>« backend »</em> est un peu comme la partie <strong>immergée d’un iceberg</strong>. On ne la voit pas en tant que simple Internaute mais elle représente une très grande partie d’un projet web.</p>
+
+<p>Le Backend se compose généralement de <em>trois éléments</em> :</p>
+
+<ul>
+  <li>Un serveur (hébergement web)</li>
+  <li>Une application (site web, administration)</li>
+  <li>Une base de données (sorte de feuille de calcul pour organiser les données)</li>
+</ul>
+
+<p>Prenons un exemple pour comprendre le fonctionnement du Back End :</p>
+
+<blockquote>
+  <p>“Imaginons que vous deviez réserver un vol en ligne pour vos futures vacances. Vous vous rendez sur le site de la compagnie aérienne et recherchez le vol qui vous convient. Une fois le vol sélectionné, vous renseignez vos informations personnelles et validez votre réservation. Vos informations sont alors enregistrées dans une <em>base de données</em> stockée sur un serveur.
+Toutes ces informations restent sur le serveur, alors quand vient l’heure des vacances (2 mois plus tard) vous vous connectez à l’espace client (application) pour imprimer vos billets d’avion et toutes les informations que vous aviez renseignées lors de votre réservation sont disponibles sur votre compte.”</p>
+</blockquote>
+
+<p>La personne qui administre toute cette technologie est le développeur back end. Les technologies Backend se composent généralement de langages comme: PHP, Ruby, Python, etc.</p>
+
+<p><img src="/images/Backend.jpg" alt="back" /></p>
+
+<p>Pour les rendre encore plus faciles à utiliser, ils sont généralement améliorés par des <strong>Framework</strong> comme <strong>“Ruby on Rails”</strong>, <strong>“Cake PHP”, “Symfony” et “Code Igniter”</strong> qui rendent le développement <em>plus rapide et plus sécurisé</em>.</p>
+
+<p>De plus en plus de développeurs disposent à la fois de compétences en <em>backend et en frontend</em>. On les appelle développeurs <em>Full Stack.</em></p>
+
+<h3 id="le-developpeur-full-stack">Le Developpeur Full Stack</h3>
+
+<p>Le développeur <em>full-stack</em> maîtrise les principales technologies et les principaux langages de programmation actuels.
+Il est ainsi capable d’intervenir aussi bien sur le <em>front end</em> que sur le<em>back end</em> des sites Internet ou des applications.</p>
+
+<p>Le développeur full stack est très apprécié dans  les milieux “start-ups” pour ses compétences variées. Toutefois, pour des projets d’envergure, il est conseillé de faire appel aux compétences <strong>spécifiques</strong> <em>des développeurs frontend et backend.</em></p>
+
+<p><img src="/images/woman-code.jpeg" alt="woman" /></p>
+
+<h2 id="pour-aller-plus-loin--ne-pas-confondre-front-end-back-end--et-front-officeback-office">Pour aller plus loin : <del>NE PAS CONFONDRE</del> Front End /Back End  Et Front Office/Back Office</h2>
+
+<p>Nous sommes régulièrement témoins de la confusion entre les termes front end / FrontOffice et back end / BackOffice.</p>
+
+<p>Le FrontOffice désigne ce que voit l’internaute en navigant sur un site internet.</p>
+
+<p>Le BackOffice désigne quant à lui ce que voit l’administrateur du site quand il se connecte à l’administration.</p>
+
+<p><img src="/images/word.png" alt="mark" /></p>
+
+<blockquote>
+  <p>Le <em>“CMS WordPress”</em> est un bon exemple pour comprendre la différence entre ces différents termes. En effet, il s’agit d’un outil web basé sur un Framework open source construit en PHP qui s’installe sur un serveur avec une base de données (Back End). Les développeurs Front End personnalisent l’apparence et les fonctionnalités des sites WordPress en utilisant du CSS, du jQuery et du JavaScript. Ces modifications se font principalement depuis le BackOffice (depuis l’interface de WordPress). Ces modifications sont ensuite visibles par les internautes sur le FrontOffice du site (le site internet).</p>
+</blockquote>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p><img src="/images/dev.jpeg" alt="dev" /></p>
+
+<p>Les développeurs <em>Front-End et Back-End</em> ont des <strong>profils complémentaires</strong> qui permettent de par leurs compétences spécifiques de mener à bien des <em>projets web de grande envergure.</em></p>
+
+<p>Le développeur <em>full stack</em> est quant à lui idéal pour la création de <em>site internet</em> et les <em>projets de faible ampleur</em>, très apprécié par les “startup”!</p>
+
+:ET

@@ -1,0 +1,183 @@
+I"�,<p>Test how well you know JavaScript, refresh your knowledge a bit, or prepare for your coding interview!
+The answers are in the collapsed sections below the questions, simply click on them to expand it. Good luck!</p>
+
+<hr />
+
+<h4 id="1-whats-the-output">1. What’s the output?</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">sayHi</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">age</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Lydia</span><span class="dl">"</span><span class="p">;</span>
+  <span class="kd">let</span> <span class="nx">age</span> <span class="o">=</span> <span class="mi">21</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">sayHi</span><span class="p">();</span>
+
+</code></pre></div></div>
+
+<ul>
+  <li>A: <code class="highlighter-rouge">Lydia</code> and <code class="highlighter-rouge">undefined</code></li>
+  <li>B: <code class="highlighter-rouge">Lydia</code> and <code class="highlighter-rouge">ReferenceError</code></li>
+  <li>C: <code class="highlighter-rouge">ReferenceError</code> and <code class="highlighter-rouge">21</code></li>
+  <li>D: <code class="highlighter-rouge">undefined</code> and <code class="highlighter-rouge">ReferenceError</code></li>
+</ul>
+
+<details><summary><b>Answer</b></summary>
+
+
+<strong>Answer: D</strong>
+
+<p>Within the function, we first declare the <mark>name</mark> variable with the <mark>var</mark> keyword.</p>
+
+<p>This means that the variable gets hoisted (memory space is set up during the creation phase) with the default value of <mark>undefined</mark> until we actually get to the line where we define the variable. We haven't defined the variable yet on the line where we try to log the  <mark>name</mark> variable, so it still holds the value of  <mark>undefined</mark>.</p>
+
+<p>Variables with the <mark>let</mark> keyword (and <mark>const</mark>) are hoisted, but unlike <mark>var</mark>, don't get <i>initialized</i>. They are not accessible before the line we declare (initialize) them. This is called the "temporal dead zone". When we try to access the variables before they are declared, JavaScript throws a <mark>ReferenceError</mark>.
+</p>
+</details>
+
+<hr />
+
+<h4 id="2-whats-the-output">2. What’s the output?</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">i</span><span class="o">+</span>
+  <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>A: <code class="highlighter-rouge">0 1 2</code> and <code class="highlighter-rouge">0 1 2</code></li>
+  <li>B: <code class="highlighter-rouge">0 1 2</code> and <code class="highlighter-rouge">3 3 3</code></li>
+  <li>C: <code class="highlighter-rouge">3 3 3</code> and <code class="highlighter-rouge">0 1 2</code></li>
+</ul>
+
+<details><summary><b>Answer</b></summary>
+
+<strong>Answer: C</strong>
+
+<p>Because of the event queue in JavaScript, the <mark>setTimeout</mark> callback function is called _after_ the loop has been executed. Since the variable <mark>i</mark> in the first loop was declared using the <mark>var</mark> keyword, this value was global. During the loop, we incremented the value of <mark>i</mark> by <mark>1</mark> each time, using the unary operator <mark>++</mark>. By the time the <mark>setTimeout</mark> callback function was invoked, <mark>i</mark> was equal to <mark></mark>` in the first example.</p>
+
+<p>In the second loop, the variable <mark>i</mark> was declared using the <mark>let</mark> keyword: variables declared with the <mark>let</mark> (and <mark>const</mark>) keyword are block-scoped (a block is anything between <mark>{ }</mark>). During each iteration, <mark>i</mark> will have a new value, and each value is scoped inside the loop.</p>
+</details>
+
+<hr />
+
+<h4 id="3-whats-the-output">3. What’s the output?</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">shape</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">radius</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="nx">diameter</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">radius</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="p">},</span>
+  <span class="na">perimeter</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">radius</span>
+<span class="p">};</span>
+
+<span class="nx">shape</span><span class="p">.</span><span class="nx">diameter</span><span class="p">();</span>
+<span class="nx">shape</span><span class="p">.</span><span class="nx">perimeter</span><span class="p">();</span>
+</code></pre></div></div>
+
+<ul>
+  <li>A: <code class="highlighter-rouge">20</code> and <code class="highlighter-rouge">62.83185307179586</code></li>
+  <li>B: <code class="highlighter-rouge">20</code> and <code class="highlighter-rouge">NaN</code></li>
+  <li>C: <code class="highlighter-rouge">20</code> and <code class="highlighter-rouge">63</code></li>
+  <li>D: <code class="highlighter-rouge">NaN</code> and <code class="highlighter-rouge">63</code></li>
+</ul>
+
+<details><summary><b>Answer</b></summary>
+
+
+<strong>Answer: B</strong>
+
+<p>Note that the value of <mark>diameter</mark> is a regular function, whereas the value of <mark>perimeter</mark> is an arrow function.<br />
+
+With arrow functions, the <mark>this</mark> keyword refers to its current surrounding scope, unlike regular functions! This means that when we call <mark>perimeter</mark>, it doesn't refer to the shape object, but to its surrounding scope (window for example).<br />
+
+There is no value <mark>radius</mark> on that object, which returns <mark>undefined</mark>.
+
+</p>
+</details>
+
+<hr />
+
+<h4 id="4-whats-the-output">4. What’s the output?</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">+</span><span class="kc">true</span><span class="p">;</span>
+<span class="o">!</span><span class="dl">"</span><span class="s2">Lydia</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>A: <code class="highlighter-rouge">1</code> and <code class="highlighter-rouge">false</code></li>
+  <li>B: <code class="highlighter-rouge">false</code> and <code class="highlighter-rouge">NaN</code></li>
+  <li>C: <code class="highlighter-rouge">false</code> and <code class="highlighter-rouge">false</code></li>
+</ul>
+
+<details><summary><b>Answer</b></summary>
+
+<strong>Answer: A</strong>
+
+<p>
+The unary plus tries to convert an operand to a number. <mark>true</mark> is <mark>1</mark>, and <mark>false</mark> is <mark>0</mark>.<br />
+
+The string <mark>'Lydia'</mark> is a truthy value. What we're actually asking, is "is this truthy value falsy?". This returns <mark>false</mark>.
+
+</p>
+</details>
+
+<hr />
+
+<h4 id="5-which-one-is-true">5. Which one is true?</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bird</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">size</span><span class="p">:</span> <span class="dl">"</span><span class="s2">small</span><span class="dl">"</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">mouse</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Mickey</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">small</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<ul>
+  <li>A: <code class="highlighter-rouge">mouse.bird.size</code> is not valid</li>
+  <li>B: <code class="highlighter-rouge">mouse[bird.size]</code> is not valid</li>
+  <li>C: <code class="highlighter-rouge">mouse[bird["size"]]</code> is not valid</li>
+  <li>D: All of them are valid</li>
+</ul>
+
+<details><summary><b>Answer</b></summary>
+
+
+<strong>Answer: A</strong>
+
+<p>In JavaScript, all object keys are strings (unless it's a Symbol). Even though we might not _type_ them as strings, they are always converted into strings under the hood.<br />
+
+JavaScript interprets (or unboxes) statements. When we use bracket notation, it sees the first opening bracket `[` and keeps going until it finds the closing bracket `]`. Only then, it will evaluate the statement.<br />
+
+`mouse[bird.size]`: First it evaluates `bird.size`, which is <mark>"small"</mark>. <mark>mouse["small"]</mark> returns <mark>true</mark> <br />
+
+However, with dot notation, this doesn't happen. <mark>`mouse`</mark> does not have a key called <mark>`bird`,</mark> which means that <mark>mouse.bird</mark> is <mark>`undefined`</mark>. Then, we ask for the `size` using dot notation: <mark>`mouse.bird.size`.</mark> Since <mark>mouse.bird</mark> is <mark>undefined</mark>, we're actually asking <mark>`undefined.size`</mark>. This isn't valid, and will throw an error similar to <mark> Cannot read </mark>property "size" of undefined.
+
+</p>
+</details>
+<style>
+mark {
+background-color: #252525;
+color: yellow;
+padding-left: 5px;
+padding-right: 5px;
+padding-bottom: 5px;
+box-shadow: 0 0 5px rgba(0,0,0,0.3);
+border-radius: 5px;
+}
+
+:focus {
+    outline: none!important;
+}
+
+</style>
+
+:ET

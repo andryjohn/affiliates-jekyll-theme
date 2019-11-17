@@ -1,0 +1,136 @@
+I"� <blockquote>
+  <p><a href="https://github.com/ClaraMorgen/coding_further">Coding further</a> is a project made by <a href="https://twitter.com/Clara_Morgen">Clara Morgen</a> for her students who graduated from “Le Wagon coding bootcamp” and are just now exploring the world of tech.
+She have collected some (free) online courses to help you keep learning as well as other useful resources which will help you to fully immerse yourself in the dev universe.</p>
+</blockquote>
+
+<h2 id="ruby-on-rails">Ruby on Rails</h2>
+
+<p>At Le Wagon you learn our beloved Ruby and Rails - and there is a lot more to find out about it, have a look at these tutorials:</p>
+
+<ul>
+  <li><a href="https://gorails.com/series">https://gorails.com/series</a> - a plethora of tutorials</li>
+  <li><a href="https://thoughtbot.com/upcase/">https://thoughtbot.com/upcase/</a> (they also have courses on advanced git!)</li>
+</ul>
+
+<h2 id="code-katas">Code Katas</h2>
+
+<p>If you need to prepare for that next interview, have a look at code katas. But don’t get frustrated - these challenges are at the verge of coding, problem solving and mathematical skills which is a very specific skill of itself.</p>
+
+<ul>
+  <li><a href="https://www.codewars.com/">https://www.codewars.com/</a></li>
+  <li><a href="https://www.hackerrank.com/">https://www.hackerrank.com/</a></li>
+  <li><a href="https://projecteuler.net/">https://projecteuler.net/</a></li>
+</ul>
+
+<h2 id="problem-solving">Problem solving</h2>
+
+<p>THE coding skill any programmer should have. No matter which language, you need to be able to know how approach coding challenges.</p>
+<ul>
+  <li>Follow <a href="https://dev.to/aspittel/moving-past-tutorials-a-course-on-problem-solving-for-programmers-3oa4">a series</a> by <a href="https://twitter.com/ASpittel">Ali Spittel</a> (also in Twitter section 👇)</li>
+</ul>
+
+<h2 id="javascript-courses">Javascript courses</h2>
+
+<p>Javascript is one of the coding languages with the furthest reach (<a href="https://octoverse.github.com/projects#languages">according to GitHub survey</a>) and has been in the top ten ever since. Time to master it with these tutorials:</p>
+
+<ul>
+  <li><a href="https://javascript.info/">https://javascript.info/</a> a very extensive course with a lot of small and interesting details covered - more than just the average course!</li>
+  <li><a href="https://learnjavascript.online/">https://learnjavascript.online/</a> - made by a long-term teacher for Le Wagon and expert in his field [Jad]<a href="https://jadjoubran.io/">https://jadjoubran.io/</a></li>
+  <li><a href="https://wesbos.com/courses/">https://wesbos.com/courses/</a> - Wes Bos is famous for his video courses (paid courses! - but Wagon alumni have gotten reductions before when they bought in bulks, so shooting him a message might be worth it) if you want to see if you like his teaching style, check out his free course:</li>
+  <li><a href="https://www.javascript30.com/">https://www.javascript30.com/</a></li>
+</ul>
+
+<h2 id="newsletterscommunities">Newsletters/Communities</h2>
+
+<p>In order to be up to date about the latest changes, newsletters and news pages are really helpful.</p>
+
+<ul>
+  <li><a href="https://rubyweekly.com/">Ruby weekly</a> is a good start as it is the offical newsletter and has a nice mixture of news on the Ruby language, tutorials and hints</li>
+  <li><a href="https://tinyletter.com/turbobreakfast">TurboBreakFast</a> of course I have to mention Dimitris (teacher and developer for Le Wagon Berlin) <code class="highlighter-rouge">Turbo Breakfast</code> with curated picks from tech, economics, design and things that make the web beautiful.</li>
+  <li><a href="https://gigitherobot.com/">Gigi the robot</a> - This is a newsletter addressed to women and their tagline describe them best: “the important stories you don’t gloss over when you hear the word ‘tech’.”</li>
+  <li><a href="https://www.jamesmichaelhickey.com/">Navigating your software development career</a> a newsletter with advice how to create, maintain and push your career in web/software development</li>
+</ul>
+
+<h4 id="communities">Communities</h4>
+
+<ul>
+  <li><a href="https://dev.to/">https://dev.to/</a> (the page is built in Rails)</li>
+  <li><a href="https://glitch.com">https://glitch.com</a> (browse apps others built or follow a tutorial to build your own)</li>
+</ul>
+
+<h2 id="twitter-accounts">Twitter accounts</h2>
+
+<p>If you enjoy twitter, here are some interesting accounts to follow, but that’s just a start, because… honestly, there is tons of devs on twitter. Just find the ones that interest you the most :)</p>
+
+<ul>
+  <li><a href="https://twitter.com/dhh">dhh</a> - the creator of Rails and author of bestselling books. If you like strong opinions, check his account</li>
+  <li><a href="https://twitter.com/girlswhocode">girslwhocode</a></li>
+  <li><a href="https://twitter.com/emmawedekind">emmawedekind</a> - content creator and twitter famous</li>
+  <li><a href="https://twitter.com/ASpittel">ASpittel</a> - former coding bootcamp instructor and author of many tutorials (including the above-mentioned problem solving course)</li>
+  <li><a href="https://twitter.com/wesbos">wesbos</a> - author of the above mentioned javascript courses</li>
+</ul>
+
+<h2 id="open-source-contributions">Open Source Contributions</h2>
+
+<p>Open Source is a great way to learn from the community, and see how other experienced developers write code. You may also have to play around with other technologies, which also correlates to a lovely way to learn!</p>
+
+<ul>
+  <li><a href="https://github.com/firstcontributions/first-contributions">First Time Contributors</a> - To understand how to make an open source contribution:</li>
+  <li><a href="https://firstcontributions.github.io">Open Source Projects</a> - Here is a website that helps navigate open-source projects that welcome first time contributors</li>
+</ul>
+
+<h2 id="coding-conferences">Coding Conferences</h2>
+
+<p>What better way to network and learn than to attend conferences?</p>
+
+<h4 id="frontend">Frontend</h4>
+
+<ul>
+  <li><a href="https://www.yglfconf.com/">You Gotta Love Frontend</a> - Global Frontend event that travels around</li>
+  <li><a href="https://jsconf.com/">Javascript Conferences</a> - A website to find Javascript Conferences</li>
+</ul>
+
+<h4 id="ruby">Ruby</h4>
+<ul>
+  <li><a href="https://rubyconferences.org/">Ruby Conferences</a> - Ruby Conferences</li>
+</ul>
+
+<h4 id="all-conference-searching-websites">All (Conference Searching Websites)</h4>
+<ul>
+  <li><a href="https://conferencemonkey.org/top/software-development/conferences">Conference Monkey</a> - Search for miscellaneous conferences</li>
+  <li><a href="https://confs.tech/">Conference.tech</a> - Search for miscellaneous conferences</li>
+</ul>
+
+<h2 id="misc">Misc</h2>
+
+<p>Chingu is a platform to find teams to work on real projects. Perfect to enrich your portfolio and improve team working skills</p>
+<ul>
+  <li><a href="ttps://chingu.io/">https://chingu.io/</a></li>
+</ul>
+
+<p>Check out Le Wagon Paris teacher Edwards’ repo with a mix of helpful shortcuts, explaination for error messages and recommendations for gems:</p>
+<ul>
+  <li><a href="https://github.com/Eschults/useful_stuff">https://github.com/Eschults/useful_stuff</a></li>
+</ul>
+
+<p>100 days of code is more than just a hashtag. It’s a movement encouraging you to code for every day the next 100 days. A perfect eay to make coding a habit and not to loose that bootcamp vibe.</p>
+<ul>
+  <li><a href="https://www.100daysofcode.com/">https://www.100daysofcode.com/</a></li>
+</ul>
+
+<p>If you want to get a more in depth view into computer science, try this Havard Course. The lectures are very interesting, the challenges are hard, but they provide good in depth knowledge of what actually happens when we code.</p>
+
+<ul>
+  <li><a href="https://courses.edx.org/courses/course-v1:HarvardX+CS50+X/course/">CS50</a></li>
+</ul>
+
+<p>IF you are interested in learning an indepth knowledge of JavaScript.. <strong>You Don’t Know JavaScript</strong> is considered by some to be the holy bible of JavaScript</p>
+<ul>
+  <li><a href="https://github.com/getify/You-Dont-Know-JS">You Don’t Know JS</a> - Kyle Simpson’s <strong>You Don’t Know Javascript</strong></li>
+</ul>
+
+<hr />
+
+<footer><cite title="Workshop"> "Source: Coding further by Clara Morgen"
+</cite></footer>
+:ET

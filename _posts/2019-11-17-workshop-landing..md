@@ -1,12 +1,12 @@
 ---
 layout:     post
-title:      Workshop Landing Page
+title:      2-hours Landing Page
 date:       2019-11-17
 summary: 2 hour landing, learn HTML and CSS
 categories: [ JavaScript, beginner, introduction ]
 mathjax: true
 courses: true
-image: images/branding.jpg
+image: images/havas.gif
 ---
 
 >2 hour landing, learn HTML and CSS

@@ -1,0 +1,1791 @@
+I"0�<blockquote>
+  <p>Ce document est un condensé de tout ce que vous devriez savoir sur le JavaScript que vous allez rencontrer dans des projets modernes.</p>
+</blockquote>
+
+<p>Ce guide n’a pas été conçu pour vous apprendre JavaScript à partir de rien, mais pour aider les développeurs ayant des connaissances basiques qui ont des problèmes avec les codebases modernes (ou pour apprendre React, par exemple) à cause des concepts JavaScript utilisés.</p>
+
+<p>De plus, je vous donnerai parfois des conseils personnels qui pourraient porter à débat, mais je prendrai le soin de le mentionner lorsque je le ferai.</p>
+
+<blockquote>
+  <p><strong>Note:</strong> La plupart des concepts introduits ici viennent d’une mise à jour du langage JavaScript (ES2015, souvent appelé ES6. Vous pouvez trouver les nouvelles fonctionnalités. ajoutées par cette mise à jour <a href="http://es6-features.org">ici</a> (ce site est vraiment bien fait !).</p>
+</blockquote>
+
+<h3 id="ressources-complémentaires">Ressources complémentaires</h3>
+
+<p>Lorsque vous avez de la peine à comprendre une notion, je vous suggère de chercher des réponses dans les ressources suivantes :</p>
+
+<ul>
+  <li><a href="https://developer.mozilla.org/en-US/search?q=">MDN (Mozilla Developer Network)</a></li>
+  <li><a href="https://github.com/getify/You-Dont-Know-JS">You don’t know JS (livre)</a></li>
+  <li><a href="http://es6-features.org">ES6 Features with examples</a></li>
+  <li><a href="http://wesbos.com/category/es6/">WesBos blog (ES6)</a></li>
+  <li><a href="https://www.udacity.com/course/javascript-basics--ud804">Javascript Basics for Beginners</a> - a free Udacity course</li>
+  <li><a href="https://www.reddit.com/r/javascript/">Reddit (JavaScript)</a></li>
+  <li><a href="https://www.google.com/">Google</a> pour trouver des blogs et des ressources spécifiques</li>
+  <li><a href="https://stackoverflow.com/questions/tagged/javascript">StackOverflow</a></li>
+</ul>
+
+<blockquote>
+  <p><strong>Note:</strong> Presque toutes les ressources externes listées dans ce document sont en anglais, à l’exception des liens menant vers le Mozilla Developer Network (MDN) qui lui est traduit en français.</p>
+</blockquote>
+
+<h2 id="table-des-matières">Table des matières</h2>
+<ul>
+  <li><a href="#modern-javascript-cheatsheet">Modern JavaScript Cheatsheet</a>
+    <ul>
+      <li><a href="#introduction">Introduction</a>
+        <ul>
+          <li><a href="#motivation">Motivation</a></li>
+          <li><a href="#ressources-complémentaires">Ressources complémentaires</a></li>
+        </ul>
+      </li>
+      <li><a href="#table-des-matières">Table des matières</a></li>
+      <li><a href="#notions">Notions</a>
+        <ul>
+          <li><a href="#déclaration-des-variables--var-const-let">Déclaration des variables : var, const, let</a>
+            <ul>
+              <li><a href="#explication-brève">Explication brève</a></li>
+              <li><a href="#code-dexemple">Code d’exemple</a></li>
+              <li><a href="#explication-détaillée">Explication détaillée</a>
+                <ul>
+                  <li><a href="#var">var</a></li>
+                  <li><a href="#let">let</a></li>
+                  <li><a href="#const">const</a></li>
+                </ul>
+              </li>
+              <li><a href="#ressources-externes">Ressources externes</a></li>
+            </ul>
+          </li>
+          <li><a href="#-fonction-fléchée"><a name="user-content-arrow_func_concept"></a> Fonction fléchée</a>
+            <ul>
+              <li><a href="#code-dexemple-1">Code d’exemple</a></li>
+              <li><a href="#explication-détaillée-1">Explication détaillée</a>
+                <ul>
+                  <li><a href="#concision">Concision</a></li>
+                  <li><a href="#référence-de-this">Référence de <em>this</em></a></li>
+                </ul>
+              </li>
+              <li><a href="#ressources-utiles">Ressources utiles</a></li>
+            </ul>
+          </li>
+          <li><a href="#valeur-par-défaut-dun-paramètre-dans-une-fonction">Valeur par défaut d’un paramètre dans une fonction</a>
+            <ul>
+              <li><a href="#external-resource">External resource</a></li>
+            </ul>
+          </li>
+          <li><a href="#déstructurer-des-objets-et-des-tableaux">Déstructurer des objets et des tableaux</a>
+            <ul>
+              <li><a href="#explication-avec-du-code">Explication avec du code</a></li>
+              <li><a href="#ressources-utiles-1">Ressources utiles</a></li>
+            </ul>
+          </li>
+          <li><a href="#méthodes-de-tableau--map--filter--reduce">Méthodes de tableau : map / filter / reduce</a>
+            <ul>
+              <li><a href="#code-dexemple-2">Code d’exemple</a></li>
+              <li><a href="#explication">Explication</a>
+                <ul>
+                  <li><a href="#arrayprototypemap">Array.prototype.map()</a></li>
+                  <li><a href="#arrayprototypefilter">Array.prototype.filter()</a></li>
+                  <li><a href="#arrayprototypereduce">Array.prototype.reduce()</a>
+                    <ul>
+                      <li><a href="#À-la-première-étape-ditération">À la première étape d’itération</a></li>
+                      <li><a href="#À-la-deuxième-étape-ditération">À la deuxième étape d’itération</a></li>
+                      <li><a href="#À-la-troisième-étape-ditération">À la troisième étape d’itération</a></li>
+                      <li><a href="#À-la-quatrième-étape-ditération">À la quatrième étape d’itération</a></li>
+                      <li><a href="#-À-la-dernière-étape-ditération">[…] À la dernière étape d’itération</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="#ressource-externe">Ressource externe</a></li>
+            </ul>
+          </li>
+          <li><a href="#opérateur-de-décomposition-">Opérateur de décomposition “…”</a>
+            <ul>
+              <li><a href="#code-dexemple-3">Code d’exemple</a></li>
+              <li><a href="#explication-1">Explication</a>
+                <ul>
+                  <li><a href="#dans-des-tableaux-comme-des-tableaux">Dans des tableaux (comme des tableaux)</a></li>
+                  <li><a href="#paramètre-de-reste-dune-fonction">Paramètre de reste d’une fonction</a></li>
+                  <li><a href="#décomposition-des-propriétés-dun-objet">Décomposition des propriétés d’un objet</a></li>
+                </ul>
+              </li>
+              <li><a href="#ressources-externes-1">Ressources externes</a></li>
+            </ul>
+          </li>
+          <li><a href="#raccourci-pour-les-propriétés-dobjet">Raccourci pour les propriétés d’objet</a>
+            <ul>
+              <li><a href="#explication-2">Explication</a></li>
+              <li><a href="#ressources-externes-2">Ressources externes</a></li>
+            </ul>
+          </li>
+          <li><a href="#promesses">Promesses</a>
+            <ul>
+              <li><a href="#code-dexemple-4">Code d’exemple</a></li>
+              <li><a href="#explication-3">Explication</a>
+                <ul>
+                  <li><a href="#créer-la-promesse">Créer la promesse</a></li>
+                  <li><a href="#utilisation-des-déclencheurs-de-promesse">Utilisation des déclencheurs de promesse</a></li>
+                </ul>
+              </li>
+              <li><a href="#ressources-externes-3">Ressources externes</a></li>
+            </ul>
+          </li>
+          <li><a href="#littéraux-de-modèle">Littéraux de modèle</a>
+            <ul>
+              <li><a href="#code-dexemple-5">Code d’exemple</a></li>
+              <li><a href="#ressources-externes-4">Ressources externes</a></li>
+            </ul>
+          </li>
+          <li><a href="#littéraux-de-modèle-étiquetés">Littéraux de modèle étiquetés</a>
+            <ul>
+              <li><a href="#ressources-externes-5">Ressources externes</a></li>
+            </ul>
+          </li>
+          <li><a href="#imports--exports">Imports / exports</a>
+            <ul>
+              <li><a href="#explication-avec-un-code-dexemple">Explication avec un code d’exemple</a>
+                <ul>
+                  <li><a href="#exports-nommés">Exports nommés</a></li>
+                  <li><a href="#importexport-par-défaut">Import/export par défaut</a></li>
+                </ul>
+              </li>
+              <li><a href="#ressources-externes-6">Ressources externes</a></li>
+            </ul>
+          </li>
+          <li><a href="#-this-en-javascript"><em>this</em> en JavaScript</a>
+            <ul>
+              <li><a href="#ressources-externes-7">Ressources externes</a></li>
+            </ul>
+          </li>
+          <li><a href="#classe">Classe</a>
+            <ul>
+              <li><a href="#exemples">Exemples</a></li>
+              <li><a href="#ressources-externes-8">Ressources externes</a></li>
+            </ul>
+          </li>
+          <li><a href="#mots-clés-extends-et-super">Mots clés extends et <code>super</code></a>
+            <ul>
+              <li><a href="#code-dexemple-6">Code d’exemple</a></li>
+              <li><a href="#ressources">Ressources</a></li>
+            </ul>
+          </li>
+          <li><a href="#async-await">Async Await</a>
+            <ul>
+              <li><a href="#code-dexemple-7">Code d’exemple</a></li>
+              <li><a href="#explication-avec-un-code-dexemple-1">Explication avec un code d’exemple</a>
+                <ul>
+                  <li><a href="#gestion-derreur">Gestion d’erreur</a></li>
+                </ul>
+              </li>
+              <li><a href="#ressources-externes-9">Ressources externes</a></li>
+            </ul>
+          </li>
+          <li><a href="#vérité--fausseté">Vérité / fausseté</a>
+            <ul>
+              <li><a href="#ressources-externes-10">Ressources externes</a></li>
+            </ul>
+          </li>
+          <li><a href="#méthodes-statiques">Méthodes statiques</a>
+            <ul>
+              <li><a href="#explication-courte">Explication courte</a></li>
+              <li><a href="#code-dexemple-8">Code d’exemple</a></li>
+              <li><a href="#explication-détaillée-2">Explication détaillée</a>
+                <ul>
+                  <li><a href="#appeler-dautres-méthodes-statiques-depuis-une-méthode-statique">Appeler d’autres méthodes statiques depuis une méthode statique</a></li>
+                  <li><a href="#appeler-des-méthodes-statiques-depuis-des-méthodes-non-statiques">Appeler des méthodes statiques depuis des méthodes non statiques</a>
+                    <ul>
+                      <li><a href="#en-utilisant-le-nom-de-la-classe">En utilisant le nom de la classe</a></li>
+                      <li><a href="#avec-le-constructeur">Avec le constructeur</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="#ressources-externes-11">Ressources externes</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#glossaire">Glossaire</a>
+        <ul>
+          <li><a href="#-portée-scope">Portée (<em>scope</em>)</a></li>
+          <li><a href="#-mutation-de-variable">Mutation de variable</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="notions">Notions</h2>
+
+<h3 id="déclaration-des-variables--var-const-let">Déclaration des variables : var, const, let</h3>
+
+<p>En JavaScript, il y a trois mots-clés disponibles pour déclarer une variable, et chacun a ses différences. Ces mots-clés sont <code class="highlighter-rouge">var</code>, <code class="highlighter-rouge">let</code> et <code class="highlighter-rouge">const</code>.</p>
+
+<h4 id="explication-brève">Explication brève</h4>
+
+<p>Les variables déclarées avec le mot-clé <code class="highlighter-rouge">const</code> ne peuvent pas être réassignées, alors que celles déclarées avec <code class="highlighter-rouge">let</code> et <code class="highlighter-rouge">var</code> le peuvent.</p>
+
+<p>Je vous recommande de toujours déclarer vos variables avec <code class="highlighter-rouge">const</code> par défaut, et avec <code class="highlighter-rouge">let</code> si vous avez besoin de la <em>muter</em> ou de la réassigner plus tard.</p>
+
+<table>
+  <tr>
+    <th></th>
+    <th>Portée</th>
+    <th>Réassignable</th>
+    <th>Mutable</th>
+   <th><a href="#tdz_sample">Temporal Dead Zone</a></th>
+  </tr>
+  <tr>
+    <th>const</th>
+    <td>Bloc</td>
+    <td>Non</td>
+    <td><a href="#const_mutable_sample">Oui</a></td>
+    <td>Oui</td>
+  </tr>
+  <tr>
+    <th>let</th>
+    <td>Bloc</td>
+    <td>Oui</td>
+    <td>Oui</td>
+    <td>Oui</td>
+  </tr>
+   <tr>
+    <th>var</th>
+    <td>Fonction</td>
+    <td>Oui</td>
+    <td>Oui</td>
+    <td>Non</td>
+  </tr>
+</table>
+
+<h4 id="code-dexemple">Code d’exemple</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">person</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Nick</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">person</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">John</span><span class="dl">"</span> <span class="c1">// Déclenchera une erreur, person ne pouvant pas être réassigné</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">person</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Nick</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">person</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">John</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">person</span><span class="p">)</span> <span class="c1">// "John", le réassignement est permis avec let</span>
+</code></pre></div></div>
+
+<h4 id="explication-détaillée">Explication détaillée</h4>
+
+<p>La <a href="#scope_def"><em>portée</em></a> d’une variable définit “où la variable est disponible dans le code”.</p>
+
+<h5 id="var">var</h5>
+
+<p>La portée des variables déclarées avec <code class="highlighter-rouge">var</code> s’étend à la fonction qui la contient, ce qui signifie que lorsqu‘une variable est créée dans une fonction, tout dans cette fonction peut y accéder. De plus, on ne pourra pas accéder à cette variable de l’extérieur de cette fonction.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">myFunction</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">myVar</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Nick</span><span class="dl">"</span><span class="p">;</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myVar</span><span class="p">);</span> <span class="c1">// "Nick" - myVar est accessible à l'intérieur de la fonction</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myVar</span><span class="p">);</span> <span class="c1">// Émet une ReferenceError, myVar n'est pas accessible en dehors de la fonction</span>
+</code></pre></div></div>
+
+<p>Voici un exemple plus subtil, toujours sur la portée des variables :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">myFunction</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">myVar</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Nick</span><span class="dl">"</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">myVar</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">John</span><span class="dl">"</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myVar</span><span class="p">);</span> <span class="c1">// "John"</span>
+    <span class="c1">// La portée de myVar s'étendant à toute la fonction, nous venons d'écraser la valeur précédente de myVar ("Nick"), qui est devenue "John"</span>
+  <span class="p">}</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myVar</span><span class="p">);</span> <span class="c1">// "John" - les instructions dans le bloc if ont affecté cette valeur</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myVar</span><span class="p">);</span> <span class="c1">// Produit une ReferenceError, myVar n'étant pas disponible en dehors de la fonction</span>
+</code></pre></div></div>
+
+<p>De plus, les variables déclarées avec <em>var</em> sont déplacées tout en haut de leur portée à l’exécution. Ce comportement est appelé <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Instructions/var#La_remontée_de_variables_(hoisting)">var hoisting</a>.</p>
+
+<p>Ce bout de code :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myVar</span><span class="p">)</span> <span class="c1">// undefined -- aucune erreur produite</span>
+<span class="kd">var</span> <span class="nx">myVar</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>est compris à l’exécution comme :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">myVar</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myVar</span><span class="p">)</span> <span class="c1">// undefined -- aucune erreur produite</span>
+<span class="nx">myVar</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h5 id="let">let</h5>
+
+<p><code class="highlighter-rouge">var</code> et <code class="highlighter-rouge">let</code> sont presque identiques, mais les variables déclarées avec <code class="highlighter-rouge">let</code></p>
+
+<ul>
+  <li>ont leur portée qui est limitée au bloc qui les entoure</li>
+  <li>ne sont <strong>pas</strong> accessibles avant d’être assignées</li>
+  <li>ne peuvent pas être redéclarées dans la même portée</li>
+</ul>
+
+<p>Observons l’impact de la nouvelle portée dans l’exemple précédent :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">myFunction</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">myVar</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Nick</span><span class="dl">"</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">myVar</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">John</span><span class="dl">"</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myVar</span><span class="p">);</span> <span class="c1">// "John"</span>
+    <span class="c1">// la portée de myVar étant limitée au bloc if, nous venons de crééer une nouvelle variable myVar.</span>
+    <span class="c1">// cette variable n'est pas accessible en dehors du bloc if</span>
+    <span class="c1">// et est totalement indépendante du premier myVar créé.</span>
+  <span class="p">}</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myVar</span><span class="p">);</span> <span class="c1">// "Nick" - les instructions dans le bloc if n'ont PAS affecté cette valeur</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myVar</span><span class="p">);</span> <span class="c1">// Produit une ReferenceError, myVar n'étant pas disponible en dehors de la fonction</span>
+</code></pre></div></div>
+
+<p><a name="tdz_sample"></a> Maintenant, observons ce que signifie pour les variables créées avec <em>let</em> (et <em>const</em>) de ne pas être accessibles avant d’avoir été assignées :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myVar</span><span class="p">)</span> <span class="c1">// déclenche une ReferenceError !</span>
+<span class="kd">let</span> <span class="nx">myVar</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Contrairement aux variables <em>var</em>, si vous essayez de lire ou d’écrire dans une variable <em>let</em> ou <em>const</em> avant d’être assignées une erreur se produira. Ce phénomène est souvent appelé <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#Temporal_Dead_Zone_and_errors_with_let"><em>Temporal dead zone</em></a> ou <em>TDZ</em>.</p>
+
+<blockquote>
+  <p><strong>Note :</strong> Techniquement, les déclarations de variables <em>let</em> and <em>const</em>sont aussi affectées par le <em>var hoisting</em>, mais pas leur assignation. Vu qu’elles sont faite pour ne pas pouvoir être utilisées avant l’assignation, on a l’impression qu’il n’y a pas de <em>hoisting</em>, mais il y en a un. Si vous voulez en savoir plus, vous pouvez lire cette <a href="http://jsrocks.org/2015/01/temporal-dead-zone-tdz-demystified">explication très détaillée</a>.</p>
+</blockquote>
+
+<p>Par ailleurs, vous ne pouvez pas re-déclarer une variable <em>let</em> :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">myVar</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">myVar</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// Produit une SyntaxError</span>
+</code></pre></div></div>
+
+<h5 id="const">const</h5>
+
+<p>Les variables déclarées avec<code class="highlighter-rouge">const</code> se comportent comme des variables <em>let</em>, mais elles ne peuvent pas être réassignées.</p>
+
+<p>Pour résumer, les variables <em>const</em> :</p>
+
+<ul>
+  <li>ont leur portée qui est limitée au bloc qui les entoure</li>
+  <li>ne sont pas accessibles avant leur assignation</li>
+  <li>ne peuvent pas être redéclarées dans la même portée</li>
+  <li>ne peuvent pas être réassignées</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">myVar</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Nick</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">myVar</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">John</span><span class="dl">"</span> <span class="c1">// cause une erreur, le réassignement n'est pas permis</span>
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">myVar</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Nick</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">myVar</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">John</span><span class="dl">"</span> <span class="c1">// cause une erreur, la redéclaration n'est pas permise</span>
+</code></pre></div></div>
+
+<p><a name="const_mutable_sample"></a> Mais il y a une subtilité : les variables <code class="highlighter-rouge">const</code> ne sont pas <a href="#mutation_def"><strong>immutables</strong></a> ! Concrètement, cela signifie que les <em>objets</em> et <em>tableaux</em> <code class="highlighter-rouge">const</code> <strong>peuvent</strong> être mutées.</p>
+
+<p>Pour les objets :</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Nick</span><span class="dl">'</span>
+<span class="p">};</span>
+<span class="nx">person</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">John</span><span class="dl">'</span> <span class="c1">// ceci fonctionnera ! la variable person n'est pas complètement réassignée, mais mutée</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span> <span class="c1">// "John"</span>
+<span class="nx">person</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Sandra</span><span class="dl">"</span> <span class="c1">// cause une erreur, car le réassignement n'est pas autorisé avec les variables déclarées avec const</span>
+</code></pre></div></div>
+
+<p>Pour les tableaux :</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="nx">person</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="dl">'</span><span class="s1">John</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// ceci fonctionnera ! la variable person n'est pas complètement réassignée, mais mutée</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">person</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1">// "John"</span>
+<span class="nx">person</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">Nick</span><span class="dl">"</span><span class="p">]</span>  <span class="c1">// cause une erreur, car le réassignement n'est pas autorisé avec les variables déclarées avec const</span>
+</code></pre></div></div>
+
+<h4 id="ressources-externes">Ressources externes</h4>
+
+<ul>
+  <li><a href="http://wesbos.com/javascript-scoping/">How let and const are scoped in JavaScript - WesBos</a></li>
+  <li><a href="http://jsrocks.org/2015/01/temporal-dead-zone-tdz-demystified">Temporal Dead Zone (TDZ) Demystified</a></li>
+</ul>
+
+<h3 id="-fonction-fléchée"><a name="arrow_func_concept"></a> Fonction fléchée</h3>
+
+<p>Avec la mise à jour ES6 de JavaScript, nous pouvons utiliser des <em>fonctions fléchées</em>, qui sont un autre moyen de déclarer et d’utiliser des fonctions. Voici les bénéfices qu’elles apportent :</p>
+
+<ul>
+  <li>Plus concis</li>
+  <li><em>this</em> se réfère à l’extérieur de la fonction fléchée</li>
+  <li><code class="highlighter-rouge">return</code> implicite</li>
+</ul>
+
+<h4 id="code-dexemple-1">Code d’exemple</h4>
+
+<ul>
+  <li>Concision et retour implicite</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">double</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span> <span class="p">}</span> <span class="c1">// Manière traditionnelle</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">double</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="c1">// 4</span>
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">double</span> <span class="o">=</span> <span class="nx">x</span> <span class="o">=&gt;</span> <span class="nx">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// Même fonction écrite sous forme de fonction fléchée avec un retour implicite</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">double</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="c1">// 4</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Référence de <em>this</em></li>
+</ul>
+
+<p>Dans une fonction fléchée, <em>this</em> est égal à la valeur de <em>this</em> dans le contexte d’exécution alentour. Basiquement, avec les fonctions fléchées, vous n’êtes plus obligé d’utiliser l’astuce “that = this” avant d’appeler une fonction à l’intérieur d’une fonction.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">myFunc</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">myVar</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">myVar</span><span class="o">++</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">myVar</span><span class="p">)</span> <span class="c1">// 1</span>
+  <span class="p">},</span> <span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="explication-détaillée-1">Explication détaillée</h4>
+
+<h5 id="concision">Concision</h5>
+
+<p>Les fonctions fléchées sont plus concises que les fonctions traditionnelles par plusieurs aspects. Voyons tous les cas possibles :</p>
+
+<ul>
+  <li>Retour implicite VS explicite</li>
+</ul>
+
+<p>Un <strong>retour explicite</strong> est une fonction où le mot-clé <code class="highlighter-rouge">return</code> est utilisé dans son corps.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">function</span> <span class="nx">double</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// cette fonction retourne explicitement x * 2, le mot-clé return est utilisé</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<p>Dans l’écriture de foncitons traditionnelle, le retour était toujours explicite. Mais avec les fonctions fléchées, vous pouvez faire un <em>retour implicite</em> ce qui signifie que vous n’êtes pas obligés d’utiliser le mot-clé <em>return</em> pour retourner une valeur.</p>
+
+<p>Pour faire un retour implicite, le code doit être écrit en une ligne.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">const</span> <span class="nx">double</span> <span class="o">=</span> <span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// Ce retour est explicite</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<p>Comme il n’y a qu’un retour de valeur ici, nous pouvons utiliser un retour implicite.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">const</span> <span class="nx">double</span> <span class="o">=</span> <span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Pour ce faire, il nous suffit de <strong>supprimer les accolades</strong> et le mot-clé <strong>return</strong>. C’est pour cette raison qu’on qualifie ce retour d’<em>implicite</em> : le mot-clé <em>return</em> n’est pas là. mais la fonction va bien retourner <code class="highlighter-rouge">x * 2</code>.</p>
+
+<blockquote>
+  <p><strong>Note :</strong> Si votre fonction ne retourne aucune valeur (avec des <em>effets secondaires</em>), elle ne fait ni retour implicite ni explicite.</p>
+</blockquote>
+
+<p>De plus, si vous voulez retourner un <em>objet</em> vous <strong>devez mettre des parenthèses autour</strong> pour éviter un conflit avec les accolades de bloc :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">getPerson</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">({</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Nick</span><span class="dl">"</span><span class="p">,</span> <span class="na">age</span><span class="p">:</span> <span class="mi">24</span> <span class="p">})</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">getPerson</span><span class="p">())</span> <span class="c1">// { name: "Nick", age: 24 } -- l'objet est implicitement retourné par la fonction fléchée</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Uniquement un argument</li>
+</ul>
+
+<p>Si votre fonction ne prend qu’un paramètre, vous pouvez omettre les parenthèses autour. En reprenant un exemple au dessus :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">const</span> <span class="nx">double</span> <span class="o">=</span> <span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// cette fonction fléchée ne prend qu'un paramètre</span>
+</code></pre></div></div>
+
+<p>Les parenthèses autour du paramètre peuvent être évitées :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">const</span> <span class="nx">double</span> <span class="o">=</span> <span class="nx">x</span> <span class="o">=&gt;</span> <span class="nx">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// cette fonction fléchée ne prend qu'un paramètre</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Pas de paramètres</li>
+</ul>
+
+<p>Lorsqu’une fonction fléchée ne prend aucun paramètre, vous devez obligatoirement mettre des parenthèses pour que la syntaxe soit valide :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="c1">// avec des parenthèses, tout fonctionne</span>
+    <span class="kd">const</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">x</span><span class="p">;</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">=&gt;</span> <span class="p">{</span> <span class="c1">// pas de parenthèses, ceci ne fonctionnera pas !</span>
+    <span class="kd">const</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">x</span><span class="p">;</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<h5 id="référence-de-this">Référence de <em>this</em></h5>
+
+<p>Pour comprendre cette subtilité des fonctions fléchées, vous devez savoir comment <a href="#this_def">this</a> fonctionne en JavaScript.</p>
+
+<p>Dans une fonction fléchée, <em>this</em> est égal à la valeur de <em>this</em> dans le contexte d’exécution alentour. Cela signifie qu’une fonction fléchée ne créée pas de nouveau <em>this</em>, mais le prend autour à la place.</p>
+
+<p>Sans une fonction fléchée, pour accéder à une variable présente dans <em>this</em> dans une fonction à l’intérieur d’une fonction, vous deviez utiliser l’astuce de <em>that = this</em> ou <em>self = this</em>.</p>
+
+<p>Par exemple, voici comment utiliser setTimeout à l’intérieur de myFunc :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">myFunc</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">myVar</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span> <span class="c1">// astuce that = this</span>
+  <span class="nx">setTimeout</span><span class="p">(</span>
+    <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="c1">// Un nouveau *this* est créé dans la portée de cette fonction</span>
+      <span class="nx">that</span><span class="p">.</span><span class="nx">myVar</span><span class="o">++</span><span class="p">;</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">that</span><span class="p">.</span><span class="nx">myVar</span><span class="p">)</span> <span class="c1">// 1</span>
+
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">myVar</span><span class="p">)</span> <span class="c1">// undefined -- voir la déclaration de fonction au-dessus</span>
+    <span class="p">},</span>
+    <span class="mi">0</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Mais avec une fonction fléchée, <em>this</em> est pris de l’extérieur :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">myFunc</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">myVar</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="nx">setTimeout</span><span class="p">(</span>
+    <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="c1">// this pris de l'extérieur, signifiant myFunc ici</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">myVar</span><span class="o">++</span><span class="p">;</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">myVar</span><span class="p">)</span> <span class="c1">// 1</span>
+    <span class="p">},</span>
+    <span class="mi">0</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="ressources-utiles">Ressources utiles</h4>
+
+<ul>
+  <li><a href="http://wesbos.com/arrow-functions/">Arrow functions introduction - WesBos</a></li>
+  <li><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Fonctions/Fonctions_fl%C3%A9ch%C3%A9es">Fonction fléchées - MDN</a></li>
+  <li><a href="https://hackernoon.com/javascript-es6-arrow-functions-and-lexical-this-f2a3e2a5e8c4">Arrow function and lexical <em>this</em></a></li>
+</ul>
+
+<h3 id="valeur-par-défaut-dun-paramètre-dans-une-fonction">Valeur par défaut d’un paramètre dans une fonction</h3>
+
+<p>À partir de la mise à jour de JavaScript ES2015, vous pouvez assigner une valeur par défaut à un paramètre de fonction en utilisant la syntaxe suivante</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">myFunc</span><span class="p">(</span><span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">x</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myFunc</span><span class="p">())</span> <span class="c1">// 10 -- aucune valeur n'étant donnée, la valeur par défaut est utilisée</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myFunc</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="c1">// 5 -- une valeur est donnée donc x est égal à 5 dans myFunc</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myFunc</span><span class="p">(</span><span class="kc">undefined</span><span class="p">))</span> <span class="c1">// 10 -- la valeur undefined est donnée, donc x est assigné à la valeur par défaut</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myFunc</span><span class="p">(</span><span class="kc">null</span><span class="p">))</span> <span class="c1">// null -- une valeur (null) étant donnée, voir plus bas pour plus de détails</span>
+</code></pre></div></div>
+
+<p>Le paramètre par défaut est utilisé dans deux et uniquement deux situations :</p>
+
+<ul>
+  <li>Aucun paramètre n’est fourni</li>
+  <li>Le paramèter <em>undefined</em> est fourni</li>
+</ul>
+
+<p>Autrement dit, si vous passez <em>null</em> le paramètre par défaut <strong>ne sera pas appliqué</strong>.</p>
+
+<blockquote>
+  <p><strong>Note :</strong> Un assignement de valeur par défaut peut être utilisé avec des paramètres déstructurés également (voyez la notion suivante pour avoir un exemple).</p>
+</blockquote>
+
+<h4 id="external-resource">External resource</h4>
+
+<ul>
+  <li><a href="http://es6-features.org/#DefaultParameterValues">Default parameter value - ES6 Features</a></li>
+  <li><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Fonctions/Valeurs_par_d%C3%A9faut_des_arguments">Valeurs par défaut des arguments - MDN</a></li>
+</ul>
+
+<h3 id="déstructurer-des-objets-et-des-tableaux">Déstructurer des objets et des tableaux</h3>
+
+<p>La <em>déstructuration</em> un moyen pratique de créer de nouvelles variables en extrayant des valeurs des données enregistrées dans des objets ou des tableaux.</p>
+
+<p>Pour nommer quelque cas d’utilisation, la <em>déstructuration</em> peut être utilisée pour déstructurer des paramètres de fonction ou <em>this.props</em> dans des projets React par exemple.</p>
+
+<h4 id="explication-avec-du-code">Explication avec du code</h4>
+
+<ul>
+  <li>Objet</li>
+</ul>
+
+<p>Prenons l’objet suivant pour tous les exemples</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">firstName</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Nick</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">lastName</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Anderson</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">age</span><span class="p">:</span> <span class="mi">35</span><span class="p">,</span>
+  <span class="na">sex</span><span class="p">:</span> <span class="dl">"</span><span class="s2">M</span><span class="dl">"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Sans déstructuration :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">first</span> <span class="o">=</span> <span class="nx">person</span><span class="p">.</span><span class="nx">firstName</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">age</span> <span class="o">=</span> <span class="nx">person</span><span class="p">.</span><span class="nx">age</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">city</span> <span class="o">=</span> <span class="nx">person</span><span class="p">.</span><span class="nx">city</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">Paris</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Avec la déstructuration, tout en une ligne :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="na">firstName</span><span class="p">:</span> <span class="nx">first</span><span class="p">,</span> <span class="nx">age</span><span class="p">,</span> <span class="nx">city</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Paris</span><span class="dl">"</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">person</span><span class="p">;</span> <span class="c1">// Et voilà !</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">age</span><span class="p">)</span> <span class="c1">// 35 -- Une nouvelle variable age est créée et est égale à person.age</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">first</span><span class="p">)</span> <span class="c1">// "Nick" -- Une nouvelle variable first est créée et est égale à person.firstName</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">firstName</span><span class="p">)</span> <span class="c1">// ReferenceError -- person.firstName existe MAIS la nouvelle variable créée est nommée first</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">city</span><span class="p">)</span> <span class="c1">// "Paris" -- Une nouvelle variable city est créée et comme person.city n'est pas défini, city est égal à la valeur par défaut donnée, à savoir "Paris"</span>
+</code></pre></div></div>
+
+<p><strong>Note :</strong> Dans <code class="highlighter-rouge">const { age } = person;</code>, les accolades après le mot-clé <em>const</em> ne sont pas utilisées pour déclarer un objet ou un bloc, mais font partie de la syntaxe de <em>déstructuration</em>.</p>
+
+<ul>
+  <li>Paramètres de fonction</li>
+</ul>
+
+<p>La <em>destructuring</em> est souvent utilisée pour déstructurer les paramètres de fonction sous la forme d’objets.</p>
+
+<p>Sans déstructuration :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">joinFirstLastName</span><span class="p">(</span><span class="nx">person</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">firstName</span> <span class="o">=</span> <span class="nx">person</span><span class="p">.</span><span class="nx">firstName</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">lastName</span> <span class="o">=</span> <span class="nx">person</span><span class="p">.</span><span class="nx">lastName</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">firstName</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">-</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">lastName</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">joinFirstLastName</span><span class="p">(</span><span class="nx">person</span><span class="p">);</span> <span class="c1">// "Nick-Anderson"</span>
+</code></pre></div></div>
+
+<p>En déstructurant le paramètre objet <em>person</em>, nous obtenons une fonction plus concise :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">joinFirstLastName</span><span class="p">({</span> <span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span> <span class="p">})</span> <span class="p">{</span> <span class="c1">// nous crééons les variables firstName et lastName en déstructurant le paramètre person</span>
+  <span class="k">return</span> <span class="nx">firstName</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">-</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">lastName</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">joinFirstLastName</span><span class="p">(</span><span class="nx">person</span><span class="p">);</span> <span class="c1">// "Nick-Anderson"</span>
+</code></pre></div></div>
+
+<p>La déstructuration est encore plus agréable à utiliser avec les <a href="#arrow_func_concept">fonctions fléchées</a> :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">joinFirstLastName</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="nx">firstName</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">-</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">lastName</span><span class="p">;</span>
+
+<span class="nx">joinFirstLastName</span><span class="p">(</span><span class="nx">person</span><span class="p">);</span> <span class="c1">// "Nick-Anderson"</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Tableau</li>
+</ul>
+
+<p>Utilisons le tableau suivant :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">myArray</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">b</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">c</span><span class="dl">"</span><span class="p">];</span>
+</code></pre></div></div>
+
+<p>Sans la destructuration :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">myArray</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="kd">const</span> <span class="nx">y</span> <span class="o">=</span> <span class="nx">myArray</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</code></pre></div></div>
+
+<p>Avec :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">[</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">]</span> <span class="o">=</span> <span class="nx">myArray</span><span class="p">;</span> <span class="c1">// Et voilà !</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="c1">// "a"</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">y</span><span class="p">)</span> <span class="c1">// "b"</span>
+</code></pre></div></div>
+
+<h4 id="ressources-utiles-1">Ressources utiles</h4>
+
+<ul>
+  <li><a href="http://es6-features.org/#ArrayMatching">ES6 Features - Destructuring Assignment</a></li>
+  <li><a href="http://wesbos.com/destructuring-objects/">Destructuring Objects - WesBos</a></li>
+  <li><a href="http://exploringjs.com/es6/ch_destructuring.html">ExploringJS - Destructuring</a></li>
+</ul>
+
+<h3 id="méthodes-de-tableau--map--filter--reduce">Méthodes de tableau : map / filter / reduce</h3>
+
+<p><em>Map</em>, <em>filter</em> et <em>reduce</em> sont des méthodes de tableau qui viennent avec un paradigme de programmation appelé la <a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0"><em>programmation fonctionnelle</em></a>.</p>
+
+<p>Pour résumer :</p>
+
+<ul>
+  <li><strong>Array.prototype.map()</strong> prend un tableau, fait quelque chose sur ses éléments et retourne un tableau contenant les éléments transformés.</li>
+  <li><strong>Array.prototype.filter()</strong> prend un tableau, décide élément par élément s’il faut le garder ou non et retourne un tableau contenant uniquement les éléments conservés.</li>
+  <li><strong>Array.prototype.reduce()</strong> prend un tableau et agrège ses éléments en une seule valeur (qui est retournée).</li>
+</ul>
+
+<p>Je recommande de les utiliser autant que possibles pour suivre les principes de la programmation fonctionelle car ils sont composables, concis et élégants.</p>
+
+<p>Avec toutes ces méthodes, vous pouvez éviter l’utilisation des boucles <em>for</em> et <em>forEach</em> dans la plupart des situations. Vous pouvez avoir de la peine au début à les utiliser car ils vous obligent à apprendre une nouvelle façon de penser, mais une fois que vous avez compris comment cela fonctionne tout devient plus facile.</p>
+
+<h4 id="code-dexemple-2">Code d’exemple</h4>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">];</span>
+<span class="kd">const</span> <span class="nx">doubledNumbers</span> <span class="o">=</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">n</span> <span class="o">=&gt;</span> <span class="nx">n</span> <span class="o">*</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// [0, 2, 4, 6, 8, 10, 12]</span>
+<span class="kd">const</span> <span class="nx">evenNumbers</span> <span class="o">=</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">n</span> <span class="o">=&gt;</span> <span class="nx">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">===</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// [0, 2, 4, 6]</span>
+<span class="kd">const</span> <span class="nx">sum</span> <span class="o">=</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">prev</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">prev</span> <span class="o">+</span> <span class="nx">next</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// 21</span>
+</code></pre></div></div>
+
+<p>Calculer la somme des notes (<code class="highlighter-rouge">grades</code>) des étudiants ayant eu plus que 10 en utilisant map, filter et reduce :</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">students</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Nick</span><span class="dl">"</span><span class="p">,</span> <span class="na">grade</span><span class="p">:</span> <span class="mi">10</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">John</span><span class="dl">"</span><span class="p">,</span> <span class="na">grade</span><span class="p">:</span> <span class="mi">15</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Julia</span><span class="dl">"</span><span class="p">,</span> <span class="na">grade</span><span class="p">:</span> <span class="mi">19</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Nathalie</span><span class="dl">"</span><span class="p">,</span> <span class="na">grade</span><span class="p">:</span> <span class="mi">9</span> <span class="p">},</span>
+<span class="p">];</span>
+
+<span class="kd">const</span> <span class="nx">aboveTenSum</span> <span class="o">=</span> <span class="nx">students</span>
+  <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">student</span> <span class="o">=&gt;</span> <span class="nx">student</span><span class="p">.</span><span class="nx">grade</span><span class="p">)</span> <span class="c1">// nous transformons le tableau students en un tableau contenant leurs notes</span>
+  <span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">grade</span> <span class="o">=&gt;</span> <span class="nx">grade</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">// nous filtrons le tableau des notes pour ne conserver que celles supérieures ou égales à 10</span>
+  <span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">prev</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">prev</span> <span class="o">+</span> <span class="nx">next</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// nous additionnons toutes les notes au dessus de 10 une par une</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">aboveTenSum</span><span class="p">)</span> <span class="c1">// 44 -- 10 (Nick) + 15 (John) + 19 (Julia), Nathalie étant ignorée car sa note est inférieure à 10</span>
+</code></pre></div></div>
+
+<h4 id="explication">Explication</h4>
+
+<p>Prenons le tableau de nombres pour nos exemples :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">];</span>
+</code></pre></div></div>
+
+<h5 id="arrayprototypemap">Array.prototype.map()</h5>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">doubledNumbers</span> <span class="o">=</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">n</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">});</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">doubledNumbers</span><span class="p">);</span> <span class="c1">// [0, 2, 4, 6, 8, 10, 12]</span>
+</code></pre></div></div>
+
+<p>Que se passe-t-il ici ? Nous utilisons .map sur le tableau <em>numbers</em>, le map itère sur chaque élément du tableau et le passe à notre fonction. Le but de la fonction est de produire et de retourner une nouvelle valeur pour chaque valeur donnée pour que le map puisse la remplacer.</p>
+
+<p>Extrayons cette fonction pour la rendre plus claire, juste pour cette fois-ci :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">doubleN</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">n</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span> <span class="p">};</span>
+<span class="kd">const</span> <span class="nx">doubledNumbers</span> <span class="o">=</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">doubleN</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">doubledNumbers</span><span class="p">);</span> <span class="c1">// [0, 2, 4, 6, 8, 10, 12]</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">numbers.map(doubleN)</code> produit <code class="highlighter-rouge">[doubleN(0), doubleN(1), doubleN(2), doubleN(3), doubleN(4), doubleN(5), doubleN(6)]</code> ce qui est égal à <code class="highlighter-rouge">[0, 2, 4, 6, 8, 10, 12]</code>.</p>
+
+<blockquote>
+  <p><strong>Note :</strong> Si vous n’avez pas besoin d’un nouveau tableau et que vous voulant juste avoir une boucle ayant des effets secondaires, vous pourriez juste avoir besoin d’une boucle for / forEach à la place d’un map.</p>
+</blockquote>
+
+<h5 id="arrayprototypefilter">Array.prototype.filter()</h5>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">evenNumbers</span> <span class="o">=</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">===</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// true si "n" est pair, false si "n" est impair</span>
+<span class="p">});</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">evenNumbers</span><span class="p">);</span> <span class="c1">// [0, 2, 4, 6]</span>
+</code></pre></div></div>
+
+<p>Nous utilisons .filter sur le tableau <em>numbers</em> : filter itère sur chaque élément du tableau et le passe à notre fonction. Le but de la fonction est de retourner un booléen qui déterminera si la valeur actuelle sera conservée. Filter retourne ensuite le tableau avec uniquement les valeurs conservées.</p>
+
+<h5 id="arrayprototypereduce">Array.prototype.reduce()</h5>
+
+<p>Le but de la méthode reduce est de réduire tous les éléments du tableau sur lequel elle itère à une seule valeur. Vous décidez de la manière dont les éléments sont agrégés.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">sum</span> <span class="o">=</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span>
+  <span class="kd">function</span><span class="p">(</span><span class="nx">acc</span><span class="p">,</span> <span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">acc</span> <span class="o">+</span> <span class="nx">n</span><span class="p">;</span>
+  <span class="p">},</span>
+  <span class="mi">0</span> <span class="c1">// valeur de l'accumulateur à la première itération</span>
+<span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sum</span><span class="p">)</span> <span class="c1">//21</span>
+</code></pre></div></div>
+
+<p>Tout comme pour les méthodes .map et .filter, .reduce est appliqué sur un tableau et prend une fonction en premier paramètre.</p>
+
+<p>Cette fois cependant, il y a des changements :</p>
+
+<ul>
+  <li>.reduce prend deux paramètres</li>
+</ul>
+
+<p>Le premier paramètre est une fonction qui sera appelée à chaque étape d’itéraiton.</p>
+
+<p>Le second paramètre est la valeur de la variable d’accumulation (<em>acc</em> ici) à la première étape d’itération (lisez le point suivant pour comprendre).</p>
+
+<ul>
+  <li>Paramèters de fonction</li>
+</ul>
+
+<p>La fonction que vous passez comme premier paramètre de .reduce prend deux paramètres. Le premier (<em>acc</em> ici) est la variable d’accumulateur, tandis que le second paramètre (<em>n</em>) est l’élément actuel.</p>
+
+<p>La variable d’accumulateur est égale à la valeur retournée par votre fonction à l’étape d’itération <strong>précédente</strong>. À la première étape de l’itération, <em>acc</em> est égale à la valeur que vous avez passé au second paramètre de .reduce.</p>
+
+<h6 id="à-la-première-étape-ditération">À la première étape d’itération</h6>
+
+<p><code class="highlighter-rouge">acc = 0</code> car nous avons passé 0 comme second paramètre à reduce.</p>
+
+<p><code class="highlighter-rouge">n = 0</code> premier élément du tableau <em>number</em></p>
+
+<p>La fonction retourne <em>acc</em> + <em>n</em> –&gt; 0 + 0 –&gt; 0</p>
+
+<h6 id="à-la-deuxième-étape-ditération">À la deuxième étape d’itération</h6>
+
+<p><code class="highlighter-rouge">acc = 0</code> car c’est la valeur retournée par la fonction à l’étape d’itération précédente</p>
+
+<p><code class="highlighter-rouge">n = 1</code> deuxième élément du tableau <em>number</em></p>
+
+<p>La fonction retourne <em>acc</em> + <em>n</em> –&gt; 0 + 1 –&gt; 1</p>
+
+<h6 id="à-la-troisième-étape-ditération">À la troisième étape d’itération</h6>
+
+<p><code class="highlighter-rouge">acc = 1</code> car c’est la valeur retournée par la fonction à l’étape d’itération précédente</p>
+
+<p><code class="highlighter-rouge">n = 2</code> troisième élément du tableau <em>number</em></p>
+
+<p>La fonction retourne <em>acc</em> + <em>n</em> –&gt; 1 + 2 –&gt; 3</p>
+
+<h6 id="à-la-quatrième-étape-ditération">À la quatrième étape d’itération</h6>
+
+<p><code class="highlighter-rouge">acc = 3</code> car c’est la valeur retournée par la fonction à l’étape d’itération précédente</p>
+
+<p><code class="highlighter-rouge">n = 3</code> quatrième élément du tableau <em>number</em></p>
+
+<p>La fonction retourne <em>acc</em> + <em>n</em> –&gt; 3 + 3 –&gt; 6</p>
+
+<h6 id="-à-la-dernière-étape-ditération">[…] À la dernière étape d’itération</h6>
+
+<p><code class="highlighter-rouge">acc = 15</code> car c’est la valeur retournée par la fonction à l’étape d’itération précédente</p>
+
+<p><code class="highlighter-rouge">n = 6</code> dernier élément du tableau <em>number</em></p>
+
+<p>La fonction retourne <em>acc</em> + <em>n</em> –&gt; 15 + 6 –&gt; 21</p>
+
+<p>Comme c’est la dernière étape d’itération, <strong>.reduce</strong> retourne 21.</p>
+
+<h4 id="ressource-externe">Ressource externe</h4>
+
+<ul>
+  <li><a href="https://hackernoon.com/understanding-map-filter-and-reduce-in-javascript-5df1c7eee464">Understanding map / filter / reduce in JS</a></li>
+</ul>
+
+<h3 id="opérateur-de-décomposition-">Opérateur de décomposition “…”</h3>
+
+<p>L’opérateur de décomposition <code class="highlighter-rouge">...</code> existe depuis ES2015 et est utilisé pour décomposer les éléments d’un itérable (comme un tableau) dans des emplacements qui peuvent contenir plusieurs éléments.</p>
+
+<h4 id="code-dexemple-3">Code d’exemple</h4>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">arr1</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">b</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">c</span><span class="dl">"</span><span class="p">];</span>
+<span class="kd">const</span> <span class="nx">arr2</span> <span class="o">=</span> <span class="p">[...</span><span class="nx">arr1</span><span class="p">,</span> <span class="dl">"</span><span class="s2">d</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">e</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">f</span><span class="dl">"</span><span class="p">];</span> <span class="c1">// ["a", "b", "c", "d", "e", "f"]</span>
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">myFunc</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="p">...</span><span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">y</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">params</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nx">myFunc</span><span class="p">(</span><span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">b</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">c</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">d</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">e</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">f</span><span class="dl">"</span><span class="p">)</span>
+<span class="c1">// "a"</span>
+<span class="c1">// "b"</span>
+<span class="c1">// ["c", "d", "e", "f"]</span>
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="p">...</span><span class="nx">z</span> <span class="p">}</span> <span class="o">=</span> <span class="p">{</span> <span class="na">x</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">y</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="na">a</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="na">b</span><span class="p">:</span> <span class="mi">4</span> <span class="p">};</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span> <span class="c1">// 1</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">y</span><span class="p">);</span> <span class="c1">// 2</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">z</span><span class="p">);</span> <span class="c1">// { a: 3, b: 4 }</span>
+
+<span class="kd">const</span> <span class="nx">n</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="p">...</span><span class="nx">z</span> <span class="p">};</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span> <span class="c1">// { x: 1, y: 2, a: 3, b: 4 }</span>
+</code></pre></div></div>
+
+<h4 id="explication-1">Explication</h4>
+
+<h5 id="dans-des-tableaux-comme-des-tableaux">Dans des tableaux (comme des tableaux)</h5>
+
+<p>Si nous avons les deux tableaux suivants :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">arr1</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">b</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">c</span><span class="dl">"</span><span class="p">];</span>
+<span class="kd">const</span> <span class="nx">arr2</span> <span class="o">=</span> <span class="p">[</span><span class="nx">arr1</span><span class="p">,</span> <span class="dl">"</span><span class="s2">d</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">e</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">f</span><span class="dl">"</span><span class="p">];</span> <span class="c1">// [["a", "b", "c"], "d", "e", "f"]</span>
+</code></pre></div></div>
+
+<p>Le premier élément d’<em>arr2</em> est un tableau, car <em>arr1</em> est injecté tel quel dans <em>arr2</em>. Cependant, nous voulons que <em>arr2</em> soit un tableau de lettres. Pour ce faire, nous pouvons <em>décomposer</em> les éléments d’<em>arr1</em> dans <em>arr2</em>.</p>
+
+<p>Avec l’opérateur de décomposition :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">arr1</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">b</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">c</span><span class="dl">"</span><span class="p">];</span>
+<span class="kd">const</span> <span class="nx">arr2</span> <span class="o">=</span> <span class="p">[...</span><span class="nx">arr1</span><span class="p">,</span> <span class="dl">"</span><span class="s2">d</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">e</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">f</span><span class="dl">"</span><span class="p">];</span> <span class="c1">// ["a", "b", "c", "d", "e", "f"]</span>
+</code></pre></div></div>
+
+<h5 id="paramètre-de-reste-dune-fonction">Paramètre de reste d’une fonction</h5>
+
+<p>Dans les paramètres d’une fonction, nous pouvons utiliser l’opérateur de reste pour injecter les paramètres dans un tableau dans lequel nous pouvons faire une bocle. Il existe déjà un objet <strong>arguments</strong> lié à chaque fonction, qui est un tableau contenant tous les paramètres passés à la fonction.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">myFunc</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">arguments</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arguments</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">myFunc</span><span class="p">(</span><span class="dl">"</span><span class="s2">Nick</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Anderson</span><span class="dl">"</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
+<span class="c1">// "Nick"</span>
+<span class="c1">// "Anderson"</span>
+<span class="c1">// 10</span>
+<span class="c1">// 12</span>
+<span class="c1">// 6</span>
+</code></pre></div></div>
+
+<p>Mais imaginons que nous voulons que cette fonction créée un nouvel édudiant avec ses notes et sa note moyenne. Ne serait-il pas plus pratique d’extraire les deux premiers paramètres dans deux variables séparées, et d’avoir les notes dans un tableau sur lequel nous pourrions effectuer une boucle ?</p>
+
+<p>C’est exactement ce que l’opérateur de reste nous permet de faire !</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">createStudent</span><span class="p">(</span><span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">,</span> <span class="p">...</span><span class="nx">grades</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// firstName = "Nick"</span>
+  <span class="c1">// lastName = "Anderson"</span>
+  <span class="c1">// [10, 12, 6] -- "..." prend tous les autres paramètres passés, créée une variable grades qui contient un tableau contenant les paramètres</span>
+
+  <span class="kd">const</span> <span class="nx">avgGrade</span> <span class="o">=</span> <span class="nx">grades</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">acc</span><span class="p">,</span> <span class="nx">curr</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">acc</span> <span class="o">+</span> <span class="nx">curr</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="nx">grades</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="c1">// calculer la note moyenne à partir des notes</span>
+
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">firstName</span><span class="p">:</span> <span class="nx">firstName</span><span class="p">,</span>
+    <span class="na">lastName</span><span class="p">:</span> <span class="nx">lastName</span><span class="p">,</span>
+    <span class="na">grades</span><span class="p">:</span> <span class="nx">grades</span><span class="p">,</span>
+    <span class="na">avgGrade</span><span class="p">:</span> <span class="nx">avgGrade</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">student</span> <span class="o">=</span> <span class="nx">createStudent</span><span class="p">(</span><span class="dl">"</span><span class="s2">Nick</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Anderson</span><span class="dl">"</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">student</span><span class="p">);</span>
+<span class="c1">// {</span>
+<span class="c1">//   firstName: "Nick",</span>
+<span class="c1">//   lastName: "Anderson",</span>
+<span class="c1">//   grades: [10, 12, 6],</span>
+<span class="c1">//   avgGrade: 9,33</span>
+<span class="c1">// }</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Note :</strong> la fonction createStudent est mauvaise car nous ne vérifions pas si grades.length existe ou est différent de 0. Cependant, je n’ai pas prévu ce cas pour rendre l’exemple plus facile à lire.</p>
+</blockquote>
+
+<h5 id="décomposition-des-propriétés-dun-objet">Décomposition des propriétés d’un objet</h5>
+
+<p>Pour celui-ci, je vous recommande de lire les explications précédentes concernant l’opérateur de reste sur les itérables et les paramètres de fonction auparavant.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">myObj</span> <span class="o">=</span> <span class="p">{</span> <span class="na">x</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">y</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="na">a</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="na">b</span><span class="p">:</span> <span class="mi">4</span> <span class="p">};</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="p">...</span><span class="nx">z</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">myObj</span><span class="p">;</span> <span class="c1">// l'objet est déstructuré ici</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span> <span class="c1">// 1</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">y</span><span class="p">);</span> <span class="c1">// 2</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">z</span><span class="p">);</span> <span class="c1">// { a: 3, b: 4 }</span>
+
+<span class="c1">// z est le reste de l'objet déstructuré : c'est myObj sans les propriétés x et y qui ont été déstructurées</span>
+
+<span class="kd">const</span> <span class="nx">n</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="p">...</span><span class="nx">z</span> <span class="p">};</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span> <span class="c1">// { x: 1, y: 2, a: 3, b: 4 }</span>
+
+<span class="c1">// Ici, les propriétés de l'objet z sont étendues dans n</span>
+</code></pre></div></div>
+
+<h4 id="ressources-externes-1">Ressources externes</h4>
+
+<ul>
+  <li><a href="https://github.com/tc39/proposal-object-rest-spread">TC39 - Object rest/spread</a></li>
+  <li><a href="https://github.com/wesbos/es6-articles/blob/master/28%20-%20Spread%20Operator%20Introduction.md">Spread operator introduction - WesBos</a></li>
+  <li><a href="https://codeburst.io/javascript-the-spread-operator-a867a71668ca">JavaScript &amp; the spread operator</a></li>
+  <li><a href="https://davidwalsh.name/spread-operator">6 Great uses of the spread operator</a></li>
+</ul>
+
+<h3 id="raccourci-pour-les-propriétés-dobjet">Raccourci pour les propriétés d’objet</h3>
+
+<p>Lorsque l’on assigne une variable à la propriété d’un objet, si le nom de la variable est le même que le nom de la propriété, vous pouvez faire la chose suivante :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">myObj</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">x</span> <span class="p">};</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myObj</span><span class="p">.</span><span class="nx">x</span><span class="p">)</span> <span class="c1">// 10</span>
+</code></pre></div></div>
+
+<h4 id="explication-2">Explication</h4>
+
+<p>D’habitude (avant ES2015), lorsque l’on déclare un <em>litéral d’objet</em> et que l’on veut utiliser des variables comme propriétés de l’objet, on écrit ce genre de code :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">y</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">myObj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">x</span><span class="p">:</span> <span class="nx">x</span><span class="p">,</span> <span class="c1">// on assigne le contenu de la variable x à myObj.x</span>
+  <span class="na">y</span><span class="p">:</span> <span class="nx">y</span> <span class="c1">// on assigne le contenu de la variable y à myObj.y</span>
+<span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myObj</span><span class="p">.</span><span class="nx">x</span><span class="p">)</span> <span class="c1">// 10</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myObj</span><span class="p">.</span><span class="nx">y</span><span class="p">)</span> <span class="c1">// 20</span>
+</code></pre></div></div>
+
+<p>Comme vous pouvez le voir, c’est assez répétitif car les noms des propriétés de myObj sont identiques aux noms des variables que vous voulez assigner à ces propriétés.</p>
+
+<p>Avec ES2015, quand le nom de la variable est identique au nom de la propriété, vous pouvez utiliser ce raccourci :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">y</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">myObj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">x</span><span class="p">,</span>
+  <span class="nx">y</span>
+<span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myObj</span><span class="p">.</span><span class="nx">x</span><span class="p">)</span> <span class="c1">// 10</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myObj</span><span class="p">.</span><span class="nx">y</span><span class="p">)</span> <span class="c1">// 20</span>
+</code></pre></div></div>
+
+<h4 id="ressources-externes-2">Ressources externes</h4>
+
+<ul>
+  <li><a href="http://es6-features.org/#PropertyShorthand">Property shorthand - ES6 Features</a></li>
+</ul>
+
+<h3 id="promesses">Promesses</h3>
+
+<p>Une promesse est un objet qui peut être retourné de manière synchrone depuis une fonction asynchrone (<a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261#3cd0">ref</a>).</p>
+
+<p>Les promesses peuvent être utilisées pour éviter un <a href="http://callbackhell.com/">enfer de callbacks</a>, et elles sont rencontrées de plus en plus fréquemment dans les projets JavaScript modernes.</p>
+
+<h4 id="code-dexemple-4">Code d’exemple</h4>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">fetchingPosts</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">res</span><span class="p">,</span> <span class="nx">rej</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">$</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">/posts</span><span class="dl">"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="nx">posts</span> <span class="o">=&gt;</span> <span class="nx">res</span><span class="p">(</span><span class="nx">posts</span><span class="p">))</span>
+    <span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="nx">rej</span><span class="p">(</span><span class="nx">err</span><span class="p">));</span>
+<span class="p">});</span>
+
+<span class="nx">fetchingPosts</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">posts</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">posts</span><span class="p">))</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">));</span>
+</code></pre></div></div>
+
+<h4 id="explication-3">Explication</h4>
+
+<p>Quand vous faites une <em>requête AJAX</em>, la réponse n’est pas synchrone car vous voulez une ressource qui prend du temps à venir. Elle ne pourriat même jamais arriver si la ressource que vous avez demandée est indisponible pour une raison quelconque (404).</p>
+
+<p>Pour gérer ce type de situations, ES2015 nous a offert les <em>promesses</em>. Les promesses peuvent avoir trois états différents :</p>
+
+<ul>
+  <li>En attente</li>
+  <li>Complété</li>
+  <li>Rejeté</li>
+</ul>
+
+<p>Imagions que nous voulions utiliser les promesses pour gérer une requête AJAX pour récupérer la ressource <em>X</em>.</p>
+
+<h5 id="créer-la-promesse">Créer la promesse</h5>
+
+<p>Nous allons commencer par crééer une promesse. Nous allons utiliser la méthode <code class="highlighter-rouge">$.get()</code> de jQuery pour faire notre requête AJAX vers <em>X</em>.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">xFetcherPromise</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">(</span> <span class="c1">// Créer une promesse avec le mot-clé new et la stocker dans une variable</span>
+  <span class="kd">function</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// Le constructeur de Promise prend une fonction comme paramètre qui a elle-même deux paramètres, resolve et reject</span>
+    <span class="nx">$</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">X</span><span class="dl">"</span><span class="p">)</span> <span class="c1">// Démarrer la requête AJAX</span>
+      <span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">X</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// Quand la requête est terminée...</span>
+        <span class="nx">resolve</span><span class="p">(</span><span class="nx">X</span><span class="p">);</span> <span class="c1">// ...résoudre la promesse avec la valeur X comme paramètre</span>
+      <span class="p">})</span>
+      <span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// Si la requête a échoué...</span>
+        <span class="nx">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span> <span class="c1">// ...rejeter la promesse avec l'erreur comme paramètre</span>
+      <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>Comme vu dans l’exemple ci-dessus, l’objet Promise prend une fonction <em>exécuteur</em> qui prend les deux paramètres <strong>resolve</strong> et <strong>reject</strong>. Ces paramètres sont des fonctions qui lorsqu’elles sont appelées, vont modifier l’état de la promesse d’<em>en attente</em> à respectivement l’état <em>complété</em> et <em>résolu</em>.</p>
+
+<p>La promesse est dans l’état <em>en attente</em> à sa création et sa fonction <em>éxécuteur</em> est appelée immédiatement. Quand une des deux fonctions <em>resolve</em> ou <em>reject</em> est appelée depuis la fonction <em>éxécuteur</em>, la promesse appelera les déclencheurs associés.</p>
+
+<h5 id="utilisation-des-déclencheurs-de-promesse">Utilisation des déclencheurs de promesse</h5>
+
+<p>Pour obtenir le résultat (ou l’erreur) de la promesse, nous devons y attacher des déclencheurs en faisant la chose suivante :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">xFetcherPromise</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">X</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">X</span><span class="p">);</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+  <span class="p">})</span>
+</code></pre></div></div>
+
+<p>Si la promesse réussit, <code class="highlighter-rouge">resolve()</code> sera exécuté et la fonction passée à <code class="highlighter-rouge">.then</code> est appelée.</p>
+
+<p>Si elle échoue, <code class="highlighter-rouge">reject()</code> sera exécuté et la fonction passée à <code class="highlighter-rouge">.catch</code> est appelée.</p>
+
+<blockquote>
+  <p>**Note : ** Si la promesse a déjà été accomplie ou rejetée lorsqu’un déclencheur y est attaché, le déclencheur sera appelé, afin de ne pas avoir une course entre une opération asynchrone se complétant et ses déclencheurs s’y faisant attacher <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Promise#Description">(référence: MDN)</a>.</p>
+</blockquote>
+
+<h4 id="ressources-externes-3">Ressources externes</h4>
+
+<ul>
+  <li><a href="https://scotch.io/tutorials/javascript-promises-for-dummies">JavaScript Promises for dummies - Jecelyn Yeen</a></li>
+  <li><a href="https://davidwalsh.name/promises">JavaScript Promise API - David Walsh</a></li>
+  <li><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Utiliser_les_promesses">Utiliser les promesses - MDN</a></li>
+  <li><a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261">What is a promise - Eric Elliott</a></li>
+  <li><a href="https://developers.google.com/web/fundamentals/getting-started/primers/promises">JavaScript Promises: an Introduction - Jake Archibald</a></li>
+  <li><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Promise">Documentation sur l’objet Promise - MDN</a></li>
+</ul>
+
+<h3 id="littéraux-de-modèle">Littéraux de modèle</h3>
+
+<p>Les littéraux de modèle (<em>template literals</em>) sont une <a href="https://en.wikipedia.org/wiki/String_interpolation"><em>interpolation d’expression</em></a> pour les chaînes de caractère d’une ligne ou multilignes.</p>
+
+<p>Autrement dit, c’est une nouvelle syntaxe de chaîne de caractère qui est particulièrement pratique pour y utiliser des expressions JavaScript (des variables, par exemple).</p>
+
+<h4 id="code-dexemple-5">Code d’exemple</h4>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Nick</span><span class="dl">"</span><span class="p">;</span>
+<span class="s2">`Bonjour </span><span class="p">${</span><span class="nx">name</span><span class="p">}</span><span class="s2">, l'expression suivante vaut 4 : </span><span class="p">${</span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+
+<span class="c1">// Bonjour Nick, l'expression suivante vaut 4 : 4</span>
+</code></pre></div></div>
+
+<h4 id="ressources-externes-4">Ressources externes</h4>
+
+<ul>
+  <li><a href="http://es6-features.org/#StringInterpolation">String interpolation - ES6 Features</a></li>
+  <li><a href="https://developers.google.com/web/updates/2015/01/ES6-Template-Strings">ES6 Template Strings - Addy Osmani</a></li>
+</ul>
+
+<h3 id="littéraux-de-modèle-étiquetés">Littéraux de modèle étiquetés</h3>
+
+<p>Les étiquettes de modèle sont des <em>fonctions qui peuvent être préfixées à un <a href="#litteraux-de-modele">littéral de modèle</a></em>.  Quand une fonction est appelée ainsi, le premier paramètre est un tableau des <em>chaînes de caractère</em> qui apparaissent entre les variables interpolées du modèle, et les paramètres suivants sont les valeurs interpolées. Vous pouuvez utiliser l’opérateur de décomposition <code class="highlighter-rouge">...</code> pour les récupérer. <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Litt%C3%A9raux_gabarits#Les_littéraux_de_modèle_étiquetés">(Références: MDN)</a>.</p>
+
+<blockquote>
+  <p><strong>Note :</strong> Certaines librairies, comme <a href="https://www.styled-components.com/">styled-components</a>, se basent entièrement sur cette fonctionnalité.</p>
+</blockquote>
+
+<p>Voici un petit exemple de leur fonctionnement :</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">highlight</span><span class="p">(</span><span class="nx">strings</span><span class="p">,</span> <span class="p">...</span><span class="nx">values</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">interpolation</span> <span class="o">=</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">prev</span><span class="p">,</span> <span class="nx">current</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">prev</span> <span class="o">+</span> <span class="nx">current</span> <span class="o">+</span> <span class="p">(</span><span class="nx">values</span><span class="p">.</span><span class="nx">length</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">&lt;mark&gt;</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">values</span><span class="p">.</span><span class="nx">shift</span><span class="p">()</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">&lt;/mark&gt;</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">""</span><span class="p">);</span>
+  <span class="p">},</span> <span class="dl">""</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="nx">interpolation</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">condiment</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">confiture</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">meal</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">toast</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="nx">highlight</span><span class="s2">`J'aime mettre de la </span><span class="p">${</span><span class="nx">condiment</span><span class="p">}</span><span class="s2"> sur mon </span><span class="p">${</span><span class="nx">meal</span><span class="p">}</span><span class="s2">.`</span><span class="p">;</span>
+<span class="c1">// "J'aime mettre de la &lt;mark&gt;confiture&lt;/mark&gt; sur mon &lt;mark&gt;toast&lt;/mark&gt;."</span>
+</code></pre></div></div>
+
+<p>Un autre exemple plus intéressant :</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">comma</span><span class="p">(</span><span class="nx">strings</span><span class="p">,</span> <span class="p">...</span><span class="nx">values</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">prev</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">values</span><span class="p">.</span><span class="nx">shift</span><span class="p">()</span> <span class="o">||</span> <span class="p">[];</span>
+    <span class="nx">value</span> <span class="o">=</span> <span class="nx">value</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="dl">"</span><span class="s2">, </span><span class="dl">"</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">prev</span> <span class="o">+</span> <span class="nx">next</span> <span class="o">+</span> <span class="nx">value</span><span class="p">;</span>
+  <span class="p">},</span> <span class="dl">""</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">snacks</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">pommes</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">bananes</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">cerises</span><span class="dl">'</span><span class="p">];</span>
+<span class="nx">comma</span><span class="s2">`J'aime grignoter des </span><span class="p">${</span><span class="nx">snacks</span><span class="p">}</span><span class="s2">.`</span><span class="p">;</span>
+<span class="c1">// "J'aime grignoter des pommes, bananes, cerises."</span>
+</code></pre></div></div>
+
+<h4 id="ressources-externes-5">Ressources externes</h4>
+<ul>
+  <li><a href="http://wesbos.com/tagged-template-literals/">Wes Bos on Tagged Template Literals</a></li>
+  <li><a href="https://github.com/declandewet/common-tags">Library of common template tags</a></li>
+</ul>
+
+<h3 id="imports--exports">Imports / exports</h3>
+
+<p>Les modules ES6 sont utilisés pour accéder à des variables et à des fonctions explicitement exportées depuis les modules importés.</p>
+
+<p>Je vous recommande de regardes la documentation sur MDN concernant import/export (voir les ressources externes plus bas), elles sont à la fois simples et complètes.</p>
+
+<h4 id="explication-avec-un-code-dexemple">Explication avec un code d’exemple</h4>
+
+<h5 id="exports-nommés">Exports nommés</h5>
+
+<p>Les exports nommés sont utilisés pour exporter plusieurs valeurs d’un module.</p>
+
+<blockquote>
+  <p><strong>Note :</strong> Vous ne pouvez exporter avec un nom que des <a href="https://fr.wikipedia.org/wiki/Objet_de_premi%C3%A8re_classe">objets de première classe</a> qui ont un nom.</p>
+</blockquote>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// mathConstants.js</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">pi</span> <span class="o">=</span> <span class="mf">3.14</span><span class="p">;</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">exp</span> <span class="o">=</span> <span class="mf">2.7</span><span class="p">;</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">alpha</span> <span class="o">=</span> <span class="mf">0.35</span><span class="p">;</span>
+
+<span class="c1">// -------------</span>
+
+<span class="c1">// myFile.js</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">pi</span><span class="p">,</span> <span class="nx">exp</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./mathConstants.js</span><span class="dl">'</span><span class="p">;</span> <span class="c1">// Import nommé -- syntaxe ressemblant à la destructuration</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">pi</span><span class="p">)</span> <span class="c1">// 3.14</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">exp</span><span class="p">)</span> <span class="c1">// 2.7</span>
+
+<span class="c1">// -------------</span>
+
+<span class="c1">// mySecondFile.js</span>
+<span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">constants</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./mathConstants.js</span><span class="dl">'</span><span class="p">;</span> <span class="c1">// Injecter toutes les valeurs exportées dans la variable constants</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">constants</span><span class="p">.</span><span class="nx">pi</span><span class="p">)</span> <span class="c1">// 3.14</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">constants</span><span class="p">.</span><span class="nx">exp</span><span class="p">)</span> <span class="c1">// 2.7</span>
+</code></pre></div></div>
+
+<p>Bien que les imports nommés ressemblent à une <em>destructuration</em>, ils ont une syntaxe différente et ne sont pas identiques. Ils ne supportent ni les valeurs par défaut ni la destructuration <em>profonde</em>.</p>
+
+<p>De plus, vous pouvez créer des alias mais la syntaxe est différente de celle utilisée avec la destructuration :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">foo</span> <span class="k">as</span> <span class="nx">bar</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">myFile.js</span><span class="dl">'</span><span class="p">;</span> <span class="c1">// foo est importé et injecté dans une nouvelle variable bar</span>
+</code></pre></div></div>
+
+<h5 id="importexport-par-défaut">Import/export par défaut</h5>
+
+<p>Concernant l’export par défaut, il ne peut y en avoir qu’un seul par module. Un export par défaut peut être une fonction, une classe, un objet, ou quoi que ce soit d’autre. Cette valeur est considérée comme étant la valeur exportée “principale” car elle sera la plus simple à importer.
+Concerning the default export, there is only a single default export per module. A default export can be a function, a class, an object or anything else. This value is considered the “main” exported value since it will be the simplest to import. <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Instructions/export#Description">Référence: MDN</a></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// coolNumber.js</span>
+<span class="kd">const</span> <span class="nx">ultimateNumber</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="nx">ultimateNumber</span><span class="p">;</span>
+
+<span class="c1">// ------------</span>
+
+<span class="c1">// myFile.js</span>
+<span class="k">import</span> <span class="nx">number</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./coolNumber.js</span><span class="dl">'</span><span class="p">;</span>
+<span class="c1">// L'export par défaut, peu importe son nom, est automatiquement injecté dans la variable number</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">number</span><span class="p">)</span> <span class="c1">// 42</span>
+</code></pre></div></div>
+
+<p>Exporter une fonction :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// sum.js</span>
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// -------------</span>
+
+<span class="c1">// myFile.js</span>
+<span class="k">import</span> <span class="nx">sum</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./sum.js</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="c1">// 3</span>
+</code></pre></div></div>
+
+<h4 id="ressources-externes-6">Ressources externes</h4>
+
+<ul>
+  <li><a href="https://ponyfoo.com/articles/es6#modules">ES6 Modules in bulletpoints</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export">Export - MDN</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">Import - MDN</a></li>
+  <li><a href="https://www.sitepoint.com/understanding-es6-modules/">Understanding ES6 Modules</a></li>
+  <li><a href="https://ponyfoo.com/articles/es6-destructuring-in-depth#special-case-import-statements">Destructuring special case - import statements</a></li>
+  <li><a href="https://medium.com/@kentcdodds/misunderstanding-es6-modules-upgrading-babel-tears-and-a-solution-ad2d5ab93ce0">Misunderstanding ES6 Modules - Kent C. Dodds</a></li>
+  <li><a href="http://exploringjs.com/es6/ch_modules.html#sec_modules-in-javascript">Modules in JavaScript</a></li>
+</ul>
+
+<h3 id="-this-en-javascript"><a name="this_def"></a> <em>this</em> en JavaScript</h3>
+
+<p>L’opérateur <em>this</em> se comporte différemment que dans d’autres langages et est dans la plupart des cas déterminé par la manière dont une fonction est appelée. (<a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/L_op%C3%A9rateur_this">Ref: MDN</a>).</p>
+
+<p>Cette notion a beaucoup de subtilités et comme elle est assez complexe, je vous recommande donc fortement de lire avec attention les ressources externes ci-dessous. Par conséquent, je vais utiliser l’idée personnelle que j’ai en tête pour déterminer ce qu’est <em>this</em>. J’ai appris cette astuce de <a href="http://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/">cet article écrit par Yehuda Katz</a>.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">myFunc</span><span class="p">()</span> <span class="p">{</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+
+<span class="c1">// Après chaque ligne, vous trouverez la valeur de *this* dans myFunc</span>
+
+<span class="nx">myFunc</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="dl">"</span><span class="s2">myString</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span><span class="p">)</span> <span class="c1">// "myString" -- la valeur du premier paramètre de .call est injectée dans *this*</span>
+
+<span class="c1">// En mode non-strict</span>
+<span class="nx">myFunc</span><span class="p">(</span><span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span><span class="p">)</span> <span class="c1">// window -- myFunc() est un sucre syntaxique pour myFunc.call(window, "hello")</span>
+
+<span class="c1">// En mode strict</span>
+<span class="nx">myFunc</span><span class="p">(</span><span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span><span class="p">)</span> <span class="c1">// undefined -- myFunc() est un sucre syntaxique pour myFunc.call(undefined, "hello")</span>
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">myFunc</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">person</span><span class="p">.</span><span class="nx">myFunc</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">person</span><span class="p">,</span> <span class="dl">"</span><span class="s2">test</span><span class="dl">"</span><span class="p">)</span> <span class="c1">// objet person -- le premier paramètre de call est injecté dans *this*</span>
+<span class="nx">person</span><span class="p">.</span><span class="nx">myFunc</span><span class="p">(</span><span class="dl">"</span><span class="s2">test</span><span class="dl">"</span><span class="p">)</span> <span class="c1">// objet person -- person.myFunc() est un sucre syntaxique pour person.myFunc.call(person, "test")</span>
+
+<span class="kd">var</span> <span class="nx">myBoundFunc</span> <span class="o">=</span> <span class="nx">person</span><span class="p">.</span><span class="nx">myFunc</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span><span class="p">)</span> <span class="c1">// Créée une nouvelle fonction dans laquelle nous injectons “hello” comme valeur de *this*</span>
+<span class="nx">person</span><span class="p">.</span><span class="nx">myFunc</span><span class="p">(</span><span class="dl">"</span><span class="s2">test</span><span class="dl">"</span><span class="p">)</span> <span class="c1">// objet Person -- La méthode bind n’a aucun effet sur la méthode originale</span>
+<span class="nx">myBoundFunc</span><span class="p">(</span><span class="dl">"</span><span class="s2">test</span><span class="dl">"</span><span class="p">)</span> <span class="c1">// "hello" -- myBoundFunc est person.myFunc avec “hello” comme valeur de *this*</span>
+</code></pre></div></div>
+
+<h4 id="ressources-externes-7">Ressources externes</h4>
+
+<ul>
+  <li><a href="http://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/">Understanding JavaScript Function Invocation and “this” - Yehuda Katz</a></li>
+  <li><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Opérateurs/L_opérateur_this">L’opérateur this - MDN</a></li>
+</ul>
+
+<h3 id="classe">Classe</h3>
+
+<p>JavaScript est un language <a href="https://fr.wikipedia.org/wiki/Programmation_orientée_prototype">basé sur les prototypes</a> (alors que Java, par exemple, est <a href="(https://en.wikipedia.org/wiki/Prototype-based_programming)">basé sur les classes</a>). ES6 a introduit les classes JavaScript qui sont un sucre syntaxique pour de l’héritage et <strong>non</strong> un nouveau modèle d’héritage basé sur des classes</p>
+
+<p>JavaScript is a <a href="https://en.wikipedia.org/wiki/Prototype-based_programming">prototype-based</a> language (whereas Java is <a href="https://en.wikipedia.org/wiki/Class-based_programming">class-based</a> language, for instance). ES6 has introduced JavaScript classes which are meant to be a syntactic sugar for prototype-based inheritance and <strong>not</strong> a new class-based inheritance model (<a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Classes">référence : MDN</a>).</p>
+
+<p>Le mot <em>classe</em> est évidemment source de confusion si vous êtes habitué aux classes dans d’autres langages. Dans ce cas, évitez de penser que les classes JavaScript fonctionnent de la même manière et considérez-les comme une notion totalement différente.</p>
+
+<p>Comme ce document n’est pas fait pour vous apprendre le langage à partir de zéro, je vais partir du fait que vous savez déjà ce que sont les prototypes et comment ils se comportement. Dans le cas contraire, voyez les ressources externes listées en dessous des exemples.</p>
+
+<h4 id="exemples">Exemples</h4>
+
+<p>Avant ES6, la syntaxe de prototype :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">Person</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="nx">age</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">stringSentence</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="dl">"</span><span class="s2">Hello, my name is </span><span class="dl">"</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> and I'm </span><span class="dl">"</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Avec la syntaxe ES6 de classe :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Person</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="nx">age</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">stringSentence</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="dl">"</span><span class="s2">Hello, my name is </span><span class="dl">"</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> and I'm </span><span class="dl">"</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">myPerson</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="dl">"</span><span class="s2">Manu</span><span class="dl">"</span><span class="p">,</span> <span class="mi">23</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myPerson</span><span class="p">.</span><span class="nx">age</span><span class="p">)</span> <span class="c1">// 23</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myPerson</span><span class="p">.</span><span class="nx">stringSentence</span><span class="p">())</span> <span class="c1">// "Hello, my name is Manu and I'm 23</span>
+</code></pre></div></div>
+
+<h4 id="ressources-externes-8">Ressources externes</h4>
+
+<p>Pour comprendre les prototypes :</p>
+
+<ul>
+  <li><a href="http://yehudakatz.com/2011/08/12/understanding-prototypes-in-javascript/">Understanding Prototypes in JS - Yehuda Katz</a></li>
+  <li><a href="http://sporto.github.io/blog/2013/02/22/a-plain-english-guide-to-javascript-prototypes/">A plain English guide to JS prototypes - Sebastian Porto</a></li>
+  <li><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Héritage_et_chaîne_de_prototypes">Héritage et chaîne de prototypes - MDN</a></li>
+</ul>
+
+<p>Pour comprendre les classes</p>
+
+<ul>
+  <li><a href="https://ponyfoo.com/articles/es6-classes-in-depth">ES6 Classes in Depth - Nicolas Bevacqua</a></li>
+  <li><a href="http://es6-features.org/#ClassDefinition">ES6 Features - Classes</a></li>
+  <li><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Classes">Classes - MDN</a></li>
+</ul>
+
+<h3 id="mots-clés-extends-et-super">Mots clés <code class="highlighter-rouge">extends</code> et <code class="highlighter-rouge">super</code></h3>
+
+<p>Le mot-clé <code class="highlighter-rouge">extends</code> est utilisé dans les déclarations de classe ou les expressions de classe pour créer une classe qui est une fille d’une autre classe (<a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Classes/extends">référence: MDN</a>). La sous-classe hérite de toutes les propriétés de la classe supérieure et peut aussi ajouter de nouvelles propriétés ou modifier celles héritées.</p>
+
+<p>Le mot-clé <code class="highlighter-rouge">super</code> est utilisé pour appeler des fonctions sur le parent d’un objet, y compris son constructeur.</p>
+
+<ul>
+  <li>Le mot-clé <code class="highlighter-rouge">super</code> doit être utilisé avant que le mot-clé <code class="highlighter-rouge">this</code> soit utilisé dans le constructeur</li>
+  <li>Invoquer <code class="highlighter-rouge">super()</code> appelle le constructeur de la classe parente. Si vous voulez passer des arguments au constructeur de la classe parente, vous pouvez l’appeler avec <code class="highlighter-rouge">super(arguments)</code>.</li>
+  <li>Si la classe parente a une méthode (même statique) appelée <code class="highlighter-rouge">X</code>, vous pouvez utiliser <code class="highlighter-rouge">super.X()</code> pour l’appeler depuis la classe fille.</li>
+</ul>
+
+<h4 id="code-dexemple-6">Code d’exemple</h4>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Polygon</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">height</span><span class="p">,</span> <span class="nx">width</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Polygon</span><span class="dl">'</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="nx">height</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="nx">width</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">getHelloPhrase</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s2">`Hi, I am a </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nx">Square</span> <span class="kd">extends</span> <span class="nx">Polygon</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Ici, le constructeur de la classe parente est appelé avec</span>
+    <span class="c1">// les longueurs données pour la hauteur et largeur du Polygon</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">length</span><span class="p">,</span> <span class="nx">length</span><span class="p">);</span>
+    <span class="c1">// Note : dans les classes dérivées, super() doit être appelé avant que vous ne</span>
+    <span class="c1">// puissiez utiliser 'this'. Ne pas respecter cette règle causera une ReferenceError.</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Square</span><span class="dl">'</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">length</span> <span class="o">=</span> <span class="nx">length</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">getCustomHelloPhrase</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">polygonPhrase</span> <span class="o">=</span> <span class="k">super</span><span class="p">.</span><span class="nx">getHelloPhrase</span><span class="p">();</span> <span class="c1">// accéder à une méthode de la classe parente avec la syntaxe super.X()</span>
+    <span class="k">return</span> <span class="s2">`</span><span class="p">${</span><span class="nx">polygonPhrase</span><span class="p">}</span><span class="s2"> with a length of </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">length</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kd">get</span> <span class="nx">area</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">height</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">width</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">mySquare</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Square</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">mySquare</span><span class="p">.</span><span class="nx">area</span><span class="p">)</span> <span class="c1">// 100</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">mySquare</span><span class="p">.</span><span class="nx">getHelloPhrase</span><span class="p">())</span> <span class="c1">// 'Hi, I am a Square' -- Square hérite de Polygon et a accès à ses méthodes</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">mySquare</span><span class="p">.</span><span class="nx">getCustomHelloPhrase</span><span class="p">())</span> <span class="c1">// 'Hi, I am a Square with a length of 10'</span>
+</code></pre></div></div>
+
+<p><strong>Note :</strong> Si nous avions essayé d’utiliser <code class="highlighter-rouge">this</code>avant d’appeler <code class="highlighter-rouge">super()</code> dans la classe Square, une ReferenceError aurait été déclenchée :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Square</span> <span class="kd">extends</span> <span class="nx">Polygon</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">height</span><span class="p">;</span> <span class="c1">// ReferenceError, super doit être appelé d’abord !</span>
+
+    <span class="c1">// Ici, le constructeur de la classe parente est appelé avec</span>
+    <span class="c1">// les longueurs données pour la hauteur et largeur du Polygon</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">length</span><span class="p">,</span> <span class="nx">length</span><span class="p">);</span>
+
+    <span class="c1">// Note : dans les classes dérivées, super() doit être appelé avant que vous ne</span>
+    <span class="c1">// puissiez utiliser 'this'. Ne pas respecter cette règle causera une ReferenceError.</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Square</span><span class="dl">'</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="ressources">Ressources</h4>
+
+<ul>
+  <li><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Classes/extends">extends - MDN</a></li>
+  <li><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Opérateurs/super">super - MDN</a></li>
+  <li><a href="https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/Heritage">L’héritage au sein de JavaScript - MDN</a></li>
+</ul>
+
+<h3 id="async-await">Async Await</h3>
+
+<p>En plus des <a href="#promesses">Promises</a>, il y a une nouvelle syntaxe que vous pourriez rencontrer pour gérer le code asynchrone nommée <em>async / await</em>.</p>
+
+<p>Le but des fonctions async/await est de simplifier le comportement de l’utilisation des promesses de manière synchrone et d’exécuter un comportemnet sur un groupe de promesses. Tout comme les promesses sont similaires aux callbacks structurés, asnyc/await est similaire à la combinaison de générateurs et de promesses. Les fonctions asynchrones renvoient <em>toujours</em> une Promise. (<a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Instructions/async_function">référence: MDN</a>)</p>
+
+<blockquote>
+  <p><strong>Note :</strong> Vous devez comprendre ce que sont les promesses et comment elles fonctionnent avant d’essayer de comprendre async/await car elles dépendent dessus.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>Note 2:</strong> <a href="https://hackernoon.com/6-reasons-why-javascripts-async-await-blows-promises-away-tutorial-c7ec10518dd9#f3f0"><em>await</em> doit être utilisé dans une fonction <em>async</em></a>, ce qui signifie que vous ne pouvez pas utiliser await dans le premier niveau de votre code car ce n’est pas une fonction async.</p>
+</blockquote>
+
+<h4 id="code-dexemple-7">Code d’exemple</h4>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="kd">function</span> <span class="nx">getGithubUser</span><span class="p">(</span><span class="nx">username</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// le mot-clé async autorise l’utilisation de await dans la fonction et signifie que la fonction retourne une promesse</span>
+  <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="s2">`https://api.github.com/users/</span><span class="p">${</span><span class="nx">username</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span> <span class="c1">// L’exécution est mise en pause ici jusqu’à ce que la Promise retournée par fetch soit résolue</span>
+  <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="nx">getGithubUser</span><span class="p">(</span><span class="dl">'</span><span class="s1">mbeaudru</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">user</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">user</span><span class="p">))</span> <span class="c1">// afficher dans la console la réponse - on ne peut pas utiliser la syntaxe await car ce code n’est pas une fonction async</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">));</span> <span class="c1">// si notre fonction async lève une erreur, nous la récupérons ici</span>
+</code></pre></div></div>
+
+<h4 id="explication-avec-un-code-dexemple-1">Explication avec un code d’exemple</h4>
+
+<p><em>Async / Await</em> fonctionnent avec les promises mais ils permettent d’utiliser un style de code plus impératif.</p>
+
+<p>L’opérateur <em>async</em> marque une fonction comme étant asynchrone et retournera toujours une <em>Promise</em>. Vous pouvez utiliser l’opérateur <em>await</em> dans une fonction <em>async</em> pour mettre en pause l’exécution sur cette ligne jusqu’à ce que la promise retournée par l’expression se fasse résoudre ou rejeter.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="kd">function</span> <span class="nx">myFunc</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// nous pouvons utiliser l’opérateur await car cette fonction est asynchrone</span>
+  <span class="k">return</span> <span class="dl">"</span><span class="s2">hello world</span><span class="dl">"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">myFunc</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">msg</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">msg</span><span class="p">))</span> <span class="c1">// "hello world" -- la valeur de retour de myFunc se fait transformer en promesse à cause de l’opérateur async</span>
+</code></pre></div></div>
+
+<p>Lorsque l’expression <em>return</em> d’une fonction async est atteint, la Promise est remplie avec la valeur retournée. Si une erreur est levée à l’intérieur de la fonction async, la l’état de la promesse passera à <em>rejeté</em>. Si aucune valeur n’est retournée par une fonction async, une promesse est quand même retournée et sera résolue sans valeur lorsque l’exécution de la fonction async est terminée.</p>
+
+<p>L’opérateur <em>await</em> est utilisé pour attendre qu’une primesse se fasse résoudre et ne peut être utilisé qu’à l’intérieur du corps d’une fonction async. Lorsqu’il est rencontré, l’exécution du code est mise en pause jusqu’à ce que la promise se fasse résoudre.</p>
+
+<blockquote>
+  <p><strong>Note :</strong> <em>fetch</em> est une fonction qui retourne une Promise qui nous permet de faire une requête AJAX</p>
+</blockquote>
+
+<p>Voyons d’abord comment nous pourrions récupérer un utilisateur sur GitHub avec des promesses.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">getGithubUser</span><span class="p">(</span><span class="nx">username</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">fetch</span><span class="p">(</span><span class="s2">`https://api.github.com/users/</span><span class="p">${</span><span class="nx">username</span><span class="p">}</span><span class="s2">`</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="nx">getGithubUser</span><span class="p">(</span><span class="dl">'</span><span class="s1">mbeaudru</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">user</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">user</span><span class="p">))</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>Voici l’équivalent avec async/await</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="kd">function</span> <span class="nx">getGithubUser</span><span class="p">(</span><span class="nx">username</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// utilisation d’une promesse + du mot-clé await autorisé</span>
+  <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="s2">`https://api.github.com/users/</span><span class="p">${</span><span class="nx">username</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span> <span class="c1">// L’exécution s’arrête ici jusqu’à ce que la promesse fetch soit résolue</span>
+  <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="nx">getGithubUser</span><span class="p">(</span><span class="dl">'</span><span class="s1">mbeaudru</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">user</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">user</span><span class="p">))</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>La syntaxe <em>async/await</em> est particulièrement utile lorsque vous avez besoin d’enchaîner des promesses qui sont mutuellement dépendantes.</p>
+
+<p>Par exemple, si vous avez besoin d’obtenir un jeton d’accps pour pouvoir récupérer un post de blog sur une base de données puis les informations sur l’auteur :</p>
+
+<blockquote>
+  <p><strong>Note :</strong> les expressions <em>await</em> ont besoin d’êtres entourées de parenthèses pour appeler leur valeur résolue et leurs propriétés sur la même ligne.</p>
+</blockquote>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="kd">function</span> <span class="nx">fetchPostById</span><span class="p">(</span><span class="nx">postId</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">token</span> <span class="o">=</span> <span class="p">(</span><span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">token_url</span><span class="dl">'</span><span class="p">)).</span><span class="nx">json</span><span class="p">().</span><span class="nx">token</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">post</span> <span class="o">=</span> <span class="p">(</span><span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="s2">`/posts/</span><span class="p">${</span><span class="nx">postId</span><span class="p">}</span><span class="s2">?token=</span><span class="p">${</span><span class="nx">token</span><span class="p">}</span><span class="s2">`</span><span class="p">)).</span><span class="nx">json</span><span class="p">();</span>
+  <span class="kd">const</span> <span class="nx">author</span> <span class="o">=</span> <span class="p">(</span><span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="s2">`/users/</span><span class="p">${</span><span class="nx">post</span><span class="p">.</span><span class="nx">authorId</span><span class="p">}</span><span class="s2">`</span><span class="p">)).</span><span class="nx">json</span><span class="p">();</span>
+
+  <span class="nx">post</span><span class="p">.</span><span class="nx">author</span> <span class="o">=</span> <span class="nx">author</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">post</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">fetchPostById</span><span class="p">(</span><span class="dl">'</span><span class="s1">gzIrzeo64</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">post</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">post</span><span class="p">))</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">));</span>
+</code></pre></div></div>
+
+<h5 id="gestion-derreur">Gestion d’erreur</h5>
+
+<p>À moins d’ajouter des blocs <em>try / catch</em> autour des expressions <em>await</em>, les exceptions non gérées – peu importe de si elles ont été levées dans le corps de votre fonction <em>async</em> ou lorsque le code est en pause pendant <em>await</em> – vont rejeter la promesse retournée par la fonction <em>async</em>. Utiliser l’expression <code class="highlighter-rouge">thrown</code> dans une fonction asynchrone donne le même résultat que retourner une promesse qui se fait rejeter <a href="https://ponyfoo.com/articles/understanding-javascript-async-await#error-handling">(référence : PonyFoo)</a>.</p>
+
+<blockquote>
+  <p><strong>Note :</strong> Les promesses se comportent de la même manière !</p>
+</blockquote>
+
+<p>Avec les promesses, voici comment on gérerait la chaîne d’erreur :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">getUser</span><span class="p">()</span> <span class="p">{</span> <span class="c1">// Cette promesse se fera rejeter !</span>
+  <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">res</span><span class="p">,</span> <span class="nx">rej</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">rej</span><span class="p">(</span><span class="dl">"</span><span class="s2">Utilisateur non trouvé !</span><span class="dl">"</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">getAvatarByUsername</span><span class="p">(</span><span class="nx">userId</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">getUser</span><span class="p">(</span><span class="nx">userId</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">user</span> <span class="o">=&gt;</span> <span class="nx">user</span><span class="p">.</span><span class="nx">avatar</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">getUserAvatar</span><span class="p">(</span><span class="nx">username</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">getAvatarByUsername</span><span class="p">(</span><span class="nx">username</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">avatar</span> <span class="o">=&gt;</span> <span class="p">({</span> <span class="nx">username</span><span class="p">,</span> <span class="nx">avatar</span> <span class="p">}));</span>
+<span class="p">}</span>
+
+<span class="nx">getUserAvatar</span><span class="p">(</span><span class="dl">'</span><span class="s1">mbeaudru</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">))</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">));</span> <span class="c1">// "Utilisateur non trouvé !"</span>
+</code></pre></div></div>
+
+<p>Équivalent avec <em>async / await</em>:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="kd">function</span> <span class="nx">getUser</span><span class="p">()</span> <span class="p">{</span> <span class="c1">// La promesse retournée se fera rejeter</span>
+  <span class="k">throw</span> <span class="dl">"</span><span class="s2">Utilisateur non trouvé !</span><span class="dl">"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">getAvatarByUsername</span><span class="p">(</span><span class="nx">userId</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">getUser</span><span class="p">(</span><span class="nx">userId</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nx">user</span><span class="p">.</span><span class="nx">avatar</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">getUserAvatar</span><span class="p">(</span><span class="nx">username</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">avatar</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">getAvatarByUsername</span><span class="p">(</span><span class="nx">username</span><span class="p">);</span>
+  <span class="k">return</span> <span class="p">{</span> <span class="nx">username</span><span class="p">,</span> <span class="nx">avatar</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="nx">getUserAvatar</span><span class="p">(</span><span class="dl">'</span><span class="s1">mbeaudru</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">))</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">));</span> <span class="c1">// "Utilisateur non trouvé !"</span>
+</code></pre></div></div>
+
+<h4 id="ressources-externes-9">Ressources externes</h4>
+
+<ul>
+  <li><a href="https://javascript.info/async-await">Async/Await - JavaScript.Info</a></li>
+  <li><a href="http://rossboucher.com/await/#/">ES7 Async/Await</a></li>
+  <li><a href="https://hackernoon.com/6-reasons-why-javascripts-async-await-blows-promises-away-tutorial-c7ec10518dd9">6 Reasons Why JavaScript’s Async/Await Blows Promises Away</a></li>
+  <li><a href="https://dev.to/kayis/javascript-awaits">JavaScript awaits</a></li>
+  <li><a href="https://medium.com/@Abazhenov/using-async-await-in-express-with-node-8-b8af872c0016">Using Async Await in Express with Node 8</a></li>
+  <li><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Statements/async_function">Async Function</a></li>
+  <li><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/await">Await</a></li>
+  <li><a href="https://medium.com/@Abazhenov/using-async-await-in-express-with-node-8-b8af872c0016">Using async / await in express with node 8</a></li>
+</ul>
+
+<h3 id="vérité--fausseté">Vérité / fausseté</h3>
+
+<p>En JavaScript, une valeur <code class="highlighter-rouge">truthy</code> ou <code class="highlighter-rouge">falsy</code> est une valeur qui se fait caster en un booléen lorsqu’elle est évaluée dans un contexte booléen. Un exemple de contexte booléen serait l’évaluation d’une condition <code class="highlighter-rouge">if</code>.</p>
+
+<p>Chaque valeur sera transformée en <code class="highlighter-rouge">true</code>, à part si elles sont égales à :</p>
+
+<ul>
+  <li><code class="highlighter-rouge">false</code></li>
+  <li><code class="highlighter-rouge">0</code></li>
+  <li><code class="highlighter-rouge">""</code> (chaîne de caractères vide)</li>
+  <li><code class="highlighter-rouge">null</code></li>
+  <li><code class="highlighter-rouge">undefined</code></li>
+  <li><code class="highlighter-rouge">NaN</code></li>
+</ul>
+
+<p>Voici des exemples de <em>contexte booléen</em> :</p>
+
+<ul>
+  <li>Évaluation de condition <code class="highlighter-rouge">if</code></li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nx">myVar</span><span class="p">)</span> <span class="p">{}</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">myVar</code> peut être n’importe quel <a href="https://fr.wikipedia.org/wiki/Objet_de_premi%C3%A8re_classe">objets de première classe</a> (variable, fonction, booléen) mais il sera transformé en booléen car il est évalué dans un contexte booléen.</p>
+
+<ul>
+  <li>Après l’opérateur logique <strong>NOT</strong> <code class="highlighter-rouge">!</code></li>
+</ul>
+
+<p>Cet opérateur retourne <code class="highlighter-rouge">false</code> si son opérande peut être converti à <code class="highlighter-rouge">true</code> ; dans le cas contraire, il retourne <code class="highlighter-rouge">true</code></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">!</span><span class="mi">0</span> <span class="c1">// true -- 0 est falsy, donc retourne true</span>
+<span class="o">!!</span><span class="mi">0</span> <span class="c1">// false -- 0 est falsy, donc !0 retourne true, et donc !(!0) retourne false</span>
+<span class="o">!!</span><span class="dl">""</span> <span class="c1">// false -- une chaîne vide est falsy donc NOT (NOT false) est égal à false</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Avec le constructeur d’objet <em>Boolean</em></li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">new</span> <span class="nb">Boolean</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1">// false</span>
+<span class="k">new</span> <span class="nb">Boolean</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1">// true</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Dans une expression ternaire</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">myVar</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">truthy</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">falsy</span><span class="dl">"</span>
+</code></pre></div></div>
+
+<p>myVar se fait évaluer dans un contexte booléen.</p>
+
+<h4 id="ressources-externes-10">Ressources externes</h4>
+
+<ul>
+  <li><a href="https://developer.mozilla.org/fr/docs/Glossary/Truthy">Truthy (MDN)</a></li>
+  <li><a href="https://developer.mozilla.org/fr/docs/Glossary/Falsy">Falsy (MDN)</a></li>
+  <li><a href="http://adripofjavascript.com/blog/drips/truthy-and-falsy-values-in-javascript.html">Truthy and Falsy values in JS - Josh Clanton</a></li>
+</ul>
+
+<h3 id="méthodes-statiques">Méthodes statiques</h3>
+
+<h4 id="explication-courte">Explication courte</h4>
+
+<p>Le mot-clé <code class="highlighter-rouge">static</code> est utilisé dans les classes pour déclarer des méthodes statiques. Les méthodes statiques sont des fonctions dans une classe qui appartiennent à l’objet classe et ne sont pas disponible dans les instances de la classe.</p>
+
+<h4 id="code-dexemple-8">Code d’exemple</h4>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Repo</span> <span class="p">{</span>
+  <span class="kd">static</span> <span class="nx">getName</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="dl">"</span><span class="s2">Le nom du repo est modern-js-cheatsheet</span><span class="dl">"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Notez que nous n’avons pas créé d’instance de la classe Repo</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Repo</span><span class="p">.</span><span class="nx">getName</span><span class="p">())</span> <span class="c1">// "Le nom du repo est modern-js-cheatsheet"</span>
+
+<span class="kd">let</span> <span class="nx">r</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Repo</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">getName</span><span class="p">())</span> <span class="c1">// Uncaught TypeError: repo.getName is not a function</span>
+</code></pre></div></div>
+
+<h4 id="explication-détaillée-2">Explication détaillée</h4>
+
+<p>Les méthodes statiques peuvent être appelées à l’intérieur d’une autre méthode statique en utilisant le mot-clé <code class="highlighter-rouge">this</code>. Ceci ne fonctionne pas avec les méthodes non statiques, qui ne peuvent pas y accéder directement en utilisant le mot-clé <code class="highlighter-rouge">this</code>.</p>
+
+<h5 id="appeler-dautres-méthodes-statiques-depuis-une-méthode-statique">Appeler d’autres méthodes statiques depuis une méthode statique</h5>
+
+<p>Pour appeler une méthode statique depuis une autre méthode statique, le mot-clé <code class="highlighter-rouge">this</code> peut être utilisé comme ceci :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Repo</span> <span class="p">{</span>
+  <span class="kd">static</span> <span class="nx">getName</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="dl">"</span><span class="s2">Le nom du repo est modern-js-cheatsheet</span><span class="dl">"</span>
+  <span class="p">}</span>
+
+  <span class="kd">static</span> <span class="nx">modifyName</span><span class="p">(){</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">getName</span><span class="p">()</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">-ajout</span><span class="dl">'</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Repo</span><span class="p">.</span><span class="nx">modifyName</span><span class="p">())</span> <span class="c1">// Le nom du repo est modern-js-cheatsheet-ajout</span>
+</code></pre></div></div>
+
+<h5 id="appeler-des-méthodes-statiques-depuis-des-méthodes-non-statiques">Appeler des méthodes statiques depuis des méthodes non statiques</h5>
+
+<p>Les méthodes non statiques peuvent appeler des méthodes statiques de deux façons :</p>
+<ol>
+  <li>
+    <h6 id="en-utilisant-le-nom-de-la-classe">En utilisant le nom de la classe</h6>
+  </li>
+</ol>
+
+<p>Pour accéder à une méthode statique depuis une méthode non statique, nous pouvons utiliser le nom de la classe et appeler la méthode statique comme une propriété, par exemple <code class="highlighter-rouge">NomClasse.NomMethodeStatique()</code></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Repo</span> <span class="p">{</span>
+  <span class="kd">static</span> <span class="nx">getName</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="dl">"</span><span class="s2">Le nom du repo est modern-js-cheatsheet</span><span class="dl">"</span>
+  <span class="p">}</span>
+
+  <span class="nx">useName</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">Repo</span><span class="p">.</span><span class="nx">getName</span><span class="p">()</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> et il contient des trucs vraiment importants</span><span class="dl">'</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Nous devons instancier la classe pour utiliser les méthodes non statiques</span>
+<span class="kd">let</span> <span class="nx">r</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Repo</span><span class="p">()</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">useName</span><span class="p">())</span> <span class="c1">// Le nom du repo est modern-js-cheatsheet et il contient des trucs vraiment importants</span>
+</code></pre></div></div>
+
+<ol>
+  <li>
+    <h6 id="avec-le-constructeur">Avec le constructeur</h6>
+  </li>
+</ol>
+
+<p>Les méthodes statiques peuvent être appelées en tant que propriétés sur l’objet constructor</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Repo</span> <span class="p">{</span>
+  <span class="kd">static</span> <span class="nx">getName</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="dl">"</span><span class="s2">Repo name is modern-js-cheatsheet</span><span class="dl">"</span>
+  <span class="p">}</span>
+
+  <span class="nx">useName</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Appelle la méthode statique comme une propriété du constructeur</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">getName</span><span class="p">()</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> et il contient des trucs vraiment importants</span><span class="dl">'</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Nous devons instancier la classe pour utiliser les méthodes non statiques</span>
+<span class="kd">let</span> <span class="nx">r</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Repo</span><span class="p">()</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">useName</span><span class="p">())</span> <span class="c1">// Le nom du repo est modern-js-cheatsheet et il contient des trucs vraiment importants</span>
+</code></pre></div></div>
+
+<h4 id="ressources-externes-11">Ressources externes</h4>
+<ul>
+  <li><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Classes/static">static - MDN</a></li>
+  <li><a href="https://javascript.info/class#static-methods">Static Methods - Javascript.info</a></li>
+  <li><a href="http://odetocode.com/blogs/scott/archive/2015/02/02/static-members-in-es6.aspx">Static Members in ES6 - OdeToCode</a></li>
+</ul>
+
+<h2 id="glossaire">Glossaire</h2>
+
+<h3 id="-portée-scope"><a name="scope_def"></a> Portée (<em>scope</em>)</h3>
+
+<p>Le contexte dans lequel les valeurs et expressions sont “visibles”, ou peuvent être référencées. Si une variable ou une autre expression n’est pas “dans la portée actuelle”, alors son utilisation ne sera pas possible.</p>
+
+<p>Source : <a href="https://developer.mozilla.org/fr/docs/Glossaire/Portée">MDN</a></p>
+
+<h3 id="-mutation-de-variable"><a name="mutation_def"></a> Mutation de variable</h3>
+
+<p>On dit d’une variable qu’elle a été <em>mutée</em> lorsque sa valeur initiale a été changée après coup.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">myArray</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="nx">myArray</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="dl">"</span><span class="s2">firstEl</span><span class="dl">"</span><span class="p">)</span> <span class="c1">// myArray s’est fait muter</span>
+</code></pre></div></div>
+
+<p>Une variable est dite <em>immutable</em> si elle ne peut être mutée.</p>
+
+<p>Vous pouvez lire <a href="https://developer.mozilla.org/fr/docs/Glossary/Mutable">l’article Mutable de MDN</a> pour plus de détails.</p>
+:ET

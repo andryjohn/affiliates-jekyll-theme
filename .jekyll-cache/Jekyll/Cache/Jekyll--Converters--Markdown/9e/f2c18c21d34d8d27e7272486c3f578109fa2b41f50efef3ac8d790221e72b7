@@ -1,0 +1,1557 @@
+I"��<h4 id="cest-quoi-des-règles-de-vol-">C’est quoi des “règles de vol” ?</h4>
+<blockquote>
+  <p><em>Les règles de vol</em> représentent l’ensemble des connaissances durement acquises consignées dans des manuels répertoriant, étape par étape, la procédure à suivre si telle chose se produit et pourquoi. Il s’agit essentiellement de procédures d’exploitation standard extrêmement détaillées et spécifiques à chaque scénario. […]</p>
+</blockquote>
+
+<p>Un guide pour les astronautes (pour les développeur·euse·s utilisant Git, dans le cas présent) sur quoi faire quand les choses se passent mal.</p>
+
+<blockquote>
+  <p>La NASA a recueilli nos faux pas, nos désastres et nos solutions depuis le début des années 60, lorsque les équipes terrestres de l’ère Mercury ont commencé à rassembler les “leçons tirées” dans un recueil qui répertorie désormais des milliers de situations problématiques, des pannes de moteur aux poignées de trappes cassées en passant par les bugs informatiques, et leurs solutions.</p>
+</blockquote>
+
+<p>— Chris Hadfield, <em>Guide d’un astronaute pour la vie sur Terre</em>.</p>
+
+<p>En complément de cet excellent article, je vous recommande le site <a href="https://ohshitgit.com/">ohshitgit!</a></p>
+
+<blockquote class="twitter-tweet" data-lang="fr"><p lang="en" dir="ltr">Funny, I just spent 15 min to find out on <a href="https://twitter.com/hashtag/stackoverflow?src=hash&amp;ref_src=twsrc%5Etfw">#stackoverflow</a> a solution on this , &#39;can&#39;t push to GitHub because of large file which I already deleted&#39;. <br />Find out the solution, it work like a miracle!😅 <a href="https://t.co/Q9fgE3Xml3">https://t.co/Q9fgE3Xml3</a> <a href="https://t.co/vxPLNCjTxa">pic.twitter.com/vxPLNCjTxa</a></p>&mdash; Rajohnson Andry (@RajohnsonAndry) <a href="https://twitter.com/RajohnsonAndry/status/1134988499327889408?ref_src=twsrc%5Etfw">2 juin 2019</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<hr />
+
+<h2 id="conventions-pour-ce-document">Conventions pour ce document</h2>
+
+<p>Pour des raisons de clarté tous les exemples dans ce document utilisent une invite de commande bash personnalisée dans le but d’indiquer la branche actuelle et s’il y a des modifications indexées ou non. La branche se trouve entre parenthèses, et un <code class="highlighter-rouge">*</code> après le nom de la branche indique des modifications indexées.</p>
+
+<p>Toutes les commandes devraient fonctionner pour les versions de Git au moins supérieures à la 2.13.0. Visitez le <a href="https://www.git-scm.com/">site de Git</a> pour mettre à jour votre version de git locale.</p>
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<p><strong>Table of Contents</strong>  <em>generated with <a href="https://github.com/thlorenz/doctoc">DocToc</a></em></p>
+
+<ul>
+  <li><a href="#d%C3%A9p%C3%B4ts">Dépôts</a>
+    <ul>
+      <li><a href="#je-veux-initialiser-un-d%C3%A9p%C3%B4t-local">Je veux initialiser un dépôt local</a></li>
+      <li><a href="#je-veux-cloner-un-d%C3%A9p%C3%B4t-distant">Je veux cloner un dépôt distant</a></li>
+    </ul>
+  </li>
+  <li><a href="#%C3%89diter-des-commits">Éditer des Commits</a>
+    <ul>
+      <li><a href="#quest-ce-que-je-viens-de-commiter-">Qu’est-ce que je viens de commiter ?</a></li>
+      <li><a href="#jai-commis-une-erreur-dans-un-message-de-commit">J’ai commis une erreur dans un message de commit</a></li>
+      <li><a href="#jai-commit-avec-le-mauvais-nom-et-email-dans-les-configurations">J’ai commit avec le mauvais nom et email dans les configurations</a></li>
+      <li><a href="#je-veux-retirer-un-fichier-du-commit-pr%C3%A9c%C3%A9dent">Je veux retirer un fichier du commit précédent</a></li>
+      <li><a href="#je-veux-supprimer-ou-retirer-mon-dernier-commit">Je veux supprimer ou retirer mon dernier commit</a></li>
+      <li><a href="#supprimerretirer-un-commit-arbitraire">Supprimer/retirer un commit arbitraire</a></li>
+      <li><a href="#jai-essay%C3%A9-de-pousser-un-commit-modifi%C3%A9-vers-le-d%C3%A9p%C3%B4t-distant-mais-jai-eu-un-message-derreur">J’ai essayé de pousser un commit modifié vers le dépôt distant, mais j’ai eu un message d’erreur</a></li>
+      <li><a href="#jai-fait-un-hard-reset-par-accident-et-je-veux-retrouver-mes-changements">J’ai fait un hard reset par accident, et je veux retrouver mes changements</a></li>
+      <li><a href="#jai-commit%C3%A9-et-pouss%C3%A9-une-fusion-par-accident">J’ai commité et poussé une fusion par accident</a></li>
+      <li><a href="#jai-commit%C3%A9-et-pouss%C3%A9-des-fichiers-contenant-des-donn%C3%A9es-sensibles-par-accident">J’ai commité et poussé des fichiers contenant des données sensibles par accident</a></li>
+    </ul>
+  </li>
+  <li><a href="#indexation">Indexation</a>
+    <ul>
+      <li><a href="#jai-besoin-dajouter-des-modifications-index%C3%A9es-sur-le-commit-pr%C3%A9c%C3%A9dent">J’ai besoin d’ajouter des modifications indexées sur le commit précédent</a></li>
+      <li><a href="#je-veux-indexer-une-partie-dun-fichier-mais-pas-tout-le-fichier">Je veux indexer une partie d’un fichier, mais pas tout le fichier</a></li>
+      <li><a href="#je-veux-ajouter-les-changements-dun-fichier-dans-deux-commits-diff%C3%A9rents">Je veux ajouter les changements d’un fichier dans deux commits différents</a></li>
+      <li><a href="#je-veux-indexer-mes-modifications-index%C3%A9es-et-d%C3%A9sindexer-mes-modifications-index%C3%A9es">Je veux indexer mes modifications indexées, et désindexer mes modifications indexées</a></li>
+    </ul>
+  </li>
+  <li><a href="#modifications-non-index%C3%A9es">Modifications non indexées</a>
+    <ul>
+      <li><a href="#je-veux-d%C3%A9placer-mes-modifications-non-index%C3%A9es-vers-une-nouvelle-branche">Je veux déplacer mes modifications non indexées vers une nouvelle branche</a></li>
+      <li><a href="#je-veux-d%C3%A9placer-mes-modifications-non-index%C3%A9es-vers-une-branche-diff%C3%A9rente-existante">Je veux déplacer mes modifications non indexées vers une branche différente existante</a></li>
+      <li><a href="#je-veux-me-d%C3%A9barrasser-de-mes-modifications-locales-non-commit%C3%A9es-index%C3%A9es-et-non-index%C3%A9es">Je veux me débarrasser de mes modifications locales non commitées (indexées et non-indexées)</a></li>
+      <li><a href="#je-veux-me-d%C3%A9barrasser-de-modifications-non-index%C3%A9es-sp%C3%A9cifiques">Je veux me débarrasser de modifications non-indexées spécifiques</a></li>
+      <li><a href="#je-veux-me-d%C3%A9barrasser-de-fichiers-non-index%C3%A9s-sp%C3%A9cifiques">Je veux me débarrasser de fichiers non-indexés spécifiques</a></li>
+      <li><a href="#je-veux-me-d%C3%A9barrasser-de-mes-modifications-locales-non-index%C3%A9es-uniquement">Je veux me débarrasser de mes modifications locales non-indexées uniquement</a></li>
+      <li><a href="#je-veux-me-d%C3%A9barrasser-de-tous-mes-fichiers-non-suivis">Je veux me débarrasser de tous mes fichiers non suivis</a></li>
+      <li><a href="#je-veux-d%C3%A9sindexer-un-fichier-index%C3%A9-sp%C3%A9cifique">Je veux désindexer un fichier indexé spécifique</a></li>
+    </ul>
+  </li>
+  <li><a href="#branches">Branches</a>
+    <ul>
+      <li><a href="#je-veux-lister-toutes-les-branches">Je veux lister toutes les branches</a></li>
+      <li><a href="#cr%C3%A9er-une-branche-%C3%A0-partir-dun-commit">Créer une branche à partir d’un commit</a></li>
+      <li><a href="#jai-pull-depuisvers-la-mauvaise-branche">J’ai pull depuis/vers la mauvaise branche</a></li>
+      <li><a href="#je-veux-supprimer-mes-commits-locaux-afin-que-ma-branche-soit-pareille-%C3%A0-celle-sur-le-serveur">Je veux supprimer mes commits locaux afin que ma branche soit pareille à celle sur le serveur</a></li>
+      <li><a href="#jai-commit%C3%A9-sur-master-au-lieu-dune-nouvelle-branche">J’ai commité sur master au lieu d’une nouvelle branche</a></li>
+      <li><a href="#je-veux-s%C3%A9parer-tout-un-fichier-dun-autre-ref-ish">Je veux séparer tout un fichier d’un autre ref-ish</a></li>
+      <li><a href="#jai-fait-plusieurs-commits-sur-une-m%C3%AAme-branche-qui-auraient-d%C3%BB-%C3%AAtre-sur-plusieurs-branches">J’ai fait plusieurs commits sur une même branche qui auraient dû être sur plusieurs branches</a></li>
+      <li><a href="#je-veux-supprimer-mes-branches-locales-qui-ont-%C3%A9t%C3%A9-supprim%C3%A9e-sur-le-d%C3%A9p%C3%B4t-distant">Je veux supprimer mes branches locales qui ont été supprimée sur le dépôt distant</a></li>
+      <li><a href="#jai-supprim%C3%A9-ma-branche-par-accident">J’ai supprimé ma branche par accident</a></li>
+      <li><a href="#je-veux-supprimer-une-branche">Je veux supprimer une branche</a></li>
+      <li><a href="#je-veux-supprimer-plusieurs-branches">Je veux supprimer plusieurs branches</a></li>
+      <li><a href="#je-veux-renommer-une-branche">Je veux renommer une branche</a></li>
+      <li><a href="#je-veux-me-d%C3%A9placer-sur-une-branche-distante-sur-laquelle-quelquun-est-en-train-de-travailler">Je veux me déplacer sur une branche distante sur laquelle quelqu’un est en train de travailler</a></li>
+      <li><a href="#je-veux-cr%C3%A9er-une-nouvelle-branche-distante-%C3%A0-partir-de-celle-en-locale">Je veux créer une nouvelle branche distante à partir de celle en locale</a></li>
+      <li><a href="#je-veux-configurer-une-branche-distante-en-tant-quupstream-pour-une-branche-locale">Je veux configurer une branche distante en tant qu’upstream pour une branche locale</a></li>
+      <li><a href="#je-veux-configurer-mon-head-pour-suivre-la-branche-distante-par-d%C3%A9faut">Je veux configurer mon HEAD pour suivre la branche distante par défaut</a></li>
+      <li><a href="#jai-fait-des-modifications-sur-la-mauvaise-branche">J’ai fait des modifications sur la mauvaise branche</a></li>
+    </ul>
+  </li>
+  <li><a href="#rebaser-et-fusionner">Rebaser et fusionner</a>
+    <ul>
+      <li><a href="#je-veux-annuler-un-rebasemerge">Je veux annuler un rebase/merge</a></li>
+      <li><a href="#jai-rebase-mais-je-ne-veux-pas-pousser-de-force">J’ai rebase, mais je ne veux pas pousser de force</a></li>
+      <li><a href="#jai-besoin-de-combiner-des-commits">J’ai besoin de combiner des commits</a>
+        <ul>
+          <li><a href="#strat%C3%A9gie-de-fusion-s%C3%BBre">Stratégie de fusion sûre</a></li>
+          <li><a href="#jai-besoin-de-fusionner-deux-branches-en-un-seul-commit">J’ai besoin de fusionner deux branches en un seul commit</a></li>
+          <li><a href="#je-veux-combiner-les-commits-non-pouss%C3%A9s-uniquement">Je veux combiner les commits non poussés uniquement</a></li>
+          <li><a href="#jai-besoin-dannuler-la-fusion">J’ai besoin d’annuler la fusion</a></li>
+        </ul>
+      </li>
+      <li><a href="#jai-besoin-de-mettre-%C3%A0-jour-le-commit-parent-de-ma-branche">J’ai besoin de mettre à jour le commit parent de ma branche</a></li>
+      <li><a href="#v%C3%A9rifier-si-tous-les-commits-dune-branche-sont-fusionn%C3%A9s">Vérifier si tous les commits d’une branche sont fusionnés</a></li>
+      <li><a href="#probl%C3%A8mes-possibles-avec-les-rebase-interactifs">Problèmes possibles avec les rebase interactifs</a>
+        <ul>
+          <li><a href="#l%C3%A9cran-d%C3%A9dition-du-rebase-affiche-noop">L’écran d’édition du rebase affiche ‘noop’</a></li>
+          <li><a href="#il-y-a-eu-des-conflits">Il y a eu des conflits</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#remisage">Remisage</a>
+    <ul>
+      <li><a href="#remiser-toutes-les-modifications">Remiser toutes les modifications</a></li>
+      <li><a href="#remiser-des-fichiers-sp%C3%A9cifiques">Remiser des fichiers spécifiques</a></li>
+      <li><a href="#remiser-avec-un-message">Remiser avec un message</a></li>
+      <li><a href="#appliquer-un-remisage-sp%C3%A9cifique-de-la-liste">Appliquer un remisage spécifique de la liste</a></li>
+    </ul>
+  </li>
+  <li><a href="#rechercher">Rechercher</a>
+    <ul>
+      <li><a href="#je-veux-rechercher-une-cha%C3%AEne-de-caract%C3%A8res-dans-un-commit">Je veux rechercher une chaîne de caractères dans un commit</a></li>
+      <li><a href="#je-veux-rechercher-par-auteur%C2%B7tricevalidateur%C2%B7trice">Je veux rechercher par auteur·trice/validateur·trice</a></li>
+      <li><a href="#je-veux-lister-les-commits-ayant-des-fichiers-sp%C3%A9cifiques">Je veux lister les commits ayant des fichiers spécifiques</a></li>
+      <li><a href="#trouver-un-tag-o%C3%B9-un-commit-est-r%C3%A9f%C3%A9renc%C3%A9">Trouver un tag où un commit est référencé</a></li>
+    </ul>
+  </li>
+  <li><a href="#sous-modules">Sous-modules</a>
+    <ul>
+      <li><a href="#cloner-tous-les-sous-modules">Cloner tous les sous-modules</a></li>
+      <li><a href="#retirer-un-sous-module">Retirer un sous-module</a></li>
+    </ul>
+  </li>
+  <li><a href="#objets-divers">Objets divers</a>
+    <ul>
+      <li><a href="#r%C3%A9cup%C3%A9rer-un-fichier-supprim%C3%A9">Récupérer un fichier supprimé</a></li>
+      <li><a href="#supprimer-un-tag">Supprimer un tag</a></li>
+      <li><a href="#r%C3%A9cup%C3%A9rer-un-tag-supprim%C3%A9">Récupérer un tag supprimé</a></li>
+      <li><a href="#patch-supprim%C3%A9">Patch supprimé</a></li>
+      <li><a href="#exporter-un-d%C3%A9p%C3%B4t-comme-fichier-zip">Exporter un dépôt comme fichier Zip</a></li>
+      <li><a href="#pousser-une-branche-et-un-tag-qui-ont-le-m%C3%AAme-nom">Pousser une branche et un tag qui ont le même nom</a></li>
+    </ul>
+  </li>
+  <li><a href="#suivre-des-fichiers">Suivre des fichiers</a>
+    <ul>
+      <li><a href="#je-veux-changer-la-capitalisation-du-nom-dun-fichier-sans-changer-son-contenu">Je veux changer la capitalisation du nom d’un fichier, sans changer son contenu</a></li>
+      <li><a href="#je-veux-%C3%A9craser-des-fichiers-locaux-en-faisant-un-git-pull">Je veux écraser des fichiers locaux en faisant un git pull</a></li>
+      <li><a href="#je-veux-retirer-un-fichier-de-git-mais-garder-le-fichier">Je veux retirer un fichier de Git mais garder le fichier</a></li>
+      <li><a href="#je-veux-r%C3%A9tablir-un-fichier-%C3%A0-une-version-sp%C3%A9cifique">Je veux rétablir un fichier à une version spécifique</a></li>
+      <li><a href="#je-veux-lister-les-changements-dun-fichier-sp%C3%A9cifique-entre-deux-commits-ou-branches">Je veux lister les changements d’un fichier spécifique entre deux commits ou branches</a></li>
+      <li><a href="#je-veux-que-git-ignore-les-changements-dun-fichier-sp%C3%A9cifique">Je veux que Git ignore les changements d’un fichier spécifique</a></li>
+    </ul>
+  </li>
+  <li><a href="#param%C3%A9trage">Paramétrage</a>
+    <ul>
+      <li><a href="#je-veux-ajouter-des-alias-pour-certaines-commandes-git">Je veux ajouter des alias pour certaines commandes Git</a></li>
+      <li><a href="#je-veux-ajouter-un-r%C3%A9pertoire-vide-%C3%A0-mon-d%C3%A9p%C3%B4t">Je veux ajouter un répertoire vide à mon dépôt</a></li>
+      <li><a href="#je-veux-mettre-en-cache-un-nom-dutilisateur-et-mot-de-passe-pour-un-d%C3%A9p%C3%B4t">Je veux mettre en cache un nom d’utilisateur et mot de passe pour un dépôt</a></li>
+      <li><a href="#je-veux-que-git-ignore-les-changements-de-permissions-et-de-filemode">Je veux que Git ignore les changements de permissions et de filemode</a></li>
+      <li><a href="#je-veux-d%C3%A9finir-un-utilisateur-global">Je veux définir un utilisateur global</a></li>
+      <li><a href="#je-veux-ajouter-une-ligne-de-commande-de-coloration-pour-git">Je veux ajouter une ligne de commande de coloration pour Git</a></li>
+    </ul>
+  </li>
+  <li><a href="#je-nai-aucune-id%C3%A9e-de-ce-que-jai-mal-fait">Je n’ai aucune idée de ce que j’ai mal fait</a></li>
+  <li><a href="#autres-ressources">Autres Ressources</a>
+    <ul>
+      <li><a href="#livres">Livres</a></li>
+      <li><a href="#tutoriels">Tutoriels</a></li>
+      <li><a href="#scripts-et-outils">Scripts et Outils</a></li>
+      <li><a href="#clients-graphiques">Clients graphiques</a></li>
+    </ul>
+  </li>
+</ul>
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+<h2 id="dépôts">Dépôts</h2>
+
+<h3 id="je-veux-initialiser-un-dépôt-local">Je veux initialiser un dépôt local</h3>
+
+<p>Pour initialiser un répertoire existant comme dépôt Git :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>mon-dossier<span class="o">)</span> <span class="nv">$ </span>git init
+</code></pre></div></div>
+
+<h3 id="je-veux-cloner-un-dépôt-distant">Je veux cloner un dépôt distant</h3>
+
+<p>Pour cloner (copier) un dépôt distant, copiez l’url de ce dernier, et lancez :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git clone <span class="o">[</span>url]
+</code></pre></div></div>
+
+<p>Ceci le sauvegardera dans un dossier nommé d’après le nom du dépôt. Assurez-vous d’avoir une connexion avec le serveur distant que vous essayez de cloner (dans la plupart des cas ceci revient à s’assurer d’être connecté·e à Internet).</p>
+
+<p>Pour le cloner vers un dossier ayant un nom différent de celui du dépôt distant :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git clone <span class="o">[</span>url] nom-du-nouveau-dossier
+</code></pre></div></div>
+
+<h2 id="éditer-des-commits">Éditer des Commits</h2>
+
+<p><a name="diff-last"></a></p>
+<h3 id="quest-ce-que-je-viens-de-commiter-">Qu’est-ce que je viens de commiter ?</h3>
+
+<p>Imaginons que vous venez tout juste d’enregistrer des changements à l’aveugle avec {code0}git commit -a{/code0} et que vous n’êtes pas sûr·e du contenu réel du commit que vous venez d’effectuer. Vous pouvez visualiser le dernier commit sur votre HEAD actuel avec :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git show
+</code></pre></div></div>
+
+<p>Ou :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git log <span class="nt">-n1</span> <span class="nt">-p</span>
+</code></pre></div></div>
+
+<p>Si vous voulez voir un fichier à un commit spécifique, vous pouvez aussi faire (où <code class="highlighter-rouge">&lt;commitid&gt;</code> est le commit qui vous intéresse).</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git show &lt;commitid&gt;:nomdufichier
+</code></pre></div></div>
+
+<h3 id="jai-commis-une-erreur-dans-un-message-de-commit">J’ai commis une erreur dans un message de commit</h3>
+
+<p>Si vous vous êtes trompé·e et que le commit n’a pas encore été poussé, vous pouvez appliquer la commande suivante afin de changer le message du commit sans affecter les changements de ce même commit :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git commit <span class="nt">--amend</span> <span class="nt">--only</span>
+</code></pre></div></div>
+
+<p>Cela ouvrira votre éditeur de texte par défaut, où vous pourrez éditer le message. Vous pouvez également effectuer la même chose en une seule commande :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git commit <span class="nt">--amend</span> <span class="nt">--only</span> <span class="nt">-m</span> <span class="s1">'xxxxxxx'</span>
+</code></pre></div></div>
+
+<p>Si vous avez déjà poussé le message, vous pouvez modifier le commit et pousser de force, mais cela n’est pas recommandé.</p>
+
+<p><a name="commit-wrong-author"></a></p>
+<h3 id="jai-commit-avec-le-mauvais-nom-et-email-dans-les-configurations">J’ai commit avec le mauvais nom et email dans les configurations</h3>
+
+<p>Si c’est un commit unique, modifiez-le :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git commit <span class="nt">--amend</span> <span class="nt">--no-edit</span> <span class="nt">--author</span> <span class="s2">"Nouvel Auteur·trice &lt;emaildelauteurice@mondomaine.com&gt;"</span>
+</code></pre></div></div>
+
+<p>Une alternative est de configurer correctement vos paramètres d’auteur·trice avec <code class="highlighter-rouge">git config --global author.(name|email)</code> puis de lancer :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git commit <span class="nt">--amend</span> <span class="nt">--reset-author</span> <span class="nt">--no-edit</span>
+</code></pre></div></div>
+
+<p>Si vous avez besoin de changer tout l’historique, veuillez vous référer à la page man pour <code class="highlighter-rouge">git filter-branch</code>.</p>
+
+<h3 id="je-veux-retirer-un-fichier-du-commit-précédent">Je veux retirer un fichier du commit précédent</h3>
+
+<p>Pour retirer les changements effectués sur un fichier lors du précédent commit, faites la chose suivante :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git checkout HEAD^ monfichier
+<span class="nv">$ </span>git add monfichier
+<span class="nv">$ </span>git commit <span class="nt">--amend</span> <span class="nt">--no-edit</span>
+</code></pre></div></div>
+
+<p>Dans le cas où le fichier fut introduit dans le commit et que vous voulez le retirer (de Git seul), faites :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git <span class="nb">rm</span> <span class="nt">--cached</span> monfichier
+<span class="nv">$ </span>git commit <span class="nt">--amend</span> <span class="nt">--no-edit</span>
+</code></pre></div></div>
+
+<p>Cela est particulièrement utile quand vous avez un patch d’ouvert et que vous avez commité un fichier non nécessaire, et que vous avez besoin de pousser de force pour mettre à jour le patch sur le dépôt distant. L’option <code class="highlighter-rouge">--no-edit</code> est utilisée pour garder le message de commit existant.</p>
+
+<p><a name="delete-pushed-commit"></a></p>
+<h3 id="je-veux-supprimer-ou-retirer-mon-dernier-commit">Je veux supprimer ou retirer mon dernier commit</h3>
+
+<p>Si vous avez besoin de supprimer des commits poussés, vous pouvez utiliser la commande suivante. Cependant, cela modifiera votre historique de manière irreversible, et mettra la pagaille dans l’historique de quiconque ayant déjà récupéré des changements depuis le dépôt distant. Pour faire court, si vous n’êtes pas sûr·e, vous ne devriez pas faire ça, jamais.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git reset HEAD^ <span class="nt">--hard</span>
+<span class="nv">$ </span>git push <span class="nt">--force-with-lease</span> <span class="o">[</span>remote] <span class="o">[</span>branche]
+</code></pre></div></div>
+
+<p>Si vous n’avez pas poussé, pour réinitialiser Git vers l’état dans lequel il était avant que vous ne fassiez votre dernier commit (tout en gardant vos changements) :</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(ma-branche*)$ git reset --soft HEAD@{1}
+</code></pre></div></div>
+
+<p>Cela ne marchera que si vous n’avez pas poussé. Si vous avez poussé, la seule vraie chose sécurisée à faire est <code class="highlighter-rouge">git revert SHAduMauvaisCommit</code>. Cela créera un nouveau commit qui annule tous les changements du commit en question. Ou, si la branche vers laquelle vous avez poussé est “rebase-safe” (en d’autres termes, les autres développeur·euse·s ne la récupéreront pas), vous pouvez juste lancer <code class="highlighter-rouge">git push --force-with-lease</code>. Pour plus d’informations, jetez un œil <a href="#je-veux-supprimer-ou-retirer-mon-dernier-commit">à la section ci-dessus</a>.</p>
+
+<p><a name="delete-any-commit"></a></p>
+<h3 id="supprimerretirer-un-commit-arbitraire">Supprimer/retirer un commit arbitraire</h3>
+
+<p>Le même avertissement que ci-dessus s’applique. Ne faites jamais cela si possible.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git rebase <span class="nt">--onto</span> SHA1_DU_MAUVAIS_COMMIT^ SHA1_DU_MAUVAIS_COMMIT
+<span class="nv">$ </span>git push <span class="nt">--force-with-lease</span> <span class="o">[</span>remote] <span class="o">[</span>branche]
+</code></pre></div></div>
+
+<p>Ou faites un <a href="#interactive-rebase">rebase interactif</a> et retirez les lignes correspondantes au(x) commit(s) que vous souhaitez supprimer.</p>
+
+<p><a name="#force-push"></a></p>
+<h3 id="jai-essayé-de-pousser-un-commit-modifié-vers-le-dépôt-distant-mais-jai-eu-un-message-derreur">J’ai essayé de pousser un commit modifié vers le dépôt distant, mais j’ai eu un message d’erreur</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>To https://github.com/votrenomdutilisateur/repo.git
+<span class="o">!</span> <span class="o">[</span>rejected]        ma-branche -&gt; ma-branche <span class="o">(</span>non-fast-forward<span class="o">)</span>
+error: failed to push some refs to <span class="s1">'https://github.com/tanay1337/webmaker.org.git'</span>
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes <span class="o">(</span>e.g.
+hint: <span class="s1">'git pull ...'</span><span class="o">)</span> before pushing again.
+hint: See the <span class="s1">'Note about fast-forwards'</span> <span class="k">in</span> <span class="s1">'git push --help'</span> <span class="k">for </span>details.
+</code></pre></div></div>
+
+<p>Notez que, tout comme avec un rebase (voir ci-dessous), le fait de modifier <strong>remplace l’ancien commit avec un nouveau</strong>, donc vous devez pousser de force (<code class="highlighter-rouge">--force-with-lease</code>) vos changements si vous avez déjà poussé le commit vers votre dépôt distant avant sa modification. Soyez prudent·e quand vous faites cela : Assurez vous de <em>toujours</em> spécifier une branche !</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>ma-branche<span class="o">)</span><span class="nv">$ </span>git push origin ma-branche <span class="nt">--force-with-lease</span>
+</code></pre></div></div>
+
+<p>En règle générale, <strong>évitez de pousser de force</strong>. Il est préférable de créer et pousser un nouveau commit plutôt que de pousser de force un commit modifié car cela causera des conflits dans l’historique pour n’importe quel développeur·euse ayant déjà intéragit avec la branche en question ou quelque branche fille. <code class="highlighter-rouge">--force-with-lease</code> échouera toujours, si quelqu’un d’autre était déjà en train de travailler sur la même branche que vous et que votre push réécrirait par-dessus ces modifications.</p>
+
+<p>Si vous êtes <em>absolument</em> sûr·e que personne n’est en train de travailler sur la même branche que vous ou que vous souhaitez mettre à jour la branche de manière <em>inconditionnelle</em>, vous pouvez utiliser <code class="highlighter-rouge">--force</code> (<code class="highlighter-rouge">-f</code>), mais cela devrait être évité en général.</p>
+
+<p><a href="undo-git-reset-hard"></a></p>
+<h3 id="jai-fait-un-hard-reset-par-accident-et-je-veux-retrouver-mes-changements">J’ai fait un hard reset par accident, et je veux retrouver mes changements</h3>
+
+<p>Si vous avez accidentellement fait un <code class="highlighter-rouge">git reset --hard</code>, vous pouvez normalement retrouver votre commit, car Git garde un log de tout ce que vous faites pendant quelques jours.</p>
+
+<p>À noter : Cela n’est valide que si votre travail est sauvegardé, c’est à dire dans un commit ou un remisage. <code class="highlighter-rouge">git reset --hard</code> <em>supprimera</em> les modifications non commitées, donc utilisez cela avec précaution (une option plus sûre est <code class="highlighter-rouge">git reset --keep</code>).</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git reflog
+</code></pre></div></div>
+
+<p>Vous verrez une liste de vos précédents commits, et un commit pour la réinitialisation. Choisissez le SHA du commit vers lequel vous souhaitez retourner, et réinitialisez à nouveau :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git reset <span class="nt">--hard</span> SHA1234
+</code></pre></div></div>
+
+<p>Et cela devrait faire l’affaire.</p>
+
+<p><a href="undo-a-commit-merge"></a></p>
+<h3 id="jai-commité-et-poussé-une-fusion-par-accident">J’ai commité et poussé une fusion par accident</h3>
+
+<p>Si vous avez accidentellement fusionné une branche d’une fonctionnalité avec la branche de développement principale avant qu’elle ne soit prête à être fusionnée, vous pouvez toujours annuler cette fusion. Mais il y a un piège : un commit de fusion a plus d’un parent (en général deux).</p>
+
+<p>Utilisez cette commande :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>feature-branch<span class="o">)</span><span class="nv">$ </span>git revert <span class="nt">-m</span> 1 &lt;commit&gt;
+</code></pre></div></div>
+<p>où l’option <code class="highlighter-rouge">-m 1</code> demande de sélectionner le parent numéro 1 (la branche vers laquelle la fusion a été faite) comme parent vers lequel annuler la fusion.</p>
+
+<p>À noter : le numéro du parent n’est pas un identifiant de commit. Un commit de fusion ressemble plus à <code class="highlighter-rouge">Merge: 8e2ce2d 86ac2e7</code>. Le numéro du parent est l’index basé sur 1 du parent souhaité sur cette ligne, le premier identifiant est le numéro 1, le second le numéro 2, et ainsi de suite.</p>
+
+<p><a href="undo-sensitive-commit-push"></a></p>
+<h3 id="jai-commité-et-poussé-des-fichiers-contenant-des-données-sensibles-par-accident">J’ai commité et poussé des fichiers contenant des données sensibles par accident</h3>
+
+<p>Si vous avez accidentellement poussé des fichiers contenant des données sensibles (mots de passe, clés, etc.), vous pouvez modifier le commit précédent. Gardez toutefois à l’esprit qu’une fois que vous avez poussé un commit, vous devez considérer n’importe quelle donnée qu’il contient comme étant compromise. Ces étapes peuvent supprimer les données sensibles de votre dépôt public ou de votre copie locale, mais vous ne <strong>pouvez pas</strong> supprimer les données sensibles des copies clonées par d’autres personnes. Si vous avez commité un mot de passe, <strong>changez-le immédiatement</strong>. Si vous avez commité une clé, <strong>révoquez-la et régénérez-la immédiatement</strong>. Modifier le commit poussé n’est pas suffisant, étant donné que n’importe qui aurait pu extraire le commit original contenant vos données sensibles pendant ce temps.</p>
+
+<p>Si vous souhaitez modifier le fichier et supprimer les données sensibles, lancez :</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>feature-branch<span class="o">)</span><span class="nv">$ </span>git add fichier_modifié
+<span class="o">(</span>feature-branch<span class="o">)</span><span class="nv">$ </span>git commit <span class="nt">--amend</span> <span class="nt">--no-edit</span>
+<span class="o">(</span>feature-branch<span class="o">)</span><span class="nv">$ </span>git push <span class="nt">--force-with-lease</span> origin <span class="o">[</span>branche]
+</code></pre></div></div>
+
+<p>Si vous souhaitez supprimer tout un fichier (mais le garder en local), lancez :</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>feature-branch<span class="o">)</span><span class="nv">$ </span>git <span class="nb">rm</span> <span class="nt">--cached</span> fichier_sensible
+<span class="nb">echo </span>fichier_sensible <span class="o">&gt;&gt;</span> .gitignore
+  <span class="o">(</span>feature-branch<span class="o">)</span><span class="nv">$ </span>git add .gitignore
+<span class="o">(</span>feature-branch<span class="o">)</span><span class="nv">$ </span>git commit <span class="nt">--amend</span> <span class="nt">--no-edit</span>
+<span class="o">(</span>feature-branch<span class="o">)</span><span class="nv">$ </span>git push <span class="nt">--force-with-lease</span> origin <span class="o">[</span>branche]
+</code></pre></div></div>
+<p>Alternativement, stockez vos données sensibles dans des variables d’environnement locales.</p>
+
+<p>Si vous souhaitez supprimer tout un fichier (et ne pas le garder en local), lancez :</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>feature-branch<span class="o">)</span><span class="nv">$ </span>git <span class="nb">rm </span>fichier_sensible
+<span class="o">(</span>feature-branch<span class="o">)</span><span class="nv">$ </span>git commit <span class="nt">--amend</span> <span class="nt">--no-edit</span>
+<span class="o">(</span>feature-branch<span class="o">)</span><span class="nv">$ </span>git push <span class="nt">--force-with-lease</span> origin <span class="o">[</span>branche]
+</code></pre></div></div>
+
+<p>Si vous avez créé d’autres commits pendant ce temps (c’est à dire que les données sensibles sont dans un commit avant le commit précédent), vous devrez utiliser la fonction <code class="highlighter-rouge">rebase</code>.</p>
+
+<h2 id="indexation">Indexation</h2>
+
+<p><a href="#i-need-to-add-staged-changes-to-the-previous-commit"></a></p>
+<h3 id="jai-besoin-dajouter-des-modifications-indexées-sur-le-commit-précédent">J’ai besoin d’ajouter des modifications indexées sur le commit précédent</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>ma-branche<span class="k">*</span><span class="o">)</span><span class="nv">$ </span>git commit <span class="nt">--amend</span>
+</code></pre></div></div>
+
+<p>Si vous savez déjà que vous ne souhaitez pas modifier le message du commit, vous pouvez dire à Git de réutiliser ce dernier :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>ma-branche<span class="k">*</span><span class="o">)</span><span class="nv">$ </span>git commit <span class="nt">--amend</span> <span class="nt">-C</span> HEAD
+</code></pre></div></div>
+
+<p><a name="commit-partial-new-file"></a></p>
+<h3 id="je-veux-indexer-une-partie-dun-fichier-mais-pas-tout-le-fichier">Je veux indexer une partie d’un fichier, mais pas tout le fichier</h3>
+
+<p>Normalement, quand vous souhaitez modifier une partie d’un fichier, il faut lancer ceci :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git add <span class="nt">--patch</span> nomdufichier.x
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">-p</code> fonctionnera comme raccourci. Cela ouvrira le mode interactif. Vous serez en mesure d’utiliser l’option <code class="highlighter-rouge">s</code> pour séparer le commit. Cependant, si le fichier est nouveau, vous n’aurez pas cette option. Pour ajouter un nouveau fichier, faites comme ceci :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git add <span class="nt">-N</span> nomdufichier.x
+</code></pre></div></div>
+
+<p>Ensuite, vous devrez utiliser l’option <code class="highlighter-rouge">e</code> afin de choisir manuellement quelles lignes ajouter. Lancer <code class="highlighter-rouge">git diff --cached</code> ou <code class="highlighter-rouge">git diff --staged</code> vous montrera quelles lignes vous avez indexées comparées à celles qui sont toujours sauvegardées en local.</p>
+
+<p><a href="stage-in-two-commits"></a></p>
+<h3 id="je-veux-ajouter-les-changements-dun-fichier-dans-deux-commits-différents">Je veux ajouter les changements d’un fichier dans deux commits différents</h3>
+
+<p><code class="highlighter-rouge">git add</code> ajoutera le fichier entier à un commit. <code class="highlighter-rouge">git add -p</code> vous permettra de sélectionner interactivement quels changements vous souhaitez ajouter.</p>
+
+<p><a href="unstaging-edits-and-staging-the-unstaged"></a></p>
+<h3 id="je-veux-indexer-mes-modifications-indexées-et-désindexer-mes-modifications-indexées">Je veux indexer mes modifications indexées, et désindexer mes modifications indexées</h3>
+
+<p>Cela est délicat. La meilleure chose que nous pouvons vous conseiller est que vous devriez remiser vos modifications non indexées, puis utiliser <code class="highlighter-rouge">git reset</code>. Après cela, utilisez <code class="highlighter-rouge">pop</code> pour déremiser vos modifications, puis ajoutez-les :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git stash <span class="nt">-k</span>
+<span class="nv">$ </span>git reset <span class="nt">--hard</span>
+<span class="nv">$ </span>git stash pop
+<span class="nv">$ </span>git add <span class="nt">-A</span>
+</code></pre></div></div>
+
+<h2 id="modifications-non-indexées">Modifications non indexées</h2>
+
+<p><a href="move-unstaged-edits-to-new-branch"></a></p>
+<h3 id="je-veux-déplacer-mes-modifications-non-indexées-vers-une-nouvelle-branche">Je veux déplacer mes modifications non indexées vers une nouvelle branche</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git checkout <span class="nt">-b</span> ma-branche
+</code></pre></div></div>
+
+<p><a href="move-unstaged-edits-to-old-branch"></a></p>
+<h3 id="je-veux-déplacer-mes-modifications-non-indexées-vers-une-branche-différente-existante">Je veux déplacer mes modifications non indexées vers une branche différente existante</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git stash
+<span class="nv">$ </span>git checkout ma-branche
+<span class="nv">$ </span>git stash pop
+</code></pre></div></div>
+
+<p><a href="i-want-to-discard-my-local-uncommitted-changes"></a></p>
+<h3 id="je-veux-me-débarrasser-de-mes-modifications-locales-non-commitées-indexées-et-non-indexées">Je veux me débarrasser de mes modifications locales non commitées (indexées et non-indexées)</h3>
+
+<p>Si vous voulez vous débarrasser de toutes vos modifications locales indexées et non-indexées, vous pouvez faire ceci :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>ma-branche<span class="o">)</span><span class="nv">$ </span>git reset <span class="nt">--hard</span>
+<span class="c"># ou</span>
+<span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git checkout <span class="nt">-f</span>
+</code></pre></div></div>
+
+<p>Cette commande désindexera tous les fichiers que vous avez pu indexer avec <code class="highlighter-rouge">git add</code> :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git reset
+</code></pre></div></div>
+
+<p>Cette commande annulera toutes les modifications locales non commitées (elle devrait être exécutée à la racine du dépôt) :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git checkout <span class="nb">.</span>
+</code></pre></div></div>
+
+<p>Vous pouvez également annuler les changements non commités d’un fichier ou d’un dossier en particulier :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git checkout <span class="o">[</span>un_dossier|fichier.txt]
+</code></pre></div></div>
+
+<p>Il existe également une autre façon d’annuler toutes vos modifications non commitées (plus longue à taper, mais fonctionne depuis n’importe quel sous-dossier) :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git reset <span class="nt">--hard</span> HEAD
+</code></pre></div></div>
+
+<p>Cette commande supprimera tous les fichiers locaux non indexés, afin que seuls les fichiers suivis par Git ne restent :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git clean <span class="nt">-fd</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">-x</code> supprimera également tous les fichiers ignorés.</p>
+
+<h3 id="je-veux-me-débarrasser-de-modifications-non-indexées-spécifiques">Je veux me débarrasser de modifications non-indexées spécifiques</h3>
+
+<p>Quand vous souhaitez vous débarrasser de quelques modifications dans votre copie de travail, mais pas toutes, faites un <code class="highlighter-rouge">checkout</code> sur les modifications non désirées, et gardez les bonnes :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git checkout <span class="nt">-p</span>
+<span class="c"># Répondez y à tous les bouts de code que vous souhaitez jeter</span>
+</code></pre></div></div>
+
+<p>Une autre stratégie implique d’utiliser <code class="highlighter-rouge">stash</code>. Remisez toutes les bonnes modifications, réinitialisez votre copie locale, et réappliquez les bonnes modifications :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git stash <span class="nt">-p</span>
+<span class="c"># Sélectionnez tous les bouts de code que vous souhaitez garder</span>
+<span class="nv">$ </span>git reset <span class="nt">--hard</span>
+<span class="nv">$ </span>git stash pop
+</code></pre></div></div>
+
+<p>Alternativement, remisez vos changements non désirés, puis jetez le stash :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git stash <span class="nt">-p</span>
+<span class="c"># Sélectionnez tous les bouts de code que vous ne souhaitez pas sauvegarder</span>
+<span class="nv">$ </span>git stash drop
+</code></pre></div></div>
+
+<h3 id="je-veux-me-débarrasser-de-fichiers-non-indexés-spécifiques">Je veux me débarrasser de fichiers non-indexés spécifiques</h3>
+
+<p>Quand vous souhaitez vous débarrasser d’un fichier en particulier de votre copie de travail :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git checkout monFichier
+</code></pre></div></div>
+
+<p>Alternativement, pour vous débarrasser de plusieurs fichiers dans votre copie locale, listez chacun d’entre eux :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git checkout monPremierFichier monDeuxiemeFichier
+</code></pre></div></div>
+
+<h3 id="je-veux-me-débarrasser-de-mes-modifications-locales-non-indexées-uniquement">Je veux me débarrasser de mes modifications locales non-indexées uniquement</h3>
+
+<p>Quand vous souhaitez vous débarrasser de toutes vos modifications locales non commitées :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git checkout <span class="nb">.</span>
+</code></pre></div></div>
+<p><a href="i-want-to-discard-all-my-untracked-files"></a></p>
+<h3 id="je-veux-me-débarrasser-de-tous-mes-fichiers-non-suivis">Je veux me débarrasser de tous mes fichiers non suivis</h3>
+
+<p>Quand vous souhaitez vous débarrasser de tous vos fichiers non suivis :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git clean <span class="nt">-f</span>
+</code></pre></div></div>
+
+<p><a href="I-want-to-unstage-specific-staged-file"></a></p>
+<h3 id="je-veux-désindexer-un-fichier-indexé-spécifique">Je veux désindexer un fichier indexé spécifique</h3>
+
+<p>Il arrive parfois que nous ayons un ou plusieurs fichiers qui ont été indexés par accident. Et ces fichiers n’ont pas été commités auparavant. Pour les désindexer :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git reset <span class="nt">--</span> &lt;nomdufichier&gt;
+</code></pre></div></div>
+
+<p>Cela entraînera la désindexation du fichier et le remettra à son état non suivi.</p>
+
+<h2 id="branches">Branches</h2>
+
+<h3 id="je-veux-lister-toutes-les-branches">Je veux lister toutes les branches</h3>
+
+<p>Pour lister les branches locales :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git branch
+</code></pre></div></div>
+
+<p>Pour lister les branches distantes :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git branch <span class="nt">-r</span>
+</code></pre></div></div>
+
+<p>Pour lister toutes les branches (à la fois locales et distantes) :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git branch <span class="nt">-a</span>
+</code></pre></div></div>
+
+<p><a name="create-branch-from-commit"></a></p>
+<h3 id="créer-une-branche-à-partir-dun-commit">Créer une branche à partir d’un commit</h3>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git checkout <span class="nt">-b</span> &lt;branche&gt; &lt;SHA1_DU_COMMIT&gt;
+</code></pre></div></div>
+
+<p><a name="pull-wrong-branch"></a></p>
+<h3 id="jai-pull-depuisvers-la-mauvaise-branche">J’ai pull depuis/vers la mauvaise branche</h3>
+
+<p>C’est une autre occasion d’utiliser <code class="highlighter-rouge">git reflog</code> afin de voir où votre HEAD pointait avant le mauvais <code class="highlighter-rouge">pull</code> :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git reflog
+ab7555f HEAD@<span class="o">{</span>0<span class="o">}</span>: pull origin wrong-branch: Fast-forward
+c5bc55a HEAD@<span class="o">{</span>1<span class="o">}</span>: checkout: checkout message goes here
+</code></pre></div></div>
+
+<p>Réinitialisez simplement votre branche vers le commit désiré :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git reset <span class="nt">--hard</span> c5bc55a
+</code></pre></div></div>
+
+<p>Et voilà.</p>
+
+<p><a href="discard-local-commits"></a></p>
+<h3 id="je-veux-supprimer-mes-commits-locaux-afin-que-ma-branche-soit-pareille-à-celle-sur-le-serveur">Je veux supprimer mes commits locaux afin que ma branche soit pareille à celle sur le serveur</h3>
+
+<p>Assurez-vous que vous n’avez pas poussé vos modifications sur le serveur.</p>
+
+<p><code class="highlighter-rouge">git status</code> devrait vous indiquer combien de commits en avance vous êtes par rapport à origin :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>my-branch<span class="o">)</span><span class="nv">$ </span>git status
+<span class="o">(</span>ma-branche<span class="o">)</span><span class="nv">$ </span>git status
+<span class="c"># On branch ma-branche</span>
+<span class="c"># Your branch is ahead of 'origin/my-branch' by 2 commits.</span>
+<span class="c">#   (use "git push" to publish your local commits)</span>
+<span class="c">#</span>
+</code></pre></div></div>
+
+<p>Une des façons de faire pour réinitialiser votre branche afin qu’elle corresponde à origin (afin d’avoir la même chose que le dépôt distant) est de lancer ceci :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git reset <span class="nt">--hard</span> origin/ma-branche
+</code></pre></div></div>
+
+<p><a name="commit-wrong-branch"></a></p>
+<h3 id="jai-commité-sur-master-au-lieu-dune-nouvelle-branche">J’ai commité sur master au lieu d’une nouvelle branche</h3>
+
+<p>Créez la nouvelle branche tout en restant sur master :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git branch ma-branche
+</code></pre></div></div>
+
+<p>Réinitialisez la branche master vers le commit précédent :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git reset <span class="nt">--hard</span> HEAD^
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">HEAD^</code> est un raccourci pour <code class="highlighter-rouge">HEAD^1</code>. Cela indique le premier parent de <code class="highlighter-rouge">HEAD</code>, de la même façon que <code class="highlighter-rouge">HEAD^2</code> indique le second parent du commit (des fusions peuvent avoir deux parents).</p>
+
+<p>Notez que <code class="highlighter-rouge">HEAD^2</code> ne signifie <strong>pas</strong> la même chose que <code class="highlighter-rouge">HEAD~2</code> (visitez <a href="http://www.paulboxley.com/blog/2011/06/git-caret-and-tilde">ce lien</a> pour plus d’informations).</p>
+
+<p>Alternativement, si vous ne souhaitez pas utiliser <code class="highlighter-rouge">HEAD^</code>, retrouvez le hash du commit vers lequel vous souhaitez remettre votre branche master (<code class="highlighter-rouge">git log</code> devrait faire l’affaire). Puis réinitialisez vers ce hash. <code class="highlighter-rouge">git push</code> s’assurera que la modification est reflétée sur le serveur distant.</p>
+
+<p>Par exemple, si le hash du commit sur lequel votre branche master est supposée être est <code class="highlighter-rouge">a13b85e</code> :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git reset <span class="nt">--hard</span> a13b85e
+HEAD is now at a13b85e
+</code></pre></div></div>
+
+<p>Déplacez-vous vers la nouvelle branche pour continuer de travailler :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git checkout ma-branche
+</code></pre></div></div>
+
+<p><a name="keep-whole-file"></a></p>
+<h3 id="je-veux-séparer-tout-un-fichier-dun-autre-ref-ish">Je veux séparer tout un fichier d’un autre ref-ish</h3>
+
+<p>Admettons que vous avez un pic de travail (voir la note), avec des centaines de changements. Tout fonctionne bien. Maintenant, vous commitez vers une autre branche pour sauvegarder ce travail :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>solution<span class="o">)</span><span class="nv">$ </span>git add <span class="nt">-A</span> <span class="o">&amp;&amp;</span> git commit <span class="nt">-m</span> <span class="s2">"Ajout de tous les changements de ce pic vers un gros commit."</span>
+</code></pre></div></div>
+
+<p>Quand vous souhaitez mettre tout cela vers une branche (d’une fonctionnalité ou <code class="highlighter-rouge">develop</code>), ce qui vous intéresse est de garder les fichiers dans leur entièreté. Vous voudriez également séparer votre gros commit en plusieurs petits commits.</p>
+
+<p>Admettons que vous ayez :</p>
+
+<ul>
+  <li>La branche <code class="highlighter-rouge">solution</code>, avec la solution à votre pic. En avance d’un commit par rapport à <code class="highlighter-rouge">develop</code>.</li>
+  <li>La branche <code class="highlighter-rouge">develop</code>, où vous souhaitez ajouter vos modifications.</li>
+</ul>
+
+<p>Vous pouvez résoudre cela en ramenant les contenus vers votre branche :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>develop<span class="o">)</span><span class="nv">$ </span>git checkout solution <span class="nt">--</span> fichier1.txt
+</code></pre></div></div>
+
+<p>Cela ramènera le contenu de ce fichier dans la branche <code class="highlighter-rouge">solution</code> vers votre branche <code class="highlighter-rouge">develop</code> :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># On branch develop</span>
+<span class="c"># Your branch is up-to-date with 'origin/develop'.</span>
+<span class="c"># Changes to be committed:</span>
+<span class="c">#  (use "git reset HEAD &lt;file&gt;..." to unstage)</span>
+<span class="c">#</span>
+<span class="c">#        modified:   fichier1.txt</span>
+</code></pre></div></div>
+
+<p>Puis, commitez comme d’habitude.</p>
+
+<p>Note: Les pics de solutions servent à analyser ou résoudre un problème. Ces solutions sont ensuite utilisées afin d’avoir une estimation puis jetées une fois que tout le monde a une vision claire du problème. ~ <a href="https://en.wikipedia.org/wiki/Extreme_programming_practices">Wikipedia</a>.</p>
+
+<p><a name="cherry-pick"></a></p>
+<h3 id="jai-fait-plusieurs-commits-sur-une-même-branche-qui-auraient-dû-être-sur-plusieurs-branches">J’ai fait plusieurs commits sur une même branche qui auraient dû être sur plusieurs branches</h3>
+
+<p>Admettons que vous êtes sur votre branche master. En lançant <code class="highlighter-rouge">git log</code>, vous remarquez que vous avez fait deux commits :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git log
+
+commit e3851e817c451cc36f2e6f3049db528415e3c114
+Author: Alex Lee &lt;alexlee@example.com&gt;
+Date:   Tue Jul 22 15:39:27 2014 <span class="nt">-0400</span>
+
+    Bug <span class="c">#21 - Ajout de la protection CSRF</span>
+
+commit 5ea51731d150f7ddc4a365437931cd8be3bf3131
+Author: Alex Lee &lt;alexlee@example.com&gt;
+Date:   Tue Jul 22 15:39:12 2014 <span class="nt">-0400</span>
+
+    Bug <span class="c">#14 - Correction de l'espacement du titre</span>
+
+commit a13b85e984171c6e2a1729bb061994525f626d14
+Author: Aki Rose &lt;akirose@example.com&gt;
+Date:   Tue Jul 21 01:12:48 2014 <span class="nt">-0400</span>
+
+    Premier commit
+</code></pre></div></div>
+
+<p>Notons dans un coin les hashes des commits pour chaque bug (<code class="highlighter-rouge">e3851e8</code> pour le #21, <code class="highlighter-rouge">5ea5173</code> pour le #14).</p>
+
+<p>Pour commencer, réinitialisons notre branche master sur le bon commit (<code class="highlighter-rouge">a13b85e</code>) :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git reset <span class="nt">--hard</span> a13b85e
+HEAD is now at a13b85e
+</code></pre></div></div>
+
+<p>Maintenant, nous pouvons créer une nouvelle branche pour le bug #21 :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git checkout <span class="nt">-b</span> 21
+<span class="o">(</span>21<span class="o">)</span><span class="err">$</span>
+</code></pre></div></div>
+
+<p>Maintenant, faisons un <code class="highlighter-rouge">cherry-pick</code> du commit pour le bug #21 par-dessus notre branche. Cela signifie que nous appliquerons ce commit, et seulement ce commit, directement au-dessus de ce qui se trouve sur notre HEAD :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>21<span class="o">)</span><span class="nv">$ </span>git cherry-pick e3851e8
+</code></pre></div></div>
+
+<p>Lors de cette étape, il est possible qu’il y ait des conflits. Regardez la section <a href="#merge-conflict"><strong>Il y a eu des conflits</strong></a> dans la section <a href="#interactive-rebase">faire un rebase interactif</a> ci-dessus pour savoir comment résoudre ces conflits.</p>
+
+<p>Maintenant, créons une nouvelle branche pour le bug #14, aussi basée sur master :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>21<span class="o">)</span><span class="nv">$ </span>git checkout master
+<span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git checkout <span class="nt">-b</span> 14
+<span class="o">(</span>14<span class="o">)</span><span class="err">$</span>
+</code></pre></div></div>
+
+<p>Et pour finir, faisons un <code class="highlighter-rouge">cherry-pick</code> du commit pour le bug #14 :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>14<span class="o">)</span><span class="nv">$ </span>git cherry-pick 5ea5173
+</code></pre></div></div>
+
+<p><a name="delete-stale-local-branches"></a></p>
+<h3 id="je-veux-supprimer-mes-branches-locales-qui-ont-été-supprimée-sur-le-dépôt-distant">Je veux supprimer mes branches locales qui ont été supprimée sur le dépôt distant</h3>
+<p>Une fois que vous avez accepté une Pull Request sur GitHub, vous avez l’option de supprimer la branche fusionnée dans votre fork. Si vous ne prévoyez pas de continuer à travailler sur la branche, cela est plus propre de supprimer les copies locales de la branche afin de ne pas encombrer votre copie de travail avec un tas de branches obsolètes.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git fetch <span class="nt">-p</span> upstream
+</code></pre></div></div>
+
+<p>où <code class="highlighter-rouge">upstream</code> est le dépôt distant depuis lequel vous voulez mettre à jour.</p>
+
+<p><a name="restore-a-deleted-branch"></a></p>
+<h3 id="jai-supprimé-ma-branche-par-accident">J’ai supprimé ma branche par accident</h3>
+
+<p>Si vous poussez régulièrement sur la branche distante, vous devriez ne pas avoir de problème la plupart du temps. Mais il arrive parfois que vous finissez par supprimer vos branches. Admettons que nous créons une nouvelle branche avec un nouveau fichier :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git checkout <span class="nt">-b</span> ma-branche
+<span class="o">(</span>ma-branceh<span class="o">)</span><span class="nv">$ </span>git branch
+<span class="o">(</span>ma-branche<span class="o">)</span><span class="nv">$ </span><span class="nb">touch </span>foo.txt
+<span class="o">(</span>ma-branche<span class="o">)</span><span class="nv">$ </span><span class="nb">ls
+</span>README.md foo.txt
+</code></pre></div></div>
+
+<p>Ajoutons cela et commitons :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>ma-branche<span class="o">)</span><span class="nv">$ </span>git add <span class="nb">.</span>
+<span class="o">(</span>ma-branche<span class="o">)</span><span class="nv">$ </span>git commit <span class="nt">-m</span> <span class="s1">'ajout de foo.txt'</span>
+<span class="o">(</span>ma-branche<span class="o">)</span><span class="nv">$ </span>ajout de foo.txt
+ 1 files changed, 1 insertions<span class="o">(</span>+<span class="o">)</span>
+ create mode 100644 foo.txt
+<span class="o">(</span>ma-branche<span class="o">)</span><span class="nv">$ </span>git log
+
+commit 4e3cd85a670ced7cc17a2b5d8d3d809ac88d5012
+Author: siemiatj &lt;siemiatj@example.com&gt;
+Date:   Wed Jul 30 00:34:10 2014 +0200
+
+    ajout de foo.txt
+
+commit 69204cdf0acbab201619d95ad8295928e7f411d5
+Author: Kate Hudson &lt;katehudson@example.com&gt;
+Date:   Tue Jul 29 13:14:46 2014 <span class="nt">-0400</span>
+
+    Correction <span class="c">#6: Push de force après avoir édité les commits</span>
+</code></pre></div></div>
+
+<p>Maintenant, revenons sur master et supprimons notre branche “par accident” :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>ma-branche<span class="o">)</span><span class="nv">$ </span>git checkout master
+Switched to branch <span class="s1">'master'</span>
+Your branch is up-to-date with <span class="s1">'origin/master'</span><span class="nb">.</span>
+<span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git branch <span class="nt">-D</span> my-branch
+Deleted branch ma-branche <span class="o">(</span>was 4e3cd85<span class="o">)</span><span class="nb">.</span>
+<span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span><span class="nb">echo </span>oh non, j<span class="s1">'ai supprimé ma branche !
+oh non, j'</span>ai supprimé ma branche <span class="o">!</span>
+</code></pre></div></div>
+
+<p>À cette étape, vous devriez devenir familier avec <code class="highlighter-rouge">reflog</code>, un logueur amélioré. Il stocke l’historique de toutes les actions dans le dépôt :</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(master)$ git reflog
+69204cd HEAD@{0}: checkout: moving from ma-branche to master
+4e3cd85 HEAD@{1}: commit: ajout de foo.txt
+69204cd HEAD@{2}: checkout: moving from master to ma-branche
+</code></pre></div></div>
+
+<p>Comme vous pouvez le remarquer, nous avons le hash du commit de notre branche supprimée. Voyons voir si nous pouvons restaurer notre branche supprimée.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git checkout <span class="nt">-b</span> ma-branche-help
+Switched to a new branch <span class="s1">'ma-branche-help'</span>
+<span class="o">(</span>ma-branche-help<span class="o">)</span><span class="nv">$ </span>git reset <span class="nt">--hard</span> 4e3cd85
+HEAD is now at 4e3cd85 ajout de foo.txt
+<span class="o">(</span>ma-branche-help<span class="o">)</span><span class="nv">$ </span><span class="nb">ls
+</span>README.md foo.txt
+</code></pre></div></div>
+
+<p>Voilà ! Nous avons récupéré notre fichier supprimé. <code class="highlighter-rouge">git reflog</code> est aussi utile quand un rebase se passe terriblement mal.</p>
+
+<h3 id="je-veux-supprimer-une-branche">Je veux supprimer une branche</h3>
+
+<p>Pour supprimer une branche distante :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git push origin <span class="nt">--delete</span> ma-branche
+</code></pre></div></div>
+
+<p>Vous pouvez aussi faire :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git push origin :ma-branche
+</code></pre></div></div>
+
+<p>Pour supprimer une branche locale :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git branch <span class="nt">-d</span> ma-branche
+</code></pre></div></div>
+
+<p>Pour supprimer une branche locale qui <em>n’a pas</em> été fusionnée vers la branche actuelle ou une branche distante :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git branch <span class="nt">-D</span> ma-branche
+</code></pre></div></div>
+
+<h3 id="je-veux-supprimer-plusieurs-branches">Je veux supprimer plusieurs branches</h3>
+
+<p>Admettons que vous voulez supprimer toutes les branches qui commencent par <code class="highlighter-rouge">fix/</code> :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git branch | <span class="nb">grep</span> <span class="s1">'fix/'</span> | xargs git branch <span class="nt">-d</span>
+</code></pre></div></div>
+
+<h3 id="je-veux-renommer-une-branche">Je veux renommer une branche</h3>
+
+<p>Je veux renommer la branche actuelle (locale) :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git branch <span class="nt">-m</span> nouveau-nom
+</code></pre></div></div>
+
+<p>Pour renommer une autre branche (locale) :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git branch <span class="nt">-m</span> ancien-nom nouveau-nom
+</code></pre></div></div>
+
+<p><a name="i-want-to-checkout-to-a-remote-branch-that-someone-else-is-working-on"></a></p>
+<h3 id="je-veux-me-déplacer-sur-une-branche-distante-sur-laquelle-quelquun-est-en-train-de-travailler">Je veux me déplacer sur une branche distante sur laquelle quelqu’un est en train de travailler</h3>
+
+<p>Pour commencer, récupérez toutes les branches depuis le dépôt distant :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git fetch <span class="nt">--all</span>
+</code></pre></div></div>
+
+<p>Admettons que vous souhaitez vous déplacer sur <code class="highlighter-rouge">daves</code> depuis le dépôt distant :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git checkout <span class="nt">--track</span> origin/daves
+Branch daves <span class="nb">set </span>up to track remote branch daves from origin.
+Switched to a new branch <span class="s1">'daves'</span>
+</code></pre></div></div>
+
+<p>(<code class="highlighter-rouge">--track</code> est un raccourci pour <code class="highlighter-rouge">git checkout -b [branch] [remotename]/[branch]</code>)</p>
+
+<p>Cela vous donnera une copie locale de la branche <code class="highlighter-rouge">daves</code>, et n’importe quelle mise à jour qui y sera poussée sera aussi visible sur le dépôt distant.</p>
+
+<h3 id="je-veux-créer-une-nouvelle-branche-distante-à-partir-de-celle-en-locale">Je veux créer une nouvelle branche distante à partir de celle en locale</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git push &lt;remote&gt; HEAD
+</code></pre></div></div>
+
+<p>Si vous voulez configurer cette branche distante en tant qu’upstream pour la branche actuelle, lancez la commande suivante à la place :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git push <span class="nt">-u</span> &lt;remote&gt; HEAD
+</code></pre></div></div>
+
+<p>Avec le mode <code class="highlighter-rouge">upstream</code> et le mode <code class="highlighter-rouge">simple</code> (défaut dans Git 2.0) de la configuration de <code class="highlighter-rouge">push.default</code>, la commande suivante poussera la branche actuelle par rapport à la branche distante qui a été précédemment enregistrée avec <code class="highlighter-rouge">-u</code> :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git push
+</code></pre></div></div>
+
+<p>Le comportement des autres modes de <code class="highlighter-rouge">git push</code> est détaillé dans la <a href="https://git-scm.com/docs/git-config#git-config-pushdefault">documentation de <code class="highlighter-rouge">push.default</code></a>.</p>
+
+<h3 id="je-veux-configurer-une-branche-distante-en-tant-quupstream-pour-une-branche-locale">Je veux configurer une branche distante en tant qu’upstream pour une branche locale</h3>
+
+<p>Vous pouvez configurer une branche distante en tant qu’upstream pour la branche locale actuelle en utilisant :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git branch <span class="nt">--set-upstream-to</span> <span class="o">[</span>nomduremote]/[branche]
+<span class="c"># ou, en utilisant le raccourci :</span>
+<span class="nv">$ </span>git branch <span class="nt">-u</span> <span class="o">[</span>nomduremote]/[branche]
+</code></pre></div></div>
+
+<p>Pour configurer la branche distante en tant qu’upstream pour une autre branche locale :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git branch <span class="nt">-u</span> <span class="o">[</span>nomduremote]/[branche] <span class="o">[</span>branche-locale]
+</code></pre></div></div>
+
+<p><a name="i-want-to-set-my-HEAD-to-track-the-default-remote-branch"></a></p>
+<h3 id="je-veux-configurer-mon-head-pour-suivre-la-branche-distante-par-défaut">Je veux configurer mon HEAD pour suivre la branche distante par défaut</h3>
+
+<p>En vérifiant vos branches distantes, vous pouvez voir lesquelles d’entre-elles sont suivies par HEAD. Dans certains cas, ce n’est pas la branche désirée.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git branch <span class="nt">-r</span>
+  origin/HEAD -&gt; origin/gh-pages
+  origin/master
+</code></pre></div></div>
+
+<p>Pour changer cela afin que <code class="highlighter-rouge">origin/HEAD</code> suive <code class="highlighter-rouge">origin/master</code>, vous pouvez lancer cette commande :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git remote set-head origin <span class="nt">--auto</span>
+origin/HEAD <span class="nb">set </span>to master
+</code></pre></div></div>
+
+<h3 id="jai-fait-des-modifications-sur-la-mauvaise-branche">J’ai fait des modifications sur la mauvaise branche</h3>
+
+<p>Si vous avez fait des modifications non commitées et réalisez par la suite que vous êtes sur la mauvaise branche, remisez les modifications et appliquez-les sur la branche que vous voulez :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>mauvaise_branche<span class="o">)</span><span class="nv">$ </span>git stash
+<span class="o">(</span>mauvaise_branche<span class="o">)</span><span class="nv">$ </span>git checkout &lt;bonne_branche&gt;
+<span class="o">(</span>bonne_branche<span class="o">)</span><span class="nv">$ </span>git stash apply
+</code></pre></div></div>
+
+<h2 id="rebaser-et-fusionner">Rebaser et fusionner</h2>
+
+<p><a name="undo-rebase"></a></p>
+<h3 id="je-veux-annuler-un-rebasemerge">Je veux annuler un rebase/merge</h3>
+
+<p>Il se peut que vous avez fait une fusion ou un rebase sur votre branche actuelle avec une mauvaise branche, ou que vous vous êtes perdus ou n’arrivez pas à finir le processus de rebase ou de fusion. Git sauvegarde le pointeur de HEAD original dans une variable appelée ORIG_HEAD avant de faire des opérations dangereuses, afin qu’il soit plus facile de réinitialiser votre branche dans l’état avant le rebase ou la fusion :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>ma-branche<span class="o">)</span><span class="nv">$ </span>git reset <span class="nt">--hard</span> ORIG_HEAD
+</code></pre></div></div>
+
+<p><a name="force-push-rebase"></a></p>
+<h3 id="jai-rebase-mais-je-ne-veux-pas-pousser-de-force">J’ai rebase, mais je ne veux pas pousser de force</h3>
+
+<p>Malheureusement, vous devez pousser de force si vous souhaitez que ces modifications soient répercutées sur la branche distante. C’est parce que vous avez changé l’historique. La branche distante n’acceptera pas les modifications, sauf si vous poussez de force. C’est l’une des principales raisons pour lesquelles de nombreuses personnes utilisent un flux de travail à base de fusions plutôt qu’un flux de travail à base de rebase : les grandes équipes peuvent avoir des problèmes avec les développeurs qui poussent de force. Utilisez ceci avec prudence. Une façon plus sûre d’utiliser rebase est de ne pas du tout refléter vos modifications sur la branche distante, mais plutôt de procéder de la manière suivante :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git checkout ma-branche
+<span class="o">(</span>ma-branche<span class="o">)</span><span class="nv">$ </span>git rebase <span class="nt">-i</span> master
+<span class="o">(</span>ma-branche<span class="o">)</span><span class="nv">$ </span>git checkout master
+<span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git merge <span class="nt">--ff-only</span> ma-branche
+</code></pre></div></div>
+
+<p>Pour plus d’informations, visitez <a href="https://stackoverflow.com/questions/11058312/how-can-i-use-git-rebase-without-requiring-a-forced-push">ce thread de SO</a>.</p>
+
+<p><a name="interactive-rebase"></a></p>
+<h3 id="jai-besoin-de-combiner-des-commits">J’ai besoin de combiner des commits</h3>
+
+<p>Admettons que vous êtes en train de travailler sur une branche qui sera ou est dans une demande de fusion vers <code class="highlighter-rouge">master</code>. Dans le cas le plus simple, il suffit de combiner <em>tous</em> vos commits en un seul et vous vous fichez des timestamps des commits, vous pouvez faire un reset et recommiter. Assurez-vous que la branche master est à jour et que toutes vos modifications sont commitées, puis faites :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>ma-branche<span class="o">)</span><span class="nv">$ </span>git reset <span class="nt">--soft</span> master
+<span class="o">(</span>ma-branche<span class="o">)</span><span class="nv">$ </span>git commit <span class="nt">-am</span> <span class="s2">"Nouvelle fonctionnalité géniale"</span>
+</code></pre></div></div>
+
+<p>Si vous voulez plus de contrôle, et également conserver les timestamps, vous devez faire ce qu’on appelle un rebase interactif :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>ma-branche<span class="o">)</span><span class="nv">$ </span>git rebase <span class="nt">-i</span> master
+</code></pre></div></div>
+
+<p>Si vous ne travaillez pas par rapport à une autre branche, vous allez devoir <code class="highlighter-rouge">rebase</code> relativement à votre <code class="highlighter-rouge">HEAD</code>. Si vous voulez combiner les 2 derniers commits par exemple, vous allez devoir <code class="highlighter-rouge">rebase</code> par rapport à <code class="highlighter-rouge">HEAD~2</code>. Pour les 3 derniers, <code class="highlighter-rouge">HEAD~3</code>, etc.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git rebase <span class="nt">-i</span> HEAD~2
+</code></pre></div></div>
+
+<p>Après avoir lancé votre commande <code class="highlighter-rouge">rebase</code>, vous verrez quelque chose dans le genre dans votre éditeur de texte :</p>
+
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pick a9c8a1d Un peu <span class="k">de</span> refactor
+pick <span class="m">01</span>b2fd8 Nouvelle feature génial
+pick b729ad5 fixup
+pick e3851e8 autre <span class="k">fix</span>
+
+# Rebase <span class="m">8074</span>d12<span class="p">..</span>b729ad5 onto <span class="m">8074</span>d12
+#
+# Commands<span class="p">:</span>
+#  <span class="k">p</span><span class="p">,</span> pick <span class="p">=</span> use commit
+#  <span class="k">r</span><span class="p">,</span> reword <span class="p">=</span> use commit<span class="p">,</span> but edit the commit message
+#  <span class="k">e</span><span class="p">,</span> edit <span class="p">=</span> use commit<span class="p">,</span> but stop <span class="k">for</span> amending
+#  s<span class="p">,</span> squash <span class="p">=</span> use commit<span class="p">,</span> but meld into <span class="k">previous</span> commit
+#  <span class="k">f</span><span class="p">,</span> fixup <span class="p">=</span> like <span class="s2">"squash"</span><span class="p">,</span> but discard this commit's log message
+#  <span class="k">x</span><span class="p">,</span> exec <span class="p">=</span> run command <span class="p">(</span>the rest of the line<span class="p">)</span> using <span class="k">shell</span>
+#
+# These lines can be <span class="k">re</span><span class="p">-</span>ordered; they are executed from <span class="k">top</span> <span class="k">to</span> bottom<span class="p">.</span>
+#
+# If you remove <span class="k">a</span> line here THAT COMMIT WILL BE LOST<span class="p">.</span>
+#
+# However<span class="p">,</span> <span class="k">if</span> you remove everything<span class="p">,</span> the rebase will be aborted<span class="p">.</span>
+#
+# Note that empty commits are commented out
+</code></pre></div></div>
+
+<p>Toutes les lignes commençant par un <code class="highlighter-rouge">#</code> sont des commentaires, elles n’affecteront pas votre rebase.</p>
+
+<p>Vous devez ensuite remplacer les commandes <code class="highlighter-rouge">pick</code> avec n’importe laquelle parmi celles présentes dans la liste ci-dessus, et vous pouvez également supprimer des commits en supprimant les lignes correspondantes.</p>
+
+<p>Par exemple, si vous voulez <strong>laisser le commit le plus vieux (le premier) tel quel et combiner tous les commits suivants avec le deuxième plus vieux</strong>, vous devez remplacer les lettres à côté de chaque commit sauf le premier et le deuxième par un <code class="highlighter-rouge">f</code> :</p>
+
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pick a9c8a1d Un peu <span class="k">de</span> refactor
+pick <span class="m">01</span>b2fd8 Nouvelle feature géniale
+<span class="k">f</span> b729ad5 fixup
+<span class="k">f</span> e3851e8 autre <span class="k">fix</span>
+</code></pre></div></div>
+
+<p>Si vous voulez combiner ces commits <strong>et renommer le commit</strong>, il vous faudra ajouter un <code class="highlighter-rouge">r</code> à côté du deuxième commit ou utiliser simplement <code class="highlighter-rouge">s</code> au lieu de <code class="highlighter-rouge">f</code> :</p>
+
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pick a9c8a1d Un peu <span class="k">de</span> refactor
+pick <span class="m">01</span>b2fd8 Nouvelle feature géniale
+s b729ad5 fixup
+s e3851e8 autre <span class="k">fix</span>
+</code></pre></div></div>
+
+<p>Vous pouvez ensuite renommer le commit dans le prochain éditeur de texte qui s’affiche :</p>
+
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Nouvelles fonctionnalités encore plus géniales
+
+# Please enter the commit message <span class="k">for</span> your <span class="k">changes</span><span class="p">.</span> Lines starting
+# with <span class="s1">'#'</span> will be ignored<span class="p">,</span> and an empty message aborts the commit<span class="p">.</span>
+# rebase <span class="k">in</span> progress; onto <span class="m">8074</span>d12
+# You are currently editing <span class="k">a</span> commit <span class="k">while</span> rebasing branch <span class="s1">'master'</span> <span class="k">on</span> <span class="s1">'8074d12'</span><span class="p">.</span>
+#
+# Changes <span class="k">to</span> be committed<span class="p">:</span>
+#   modified<span class="p">:</span>   README<span class="p">.</span>md
+#
+
+</code></pre></div></div>
+
+<p>Si tout se passe bien, vous devriez voir quelque chose comme ceci :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>Successfully rebased and updated refs/heads/master.
+</code></pre></div></div>
+
+<h4 id="stratégie-de-fusion-sûre">Stratégie de fusion sûre</h4>
+<p><code class="highlighter-rouge">--no-commit</code> fait une fusion mais prétend que la fusion a échoué et ne commit pas automatiquement, laissant la chance à l’utilisateur d’inspecter plus et de bidouiller plus les résultats de la fusion avant de commiter. <code class="highlighter-rouge">no-ff</code> garde une preuve qu’une branche de fonctionnalité a auparavant existé, gardant ainsi l’historique du projet consistant :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git merge <span class="nt">--no-ff</span> <span class="nt">--no-commit</span> ma-branche
+</code></pre></div></div>
+
+<h4 id="jai-besoin-de-fusionner-deux-branches-en-un-seul-commit">J’ai besoin de fusionner deux branches en un seul commit</h4>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git merge <span class="nt">--squash</span> ma-branche
+</code></pre></div></div>
+
+<p><a name="rebase-unpushed-commits"></a></p>
+<h4 id="je-veux-combiner-les-commits-non-poussés-uniquement">Je veux combiner les commits non poussés uniquement</h4>
+
+<p>Parfois, vous avez plusieurs commits en cours que vous souhaitez combiner avant de les pousser sur l’upstream. Vous ne voulez pas combiner des commits qui ont déjà été poussés sur l’upstream par accident, car quelqu’un d’autre a peut-être déjà effectué des commits qui y font référence :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git rebase <span class="nt">-i</span> @<span class="o">{</span>u<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Cela fera un rebase interactif que liste seulement les commits que vous n’avez pas poussé, afin que cela soit plus sûr de réordonner/corriger/combiner n’importe lesquels de la liste.</p>
+
+<h4 id="jai-besoin-dannuler-la-fusion">J’ai besoin d’annuler la fusion</h4>
+
+<p>Parfois, une fusion peux produire des problèmes pour certains fichiers. Dans ces cas là, nous pouvons utiliser l’option <code class="highlighter-rouge">abort</code> afin d’abonner le processus de résolution de conflits en cours, afin d’essayer de reconstruire l’état qu’on avait avant la fusion :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>ma-branche<span class="o">)</span><span class="nv">$ </span>git merge <span class="nt">--abort</span>
+</code></pre></div></div>
+
+<p>Cette commande est disponible dans Git depuis les versions &gt;= 1.7.4</p>
+
+<h3 id="jai-besoin-de-mettre-à-jour-le-commit-parent-de-ma-branche">J’ai besoin de mettre à jour le commit parent de ma branche</h3>
+
+<p>Admettons que vous avez une branche master, une branche feature-1 créée à partir de master, et une branche feature-2 créée à partir de feature-1, puis que le commit parent de feature-2 n’est plus le bon (il devrait être celui correspondant au HEAD de feature-1, étant donné que notre branche a été créée à partir de celui-ci). Vous pouvez réparer ça avec <code class="highlighter-rouge">git rebase --onto</code> :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>feature-2<span class="o">)</span><span class="nv">$ </span>git rebase <span class="nt">--onto</span> feature-1 &lt;le premier commit dans votre branche feature-2 que vous ne voulez pas ramene&gt; feature-2
+</code></pre></div></div>
+
+<p>Cela peut vous venir en aide dans les situations délicates où vous avez une fonctionnalité créée sur la base d’une autre fonctionnalité qui n’a pas encore été fusionnée, et qu’une correction de bug sur la branche feature-1 a besoin d’être reflétée sur votre branche feature-2.</p>
+
+<h3 id="vérifier-si-tous-les-commits-dune-branche-sont-fusionnés">Vérifier si tous les commits d’une branche sont fusionnés</h3>
+
+<p>Pour vérifier si tous les commits d’une branche sont fusionnés sur une autre branche, vous devriez comparer les HEAD (ou n’importe quel autre commit) de ces branches :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git log <span class="nt">--graph</span> <span class="nt">--left-right</span> <span class="nt">--cherry-pick</span> <span class="nt">--oneline</span> HEAD...feature/120-on-scroll
+</code></pre></div></div>
+
+<p>Cela vous dira si des commits sont dans l’une mais pas dans l’autre, et vous donnera une liste de tout ce qui n’est pas commun aux deux branches. Une alternative est de faire ceci :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git log master ^feature/120-on-scroll <span class="nt">--no-merges</span>
+</code></pre></div></div>
+
+<h3 id="problèmes-possibles-avec-les-rebase-interactifs">Problèmes possibles avec les rebase interactifs</h3>
+
+<p><a name="noop"></a></p>
+<h4 id="lécran-dédition-du-rebase-affiche-noop">L’écran d’édition du rebase affiche ‘noop’</h4>
+
+<p>Si vous voyez cela :</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>noop
+</code></pre></div></div>
+
+<p>Cela signifie que vous êtes en train de rebaser par rapport à une branche qui a un commit identique, ou qui est <em>en avance</em> par rapport à votre branche actuelle. Vous pouvez essayer :</p>
+
+<ul>
+  <li>de vous assurez que votre branche master est là où elle devrait être</li>
+  <li>de rebaser par rapport à <code class="highlighter-rouge">HEAD~2</code> ou plus tôt à la place</li>
+</ul>
+
+<p><a name="merge-conflict"></a></p>
+<h4 id="il-y-a-eu-des-conflits">Il y a eu des conflits</h4>
+
+<p>Si vous n’êtes pas en mesure de terminer le rebase avec succès, vous allez peut-être devoir résoudre des conflits.</p>
+
+<p>Pour commencer, lancez <code class="highlighter-rouge">git status</code> afin de voir quels fichiers ont des conflits :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>ma-branche<span class="o">)</span><span class="nv">$ </span>git status
+On branch ma-branche
+Changes not staged <span class="k">for </span>commit:
+  <span class="o">(</span>use <span class="s2">"git add &lt;file&gt;..."</span> to update what will be committed<span class="o">)</span>
+  <span class="o">(</span>use <span class="s2">"git checkout -- &lt;file&gt;..."</span> to discard changes <span class="k">in </span>working directory<span class="o">)</span>
+
+  both modified:   README.md
+</code></pre></div></div>
+
+<p>Dans cet exemple, <code class="highlighter-rouge">README.md</code> a des conflits. Ouvrez le fichier et cherchez la chose suivante :</p>
+
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="p">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> HEAD
+   some code
+   <span class="p">=========</span>
+   some code
+   <span class="p">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> nouveau<span class="p">-</span>commit
+</code></pre></div></div>
+
+<p>Vous aurez besoin de résoudre les différences entre le code qui fut ajouté dans votre nouveau commit (dans cet exemple, tout ce qu’il y a entre la ligne du milieu et <code class="highlighter-rouge">nouveau-commit</code>) et votre <code class="highlighter-rouge">HEAD</code>.</p>
+
+<p>Si vous voulez garder la version du code d’une des branches, vous pouvez utiliser <code class="highlighter-rouge">--ours</code> ou <code class="highlighter-rouge">--theirs</code> :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="k">*</span><span class="o">)</span><span class="nv">$ </span>git checkout <span class="nt">--ours</span> README.md
+</code></pre></div></div>
+
+<ul>
+  <li>Quand vous <em>fusionnez</em>, utilisez <code class="highlighter-rouge">--ours</code> pour garder les modifications de la branche locale, ou <code class="highlighter-rouge">--theirs</code> pour garder les modifications de l’autre branche.</li>
+  <li>Quand vous <em>rebasez</em>, utilisez <code class="highlighter-rouge">--theirs</code> pour garder les modifications de la branche locale, ou <code class="highlighter-rouge">--ours</code> pour garder les modifications de l’autre branche. Pour des explications concernant cet échange, consultez <a href="https://git-scm.com/docs/git-rebase#git-rebase---merge">cette note dans la documentation de Git</a>.</li>
+</ul>
+
+<p>Si les fusions sont plus complexes, vous pouvez utiliser un éditeur de diff visuel :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="k">*</span><span class="o">)</span><span class="nv">$ </span>git mergetool <span class="nt">-t</span> opendiff
+</code></pre></div></div>
+
+<p>Après avoir résolu tous les conflits et testé votre code, faite un <code class="highlighter-rouge">git add</code> sur les fichiers que vous avez modifiés, puis continuez le rebase avec <code class="highlighter-rouge">git rebase --continue</code> :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>ma-branche<span class="o">)</span><span class="nv">$ </span>git add README.md
+<span class="o">(</span>ma-branche<span class="o">)</span><span class="nv">$ </span>git rebase <span class="nt">--continue</span>
+</code></pre></div></div>
+
+<p>Si après avoir résolu tous les conflits, vous finissez avec un arbre identique à ce qu’il était avant le commit, vous devriez faire un <code class="highlighter-rouge">git rebase --skip</code> à la place.</p>
+
+<p>Si à n’importe quel moment vous voulez arrêter tout le rebase et revenir à l’état initial de votre branche, vous pouvez faire ceci :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>ma-branche<span class="o">)</span><span class="nv">$ </span>git rebase <span class="nt">--abort</span>
+</code></pre></div></div>
+
+<p><a name="stashing"></a></p>
+<h2 id="remisage">Remisage</h2>
+
+<h3 id="remiser-toutes-les-modifications">Remiser toutes les modifications</h3>
+
+<p>Pour remiser toutes les modifications dans votre dossier de travail :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git stash
+</code></pre></div></div>
+
+<p>Si vous voulez également remiser les fichiers non suivis, utilisez l’option <code class="highlighter-rouge">-u</code> :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git stash <span class="nt">-u</span>
+</code></pre></div></div>
+
+<h3 id="remiser-des-fichiers-spécifiques">Remiser des fichiers spécifiques</h3>
+
+<p>Pour remiser les modifications dans votre dossier de travail uniquement :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git stash push chemin-du-dossier-de-travail/nomdufichier.ext
+</code></pre></div></div>
+
+<p>Pour remiser plusieurs fichiers de votre dossier de travail :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git stash push chemin-du-dossier-de-travail/nomdufichier1.ext chemin-du-dossier-de-travail/nomdufichier2.ext
+</code></pre></div></div>
+
+<p><a name="stash-msg"></a></p>
+<h3 id="remiser-avec-un-message">Remiser avec un message</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git stash save &lt;message&gt;
+</code></pre></div></div>
+
+<p><a name="stash-apply-specific"></a></p>
+<h3 id="appliquer-un-remisage-spécifique-de-la-liste">Appliquer un remisage spécifique de la liste</h3>
+
+<p>Commencez par vérifier la liste de vos remisages avec un message en utilisant :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git stash list
+</code></pre></div></div>
+
+<p>Puis appliquez la commande suivante en choisissant un remisage de la liste :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git stash apply <span class="s2">"stash@{n}"</span>
+</code></pre></div></div>
+
+<p>Ici, <code class="highlighter-rouge">n</code> indique la position du remisage dans la pile. Celui le plus haut sera en position 0.</p>
+
+<h2 id="rechercher">Rechercher</h2>
+
+<h3 id="je-veux-rechercher-une-chaîne-de-caractères-dans-un-commit">Je veux rechercher une chaîne de caractères dans un commit</h3>
+
+<p>Pour rechercher une certaine chaîne de caractères dans un commit, vous pouvez utiliser la commande suivante :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git log <span class="nt">-S</span> <span class="s2">"chaîne de caractères à rechercher"</span>
+</code></pre></div></div>
+
+<p>Paramètres communs :</p>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">--source</code> sert à montrer le nom du ref en se basant sur la ligne de commande avec laquelle chaque commit a été atteint.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">--all</code> sert à commencer depuis chaque branche.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">--reverse</code> retourne les résultats dans l’ordre inverse, c’est à dire que la commande affichera le premier commit qui a fait la modification.</p>
+  </li>
+</ul>
+
+<p><a name="i-want-to-find-by-author-committer"></a></p>
+<h3 id="je-veux-rechercher-par-auteurtricevalidateurtrice">Je veux rechercher par auteur·trice/validateur·trice</h3>
+
+<p>Pour rechercher des commits par auteur·trice/validateur·trice, vous pouvez utiliser :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git log <span class="nt">--author</span><span class="o">=</span>&lt;nom ou email&gt;
+<span class="nv">$ </span>git log <span class="nt">--committer</span><span class="o">=</span>&lt;nom ou email&gt;
+</code></pre></div></div>
+
+<p>Gardez en tête que l’auteur·trice et la personne qui a créé le commit ne sont pas les mêmes personnes. L’option <code class="highlighter-rouge">--author</code> correspond à la personne qui a écrit le code, et, d’un autre côté, l’option <code class="highlighter-rouge">--committer</code>, correspond à la personne qui a commité le code au nom de l’autreur·trice.</p>
+
+<h3 id="je-veux-lister-les-commits-ayant-des-fichiers-spécifiques">Je veux lister les commits ayant des fichiers spécifiques</h3>
+
+<p>Pour trouver tous les commits contenant un fichier spécifique, vous pouvez utiliser :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git log <span class="nt">--</span> &lt;chemin <span class="nb">du </span>fichier&gt;
+</code></pre></div></div>
+
+<p>En général, vous préciseriez un chemin exact, mais vous pouvez aussi utiliser des wildcards dans le chemin et le nom du fichier :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git log <span class="nt">--</span> <span class="k">**</span>/<span class="k">*</span>.js
+</code></pre></div></div>
+
+<p>En utilisant des wildcards, il est utile de préciser <code class="highlighter-rouge">--name-status</code> pour voir la liste des fichiers commités :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git log <span class="nt">--name-status</span> <span class="nt">--</span> <span class="k">**</span>/<span class="k">*</span>.js
+</code></pre></div></div>
+
+<h3 id="trouver-un-tag-où-un-commit-est-référencé">Trouver un tag où un commit est référencé</h3>
+
+<p>Pour trouver tous les tags contenant un commit en particulier :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git tag <span class="nt">--contains</span> &lt;idducommit&gt;
+</code></pre></div></div>
+
+<h2 id="sous-modules">Sous-modules</h2>
+
+<p><a name="clone-submodules"></a></p>
+<h3 id="cloner-tous-les-sous-modules">Cloner tous les sous-modules</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git clone <span class="nt">--recursive</span> git://github.com/foo/bar.git
+</code></pre></div></div>
+
+<p>Si ces derniers ont déjà été clonés :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git submodule update <span class="nt">--init</span> <span class="nt">--recursive</span>
+</code></pre></div></div>
+
+<p><a name="delete-submodule"></a></p>
+<h3 id="retirer-un-sous-module">Retirer un sous-module</h3>
+
+<p>Créer un sous-module est assez trivial, mais le supprimer l’est moins. Les commandes dont vous avez besoin sont :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git submodule deinit nomdusubmodule
+<span class="nv">$ </span>git <span class="nb">rm </span>nomdusubmodule
+<span class="nv">$ </span>git <span class="nb">rm</span> <span class="nt">--cached</span> nomdusubmodule
+<span class="nv">$ </span><span class="nb">rm</span> <span class="nt">-rf</span> .git/modules/nomdusubmodule
+</code></pre></div></div>
+
+<h2 id="objets-divers">Objets divers</h2>
+
+<h3 id="récupérer-un-fichier-supprimé">Récupérer un fichier supprimé</h3>
+
+<p>Trouvez le commit le plus récent où le fichier existait encore :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git rev-list <span class="nt">-n</span> 1 HEAD <span class="nt">--</span> nomdufichier
+</code></pre></div></div>
+
+<p>Puis faites un <code class="highlighter-rouge">checkout</code> sur ce fichier :</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout idducommitquiasupprimé^ -- nomdufichier
+</code></pre></div></div>
+
+<h3 id="supprimer-un-tag">Supprimer un tag</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git tag <span class="nt">-d</span> &lt;nom_du_tag&gt;
+<span class="nv">$ </span>git push &lt;remote&gt; :refs/tags/&lt;nom_du_tag&gt;
+</code></pre></div></div>
+
+<p><a name="recover-tag"></a></p>
+<h3 id="récupérer-un-tag-supprimé">Récupérer un tag supprimé</h3>
+
+<p>Si vous voulez récupérer un tag qui a déjà été supprimé, vous pouvez le faire en suivant ces étapes :
+Tout d’abord, vous devez retrouver le tag inaccessible en question :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git fsck <span class="nt">--unreachable</span> | <span class="nb">grep </span>tag
+</code></pre></div></div>
+
+<p>Notez le hash du tag dans un coin. Puis, restaurez le tag supprimé avec la commande suivante, qui utilise <a href="https://git-scm.com/docs/git-update-ref"><code class="highlighter-rouge">git update-ref</code></a> :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git update-ref refs/tags/&lt;nom_du_tag&gt; &lt;<span class="nb">hash</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<p>Votre tag devrait maintenant être restauré.</p>
+
+<h3 id="patch-supprimé">Patch supprimé</h3>
+
+<p>Si quelqu’un vous a envoyé une Pull Request sur GitHub, mais a par la suite supprimé son fork originel, vous ne serez pas en mesure de cloner son dépôt ou d’utiliser <code class="highlighter-rouge">git am</code> étant donné que les URLs de <a href="https://github.com/blog/967-github-secrets">.diff, .patch</a> sont devenues indisponibles. Mais vous pouvez vous déplacer sur la PR en elle-même en utilisant les <a href="https://gist.github.com/piscisaureus/3342247">les refs spéciaux de GitHub</a>. Pour récupérer le contenu de PR#1 vers une nouvelle branche intitulée pr_1 :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git fetch origin refs/pull/1/head:pr_1
+From github.com:foo/bar
+ <span class="k">*</span> <span class="o">[</span>new ref]         refs/pull/1/head -&gt; pr_1
+</code></pre></div></div>
+
+<h3 id="exporter-un-dépôt-comme-fichier-zip">Exporter un dépôt comme fichier Zip</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git archive <span class="nt">--format</span> zip <span class="nt">--output</span> /full/path/to/zipfile.zip master
+</code></pre></div></div>
+<h3 id="pousser-une-branche-et-un-tag-qui-ont-le-même-nom">Pousser une branche et un tag qui ont le même nom</h3>
+
+<p>Si un tag sur le dépôt distant a le même nom qu’une branche, vous aurez le message d’erreur suivant en essayant de pousser cette branche avec la commande standard <code class="highlighter-rouge">$ git push &lt;remote&gt; &lt;branche&gt;</code> :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git push origin &lt;branch&gt;
+error: dst refspec same matches more than one.
+error: failed to push some refs to <span class="s1">'&lt;git server&gt;'</span>
+</code></pre></div></div>
+
+<p>Réparez cela en spécifiant que vous voulez pousser la référence de HEAD :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git push origin refs/heads/&lt;nom-de-la-branche&gt;
+</code></pre></div></div>
+
+<p>Si vous voulez pousser un tag sur un dépôt distant qui a le même nom qu’une branche, vous pouvez utiliser une commande similaire :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git push origin refs/tags/&lt;nom-du-tag&gt;
+</code></pre></div></div>
+
+<h2 id="suivre-des-fichiers">Suivre des fichiers</h2>
+
+<p><a href="i-want-to-change-a-file-names-capitalization-without-changing-the-contents-of-the-file"></a></p>
+<h3 id="je-veux-changer-la-capitalisation-du-nom-dun-fichier-sans-changer-son-contenu">Je veux changer la capitalisation du nom d’un fichier, sans changer son contenu</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git <span class="nb">mv</span> <span class="nt">--force</span> monFichier MonFichier
+</code></pre></div></div>
+
+<h3 id="je-veux-écraser-des-fichiers-locaux-en-faisant-un-git-pull">Je veux écraser des fichiers locaux en faisant un git pull</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git fetch <span class="nt">--all</span>
+<span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git reset <span class="nt">--hard</span> origin/master
+</code></pre></div></div>
+
+<p><a href="remove-from-git"></a></p>
+<h3 id="je-veux-retirer-un-fichier-de-git-mais-garder-le-fichier">Je veux retirer un fichier de Git mais garder le fichier</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git <span class="nb">rm</span> <span class="nt">--cached</span> log.txt
+</code></pre></div></div>
+
+<h3 id="je-veux-rétablir-un-fichier-à-une-version-spécifique">Je veux rétablir un fichier à une version spécifique</h3>
+
+<p>Supposons que le hash du commit que vous voulez est <code class="highlighter-rouge">c5f567</code> :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git checkout c5f567 <span class="nt">--</span> file1/to/restore file2/to/restore
+</code></pre></div></div>
+
+<p>Si vous voulez rétablir les changements effectués un commit avant <code class="highlighter-rouge">c5f567</code>, passez le hash du commit comme étant <code class="highlighter-rouge">c5f567~1</code> :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git checkout c5f567~1 <span class="nt">--</span> file1/to/restore file2/to/restore
+</code></pre></div></div>
+
+<h3 id="je-veux-lister-les-changements-dun-fichier-spécifique-entre-deux-commits-ou-branches">Je veux lister les changements d’un fichier spécifique entre deux commits ou branches</h3>
+
+<p>Supposons que vous voulez comparer le dernier commit avec le fichier du commit <code class="highlighter-rouge">c5f567</code> :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git diff HEAD:path_to_file/file c5f567:path_to_file/file
+</code></pre></div></div>
+
+<p>Il en est de même pour les branches :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git diff master:path_to_file/file staging:path_to_file/file
+</code></pre></div></div>
+
+<h3 id="je-veux-que-git-ignore-les-changements-dun-fichier-spécifique">Je veux que Git ignore les changements d’un fichier spécifique</h3>
+
+<p>Cela marche très bien pour le modèles de configurations ou d’autres fichier qui nécessitent d’ajouter des identifiants qui ne devraient pas être commités :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git update-index <span class="nt">--assume-unchanged</span> file-to-ignore
+</code></pre></div></div>
+
+<p>Notez que cela n’enlève <em>pas</em> le fichier du suivi - il est seulement ignoré localement. Pour annuler cela et dire à Git de suivre les modifications à nouveau, cette commande supprime le fait d’ignorer :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git update-index <span class="nt">--no-assume-unchanged</span> fichier-à-ne-plus-ignorer
+</code></pre></div></div>
+
+<h2 id="paramétrage">Paramétrage</h2>
+
+<h3 id="je-veux-ajouter-des-alias-pour-certaines-commandes-git">Je veux ajouter des alias pour certaines commandes Git</h3>
+
+<p>Sur macOS et Linux, votre fichier de configuration Git est stocké dans <code class="highlighter-rouge">~/.gitconfig</code>. J’ai ajouté des exemples d’alias que j’utilise comme raccourcis (et certaines de mes fautes de frappes) dans la section <code class="highlighter-rouge">[alias]</code> comme ci-dessous :</p>
+
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span>alias<span class="p">]</span>
+    <span class="k">a</span> <span class="p">=</span> add
+    amend <span class="p">=</span> commit <span class="p">--</span>amend
+    <span class="k">c</span> <span class="p">=</span> commit
+    ca <span class="p">=</span> commit <span class="p">--</span>amend
+    ci <span class="p">=</span> commit <span class="p">-</span><span class="k">a</span>
+    <span class="k">co</span> <span class="p">=</span> checkout
+    <span class="k">d</span> <span class="p">=</span> <span class="k">diff</span>
+    dc <span class="p">=</span> <span class="k">diff</span> <span class="p">--</span>changed
+    <span class="k">ds</span> <span class="p">=</span> <span class="k">diff</span> <span class="p">--</span>staged
+    extend <span class="p">=</span> commit <span class="p">--</span>amend <span class="p">-</span>C HEAD
+    <span class="k">f</span> <span class="p">=</span> fetch
+    loll <span class="p">=</span> log <span class="p">--</span>graph <span class="p">--</span>decorate <span class="p">--</span>pretty<span class="p">=</span>oneline <span class="p">--</span>abbrev<span class="p">-</span>commit
+    <span class="k">m</span> <span class="p">=</span> merge
+    one <span class="p">=</span> log <span class="p">--</span>pretty<span class="p">=</span>oneline
+    outstanding <span class="p">=</span> rebase <span class="p">-</span><span class="k">i</span> @<span class="p">{</span><span class="k">u</span><span class="p">}</span>
+    reword <span class="p">=</span> commit <span class="p">--</span>amend <span class="p">--</span><span class="k">only</span>
+    s <span class="p">=</span> status
+    unpushed <span class="p">=</span> log @<span class="p">{</span><span class="k">u</span><span class="p">}</span>
+    wc <span class="p">=</span> whatchanged
+    wip <span class="p">=</span> rebase <span class="p">-</span><span class="k">i</span> @<span class="p">{</span><span class="k">u</span><span class="p">}</span>
+    zap <span class="p">=</span> fetch <span class="p">-</span><span class="k">p</span>
+</code></pre></div></div>
+
+<h3 id="je-veux-ajouter-un-répertoire-vide-à-mon-dépôt">Je veux ajouter un répertoire vide à mon dépôt</h3>
+
+<p>Vous ne pouvez pas ! Git ne supporte pas cela, mais il y a une astuce. Vous pouvez créer un fichier <code class="highlighter-rouge">.gitignore</code> dans le dossier avec le contenu suivant :</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> # Ignorer tout dans ce dossier
+ *
+ # Sauf ce fichier
+ !.gitignore
+</code></pre></div></div>
+
+<p>Une autre convention commune est de créer un fichier vide dans le dossier, intitulé <code class="highlighter-rouge">.gitkeep</code> :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">mkdir </span>mondossier
+<span class="nv">$ </span><span class="nb">touch </span>mondossier/.gitkeep
+</code></pre></div></div>
+
+<p>Vous pouvez aussi juste appeler le fichier <code class="highlighter-rouge">.keep</code>, dans ce cas la commande ci-dessus serait <code class="highlighter-rouge">touch mydir/.keep</code>.</p>
+
+<h3 id="je-veux-mettre-en-cache-un-nom-dutilisateur-et-mot-de-passe-pour-un-dépôt">Je veux mettre en cache un nom d’utilisateur et mot de passe pour un dépôt</h3>
+
+<p>Il se peut que vous ayez un dépôt qui nécessite une authentification. Dans ce cas, vous pouvez mettre en cache un nom d’utilisateur et un mot de passe afin que vous n’ayez pas à les rentrer à chaque push / pull. Cette commande peut faire cela pour vous :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git config <span class="nt">--global</span> credential.helper cache
+<span class="c"># Configure Git pour utiliser le cache mémoire des identifiants</span>
+</code></pre></div></div>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git config <span class="nt">--global</span> credential.helper <span class="s1">'cache --timeout=3600'</span>
+<span class="c"># Configurer le cache pour expirer après une heure (le paramètre est en secondes)</span>
+</code></pre></div></div>
+
+<h3 id="je-veux-que-git-ignore-les-changements-de-permissions-et-de-filemode">Je veux que Git ignore les changements de permissions et de filemode</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git config core.fileMode <span class="nb">false</span>
+</code></pre></div></div>
+
+<p>Si vous voulez configurer cela comme étant le comportement par défaut pour les utilisateurs connectés, utilisez :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git config <span class="nt">--global</span> core.fileMode <span class="nb">false</span>
+</code></pre></div></div>
+
+<h3 id="je-veux-définir-un-utilisateur-global">Je veux définir un utilisateur global</h3>
+
+<p>Pour configurer des informations d’utilisateur à travers tous les dépôts locaux, et pour configurer un nom qui est identifiable en relisant l’historique :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git config <span class="nt">--global</span> user.name “[prénom nom]”
+</code></pre></div></div>
+
+<p>Pour configurer une adresse email qui sera associée à chaque ligne de l’historique :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--global</span> user.email “[adresse-email-valide]”
+</code></pre></div></div>
+
+<h3 id="je-veux-ajouter-une-ligne-de-commande-de-coloration-pour-git">Je veux ajouter une ligne de commande de coloration pour Git</h3>
+
+<p>Pour configurer la colorisation de ligne de commande automatique de Git afin de faciliter la relecture :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git config <span class="nt">--global</span> color.ui auto
+</code></pre></div></div>
+
+<h2 id="je-nai-aucune-idée-de-ce-que-jai-mal-fait">Je n’ai aucune idée de ce que j’ai mal fait</h2>
+
+<p>Donc, vous êtes fichu - vous avez <code class="highlighter-rouge">reset</code> quelque chose, ou vous avez fusionné la mauvaise branche, ou vous avez poussé de force et maintenant vous ne pouvez plus trouver vos commits. Vous savez qu’à un moment donné, tout allait bien, et vous voulez revenir à un état dans lequel vous étiez avant.</p>
+
+<p>C’est là qu’intervient <code class="highlighter-rouge">git reflog</code>. <code class="highlighter-rouge">reflog</code> garde trace de tous les changements du bout de la branche, même si ce dernier n’est pas référencé par une branche ou un tag. Fondamentalement, chaque fois que le HEAD change, une nouvelle entrée est ajoutée au reflog. Cela marche seulement pour les dépôts locaux, malheureusement, et ne trace que les mouvements (pas les changements d’un fichier qui n’ont été enregistrés nulle part, par exemple).</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git reflog
+0a2e358 HEAD@<span class="o">{</span>0<span class="o">}</span>: reset: moving to HEAD~2
+0254ea7 HEAD@<span class="o">{</span>1<span class="o">}</span>: checkout: moving from 2.2 to master
+c10f740 HEAD@<span class="o">{</span>2<span class="o">}</span>: checkout: moving from master to 2.2
+</code></pre></div></div>
+
+<p>Le <code class="highlighter-rouge">reflog</code> ci-dessus indique un déplacement depuis master vers la branche 2.2 et l’inverse. À partir de là, il y a un hard <code class="highlighter-rouge">reset</code> vers un commit plus vieux. La dernière activité est représentée en haut et intitulée <code class="highlighter-rouge">HEAD@{0}</code>.</p>
+
+<p>Si il s’avère que vous êtes accidentellement revenu en arrière, le reflog contiendra le commit sur lequel pointait master (0254ea7) avant que vous ne supprimiez 2 commits par accident.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git reset <span class="nt">--hard</span> 0254ea7
+</code></pre></div></div>
+
+<p>En utilisant <code class="highlighter-rouge">git reset</code>, il est ensuite possible de changer master vers le commit vers lequel il pointait. Cela vous donne de la sûreté dans le cas où l’historique a été changé par accident.</p>
+
+<p>(copié et édité depuis <a href="https://www.atlassian.com/git/tutorials/rewriting-history/git-reflog">Source</a>).</p>
+
+<h1 id="autres-ressources">Autres Ressources</h1>
+
+<h2 id="livres">Livres</h2>
+
+<ul>
+  <li><a href="https://www.learnenough.com/git-tutorial">Learn Enough Git to Be Dangerous</a> - Un livre de Michael Hartl couvrant les bases de Git</li>
+  <li><a href="https://git-scm.com/book/en/v2">Pro Git</a> - L’excellent livre de Scott Chacon et Ben Straub à propos de Git</li>
+  <li><a href="https://github.com/pluralsight/git-internals-pdf">Git Internals</a> - L’autre excellent livre de Scott Chacon à propos de Git</li>
+</ul>
+
+<h2 id="tutoriels">Tutoriels</h2>
+
+<ul>
+  <li><a href="https://www.alexkras.com/19-git-tips-for-everyday-use">19 Git Tips For Everyday Use</a> - Une liste de commandes Git utiles qui prennent une ligne.</li>
+  <li><a href="https://www.atlassian.com/git/tutorials">Atlassian’s Git tutorial</a> Comprendre Git avec des tutos à partir du niveau débutant jusqu’au plus avancé.</li>
+  <li><a href="https://learngitbranching.js.org/">Learn Git branching</a> Un tutoriel interfactif à base de branch/merge/rebase</li>
+  <li><a href="https://medium.com/@porteneuve/getting-solid-at-git-rebase-vs-merge-4fa1a48c53aa">Getting solid at Git rebase vs. merge</a></li>
+  <li><a href="https://zeroturnaround.com/rebellabs/git-commands-and-best-practices-cheat-sheet">Git Commands and Best Practices Cheat Sheet</a> - Un aide-mémoire Git dans un article de blog avec plus d’explications</li>
+  <li><a href="https://codewords.recurse.com/issues/two/git-from-the-inside-out">Git from the inside out</a> - Un tutoriel qui plonge dans le fonctionnement interne de Git</li>
+  <li><a href="https://github.com/asmeurer/git-workflow">git-workflow</a> - Le tuto d’<a href="https://github.com/asmeurer">Aaron Meurer</a> à propos de l’utilisation de Git pour contribuer aux dépôts open source</li>
+  <li><a href="https://hugogiraudel.com/2015/08/13/github-as-a-workflow/">GitHub as a workflow</a> - Un point de vue intéressant sur l’utilisation de Github en tant que workflow, particulièrement avec des demandes de fusion vides.</li>
+  <li><a href="https://github.com/Gazler/githug">Githug</a> - Un jeu pour apprendre les workflows Git les plus communs</li>
+</ul>
+
+<h2 id="scripts-et-outils">Scripts et Outils</h2>
+
+<ul>
+  <li><a href="http://firstaidgit.io/">firstaidgit.io</a> Un sélection recherchable des questions Git les plus souvent posées</li>
+  <li><a href="https://github.com/unixorn/git-extra-commands">git-extra-commands</a> - Une collection de scripts Git supplémentaires très utiles</li>
+  <li><a href="https://github.com/tj/git-extras">git-extras</a> - utilitaires GIT – résumé de dépôts, repl, population de changelogs, pourcentage de commits par auteur·trice et plus</li>
+  <li><a href="https://github.com/qw3rtman/git-fire">git-fire</a> - git-fire est un plugin Git qui vient en aide en cas d’urgence en ajoutant tous les fichier actuels, les commitant, et les poussant vers une nouvelle branche (afin d’éviter les conflits).</li>
+  <li><a href="https://github.com/git-tips/tips">git-tips</a> - Des petites astuces Git</li>
+  <li><a href="https://github.com/Originate/git-town">git-town</a> - Un support de flux de travail Git générique et de haut-niveau ! http://www.git-town.com</li>
+</ul>
+
+<h2 id="clients-graphiques">Clients graphiques</h2>
+<ul>
+  <li><a href="https://www.gitkraken.com/">GitKraken</a> - Le client Git de luxe pour Windows, Mac &amp; Linux</li>
+  <li><a href="https://git-cola.github.io/">git-cola</a> - Un autre client Git pour Windows et macOS</li>
+  <li><a href="https://github.com/git-up/GitUp">GitUp</a> - Un client graphique récent qui a une manière dogmatique de gérer les complications de Git</li>
+  <li><a href="https://rowanj.github.io/gitx/">gitx-dev</a> - un autre client Git graphique pour macOS</li>
+  <li><a href="https://www.sourcetreeapp.com/">Sourcetree</a> - La simplicité alliée à la puissance dans une belle interface gratuite. Pour Windows et Mac</li>
+  <li><a href="https://www.git-tower.com/">Tower</a> - Un client graphique pour macOS (payant)</li>
+  <li><a href="https://jonas.github.io/tig/">tig</a> - terminal text-mode interface for Git</li>
+  <li><a href="https://magit.vc/">Magit</a> - Une interface pour Git implémentée en tant que paquet Emacs.</li>
+  <li><a href="https://github.com/gitextensions/gitextensions">GitExtensions</a> - Une extension du shell, un plugin Visual Studio 2010-2015 et un outil de repo Git.</li>
+  <li><a href="https://git-fork.com/">Fork</a> - Un client Git rapide et amical pour Mac (beta)</li>
+  <li><a href="https://gmaster.io/">gmaster</a> - Un client Git pour Windows qui permet les fusions à 3 branches, l’analyse de refactorisation, un diff et merge sémantique (beta)</li>
+  <li><a href="https://git-scm.com/docs/gitk">gitk</a> - Un client Git pour Linux qui permet d’avoir une vue simplifiée de l’état d’un repo.</li>
+  <li><a href="https://www.sublimemerge.com/">SublimeMerge</a> - Un client ultra rapide et extensible qui donne la possibilité de faire des fusions à 3 branches, de la recherche avancée et de la colorisation syntaxique, en développement actif.</li>
+</ul>
+
+<hr />
+
+:ET

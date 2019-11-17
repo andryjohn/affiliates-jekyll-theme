@@ -1,0 +1,96 @@
+I"�<blockquote>
+  <p>Qu’est-ce qu’un site web? Comment marche un site? Que se passe-t-il dans les coulisses?</p>
+</blockquote>
+
+<p>Mais avant de rentré dans le vif du sujet, nous allons voir ce qu’est le Web?</p>
+
+<p>Passons en revue rapidement ses mécanismes de base. Regardé attentivement la diapositive:</p>
+
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/d4P5Wp2g7zPr7H" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen=""> </iframe>
+<div style="margin-bottom:5rem"> <strong> <a href="//www.slideshare.net/Edward_Schults/le-wagon-web-101" title="Le Wagon - Web 101" target="_blank">Le Wagon - Web 101</a> </strong> from <strong><a href="https://www.slideshare.net/Edward_Schults" target="_blank">Edward_Schults</a></strong> </div>
+
+<h3 id="le-web-vs-internet">Le Web vs Internet</h3>
+
+<p><em>Alors, quelle est la différence entre le Web et Internet?</em></p>
+
+<p>Internet est l’infrastructure qui <em>connecte</em> les ordinateurs sur un <em>réseau mondial</em>. Vous pouvez le voir comme les fils et les câbles qui transportent l’information dans le monde entier.</p>
+
+<blockquote>
+  <p>Le Web vit dans le cadre fourni par Internet. Le Web est donc tout ce qui passe par Internet, via le protocole HTTP.</p>
+</blockquote>
+
+<h3 id="quest--ce-que-le-protocole-http">Qu’est  ce que le protocole HTTP?</h3>
+
+<p>HTTP signifie <strong>Hyper Text Transfer Protocol</strong>.
+C’est un protocole permettant de transférer des ressources (<code class="highlighter-rouge">== fichiers</code>) entre deux ordinateurs (<code class="highlighter-rouge">~ ordinateurs</code>).</p>
+
+<p>Ce protocole repose sur un système très simple:</p>
+<ul>
+  <li>La machine à partir de laquelle vous souhaitez accéder à une page Web est appelée <em>le client</em></li>
+  <li>La machine qui héberge le contenu du site s’appelle <em>le serveur</em></li>
+  <li>Le client envoie une requête <code class="highlighter-rouge">HTTP</code> au serveur, avec <em>l’URL</em> de la page à ouvrir</li>
+  <li><em>Le serveur</em> traite cette demande et renvoie une réponse <code class="highlighter-rouge">HTTP</code> au client, avec le contenu de la page.</li>
+  <li><em>Le client</em> traite cette réponse et affiche la page Web.</li>
+</ul>
+
+<h3 id="interagir-avec-un-site-web">Interagir avec un site web</h3>
+
+<p>La conclusion la plus importante de ce chapitre est la suivante:</p>
+
+<blockquote>
+  <p>Toute action sur un site Web déclenche une requête <code class="highlighter-rouge">HTTP</code>.</p>
+</blockquote>
+
+<p><em>Que vous tapiez une URL dans la barre d’adresse, que vous cliquiez sur un lien ou que vous soumettez un formulaire, votre action déclenchait une requête <code class="highlighter-rouge">HTTP</code> envoyée par le client au serveur.</em></p>
+
+<h3 id="statique-vs-dynamique">Statique vs dynamique</h3>
+
+<p>Si le contenu demandé dans la requête HTTP est <em>statique</em>, comme un simple site Web d’information par exemple, le serveur lira le contenu du fichier <code class="highlighter-rouge">HTML</code> correspondant sur son disque dur et le renverra au client via la réponse <code class="highlighter-rouge">HTTP</code>.</p>
+
+<p>Si le contenu est <em>dynamique</em>, par exemple si le contenu du fichier <code class="highlighter-rouge">HTML</code> est différent pour deux utilisateurs connectés différents (comme dans deux pages de profil Facebook), ce ne sera pas aussi simple.</p>
+
+<p>Le serveur doit être plus intelligent. Il doit “parler” un langage de programmation <em>back-end</em>.</p>
+
+<blockquote>
+  <p>Ce langage de programmation back-end pourrait être ruby, php, python, java, etc.</p>
+</blockquote>
+
+<p>Avec le contenu dynamique, la demande HTTP est traitée par le code du back-end.</p>
+
+<p>Ce code va alors probablement interroger une base de données et va finalement construire le fichier <code class="highlighter-rouge">HTML</code> avec le bon contenu.
+Ensuite, il enverra le fichier <code class="highlighter-rouge">HTML</code> au client via la réponse <code class="highlighter-rouge">HTTP</code>.</p>
+
+<p><img src="/images/requesthttp.png" alt="http" /></p>
+
+<h4 id="points-clés-à-retenir">Points clés à retenir:</h4>
+
+<ul>
+  <li>
+    <p>Le web repose sur <em>deux machines communicantes</em></p>
+  </li>
+  <li>
+    <p>Le client est la machine demandant du contenu</p>
+  </li>
+  <li>
+    <p>Le serveur est la machine hébergeant le site web (~ data + code)</p>
+  </li>
+  <li>
+    <p>Ils communiquent tous les deux via le protocole HTTP</p>
+  </li>
+  <li>
+    <p>Le protocole <code class="highlighter-rouge">HTTP</code> transfère les fichiers demandés</p>
+  </li>
+  <li>
+    <p>Ce transfert repose sur un système de <em>requête / réponse</em></p>
+  </li>
+  <li>
+    <p>Le client envoie une requête au serveur</p>
+  </li>
+  <li>
+    <p>Le serveur traite la demande et construit la réponse avec un fichier <code class="highlighter-rouge">HTML</code>.</p>
+  </li>
+  <li>
+    <p>Le client reçoit la réponse et traite le fichier <code class="highlighter-rouge">HTML</code> pour afficher la page Web dans un navigateur.</p>
+  </li>
+</ul>
+:ET

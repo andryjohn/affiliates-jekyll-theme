@@ -1,0 +1,54 @@
+I"�<blockquote>
+  <p>Une adresse IP est l’adresse de l’ordinateur afin de s’identifier de manière unique sur internet.</p>
+</blockquote>
+
+<h2 id="ipv4">IPv4</h2>
+
+<p>On alloue à l’ordinateur une adresse unique de 32 bits. Pour la rendre plus facilement lisible pour un être humain, on la représente sous forme de 4 groupes de 8 bits.</p>
+
+<pre><code class="language-quote">a.b.c.d
+</code></pre>
+<hr />
+<p>Chacun des 4 groupes est de 8 bits.
+ \(2^{8}\) donne 256 possibilités</p>
+
+<p>Chacun des groupes peut donc prendre une valeur positive comprise entre [0, 255]</p>
+
+<pre><code class="language-quote">123.11.67.90
+</code></pre>
+<hr />
+
+<h1 id="problème-">Problème ?</h1>
+
+<p>Une adresse IP est 32 bits, ce qui donne \(2^{32}\) = 4 milliards de valeurs possibles. Mais on est 7,5 milliards sur Terre ! ( voyez par <a href="https://www.worldometers.info/fr/population-mondiale/">vous-même!</a>,c’est impréssionnant) et certaines personnes ont plusieurs machines. Du coup, on a déjà atteint notre limite d’adresses IP possibles.</p>
+
+<p><img src="/images/people.jpeg" alt="people" /></p>
+
+<blockquote>
+  <p><strong>Comment peut-on attribuer une adresse unique à tout le monde ?</strong>
+La solution est de passer de IPv4 (avec une adresse de 32 bits) à …</p>
+</blockquote>
+
+<h2 id="ipv6">IPv6</h2>
+
+<p>l’IPv6 (adresse à 128 bits)</p>
+
+<p>Voici une solution pour parer au problème d’attribution d’adresse IP aux différentes machines de la population.</p>
+
+<pre><code class="language-quotes">b:c:d:e:f:g:h:i
+</code></pre>
+<p>L’ensemble représente 128 bits: en se composant de 8 groupes.</p>
+
+<p>Chacun des groupes est représenté par 1 à 4 nombres décimaux compris entre [0, ffff]</p>
+
+<p>Voici donc à quoi peut ressembler une adresse IPv6</p>
+
+<pre><code class="language-quotes">2001:1236:12ab:0:0:0:1111:2222
+</code></pre>
+
+<p>Par convention, on peut omettre les zéros en doublant “::”, comme ceci</p>
+
+<pre><code class="language-quotes">2001:1236:12ab::1111:2222
+</code></pre>
+
+:ET

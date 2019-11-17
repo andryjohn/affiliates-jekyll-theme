@@ -1,0 +1,62 @@
+I"�<blockquote>
+  <p>Il faut savoir que pour créér ce site j’ai choisi d’utiliser <em>Jekyll</em> .
+Pourquoi ce choix?</p>
+</blockquote>
+
+<p>Jekyll est un générateur de site statique écrit en <em>“Ruby”</em> qui gagne en popularité, de Google à Netflix en passant par Mailchimp, Mapbox ou NodeJS, ils sont partout et sont devenus le choix de la raison pour les sites de contenus <strong>à fort trafic</strong>. Leurs usages évoluent et de nouveaux services dédiés viennent enrichir et faciliter l’expérience utilisateur des contributeurs et des développeurs.</p>
+
+<p>Cette stack permet aux différents intervenants de se concentrer sur l’essentiel. Les rédacteurs peuvent ainsi rédiger leurs articles au format Markdown, un format texte très simple et très lisible, qui facilité la portabilité.</p>
+
+<h2 id="pourquoi-ne-pas-choisir-un-cms-comme-wordpress">Pourquoi ne pas choisir un CMS comme Wordpress?</h2>
+
+<p>Un système de gestion de contenu (CMS) tel que “Wordpress”, (<em>je cite ce dernier du fait de sa popularité auprès des developpeurs et des particuliers, mais il y en a  d’autres tel que Joomla, Drupal, Typo3, Magento, Prestashop</em>), aurait été parfait.</p>
+
+<p>Le problème justement réside dans sa popularité et aussi la technologie qu’il embarque.
+Wordpress est écrit en <strong>PHP</strong>, repose sur <strong>une base de données MySQL</strong> et est distribué par l’entreprise américaine <a href="https://automattic.com/">Automattic</a>.
+Du fait de sa popularité, (<em>je n’ai pas les chiffres en téte mais je crois que c’est 30% des sites mondiaux, c’est énorme</em>), les sites Wordpress subissent des attaques incessantes.</p>
+
+<p><img src="/images/cms.jpeg" alt="cms" /></p>
+
+<h3 id="autre-argument-de-taille-la-vitesse-du-site">Autre argument de taille: la vitesse du site</h3>
+
+<p>Le couple <strong>PHP &amp; MySQL et hébergement mutualisé sur OVH</strong>, si vous rajoutez des <strong>plugins inutiles</strong>, sa ne fait pas bon ménage! Et cela se fait ressentir.</p>
+
+<p>Comment?</p>
+
+<p>Par le temps de chargement… Votre site qui rame comme jamais et ce n’est le top!</p>
+
+<h2 id="jekyll-comment-ça-marche-">Jekyll, comment ça marche ?</h2>
+
+<p>Comme je l’ai dit plus haut Jekyll est un générateur de site statique écrit en <em>Ruby</em>, ce qui peut paraître tout à fait absurde par rapport à un CMS mais cela apporte bien des avantages et notamment le fait qu’il peut etre couplé à git et github.</p>
+
+<p>Et c’est là, tout l’intérets, je m’explique:</p>
+
+<p><strong>Github</strong> est une architecture qui tourne autour de <strong>Git</strong>, un outil open source de <em>versionning</em>, c’est-à-dire que le concept de <em>backup</em> est compris dans l’outil, en plus de la possibilité de manière assez simple de venir éditer un article comme celui-ci par exemple.</p>
+
+<p>Les pages sont <strong>statiques</strong>, il n’y a donc pas mieux en termes de vitesse et de sécurité pour les visiteurs et l’utilisateur.
+Pas besoin de disposer d’un <em>serveur surdimensionné</em>, car les pages sont statiques, et les serveurs aiment bien ça, le contenu statique. En plus, <a href="http://localhost:4000/developper/skills/2019/05/05/Host-any-front-end/"><strong>Github pages</strong></a> est <strong>gratuit</strong>, oui vous avez bien lu, c’est <em>entièrement gratuit.</em></p>
+
+<p><img src="/images/free.jpeg" alt="free" /></p>
+
+<hr />
+
+<p>Vous avez une copie entière de votre site sur votre ordinateur.
+Vous pouvez faire tourner votre site en local avant de le lancer en production. Pour chaque version. Et c’est tout simplement génial.</p>
+
+<p>Et dès que vous déployez le site, si il n’y a pas d’erreurs, il est mis en ligne automatiquement.</p>
+
+<blockquote>
+  <p>Aucun paramétrage nécessaire pour indiquer à Github : “Hey, j’ai foutu un Jekyll sur ce repo, déploie-le moi dude”. Il le trouve, et il le lance. Et c’est tout!</p>
+</blockquote>
+
+<p>Pour d’autres services, il est possible de les déployer aussi sur Github (ou d’autres outils tels que des Gitlabs), mais cela implique soit de passer par un outil de CI (Intégration Continue) qui va détecter les changements du dépôt Git et générer le site statique, ou de compiler soi-même lors de chaque modification.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Servir du « statique » n’est pas du tout une mode destinée à rester confidentielle parmi <em>les hackers</em>, c’est une réponse simple à des problématiques complexes. Gardez en tête que <strong>78% des sites sous Wordpress souffrent de vulnérabilités et que quand une faille de sécurité impacte Drupal, des millions de sites sont concernés.</strong></p>
+
+<p>C’est donc une solution que vous devriez sérieusement considérer si vous souhaitez réduire vos coûts d’infrastructure sur des sites à fort trafic. Sur des sites très fréquentés le coût peut être divisé par 15 ou plus.</p>
+
+<p><em>Le full statique</em> est idéal pour des sites de contenus : <em>présentation produit, documentation, blog ou application web (progressive) en JavaScript, en revanche il n’est pas adapté pour des sites où le contenu est majoritairement généré par les utilisateurs.</em></p>
+
+:ET

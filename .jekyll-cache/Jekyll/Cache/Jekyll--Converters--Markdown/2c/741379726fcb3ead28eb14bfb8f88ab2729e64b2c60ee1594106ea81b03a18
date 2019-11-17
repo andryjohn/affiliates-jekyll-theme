@@ -1,0 +1,78 @@
+I"|<blockquote>
+  <p>Le but de Git est de permettre à une équipe de développement de suivre les différentes versions d’un projet pour en gérer l’évolution</p>
+</blockquote>
+
+<p>Quand on développe un projet il ne suffit pas de coder pour soi dans son coin ni pour l’instant présent, il faut aussi penser aux évolutions possibles du code, aux erreurs que l’on peut faire, aux personnes qui vont aussi travailler sur le projet…</p>
+
+<p>C’est pourquoi il est indispensable de mettre en place dès le début du projet, <em>un outil</em> qui permet de gérer tout cela. Ils sont nombreux, avec plus ou moins de fonctionnalités, mais celui dont je vais vous parler aujourd’hui est tout d’abord celui que j’utilise au quotidien mais aussi, il est au top depuis quelques temps déjà et est parti pour servir encore de longues années, il s’agit de Git.</p>
+
+<h1 id="quest-ce-que-git--les-concepts-à-comprendre">Qu’est-ce que Git ? Les concepts à comprendre</h1>
+
+<p>Git est un logiciel de <strong>gestion de versions</strong> (outil de “versionning”) distribué, créé par <a href="https://fr.wikipedia.org/wiki/Linus_Torvalds">Linus Torwalds</a>  en 2005 et distribué <strong>gratuitement sous licence publique générale GNU version 2.</strong>
+Si la fin de la phrase est simple à comprendre (quoi que…), nous allons détailler son début :</p>
+
+<h2 id="un-outil-de-gestion-de-versions">Un outil de gestion de versions</h2>
+
+<p><img src="/images/Version.png" alt="mark" /></p>
+
+<p>Le but de Git est de permettre à une équipe de développement de suivre les différentes versions d’un projet pour en gérer l’évolution.</p>
+
+<blockquote>
+  <p>Dans cet exemple, nous allons oublié un peu le code et imaginons un exposé sur <em>l’économie du cacao</em> en <em>Côte d’Ivoire</em> réalisé par 3 lycéens : <strong>Pierre</strong> est en charge de l’exposé en lui-même, <strong>Paul</strong> rédigera <em>l’introduction</em> et la conclusion, <strong>Jacques</strong> aura la responsabilité des illustrations et de la mise en page.
+Ce faisant , <strong>Pierre</strong> <em>enregistre</em> son document sur une clé USB, qu’il transmet à <strong>Paul</strong> y ajoute son <em>introduction</em> et sa <em>conclusion</em> sans relire le travail de <strong>Pierre</strong>. Il donne ensuite la clé USB à <strong>Jacques</strong> qui fait son travail de mise en forme avant de donner la clé USB au professeur.
+Ce denier, consulte le document et s’aperçoit qu’il manque <em>un chapitre entier</em>, celui consacré au “commerce équitable.” Qui est <strong>fautif</strong> ? (vous avez 3 heures…)</p>
+</blockquote>
+
+<p><strong>Git</strong> est là pour répondre à cette question en permettant de garder une copie de toutes les <em>versions</em> des documents, avec pour chaque version, l’identité de la personne qui a fait les modifications et les détails de cette modification. Appliquez cela à n’importe quel <em>projet</em>, informatique ou non, et vous aurez compris <strong>l’intérêt de Git</strong>.</p>
+
+<h2 id="le-vocabulaire-de-git">Le vocabulaire de Git</h2>
+
+<p>Nous allons vous initier plusieurs mots que vous ne connaissez peut-être pas, mais qui sont indispensable à la maitrise de git.</p>
+
+<p><img src="/images/projet.jpeg" alt="mark" /></p>
+
+<h2 id="dépôt-repository-ou-remote">Dépôt, <em>repository</em> ou remote</h2>
+
+<p>Je vais encore oser une métaphore simpliste :</p>
+<blockquote>
+  <p>“Quand vous mangez, vous utilisez des couverts. Lorsque vous avez terminé votre repas vous lavez ces couverts et vous les rangez dans un tiroir où d’autres pourront les utiliser.
+Un <strong>dépôt</strong> peut être comparé à ce tiroir (si si, il faut nettoyer son code avant de le ranger, tout comme une fourchette). Il s’agit d’un endroit où l’on va stocker les “versions du code”, à disposition de tous les participants au projet qui vont venir en faire une copie chez eux et éventuellement faire des mises à jour. “</p>
+</blockquote>
+
+<p>“<em>On me dit à l’oreille qu’on ne peut pas faire une copie des fourchettes du tiroir, effectivement toute méthaphore à une limite</em>.”</p>
+
+<p>Un projet peut avoir un ou une <strong>multitude de dépôts</strong>, en lecture seule ou sur lesquels l’écriture est permise…</p>
+
+<h2 id="validation-ou-commit">Validation ou commit</h2>
+
+<p>Un <strong>commit</strong> n’est ni plus ni moins qu’une <em>version</em> du projet, un instantané ( une photo ou un “snapshot” dans le temps) pris à <strong>un instant T</strong>.</p>
+
+<p><img src="/images/git.jpeg" alt="mark" /></p>
+
+<p>A chaque fois que vous faites un commit, Git enregistre un «arbre» qui permettra d’identifier vos fichiers modifiés et lui associe un objet <em>commit</em>.</p>
+
+<h2 id="branche">Branche</h2>
+
+<p>La vrai force de Git se trouve dans le concept de “branche”. Nous venons de voir ce qu’est un <em>commit</em>, une <em>branche</em> est simplement un pointeur vers un commit.</p>
+
+<p>Puisque chaque commit connaît son précédent, il est possible de remonter de commit en commit pour retracer toute la branche. Pour simplifier, imaginons que nous avons créé un projet et fait 3 commits. Alors que nous ne nous sommes pas souciés de créer une branche, Git l’a fait pour nous. Dès le début le projet possède une branche <em>par défaut</em>, appelée <strong>master</strong>. Après nos 3 commits, master pointe vers le dernier commit en date.</p>
+
+<blockquote>
+  <p>Nous souhaitons maintenant créer une branche pour permettre à une autre équipe de developpeur, de crées de nouvelles fonctionnalités sans affecter la branche principale. Git va simplement créer un nouveau pointeur vers le dernier commit de la branche courante (donc master). Nos branches <strong>“master”</strong> et <strong>“feature”</strong> sont pour le moment identiques.
+A partir de ce moment précis, la deuxième équipe pourra travailler sur la nouvelle branche récemment crée, sans que la branche principale (master), ne soit affecter. Le travaille fini et validé, elle pourra etre fusionné dans <em>master</em>.</p>
+</blockquote>
+
+<p><img src="/images/git.png" alt="mark" /></p>
+
+<blockquote>
+  <p>“Anything in the master branch is deployable”. Scott Chacon</p>
+</blockquote>
+
+<p>Et c’est la toute la puissance de <strong>Git</strong>, telle une réalité parallèle, ou l’on va pouvoir effectuer des changements, sans que cela n’affectent la branche principale (<em>master</em>).</p>
+
+<h1 id="pour-aller-plus-loin">Pour aller plus loin..</h1>
+
+<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>
+<div class="embed-container"><iframe src="https://www.youtube.com/embed//hPfgekYUKgk" frameborder="0" allowfullscreen=""></iframe></div>
+
+:ET

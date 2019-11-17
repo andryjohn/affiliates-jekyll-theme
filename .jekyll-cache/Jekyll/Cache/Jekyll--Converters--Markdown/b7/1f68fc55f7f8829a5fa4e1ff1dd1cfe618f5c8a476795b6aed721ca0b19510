@@ -1,0 +1,96 @@
+I",<blockquote>
+  <p>Je ne vais pas trop spoiler si vous n’avez pas encore vu l’épisode. On va plutot parlé “tehno”, pour savoir entre autre si nos connaissances actuelles permettraient ce genre de poupée?</p>
+</blockquote>
+
+<p>Pour aborder le sujet il faut s’intéresser à <em>l’Intélligence Artificielle, la machine learning et le deep learning.</em></p>
+
+<h1 id="quest-ce-que-lintelligence-artificielle-">Qu’est-ce que l’intelligence artificielle ?</h1>
+
+<p>Inventé en 1956 par <em>John McCarthy</em> Professeur adjoint de l’Université de <em>Dartmouth</em>, IA est un terme général qui désigne matériel ou logiciel qui présente un comportement qui semble intelligent.</p>
+
+<p>Cette technologie existe depuis des décennies, grâce à des programmes fondés sur des règles qui offrent des cas rudimentaires d’intelligence dans des contextes spécifiques.</p>
+
+<p>Toutefois, les progrès ont été limités parce qu’il est extrêmement complexe de programmer à la main les algorithmes.</p>
+
+<h1 id="la-machine-learning-optimisation-de-déchargement">la machine learning: optimisation de déchargement</h1>
+
+<blockquote>
+  <p>Machine Learining (ML) est un sous-ensemble de l’IA. Tout ML est AI, mais toute IA n’est pas ML.</p>
+</blockquote>
+
+<p><img src="/images/learn.jpg" alt="learn" /></p>
+
+<p>En outre, <em>le machine learning</em> permet de nous attaquer à des problèmes qui sont trop complexes à résoudre pour les humains en transférant une partie de la charge à l’algorithme.</p>
+
+<p>L’objectif de la plupart des ML est de développer <em>un moteur de prédiction</em> pour un cas d’utilisation particulier.</p>
+
+<p>Un algorithme recevra des informations sur un domaine (par exemple, tous les films qu’une personne a regardé dans le passé) et analysera ces données pour en faire une prédiction utile (la probabilité de la personne aimant un nouveau film). Vous reconnaitrez sans doute cette technologie utiliser par nos plateformes de streaming préféreés.</p>
+
+<blockquote>
+  <p>“Les algorithmes du machine learning apprennent par l’entrainement.”</p>
+</blockquote>
+
+<p>Plus nous leurs fournissons de données (jusqu’à un certain point), meilleurs sont les moteurs de prédiction</p>
+
+<p>Mais même avec une ML, il est très difficile d’écrire des programmes qui fonctionnent bien.
+En effet, certaines tâches comme la compréhension de la parole, reconnaître des objets dans les images sont extrêmement complexes.</p>
+
+<h2 id="pourquoi-">Pourquoi ?</h2>
+
+<p>Parce que nous ne pouvons pas préciser les caractéristiques d’une manière <em>pratique et fiable.</em></p>
+
+<p>Si nous voulons écrire un programme informatique qui identifie “les images de voitures” par exemple, nous ne pouvons pas préciser les caractéristiques d’une voiture pour un algorithme. Il faudrait un algorithme avec un processus qui permettrait une identification correcte en toutes circonstances.</p>
+
+<p>C’est la que le deep learning  rentre en jeu.</p>
+
+<h1 id="le-deep-learning">Le deep learning:</h1>
+
+<p><img src="/images/kid.jpg" alt="kid" /></p>
+
+<blockquote>
+  <p>Le deep learning(DL) est un sous-ensemble du machine learning – et l’une des 15 approches différentes. Tout Deep Learning est Machine Learning, mais pas tout Machine Learning est Deep Learning</p>
+</blockquote>
+
+<p>Il est utile car il évite au programmeur d’avoir à assumer les tâches de spécification de fonction (définissant les caractéristiques à analyser à partir des données) et l’optimisation (comment peser les données pour fournir une prévision précise) – l’algorithme fait les deux.</p>
+
+<h2 id="comment-y-parvenir-">Comment y parvenir ?</h2>
+
+<p>Et bien, la percée dans les ML est de modéliser le <em>cerveau, pas le monde</em>. Nos propres cerveaux apprennent à faire des choses difficiles.</p>
+
+<blockquote>
+  <p>Comme un enfant qui apprend le monde autour de lui, il apprend a reconnaitre les objets du quotidien, par l’entrainement.</p>
+</blockquote>
+
+<p><img src="/images/kids.jpeg" alt="kids" /></p>
+
+<p>Et le Deep Learning utilise la même approche. Des petites calculatrices artificielles basées sur des logiciels, sont reliées entres elles pratiquement similaire au fontionnement des <em>neurones</em> de notre cerveau.</p>
+
+<p>C’est pourquoi, ils forment un « réseau neuronal » qui reçoit une entrée (pour continuer notre exemple, une image d’une voiture); les analyse; prend une décision à ce sujet et est informé si sa détermination est correcte.</p>
+
+<blockquote>
+  <p>C’est en forgeant que nous devenons forgeron.</p>
+</blockquote>
+
+<p>Grâce à ce processus, avec une efficacité croissante nous pouvons maintenant :</p>
+
+<ul>
+  <li>reconnaître les éléments en images;</li>
+  <li>traduire entre les langues en temps réel</li>
+  <li>utiliser la parole pour commander des appareils (Google Apple et maintenant, Amazon Alexa et Microsoft Cortana);</li>
+  <li>prédire comment la variation génétique effectuera la transcription d’ADN;</li>
+  <li>analyser le sentiment dans les évaluations des clients;</li>
+  <li>analyser les mauvais comportements en voiture ;</li>
+  <li>détecter des tumeurs dans des images médicales ; et plus encore.</li>
+</ul>
+
+<p><img src="/images/googleh.jpg" alt="home" /></p>
+
+<h2 id="en-conclusion">En conclusion,</h2>
+
+<p>l’Intelligence Artificielle (IA) telle que nous la connaissons est une Intelligence Artificielle faible, par opposition à l’IA forte, qui n’existe pas encore.</p>
+
+<p>Aujourd’hui, les machines sont capables de reproduire un comportement humain, mais sans conscience.
+Plus tard, leurs capacités pourraient croître au point de se transformer en machines dotées de conscience, de sensibilité et d’esprit, je pense qu’on est encore loin de la fiction, <em>mais je me trompe peut être..</em></p>
+
+<footer>Andry Rajohnson, Fullstack Developer</footer>
+:ET

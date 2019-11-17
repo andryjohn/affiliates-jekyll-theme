@@ -1,0 +1,92 @@
+I"e<blockquote>
+  <p>The model-view-controller or (MVC) architecture is not unique to Rails. In fact, it predates both Rails and the Ruby language by many years. Rails, however, really takes the idea of separating an application’s data, user interface, and control logic to a whole new level.</p>
+</blockquote>
+
+<p>Let’s take a look at the concepts behind building an application using the MVC architecture.</p>
+
+<h2 id="mvc-in-theory">MVC in Theory</h2>
+
+<p>MVC is a pattern for the architecture of a software application. It separates an application into the following components:</p>
+
+<ul>
+  <li>Models for handling data and business logic</li>
+  <li>Controllers for handling the user interface and application</li>
+  <li>Views for handling graphical user interface objects and presentation</li>
+</ul>
+
+<p>This separation results in user requests being processed as follows:</p>
+
+<ol>
+  <li>The browser (on the client) sends a request for a page to the controller on the server.</li>
+  <li>The controller retrieves the data it needs from the model in order to respond to the request.</li>
+  <li>The controller gives the retrieved data to the view.</li>
+  <li>The view is rendered and sent back to the client for the browser to display.</li>
+</ol>
+
+<p><img src="/images/mvc.png" alt="mvc" /></p>
+
+<p>This is the kind of official guide, you can find everywhere when you search for MVC architecture.</p>
+
+<p>So now, I’m going to go into an <em>unofficial guide</em> which is inspired, <strong>by Ruby on Rails Seminar.</strong></p>
+
+<p><img src="/images/mvc2.png" alt="mvc" /></p>
+
+<h2 id="understanding-mvc-an-analogy">Understanding MVC: an analogy</h2>
+
+<p>We have a couple characters in the <em>unofficial guide</em>. There is our ‘Model’, <em>Madeline</em>, who is very smart, she loves data, knows all about data, but she’s a little but anti-social and she doesn’t usally interact with much peoples.</p>
+
+<p>Next, threre’s our “View”, <em>Vicki</em>, who is georgous, but she’s not so smart and lastly there’s our “controllers” ,<em>Cailtyn</em> who really like ordering people around, but doesn’t really like doing thing by herself.</p>
+
+<h3 id="lets-say-our-characters-all-happen-to-work-in-cvs">Lets say our characters all happen to work in CVS</h3>
+
+<p><img src="/images/jordan-lomibao-761258-unsplash.jpg" alt="cvs" /></p>
+
+<h3 id="scenario-1-a-customer-asks-vicki-for-a-piece-of-candy-from-right-in-front-of-the-register">Scenario 1: <em>A customer asks Vicki for a piece of candy from right in front of the register..</em></h3>
+
+<p><em>What happens?</em></p>
+
+<blockquote>
+<p>Well, Vicki doesn't really know what to do, so she turns around and asks Caitlyn: " Caitlyn, what do I do? This customer just asked for candy."</p>
+
+<p>Caitlyn our very controlling manager says: "Well, the candy is right there, just give it to them!".
+And so Vicky says, "Oh, okay, good". She hands the candy back to the customer.</p>
+</blockquote>
+
+<p>In this case, we’re not even dealing with our <em>Model</em>, this is just a user went and clicked on a link to your web page.
+The <em>View</em> is stupid, doesn’t really know what to do, so it has to ask: “what do I do with this information?”.</p>
+
+<p>The <em>Controller</em> hands back the appropriate page as result the <em>View</em> can display it.</p>
+
+<h3 id="scenario-2-a-customer-asks-vicki-for-a-cup-from-the-back">Scenario 2: A customer asks Vicki for a cup from the back…</h3>
+
+<blockquote>
+<p>Vicki says: "Oh my gosh, I have no idea what to do". And she ask to Caitlyn the manager again.</p>
+
+<p>Caitlyn turn around, yells at Madeline our Model:"Madeline go get a cup from the back!!".</p>
+
+<p>Madeline grabs the cup, hands it back to Caitlyn our manager who hands it back to Vicky, and finally present the cup to the client.</p>
+</blockquote>
+<p>I
+n this case, it slightly <em>more complicated</em>, but basically the idea is pretty similar. Something happens on the <em>Front-end</em>, the user ask for something.</p>
+
+<p>The <em>View</em> doesn’t really know what to do, ask the <em>Controller.</em></p>
+
+<p>The <em>Controller</em> tells the <em>View</em> whether just hand back <em>a certain amount of data</em> to the user or go get some data from the <em>back</em>; hand it back to the <em>View</em> who can display it to the user.</p>
+
+<h3 id="separating-a-software-application-into-these-three-distinct-components-is-a-good-idea-for-a-number-of-reasons-including">Separating a software application into these three distinct components is a good idea for a number of reasons, including:</h3>
+
+<ul>
+  <li>
+    <p>improved scalability (the ability for an application to grow)–for example, if your application begins experiencing performance issues because database access is slow, you can upgrade the hardware running the database without other components being affected</p>
+  </li>
+  <li>
+    <p>ease of maintenance—as the components have a low dependency on each other, making changes to one (to fix bugs or change functionality) does not affect another</p>
+  </li>
+  <li>
+    <p>reusability—a model may be reused by multiple views</p>
+  </li>
+</ul>
+
+<p>I think that’s like a useful way of thinking about MVC</p>
+
+:ET

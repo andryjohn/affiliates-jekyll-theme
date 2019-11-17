@@ -1,0 +1,19 @@
+I"m<blockquote>
+  <p>Bon, je me suis retrouvé dans une situation où je ne pouvais utiliser qu’une seule clé pour m’authentifier, et il faut taper son foutu mot de passe à chaque push, et à la longue sa en devenait pénible.</p>
+</blockquote>
+
+<h2 id="sa-sent-le-déja-vue-">Sa sent le <em>déja vue</em> ?</h2>
+
+<p>N’ayez crainte, après mainte recherche, bien caché au fin fond de son trou du c* * * , git à une solution spécifique à ce problème,  que je partage ici!</p>
+
+<pre><code class="language-git">git config credential.helper 'cache --timeout=3600'
+</code></pre>
+
+<p>Et votre authentification sera gardée en mémoire pour une heure. Vous pouvez faire :</p>
+
+<pre><code class="language-git">git config credential.helper 'cache --timeout=3600'
+</code></pre>
+
+<p>Pour l’étendre à tous les repos de votre machine. <em>“That’s all folks!”</em></p>
+
+:ET

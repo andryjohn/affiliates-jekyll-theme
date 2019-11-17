@@ -1,0 +1,260 @@
+I"}H<blockquote>
+  <p>Cette introduction a pour objectif de <em>dédiabolisé</em> le code en vous présentant le fonctionnement et les possibilités offertes par ce langage, evidemment accessible à tous et pourra être bénéfique à chacun, que vous n’ayez jamais codé ou si vous ètes un expert, cela va vous permettre de révisé les bases.</p>
+</blockquote>
+
+<h2 id="quest-ce-ce-que-le-javascript">Qu’est-ce ce que le JavaScript?</h2>
+
+<p>Le <strong>JavaScript</strong> est un langage de programmation plutot jeune créé en 1995. Il va nous permettre de créer des pages interactives et « vivantes » à l’aide de <strong>scripts.</strong></p>
+
+<blockquote>
+  <p>Un <strong>script</strong>, c’est tout simplement une suite d’instructions qui vont être interprétées par un programme.</p>
+</blockquote>
+
+<p>Ainsi, pour lire du code JavaScript, il va nous falloir un interpréteur. Heureusement, tous les navigateurs (Google Chrome, Safari, etc.) possèdent leur propre interpréteur JavaScript.</p>
+
+<blockquote>
+  <p>Le <strong>JavaScript</strong> est un langage de programmation dit « client-side », c’est à dire que me code va s’effectuer du côté du client, c’est-à-dire sur l’ordinateur de la personne qui va demander la page web.</p>
+</blockquote>
+
+<h1 id="environnement-de-travail">Environnement de travail:</h1>
+
+<h3 id="choisir-et-utiliser-un-éditeur-de-texte">Choisir et utiliser un éditeur de texte:</h3>
+
+<p>Pour coder en JavaScript, les développeurs ont besoin d’un <strong>éditeur de texte.</strong> Moi j’utilise <em>Sublime text</em> mais il existe de nombreux éditeurs de texte sur le web et <em>la majorité d’entre eux sont gratuits.</em>
+<img src="/images/sublime.png" alt="sublime" /></p>
+
+<p>Vous pourrez également trouver sur le web de nombreux sites web vous permettant d’écrire du code en JavaScript et d’avoir immédiatement un aperçu du résultat. Je vous recommande
+<a href="https://jsfiddle.net/">jsfiddle.net</a> ou <a href="https://jsbin.com/?html,output">jsbin.com</a>.</p>
+
+<h3 id="ou-écrire-notre-code-javascript">Ou écrire notre code JavaScript?</h3>
+
+<p>On va pouvoir placer du code JavaScript à trois endroits différents :</p>
+
+<ul>
+  <li>Dans l’élément <code class="highlighter-rouge">head</code> d’une page HTML ;</li>
+  <li>Dans l’élément <code class="highlighter-rouge">body</code> d’une page HTML ;</li>
+  <li>Dans un fichier portant l’extension « .js » séparé.</li>
+</ul>
+
+<blockquote>
+  <p>Bien que cette dernière méthode soit généralement recommandée, notamment pour des gros projets, parfois vous serez « obligé » d’écrire votre code JavaScript dans votre fichier HTML.</p>
+</blockquote>
+
+<h1 id="les-variables-en-javascript">Les variables en JavaScript:</h1>
+<p><img src="/images/var.png" alt="var" /></p>
+
+<p>Une <strong>variable JavaScript</strong> est un conteneur servant à <strong>stocker temporairement une information</strong>, comme un nombre ou une chaîne de caractères (c’est-à-dire un texte) par exemple, ici c’est <strong>firstName</strong>.</p>
+
+<p><img src="/images/var2.png" alt="var" /></p>
+
+<p>Comme son nom l’indique, le propre d’une <em>variable</em> est de pouvoir varier, c’est-à-dire de pouvoir stocker (tel une boite)
+<em>différentes valeurs dans le temps, en « écrasant » sa valeur précédente.</em></p>
+
+<blockquote>
+  <p>En JavaScript, on déclare une variable avec le mot clef « var » suivi du nom de notre variable. Chaque nouvelle variable doit avoir un nom unique qu’on appelle également en anglais « identifier ».</p>
+</blockquote>
+
+<h3 id="le-nom-des-variables-en-javascript">Le nom des variables en JavaScript</h3>
+
+<p>On doit observer différentes règles lorsque l’on nomme une variable en JavaScript :</p>
+
+<p>Le nom des variables doit commencer par une lettre ;
+Le nom ne peut contenir que des lettres (non accentuées), des chiffres ou les signes « _ » et « $ » ;
+Le nom des variables est sensible à la casse (« a » est différent de « A ») ;</p>
+
+<p>Le JavaScript possède des mots « réservés » qu’on ne peut utiliser pour créer une variable. Nous verrons ces mots au fil de ce cours. Par exemple, le mot « var » est un mot réservé.</p>
+
+<h3 id="déclarer-une-variable-en-javascript">Déclarer une variable en JavaScript</h3>
+
+<p>Il existe différentes façons de déclarer une variable en JavaScript. On va pouvoir :</p>
+
+<ul>
+  <li>Déclarer une variable et lui assigner une valeur immédiatement ;</li>
+  <li>Déclarer une variable sans lui assigner de valeur et lui assigner une valeur plus tard ;</li>
+  <li>Déclarer plusieurs variables en même temps.</li>
+</ul>
+
+<p>Voyons immédiatement un premier exemple ensemble :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">//On declare une variable et lui assigner une valeur immédiatement ;</span>
+<span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">45</span><span class="p">;</span>
+<span class="c1">//On declare une variable sans lui assigner de valeur et lui assigner une valeur ensuite(non recommandée) ;</span>
+<span class="kd">var</span> <span class="nx">age</span><span class="p">;</span>
+<span class="nx">age</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="c1">// On crée une variable vide  à laquelle on affecte une valeur ar la suite (meilleur option)</span>
+<span class="kd">var</span> <span class="nx">ville</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
+<span class="nx">ville</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Paris</span><span class="dl">"</span>
+<span class="c1">// une variable stockant un type particulier: un booléan</span>
+<span class="kd">var</span> <span class="nx">man</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+</code></pre></div></div>
+<p><strong>Remarque: les types de valeurs et le signe « = »</strong></p>
+
+<p>La première concerne les valeurs stockées par <em>les variables.</em> Vous pouvez remarquer que selon le <em>type de valeur stockée</em>(texte, nombre ou booléen), nous allons déclarer nos variables de façon sensiblement différente (utilisation ou non de guillemets ou d’apostrophes). Nous allons y revenir..</p>
+
+<p>La deuxième remarque concerne <strong>le signe « = » (signe égal).</strong></p>
+
+<p>Faites très attention à la signification de ce signe en JavaScript et en programmation en général, car ce n’est pas le égal mathématique que vous connaissez.</p>
+
+<blockquote>
+  <p>En effet, en JavaScript, le signe égal est un opérateur d’affectation et non pas d’égalité.</p>
+</blockquote>
+
+<p>Cela veut dire que ce signe va nous servir à
+<strong>affecter (ou assigner) une valeur à une variable, mais non pas que la variable est égale à sa valeur.</strong></p>
+
+<p>Pour vous donner un exemple concret, en JavaScript, nous allons pouvoir faire cela (ce qui n’aurait aucun sens en mathématiques) :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// On stock la valeur 15 a notre variable x</span>
+<span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span>
+
+<span class="cm">/*On ajoute 5 à la dernière valeur connue stockée par x;
+*x stocke donc maitenant la valeur 30*/</span>
+<span class="nx">x</span> <span class="o">=</span> <span class="nx">x</span> <span class="o">+</span> <span class="mi">5</span><span class="p">;</span>
+
+<span class="c1">// En math, la reponse serait "l'ensemble des solution est nulles"</span>
+</code></pre></div></div>
+<h1 id="les-types-de-valeurs-des-variables">Les types de valeurs des variables</h1>
+<p><img src="/images/Data.png" alt="var" /></p>
+
+<p>Les variables en JavaScript peuvent stocker
+<em>différents types de valeurs.</em></p>
+
+<p>Par simplification, on parlera <strong>souvent (à tort) de « types de variables » au lieu de parler de « types de valeurs stockées par les variables ».</strong></p>
+
+<hr />
+<h3 id="le-type-de-valeurs-numbers">Le type de valeurs Numbers:</h3>
+
+<p><img src="/images/numbers.png" alt="numbers" /></p>
+
+<p>Le type de valeurs Number va représenter <strong>tout nombre ou chiffre, qu’il soit positif, négatif, entier ou à virgule.</strong></p>
+
+<p><em>Pour affecter une valeur de type Number à une variable, on n’utilise ni guillemet ni apostrophe.</em></p>
+
+<h3 id="le-type-de-valeurs-string">Le type de valeurs String:</h3>
+
+<p>Le type de valeurs <strong>String</strong> va représenter les chaînes de caractères, c’est-à-dire les textes.</p>
+
+<p>Si l’on veut stocker <em>une chaîne de caractères dans une variable, il faut entourer notre chaîne par des apostrophes ou des guillemets.</em></p>
+
+<blockquote>
+  <p>Ce sont justement ces apostrophes ou guillemets qui vont indiquer au JavaScript que l’on stocke une valeur de type String.</p>
+</blockquote>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kd">var</span> <span class="nx">firstName</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Andry</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">Name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">John</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">gender</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Male</span><span class="dl">"</span>
+
+</code></pre></div></div>
+<h3 id="le-type-de-valeurs-boolean">Le type de valeurs Boolean</h3>
+
+<p>Une variable en JavaScript peut encore stocker une valer de type <strong>Boolean</strong>, <em>c’est-à-dire un booléen.</em></p>
+
+<p><img src="/images/boolean.png" alt="boolean" /></p>
+
+<p>Une variable en JavaScript peut encore stocker une valer de type <strong>Boolean</strong>, <em>c’est-à-dire un booléen.</em></p>
+
+<p>Un booléen, en algèbre, est <em>une valeur binaire (soit 0, soit 1). En informatique, un booléen va être soit la valeur true (vrai), soit la valeur false (faux).</em></p>
+
+<blockquote>
+  <p>Faites bien attention : pour qu’une variable stocke bien un booléen, il faut lui faire stocker la valeur true ou false, sans guillemets ou apostrophes.</p>
+</blockquote>
+
+<p>Si vous rajoutez des guillemets ou des apostrophes, la variables stockera alors la chaîne de caractères <strong>true ou la chaîne de caractères false.</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">// a et b sctockent un valeur de type boolean</span>
+<span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">b</span> <span class="o">=</span> <span class="kc">false</span>
+
+<span class="c1">//c stocke la chaine de caractère true//</span>
+<span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">true</span><span class="dl">"</span>
+
+</code></pre></div></div>
+
+<h3 id="autres-valeurs-stockées-en-javascript">Autres valeurs stockées en JavaScript</h3>
+
+<p>Les variables en JavaScript peuvent stocker bien d’autres valeurs n’étant pas de type <em>String, Number ou Boolean.</em></p>
+
+<p><img src="/images/null.png" alt="null" /></p>
+
+<p>Parmi les autres valeurs remarquables, on peut citer la valeur <em>«null»</em>, qui correspond <strong>à la non connaissance à priori de la valeur ainsi que la valeur <em>«undefined»</em> qui correspond au fait de ne pas avoir défini de valeur pour notre variable.</strong></p>
+
+<p>Une variable peut encore contenir la valeur « NaN » qui signifie « Not a Number » (« n’est pas un nombre » en Français).</p>
+
+<h1 id="operations-sur-les-variables-en-javascript">OPERATIONS SUR LES VARIABLES EN JAVASCRIPT</h1>
+
+<p>Pour des variables stockant des valeurs de type Number, on va donc pouvoir effectuer les mêmes opérations qu’avec des nombres en mathématiques.</p>
+
+<p>Ainsi, nous allons pouvoir additionner (les valeurs de) deux variables entre elles, les soustraire l’une à l’autre, les multiplier entre elles, etc.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="nx">y</span> <span class="o">=</span> <span class="mi">18</span><span class="p">,</span> <span class="nx">z</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">;</span>
+
+<span class="c1">//on ajoute 1 à la valeur de c qui stocke maitenant 6</span>
+<span class="nx">x</span> <span class="o">=</span> <span class="nx">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="c1">//On soustrait 4 a x, x vaut maitenant 2</span>
+<span class="nx">x</span> <span class="o">=</span> <span class="nx">x</span> <span class="o">-</span> <span class="mi">4</span><span class="p">;</span>
+
+<span class="nx">y</span> <span class="o">=</span> <span class="nx">y</span> <span class="o">*</span> <span class="mi">2</span> <span class="c1">//y contient maintenant 20</span>
+
+<span class="cm">/*On multiplie la derniere valeur contenu dan x (4) par la dernière
+* valeur contenu dans y (20). On stocke le resultat (80) dans une
+*nouvelle variable q'on appelera mult*/</span>
+
+<span class="kd">var</span> <span class="nx">mult</span> <span class="o">=</span> <span class="nx">x</span> <span class="o">*</span> <span class="nx">y</span><span class="p">;</span>
+
+<span class="cm">/* On divise la derniere valeur contenue dans y par celle contenu dans z
+*On stocke le résultat (20/(-2) = -18) dans une varilable divi */</span>
+<span class="kd">var</span> <span class="nx">div</span> <span class="o">=</span> <span class="nx">y</span> <span class="o">/</span> <span class="nx">z</span><span class="p">;</span>
+
+<span class="cm">/* le modulo represente le reste de ka division entière d'une nombre par autre
+*Par exemple, si on divise 13 par 3 et qu'on ne conserve que la partie entière ,
+*le résultat est 4 et il reste 1. 1 est le modulo.*/</span>
+<span class="kd">var</span> <span class="nx">mod</span> <span class="o">=</span> <span class="mi">13</span> <span class="o">%</span> <span class="mi">3</span><span class="p">;</span>
+
+</code></pre></div></div>
+<p><strong>Le modulo correspond au reste de la division entière d’un nombre par un autre. On utilise le signe « % » pour le calculer.</strong></p>
+
+<h3 id="priorité-de-calcul">Priorité de calcul</h3>
+
+<p>Faites attention à respecter les priorités de calcul lorsque vous effectuez des opérations sur les variables.</p>
+
+<p>En réalité, c’est très simple puisque ce sont les mêmes qu’en mathématiques : <em>les parenthèses sont prioritaires sur toute autre opération, puis viennent la multiplication, la division et le modulo et finalement l’addition et la soustraction.</em></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="nx">y</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="nx">z</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">;</span>
+
+<span class="c1">// Les priorité de calcul sont les memes qu'ne math</span>
+<span class="kd">var</span> <span class="nx">prior</span> <span class="o">=</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span> <span class="o">/</span> <span class="p">(</span> <span class="mi">4</span> <span class="o">+</span> <span class="nx">z</span> <span class="p">)</span> <span class="o">%</span> <span class="mi">3</span><span class="p">;</span>
+
+<span class="nx">alert</span><span class="p">(</span><span class="nx">prior</span><span class="p">);</span>
+
+<span class="c1">// 7</span>
+</code></pre></div></div>
+
+<p>Ici, on commence par calculer ce qui est <em>entre parenthèses</em>, c’est-à-dire <code class="highlighter-rouge">4 + z</code> ce qui nous donne <code class="highlighter-rouge">4 + (-2) = 2.</code></p>
+
+<p>Ensuite, on divise donc la valeur contenue dans y par 2 ce qui nous donne 5 et on calcule le modulo de 5 par 3 qui est égal à 2.</p>
+
+<p>Finalement, on additionne la valeur contenue dans x et 2 pour arriver au résultat final : <code class="highlighter-rouge">7</code>.</p>
+
+<p>Faites donc bien attention aux priorités de calcul lorsque vous effectuez des manipulations sur les variables, car le résultat peut s’avérer totalement différent de celui attendu si vous n’en tenez pas compte.</p>
+
+<h3 id="opérations-simplifiées-sur-les-variables-javascript">Opérations simplifiées sur les variables JavaScript</h3>
+
+<p>Sachez que l’on peut simplifier l’écriture de <em>certaines opérations mathématiques sur les variables en JavaScript</em>, afin de <strong>gagner en temps, en performance et en clarté.</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="nx">y</span> <span class="o">=</span> <span class="p">,</span> <span class="nx">z</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">;</span>
+<span class="c1">//Equivaut à "x = x + 2", x = x - 3</span>
+
+<span class="nx">x</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="nx">X</span> <span class="o">-=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="c1">// VOUS AVEZ COMPRIS !</span>
+<span class="nx">x</span> <span class="o">*=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="nx">y</span> <span class="o">%=</span> <span class="nx">x</span><span class="p">;</span>
+<span class="p">...</span>
+</code></pre></div></div>
+<p>Si vous ètes arrivé jusque là, bravo!</p>
+:ET
