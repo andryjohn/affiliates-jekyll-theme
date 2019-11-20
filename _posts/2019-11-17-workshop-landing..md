@@ -35,7 +35,32 @@ image: images/havas.gif
 
 #### 2. ADD SOME HTML CONTENT
 
-1. to save time, just right-click on the following images and save them in your images folder
+1. to save time, we just use a fontawesome icons for our features, so, in your `head`
+
+
+
+```html
+<head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+</head>
+```
+
+  <div class="icon list-inline" style="padding: 10px; margin: 10px;">
+  <i class="fa fa-3x fa-truck"></i>
+  <h2>Fast Shipping</h2>
+          <p>
+            We make sure you recieve your product as soon as we have finished
+          </p>
+<i class="fa fa-3x fa-battery-full"></i>
+  <h2>Quality Assurance</h2>
+          <p>
+            For every purchase you make, we will ensure there are no damages
+          </p>
+ <i class="fa fa-3x fa-check-circle"></i>
+<h2>Satisfaction</h2>
+<p>Your satisfaction is our priority everyday!</p>
+
+</div>
 
 
 
@@ -55,23 +80,22 @@ image: images/havas.gif
       <a href="#">Start now</a>
     </p>
 
-    <img src="images/briefcase.png" alt="picture description" width="100">
-    <h2>Fast</h2>
-    <p>A fast app, <strong>very fast</strong> app</p>
+<i class="fa fa-3x fa-battery-full"></i>
+   <h2>Fast Shipping</h2>
+          <p>
+            We make sure you recieve your product as soon as we have finished
 
-    <img src="images/diamond.png" alt="picture description" width="100">
-    <h2>Simple</h2>
-    <p>A simple app, <strong>very simple</strong> app</p>
+          </p>
+<i class="fa fa-3x fa-battery-full"></i>
+  <h2>Quality Assurance</h2>
+          <p>
+            For every purchase you make, we will ensure there are no damages
+          </p>
+ <i class="fa fa-3x fa-check-circle"></i>
+   <h2>Satisfaction</h2>
+     <p>Your satisfaction is our priority</p>
 
-    <img src="images/heart.png" alt="picture description" width="100">
-    <h2>Awesome</h2>
-    <p>An awesome app, <strong>very awesome</strong> app</p>
-
-    <img src="images/laptop.png" alt="picture description" width="100">
-    <h2>Beautiful</h2>
-    <p>A beautiful app, <strong>very beautiful</strong> app</p>
-
-    <p>This is an awesome landing ©Codedot</p>
+<p>This is an awesome landing ©Codedot</p>
   </body>
 </html>
 ```
@@ -125,4 +149,68 @@ a:hover {
 }
 
 
+```
+#### 4. WRAP WITH `DIV`
+
+```html
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My Awesome app</title>
+  </head>
+  <body>
+  <div>
+    <h1>My Awesome app</h1>
+    <p>This is the important line everyone reads..</p>
+    <p>
+      <a href="#">Start now</a>
+    </p>
+  </div>
+
+  <div>
+ <h1>My Awesome app</h1>
+    <p>This is the important line everyone reads..</p>
+    <p>
+      <a href="#">Start now</a>
+    </p>
+</div>
+<div>
+<i class="fa fa-3x fa-battery-full"></i>
+   <h2>Fast Shipping</h2>
+          <p>
+            We make sure you recieve your product as soon as we have finished
+
+          </p>
+</div>
+<div>
+  <h2>Quality Assurance</h2>
+          <p>
+            For every purchase you make, we will ensure there are no damages
+          </p>
+</div>
+<div>
+ <i class="fa fa-3x fa-check-circle"></i>
+ <h2>Satisfaction</h2>
+ <p>Your satisfaction is our priority</p>
+</div>
+
+<div>
+    <p>This is an awesome landing ©Codedot</p>
+</div>
+  </body>
+</html>
+
+
+```
+#### 5. Footer:
+
+and then the footer
+
+```html
+<ul>
+  <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+  <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+  <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+  <li><a href="#"><i class="fab fa-github"></i></a></li>
+</ul
 ```
