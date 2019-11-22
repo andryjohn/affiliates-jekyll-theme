@@ -26,45 +26,11 @@ image: images/havas.gif
 
 5. Do the same to create a `style.css` file
 
-7. Then "New Folder" and create an images folder
-
-8. Finally double click on index.html to open it with Chrome
-
-![sublime](/images/setup.png)
-
 
 #### 2. ADD SOME HTML CONTENT
 
-1. to save time, we just use a fontawesome icons for our features, so, in your `head`
 
-
-
-```html
-<head>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-</head>
-```
-
-  <div class="icon list-inline" style="padding: 10px; margin: 10px;">
-  <i class="fa fa-3x fa-truck"></i>
-  <h2>Fast Shipping</h2>
-          <p>
-            We make sure you recieve your product as soon as we have finished
-          </p>
-<i class="fa fa-3x fa-battery-full"></i>
-  <h2>Quality Assurance</h2>
-          <p>
-            For every purchase you make, we will ensure there are no damages
-          </p>
- <i class="fa fa-3x fa-check-circle"></i>
-<h2>Satisfaction</h2>
-<p>Your satisfaction is our priority everyday!</p>
-
-</div>
-
-
-
-2. Then start with this HTML code in index.html
+1. start with this HTML code in index.html
 
 
 ```html
@@ -99,6 +65,35 @@ image: images/havas.gif
   </body>
 </html>
 ```
+
+
+**Then to save time, we just use a fontawesome icons for our features, so, in your `head`**
+
+
+
+```html
+<head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+</head>
+```
+
+  <div class="icon list-inline" style="padding: 10px; margin: 10px;">
+  <i class="fa fa-3x fa-truck"></i>
+  <h2>Fast Shipping</h2>
+          <p>
+            We make sure you recieve your product as soon as we have finished
+          </p>
+<i class="fa fa-3x fa-battery-full"></i>
+  <h2>Quality Assurance</h2>
+          <p>
+            For every purchase you make, we will ensure there are no damages
+          </p>
+ <i class="fa fa-3x fa-check-circle"></i>
+<h2>Satisfaction</h2>
+<p>Your satisfaction is our priority everyday!</p>
+
+</div>
+
 **Tips:** Also stay tuned checking icon resources on Product Hunt
 
 <a href="https://www.producthunt.com/posts/animated-icons-pack?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-animated-icons-pack" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=148270&theme=light" alt="Animated Icons Pack - A pack of 100 animated vector icons. | Product Hunt Embed" style="width: 250px; height: 54px;" width="250px" height="54px" /></a>
