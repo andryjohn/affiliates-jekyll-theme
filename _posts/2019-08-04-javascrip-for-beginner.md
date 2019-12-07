@@ -5,7 +5,7 @@ date:       2019-08-04
 summary:
 categories: [ JavaScript, beginner, introduction ]
 mathjax: true
-courses: true
+featured: true
 image: images/2.png
 ---
 
