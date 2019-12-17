@@ -59,16 +59,16 @@ image: images/havas.gif
           <p>
             Pay with your mobile
           </p>
-<i class="fas fa-3x fa-battery-full"></i>
+<i class="fas fa-5x fa-battery-full"></i>
    <h2>Fast shipping</h2>
    <p>  We make sure you recieve your product as soon as we have finished
 </p>
 
-<i class="fas fa-3x fa-shipping-fast"></i>
+<i class="fas fa-5x fa-shipping-fast"></i>
    <h2>Quality Assurance</h2>
     <p>  For every purchase you make, we will ensure there are no damages</p>
 
-<i class="fas fa-3x fa-check-circle"></i>
+<i class="fas fa-5x fa-check-circle"></i>
    <h2>Satisfaction</h2>
     <p>Your satisfaction is our priority</p>
 
@@ -79,7 +79,7 @@ image: images/havas.gif
 ```
 
 
-**Then to save time, we just use a fontawesome icons for our features, so, in your `head`**
+**Then we just use a fontawesome icons for our features, so, in your `head`**
 
 
 
@@ -90,9 +90,8 @@ image: images/havas.gif
 ```
 
   <div class="icon list-inline" style="padding: 10px; margin: 10px;">
-
 <i class="fa fa-5x fa-cc-apple-pay"></i>
-   <h2>Easy</h2>
+   <h2>Easy to use</h2>
           <p>
             Pay with your mobile
           </p>
@@ -129,9 +128,9 @@ Link your stylesheet `style.css` in the `head` section of your HTML
 Then `copy/paste` the CSS code below in `style.css` and fix it cause it's ugly
 
 1. For fonts use [Google Fonts](https://fonts.google.com/specimen/Open+Sans?selection.family=Open+Sans)
-2. For colors use Colorzilla Chrome plugin to pick
-3. colors from other websites
-4. You can also find nice colors on Coolors or Color Hunt
+2. For colors use [Colorzilla Chrome plugin to pick](https://www.colorzilla.com/chrome/)
+3. colors from other [websites](https://codedot.tk)
+4. You can also find nice colors on Coolors or [Color Hunt](https://colorhunt.co/)
 
 ```css
 /* style.css */
@@ -171,46 +170,63 @@ a:hover {
   <head>
     <meta charset="utf-8">
     <title>Awesome Landing</title>
+       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <link href='style.css' rel='stylesheet'>
+
   </head>
   <body>
-  <div>
-    <h1>My Awesome app</h1>
+  <div id="banner">
+ <h1>AWESOME PRODUCT</h1>
     <p>This is the important line everyone reads..</p>
     <p>
-      <a href="#">Start now</a>
-    </p>
-  </div>
-
-  <div>
- <h1>My Awesome app</h1>
-    <p>This is the important line everyone reads..</p>
-    <p>
-      <a href="#">Start now</a>
+      <a href="#" class="btn btn-primary btn-lg">BUY NOW</a>
     </p>
 </div>
-<div>
-<i class="fa fa-3x fa-battery-full"></i>
-   <h2>Fast Shipping</h2>
-          <p>
-            We make sure you recieve your product as soon as we have finished
 
+    <div class="features">
+<i class="fab fa-5x fa-cc-apple-pay"></i>
+   <h2>Easy to use</h2>
+          <p>
+            Pay with your mobile
           </p>
 </div>
-<div>
-<i class="fas fa-3x fa-shipping-fast"></i>
-  <h2>Quality Assurance</h2>
+  </div>
+
+    <div class="features">
+<i class="fas fa-5x fa-battery-full"></i>
+ <h2>Quality Assurance</h2>
           <p>
             For every purchase you make, we will ensure there are no damages
           </p>
 </div>
-<div>
- <i class="fa fa-3x fa-check-circle"></i>
+  </div>
+    <div class="features">
+<i class="fas fa-5x fa-shipping-fast"></i>
+ <h2>Fast Shipping</h2>
+          <p>
+            We make sure you recieve your product as soon as we have finished
+
+          </p>
+
+</div>
+  </div>
+    <div class="features">
+ <i class="fas fa-5x fa-check-circle"></i>
  <h2>Satisfaction</h2>
  <p>Your satisfaction is our priority</p>
 </div>
+ </div>
 
-<div>
+
+
+<div id="footer">
     <p>This is an awesome landing ©Codedot</p>
+<ul>
+  <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+  <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+  <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+  <li><a href="#"><i class="fab fa-github"></i></a></li>
+</ul>
 </div>
   </body>
 </html>
@@ -303,6 +319,7 @@ a:hover {
 
 #### 6. Start with bootstrap:
 
+
 ```html
 <!doctype html>
 <html lang="en">
@@ -333,7 +350,16 @@ a:hover {
   </body>
 </html>
 ```
-#### Just copy/paste and let's play and see the result
+#### Just copy/paste let's play and see the result
+
+Mobile first
+With Bootstrap 2, we added optional mobile friendly styles for key aspects of the framework.
+
+With Bootstrap 3, we've rewritten the project to be mobile friendly from the start.
+
+Instead of adding on optional mobile styles, they're baked right into the core. In fact, Bootstrap is mobile first. Mobile first styles can be found throughout the entire library instead of in separate files.
+
+
 
 ```html
 <!doctype html>

@@ -1,4 +1,4 @@
-I"�<blockquote>
+I"�<blockquote>
   <p>2 hour landing, learn HTML and CSS</p>
 </blockquote>
 <iframe src="//www.slideshare.net/slideshow/embed_code/key/2pRkQlCVreEvf0" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen=""> </iframe>
@@ -75,7 +75,7 @@
 
 </code></pre></div></div>
 
-<p><strong>Then to save time, we just use a fontawesome icons for our features, so, in your <code class="highlighter-rouge">head</code></strong></p>
+<p><strong>Then we just use a fontawesome icons for our features, so, in your <code class="highlighter-rouge">head</code></strong></p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;head&gt;</span>
   <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://use.fontawesome.com/releases/v5.5.0/css/all.css"</span><span class="nt">&gt;</span>
@@ -319,7 +319,14 @@
   <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div></div>
-<h4 id="just-copypaste-and-lets-play-and-see-the-result">Just copy/paste and let’s play and see the result</h4>
+<h4 id="just-copypaste-lets-play-and-see-the-result">Just copy/paste let’s play and see the result</h4>
+
+<p>Mobile first
+With Bootstrap 2, we added optional mobile friendly styles for key aspects of the framework.</p>
+
+<p>With Bootstrap 3, we’ve rewritten the project to be mobile friendly from the start.</p>
+
+<p>Instead of adding on optional mobile styles, they’re baked right into the core. In fact, Bootstrap is mobile first. Mobile first styles can be found throughout the entire library instead of in separate files.</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
 <span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
@@ -502,5 +509,68 @@
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div></div>
 
-<p>```</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/* style.css */</span>
+<span class="o">*</span><span class="p">{</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+<span class="nl">padding</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">body</span><span class="p">{</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="nb">rgb</span><span class="p">(</span><span class="m">245</span><span class="p">,</span><span class="m">245</span><span class="p">,</span><span class="m">245</span><span class="p">);</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#202020</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">15px</span><span class="p">;</span>
+  <span class="nl">font-family</span><span class="p">:</span>  <span class="s2">'Open Sans'</span><span class="p">,</span> <span class="nb">sans-serif</span><span class="p">;</span><span class="err">;</span>
+<span class="p">}</span>
+<span class="nt">h1</span><span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#202020</span><span class="p">;</span>
+  <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">35px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">h2</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#252525</span><span class="p">;</span>
+  <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">lighter</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">25px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">a</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">green</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">a</span><span class="nd">:hover</span> <span class="p">{</span>
+  <span class="nl">text-decoration</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="n">green-light</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nf">#banner</span><span class="p">{</span>
+  <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">background-image</span><span class="p">:</span> <span class="n">linear-gradient</span><span class="p">(</span><span class="m">90deg</span><span class="p">,</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0.4</span><span class="p">)</span> <span class="m">3%</span><span class="p">,</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0.4</span><span class="p">)</span> <span class="m">50%</span><span class="p">),</span> <span class="sx">url("https://unsplash.it/1300/600?party")</span><span class="p">;</span>
+  <span class="nl">background-size</span><span class="p">:</span> <span class="n">cover</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">250px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nf">#banner</span> <span class="nt">h1</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#ffff</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">60px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nf">#banner</span> <span class="nt">p</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#ffff</span><span class="p">;</span>
+  <span class="nl">opacity</span><span class="p">:</span> <span class="m">0.8</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">35px</span><span class="p">;</span>
+  <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">lighter</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nf">#footer</span><span class="p">{</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">30px</span><span class="p">;</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="nb">rgb</span><span class="p">(</span><span class="m">30</span><span class="p">,</span> <span class="m">30</span><span class="p">,</span> <span class="m">30</span><span class="p">);</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">lightgrey</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nf">#footer</span><span class="p">{</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">30px</span><span class="p">;</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="nb">rgb</span><span class="p">(</span><span class="m">30</span><span class="p">,</span> <span class="m">30</span><span class="p">,</span> <span class="m">30</span><span class="p">);</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">lightgrey</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nf">#footer</span> <span class="nt">a</span><span class="p">{</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">lightgrey</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.features</span><span class="p">{</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+  <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">lighter</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
 :ET

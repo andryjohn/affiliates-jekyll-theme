@@ -1,4 +1,4 @@
-I"„Á<blockquote>
+I"qÌ<blockquote>
   <p>2 hour landing, learn HTML and CSS</p>
 </blockquote>
 <iframe src="//www.slideshare.net/slideshow/embed_code/key/2pRkQlCVreEvf0" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen=""> </iframe>
@@ -56,16 +56,16 @@
           <span class="nt">&lt;p&gt;</span>
             Pay with your mobile
           <span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fas fa-3x fa-battery-full"</span><span class="nt">&gt;&lt;/i&gt;</span>
+<span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fas fa-5x fa-battery-full"</span><span class="nt">&gt;&lt;/i&gt;</span>
    <span class="nt">&lt;h2&gt;</span>Fast shipping<span class="nt">&lt;/h2&gt;</span>
    <span class="nt">&lt;p&gt;</span>  We make sure you recieve your product as soon as we have finished
 <span class="nt">&lt;/p&gt;</span>
 
-<span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fas fa-3x fa-shipping-fast"</span><span class="nt">&gt;&lt;/i&gt;</span>
+<span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fas fa-5x fa-shipping-fast"</span><span class="nt">&gt;&lt;/i&gt;</span>
    <span class="nt">&lt;h2&gt;</span>Quality Assurance<span class="nt">&lt;/h2&gt;</span>
     <span class="nt">&lt;p&gt;</span>  For every purchase you make, we will ensure there are no damages<span class="nt">&lt;/p&gt;</span>
 
-<span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fas fa-3x fa-check-circle"</span><span class="nt">&gt;&lt;/i&gt;</span>
+<span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fas fa-5x fa-check-circle"</span><span class="nt">&gt;&lt;/i&gt;</span>
    <span class="nt">&lt;h2&gt;</span>Satisfaction<span class="nt">&lt;/h2&gt;</span>
     <span class="nt">&lt;p&gt;</span>Your satisfaction is our priority<span class="nt">&lt;/p&gt;</span>
 
@@ -75,7 +75,7 @@
 
 </code></pre></div></div>
 
-<p><strong>Then to save time, we just use a fontawesome icons for our features, so, in your <code class="highlighter-rouge">head</code></strong></p>
+<p><strong>Then we just use a fontawesome icons for our features, so, in your <code class="highlighter-rouge">head</code></strong></p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;head&gt;</span>
   <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://use.fontawesome.com/releases/v5.5.0/css/all.css"</span><span class="nt">&gt;</span>
@@ -83,9 +83,8 @@
 </code></pre></div></div>
 
 <div class="icon list-inline" style="padding: 10px; margin: 10px;">
-
 <i class="fa fa-5x fa-cc-apple-pay"></i>
-   <h2>Easy</h2>
+   <h2>Easy to use</h2>
           <p>
             Pay with your mobile
           </p>
@@ -121,9 +120,9 @@
 
 <ol>
   <li>For fonts use <a href="https://fonts.google.com/specimen/Open+Sans?selection.family=Open+Sans">Google Fonts</a></li>
-  <li>For colors use Colorzilla Chrome plugin to pick</li>
-  <li>colors from other websites</li>
-  <li>You can also find nice colors on Coolors or Color Hunt</li>
+  <li>For colors use <a href="https://www.colorzilla.com/chrome/">Colorzilla Chrome plugin to pick</a></li>
+  <li>colors from other <a href="https://codedot.tk">websites</a></li>
+  <li>You can also find nice colors on Coolors or <a href="https://colorhunt.co/">Color Hunt</a></li>
 </ol>
 
 <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/* style.css */</span>
@@ -164,44 +163,62 @@
     <span class="nt">&lt;title&gt;</span>Awesome Landing<span class="nt">&lt;/title&gt;</span>
   <span class="nt">&lt;/head&gt;</span>
   <span class="nt">&lt;body&gt;</span>
-  <span class="nt">&lt;div&gt;</span>
-    <span class="nt">&lt;h1&gt;</span>My Awesome app<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"banner"</span><span class="nt">&gt;</span>
+ <span class="nt">&lt;h1&gt;</span>AWESOME PRODUCT<span class="nt">&lt;/h1&gt;</span>
     <span class="nt">&lt;p&gt;</span>This is the important line everyone reads..<span class="nt">&lt;/p&gt;</span>
     <span class="nt">&lt;p&gt;</span>
-      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Start now<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/p&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-
-  <span class="nt">&lt;div&gt;</span>
- <span class="nt">&lt;h1&gt;</span>My Awesome app<span class="nt">&lt;/h1&gt;</span>
-    <span class="nt">&lt;p&gt;</span>This is the important line everyone reads..<span class="nt">&lt;/p&gt;</span>
-    <span class="nt">&lt;p&gt;</span>
-      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Start now<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"btn btn-primary btn-lg"</span><span class="nt">&gt;</span>BUY NOW<span class="nt">&lt;/a&gt;</span>
     <span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div&gt;</span>
-<span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-3x fa-battery-full"</span><span class="nt">&gt;&lt;/i&gt;</span>
-   <span class="nt">&lt;h2&gt;</span>Fast Shipping<span class="nt">&lt;/h2&gt;</span>
-          <span class="nt">&lt;p&gt;</span>
-            We make sure you recieve your product as soon as we have finished
 
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"features"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fab fa-5x fa-cc-apple-pay"</span><span class="nt">&gt;&lt;/i&gt;</span>
+   <span class="nt">&lt;h2&gt;</span>Easy to use<span class="nt">&lt;/h2&gt;</span>
+          <span class="nt">&lt;p&gt;</span>
+            Pay with your mobile
           <span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div&gt;</span>
-<span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fas fa-3x fa-shipping-fast"</span><span class="nt">&gt;&lt;/i&gt;</span>
-  <span class="nt">&lt;h2&gt;</span>Quality Assurance<span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"features"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fas fa-5x fa-battery-full"</span><span class="nt">&gt;&lt;/i&gt;</span>
+ <span class="nt">&lt;h2&gt;</span>Quality Assurance<span class="nt">&lt;/h2&gt;</span>
           <span class="nt">&lt;p&gt;</span>
             For every purchase you make, we will ensure there are no damages
           <span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div&gt;</span>
- <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-3x fa-check-circle"</span><span class="nt">&gt;&lt;/i&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-12 col-sm-6 col-md-3"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"features text-center"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fas fa-5x fa-shipping-fast"</span><span class="nt">&gt;&lt;/i&gt;</span>
+ <span class="nt">&lt;h2&gt;</span>Fast Shipping<span class="nt">&lt;/h2&gt;</span>
+          <span class="nt">&lt;p&gt;</span>
+            We make sure you recieve your product as soon as we have finished
+
+          <span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-12 col-sm-6 col-md-3"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"features text-center"</span><span class="nt">&gt;</span>
+ <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fas fa-5x fa-check-circle"</span><span class="nt">&gt;&lt;/i&gt;</span>
  <span class="nt">&lt;h2&gt;</span>Satisfaction<span class="nt">&lt;/h2&gt;</span>
  <span class="nt">&lt;p&gt;</span>Your satisfaction is our priority<span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 
-<span class="nt">&lt;div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"footer"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;p&gt;</span>This is an awesome landing Â©Codedot<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-inline"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fab fa-youtube"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fab fa-facebook"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fab fa-twitter"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fab fa-github"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
@@ -319,7 +336,14 @@
   <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div></div>
-<h4 id="just-copypaste-and-lets-play-and-see-the-result">Just copy/paste and letâ€™s play and see the result</h4>
+<h4 id="just-copypaste-lets-play-and-see-the-result">Just copy/paste letâ€™s play and see the result</h4>
+
+<p>Mobile first
+With Bootstrap 2, we added optional mobile friendly styles for key aspects of the framework.</p>
+
+<p>With Bootstrap 3, weâ€™ve rewritten the project to be mobile friendly from the start.</p>
+
+<p>Instead of adding on optional mobile styles, theyâ€™re baked right into the core. In fact, Bootstrap is mobile first. Mobile first styles can be found throughout the entire library instead of in separate files.</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
 <span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
