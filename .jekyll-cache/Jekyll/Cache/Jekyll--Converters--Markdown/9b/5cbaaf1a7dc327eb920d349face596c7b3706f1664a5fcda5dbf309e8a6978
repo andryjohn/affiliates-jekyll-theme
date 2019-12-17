@@ -1,4 +1,4 @@
-I"g~<blockquote>
+I"¨<blockquote>
   <p>2 hour landing, learn HTML and CSS</p>
 </blockquote>
 <iframe src="//www.slideshare.net/slideshow/embed_code/key/2pRkQlCVreEvf0" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen=""> </iframe>
@@ -44,6 +44,12 @@
 <span class="nt">&lt;h1&gt;</span>Awesome Product<span class="nt">&lt;/h1&gt;</span>
   <span class="nt">&lt;p&gt;</span>This is the important line everyone reads...<span class="nt">&lt;/p&gt;</span>
         <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Buy now<span class="nt">&lt;/a&gt;</span>
+
+<span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fab fa-5x fa-cc-apple-pay"</span><span class="nt">&gt;&lt;/i&gt;</span>
+   <span class="nt">&lt;h2&gt;</span>Easy to use<span class="nt">&lt;/h2&gt;</span>
+          <span class="nt">&lt;p&gt;</span>
+            Pay with your mobile
+          <span class="nt">&lt;/p&gt;</span>
 
 <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fab fa-5x fa-cc-apple-pay"</span><span class="nt">&gt;&lt;/i&gt;</span>
    <span class="nt">&lt;h2&gt;</span>Easy<span class="nt">&lt;/h2&gt;</span>
@@ -390,4 +396,111 @@
 <span class="nt">&lt;/html&gt;</span>
 
 </code></pre></div></div>
+<h4 id="7-responsive">7. Responsive</h4>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-12 col-sm-6-col-md-3"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-12 col-sm-6-col-md-3"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-12 col-sm-6-col-md-3"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-12 col-sm-6-col-md-3"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+<h4 id="8-final-result">8. Final result:</h4>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+<span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"IE=edge"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags --&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Landing 2 hours<span class="nt">&lt;/title&gt;</span>
+
+    <span class="c">&lt;!-- Bootstrap --&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"</span> <span class="na">integrity=</span><span class="s">"sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://use.fontawesome.com/releases/v5.5.0/css/all.css"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">'style.css'</span> <span class="na">rel=</span><span class="s">'stylesheet'</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries --&gt;</span>
+    <span class="c">&lt;!-- WARNING: Respond.js doesn't work if you view the page via file:// --&gt;</span>
+    <span class="c">&lt;!--[if lt IE 9]&gt;
+      &lt;script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"&gt;&lt;/script&gt;
+      &lt;script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"&gt;&lt;/script&gt;
+    &lt;![endif]--&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+   <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"banner"</span><span class="nt">&gt;</span>
+ <span class="nt">&lt;h1&gt;</span>AWESOME PRODUCT<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;p&gt;</span>This is the important line everyone reads..<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"btn btn-primary btn-lg"</span><span class="nt">&gt;</span>BUY NOW<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-12 col-sm-6 col-md-3"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"features text-center"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fab fa-5x fa-cc-apple-pay"</span><span class="nt">&gt;&lt;/i&gt;</span>
+   <span class="nt">&lt;h2&gt;</span>Easy to use<span class="nt">&lt;/h2&gt;</span>
+          <span class="nt">&lt;p&gt;</span>
+            Pay with your mobile
+          <span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-12 col-sm-6 col-md-3"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"features text-center"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fas fa-5x fa-battery-full"</span><span class="nt">&gt;&lt;/i&gt;</span>
+ <span class="nt">&lt;h2&gt;</span>Quality Assurance<span class="nt">&lt;/h2&gt;</span>
+          <span class="nt">&lt;p&gt;</span>
+            For every purchase you make, we will ensure there are no damages
+          <span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-12 col-sm-6 col-md-3"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"features text-center"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fas fa-5x fa-shipping-fast"</span><span class="nt">&gt;&lt;/i&gt;</span>
+ <span class="nt">&lt;h2&gt;</span>Fast Shipping<span class="nt">&lt;/h2&gt;</span>
+          <span class="nt">&lt;p&gt;</span>
+            We make sure you recieve your product as soon as we have finished
+
+          <span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-12 col-sm-6 col-md-3"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"features text-center"</span><span class="nt">&gt;</span>
+ <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fas fa-5x fa-check-circle"</span><span class="nt">&gt;&lt;/i&gt;</span>
+ <span class="nt">&lt;h2&gt;</span>Satisfaction<span class="nt">&lt;/h2&gt;</span>
+ <span class="nt">&lt;p&gt;</span>Your satisfaction is our priority<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"footer"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;</span>This is an awesome landing Â©Codedot<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-inline"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fab fa-youtube"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fab fa-facebook"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fab fa-twitter"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fab fa-github"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+    <span class="c">&lt;!-- jQuery (necessary for Bootstrap's JavaScript plugins) --&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://code.jquery.com/jquery-1.12.4.min.js"</span> <span class="na">integrity=</span><span class="s">"sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="c">&lt;!-- Include all compiled plugins (below), or include individual files as needed --&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"</span> <span class="na">integrity=</span><span class="s">"sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>```</p>
 :ET

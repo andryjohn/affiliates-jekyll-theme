@@ -411,3 +411,176 @@ a:hover {
 </html>
 
 ```
+#### 7. Responsive
+
+```html
+<div class="container">
+<div class="row">
+  <div class="col-xs-12 col-sm-6-col-md-3"></div>
+  <div class="col-xs-12 col-sm-6-col-md-3"></div>
+  <div class="col-xs-12 col-sm-6-col-md-3"></div>
+  <div class="col-xs-12 col-sm-6-col-md-3"></div>
+</div>
+</div>
+```
+#### 8. Final result:
+
+```html
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Landing 2 hours</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <link href='style.css' rel='stylesheet'>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+   <div id="banner">
+ <h1>AWESOME PRODUCT</h1>
+    <p>This is the important line everyone reads..</p>
+    <p>
+      <a href="#" class="btn btn-primary btn-lg">BUY NOW</a>
+    </p>
+</div>
+
+<div class="container">
+<div class="row">
+  <div class="col-xs-12 col-sm-6 col-md-3">
+    <div class="features text-center">
+<i class="fab fa-5x fa-cc-apple-pay"></i>
+   <h2>Easy to use</h2>
+          <p>
+            Pay with your mobile
+          </p>
+</div>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-3">
+    <div class="features text-center">
+<i class="fas fa-5x fa-battery-full"></i>
+ <h2>Quality Assurance</h2>
+          <p>
+            For every purchase you make, we will ensure there are no damages
+          </p>
+</div>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-3">
+    <div class="features text-center">
+<i class="fas fa-5x fa-shipping-fast"></i>
+ <h2>Fast Shipping</h2>
+          <p>
+            We make sure you recieve your product as soon as we have finished
+
+          </p>
+
+</div>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-3">
+    <div class="features text-center">
+ <i class="fas fa-5x fa-check-circle"></i>
+ <h2>Satisfaction</h2>
+ <p>Your satisfaction is our priority</p>
+</div>
+
+  </div>
+</div>
+</div>
+
+
+<div id="footer">
+    <p>This is an awesome landing ©Codedot</p>
+<ul class="list-inline">
+  <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+  <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+  <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+  <li><a href="#"><i class="fab fa-github"></i></a></li>
+</ul>
+</div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+  </body>
+</html>
+```
+
+```css
+/* style.css */
+*{
+  margin: 0;
+padding: 0;
+}
+body{
+  background: rgb(245,245,245);
+  color: #202020;
+  font-size: 15px;
+  font-family:  'Open Sans', sans-serif;;
+}
+h1{
+  color: #202020;
+  font-weight: bold;
+  font-size: 35px;
+}
+h2 {
+  color: #252525;
+  font-weight: lighter;
+  font-size: 25px;
+}
+a {
+  color: green;
+}
+a:hover {
+  text-decoration: none;
+  color: green-light;
+}
+#banner{
+  text-align: center;
+  background-image: linear-gradient(90deg, rgba(0,0,0,0.4) 3%, rgba(0,0,0,0.4) 50%), url("https://unsplash.it/1300/600?party");
+  background-size: cover;
+  padding: 250px;
+}
+#banner h1 {
+  color: #ffff;
+  font-size: 60px;
+}
+#banner p {
+  color: #ffff;
+  opacity: 0.8;
+  font-size: 35px;
+  font-weight: lighter;
+}
+#footer{
+  padding: 30px;
+  background: rgb(30, 30, 30);
+  color: lightgrey;
+}
+#footer{
+  padding: 30px;
+  background: rgb(30, 30, 30);
+  color: lightgrey;
+}
+#footer a{
+  font-size: 20px;
+  color: lightgrey;
+}
+.features{
+  padding: 50px;
+  font-weight: lighter;
+}
+
+```
