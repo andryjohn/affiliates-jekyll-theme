@@ -7,7 +7,7 @@ logo: 'assets/images/logo.png'
 favicon: 'assets/images/favicon.ico'
 paginate: 12
 baseurl: ''
-url: 'https://codedot.tk/'
+url: 'https://codedot.fr/'
 email: 'Andry1287@gmail.com'
 google_analytics: 'UA-144246572-1'
 disqus: 'jekyll-blog'
