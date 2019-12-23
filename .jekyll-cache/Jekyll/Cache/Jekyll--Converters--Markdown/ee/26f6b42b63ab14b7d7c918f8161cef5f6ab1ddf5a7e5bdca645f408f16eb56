@@ -1,0 +1,61 @@
+I"�<p>Tout d’abord, nous survolerons le concept d’API — qu’est-ce que c’est, comment ça fonctionne, comment les utiliser dans votre code, et comment sont-elles structurées ? Nous verrons également quelles sont les principales APIs et leur utilisation.</p>
+
+<h2 id="cest-quoi-une-api">C’est quoi une API ?</h2>
+
+<p>Les APIs (Application Programming Interfaces) sont des constructions disponibles dans les langages de programmation pour permettre aux développeurs de créer plus facilement des fonctionnalités complexes. Elles s’occupent des parties de code plus complexes, fournissant au développeur une syntaxe plus facile à utiliser à la place.</p>
+
+<p>Plus concrètemnent, pensez à des branchements électriques dans une maison, tout le monde à une maison…</p>
+
+<p>Si vous souhaitez utiliser un appareil dans votre maison, il vous suffit de le brancher dans une prise et cela fonctionne.</p>
+
+<p>Vous n’essayez pas de le brancher directement à l’alimentation électrique — le faire serait réellement inefficace, et, si vous n’êtes pas électricien, difficile et dangereux à réaliser.</p>
+
+<p><img src="/images/electric_power.jpg" alt="plug" /></p>
+
+<h2 id="utiliser-une-api">Utiliser une API:</h2>
+
+<p>Rien ne vaut l’exemple comcret donc :</p>
+
+<blockquote>
+  <p>Imaginez que vous ayez un site web pour y exposer vos oeuvres personnelles. Vous faites de la peinture et vous voulez que les gens soient capables d’acheter vos créations.
+Vous avez déjà construit votre site pour les montrer, mais maintenant vous avez besoin d’intégrer un système de paiement. Concevoir le code pour prendre en charge toutes les cartes bancaires serait incroyablement difficile, donc vous décidez d’utiliser un système extérieur comme PayPal, et de l’intégrer dans votre site.</p>
+</blockquote>
+
+<p>Pour trouver l’API de Paypal, il suffit de chercher “PayPal API” sur Internet. C’est une technique que vous pouvez utiliser pour trouver quasiment toutes les API des sites qui en proposent.</p>
+
+<p>Sur la page de <a href="https://developer.paypal.com/docs/api">l’API elle-même</a>, vous pouvez trouver la documentation dont vous aurez besoin pour intégrer le code de votre site avec leur service. C’est d’assez haut niveau et assez technique quand vous le voyez pour la première fois, mais si  vous vous detentez une seconde, nous allons voir cela de plus près.</p>
+
+<blockquote>
+  <p>Retenez juste ceci: <em>une API vient presque toujours avec une documentation.</em></p>
+</blockquote>
+
+<p>La documentation du code est un texte écrit par les développeurs qui sacrifient leur vies sociales et qui rend plus facile l’utilisation du code de cette API. Merci!</p>
+
+<p>Elle explique comment le code fonctionne, pourquoi il a été écrit d’une certaine façon et pas d’une autre, comment contribuer au projet, et bien plus encore. Lire la documentation est très important même si c’est très chiant… pour bien intégrer l’API d’une autre plateforme.</p>
+
+<h2 id="que-peuvent-faire-les-api">Que peuvent faire les API ?</h2>
+
+<p>Il y a un beaucoup d’APIs disponibles dans les navigateurs modernes. Elles permettent de faire un large éventail de choses. Vous pouvez vous en faire une petite idée en jetant un coup d’œil <a href="https://developer.mozilla.org/fr/docs/Web/API">à la page de l’index des API MDN</a> mais en tant qu’entrepreneur ou startuper, ceux qui vont plus nous intéresser ce sont les <strong>APIs tièrce.</strong></p>
+
+<h3 id="apis-tierces-courantes">APIs tierces courantes</h3>
+
+<p>Il y a une grande variété d’APIs tierces; en voici quelques unes des plus populaires que vous allez probablement utiliser tôt ou tard :</p>
+
+<ul>
+  <li>
+    <p>L’API Twitter — vous permet, par exemple, d’afficher vos derniers tweets sur votre site Web.</p>
+  </li>
+  <li>
+    <p>L’API Google Maps — vous permet d’afficher des cartes sur vos pages web. Il s’agit à dire vrai d’une suite complète d’APIs, qui gèrent une grande variété de tâches, comme en témoigne l’API Picker Google Maps.</p>
+  </li>
+  <li>
+    <p>L’API Facebook — vous permet d’utiliser diverses parties de l’écosystème Facebook au profit de votre application, par exemple permettre de se connecter via Facebook, accepter des paiements via l’application, déployer des campagnes publicitaires ciblées, etc.</p>
+  </li>
+  <li>
+    <p>L’API YouTube — vous permet d’intégrer des vidéos YouTube sur votre site, de rechercher sur YouTube, de créer des playlists, etc.</p>
+  </li>
+  <li>
+    <p>L’API Twilio — fournit un framework permettant de créer des fonctionnalités d’appel vocal et vidéo dans votre application, d’envoyer des SMS/MMS depuis vos applications, et plus encore.</p>
+  </li>
+</ul>
+:ET

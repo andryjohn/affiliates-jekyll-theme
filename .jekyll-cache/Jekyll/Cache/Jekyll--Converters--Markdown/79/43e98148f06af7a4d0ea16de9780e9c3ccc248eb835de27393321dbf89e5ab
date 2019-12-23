@@ -1,0 +1,29 @@
+I"a<p>Tout d’abord, nous survolerons le concept d’API — qu’est-ce que c’est, comment ça fonctionne, comment les utiliser dans votre code, et comment sont-elles structurées ? Nous verrons également quelles sont les principales APIs et leur utilisation.</p>
+
+<h2 id="cest-quoi-une-api">C’est quoi une API ?</h2>
+
+<p>Les APIs (Application Programming Interfaces) sont des constructions disponibles dans les langages de programmation pour permettre aux développeurs de créer plus facilement des fonctionnalités complexes. Elles s’occupent des parties de code plus complexes, fournissant au développeur une syntaxe plus facile à utiliser à la place.</p>
+
+<p>Plus concrètemnent, pensez à des branchements électriques dans une maison, tout le monde à une maison…</p>
+
+<p>Si vous souhaitez utiliser un appareil dans votre maison, il vous suffit de le brancher dans une prise et cela fonctionne.</p>
+
+<p>Vous n’essayez pas de le brancher directement à l’alimentation électrique — le faire serait réellement inefficace, et, si vous n’êtes pas électricien, difficile et dangereux à réaliser.</p>
+
+<p><img src="/images/electric_power.jpg" alt="plug" /></p>
+
+<h2 id="utiliser-une-api">Utiliser une API:</h2>
+
+<p>Rien ne vaut l’exemple comcret donc :</p>
+
+<blockquote>
+  <p>Imaginez que vous ayez un site web pour y exposer vos oeuvres personnelles. Vous faites de la peinture et vous voulez que les gens soient capables d’acheter vos créations.
+Vous avez déjà construit votre site pour les montrer, mais maintenant vous avez besoin d’intégrer un système de paiement. Concevoir le code pour prendre en charge toutes les cartes bancaires serait incroyablement difficile, donc vous décidez d’utiliser un système extérieur comme PayPal, et de l’intégrer dans votre site.</p>
+</blockquote>
+
+<p>Pour trouver l’API de Paypal, il suffit de chercher “PayPal API” sur Internet. C’est une technique que vous pouvez utiliser pour trouver quasiment toutes les API des sites qui en proposent.</p>
+
+<p>Sur la page de <a href="https://developer.paypal.com/docs/api">l’API elle-même </a>, vous pouvez trouver la documentation dont vous aurez besoin pour intégrer le code de votre site avec leur service. C’est d’assez haut niveau et assez technique quand vous le voyez pour la première fois, mais nous verrons dans ce cours comment interagir avec une API.</p>
+
+<p>Comme nous venons de le voir avec l’API de PayPal, une API vient presque toujours avec une documentation. La documentation du code est un texte écrit par les développeurs qui rend plus facile l’utilisation du code de cette API. Elle explique comment le code fonctionne, pourquoi il a été écrit d’une certaine façon et pas d’une autre, comment contribuer au projet, et bien plus encore. Lire la documentation est très important pour bien intégrer l’API d’une autre plateforme.</p>
+:ET
