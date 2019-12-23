@@ -19,7 +19,7 @@ Les APIs ou *Application Programming Interfaces* sont des constructions disponib
 
 >Tu n'as rien compris? C'est pourtant claire..
 
-Plus concrètemnent, imagines des branchements électriques dans une maison, tout le monde à une maison...ou un appartement on s'en fiche; si tu souhaites utiliser un appareil dans ta maison/appartement, il te suffit de le brancher dans une prise et cela devrait normalement fonctionner(si tu as payé la facture ce mois-ci,evidemment!).
+Plus concrètemnent, imagines des branchements électriques dans une maison, tout le monde à une maison...ou un appartement on s'en fiche; si tu souhaites utiliser un appareil dans ta maison/appartement, il te suffit de le brancher dans une prise et cela devrait normalement fonctionner(si tu as payé la facture ce mois-ci, evidemment!).
 
  Tu ne vas pas essayer  de le brancher directement à l'alimentation électrique — le faire serait réellement inefficace, stupide voire totalement débile et dangereux à réaliser, sauf si tu es électricien.
 
