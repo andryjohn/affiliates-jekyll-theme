@@ -24,15 +24,15 @@ Les réponses se trouvent dans les sections repliées en dessous des questions, 
 function sayHi() {
   console.log(name);
   console.log(age);
-  var name = "Lydia";
+  var name = "John";
   let age = 21;
 }
 
 sayHi();
 ```
 
-- A: `Lydia` et `undefined`
-- B: `Lydia` et `ReferenceError`
+- A: `John` et `undefined`
+- B: `John` et `ReferenceError`
 - C: `ReferenceError` et `21`
 - D: `undefined` et `ReferenceError`
 
@@ -40,7 +40,7 @@ sayHi();
 
 <p markdown= "1">
 
-#### Réponse : D
+ <strong>Réponse : D</strong> <br>
 
 Dans la fonction, nous déclarons en premier la variable `name` grâce au mot clé `var`. Cela signifie que la variable est "levée" _(hoisted)_ (l'espace mémoire est définie à la phase de création) avec pour valeur par défaut `undefined`, jusqu'à ce que le script atteigne la ligne de définition de la variable. Nous n'avons pas encore défini la variable lorsque nous essayons d'afficher la variable `name`, donc elle a toujours la valeur `undefined`.
 
@@ -70,7 +70,8 @@ for (let i = 0; i < 3; i++) {
 <details><summary><b>Réponse</b></summary>
 <p  markdown= "1">
 
-#### Réponse : C
+
+<strong>Réponse : C </strong> <br>
 
 À cause du système de queue dans JavaScript, la fonction de rappel _(callback)_ du `setTimeout` est appelée _après_ que la boucle soit exécutée. Comme la variable `i` dans la première boucle est déclarée avec le mot-clé `var`, c'est une variable globale. Pendant la boucle, nous incrémentons la valeur de `i` de `1` à chaque fois, en utilisant l'opérateur arithmétique `++`. Lorsque la fonction de rappel _(callback)_ du `setTimeout` est invoquée, `i` est égal à `3` dans le premier exemple.
 
@@ -104,7 +105,7 @@ shape.perimeter();
 <details><summary><b>Réponse</b></summary>
 <p markdown= "1">
 
-#### Réponse : B
+<strong> Réponse : B</strong> <br>
 
 Notez que la valeur de `diameter` est une fonction régulière, alors que celle de `perimeter` est une fonction fléchée.
 
@@ -131,7 +132,7 @@ Il n'y a pas de valeur `radius` dans cet objet, on retournera `undefined`.
 <details><summary><b>Réponse</b></summary>
 <p markdown= "1">
 
-#### Réponse : A
+<strong>Réponse : A</strong> <br>
 
 L'opérateur arithmétique `+` essait de convertir un opérande en une valeur numérique. `true` devient `1`, et `false` devient `0`.
 
@@ -163,7 +164,7 @@ const mouse = {
 <details><summary><b>Réponse</b></summary>
 <p markdown= "1">
 
-#### Réponse : A
+<strong> Réponse : A</strong> <br>
 
 En JavaScript, toutes les clés d'objet sont des chaînes de caractères (sauf si c'est un Symbol). Bien que nous ne puissions pas les _typer_ comme des chaînes de caractères, elles sont converties en chaînes de caractères sous le capot.
 
@@ -200,7 +201,7 @@ console.log(d.greeting);
 <details><summary><b>Réponse</b></summary>
 <p markdown= "1">
 
-#### Réponse : A
+<strong> Réponse : A</strong> <br>
 
 En JavaScript, tous les objets interagissent par _référence_ lorsqu'on les définit égaux les uns aux autres.
 
@@ -235,7 +236,7 @@ console.log(b === c);
 <details><summary><b>Réponse</b></summary>
 <p markdown= "1">
 
-#### Réponse : C
+<strong>Réponse : C</strong> <br>
 
 `new Number()` est une fonction globale. Bien qu'il ressemble à un nombre, ce n'en est pas vraiment un : il a une poignée de fonctionnalités supplémentaire et est un objet.
 
@@ -272,9 +273,10 @@ freddie.colorChange("orange");
 - D: `TypeError`
 
 <details><summary><b>Réponse</b></summary>
+
 <p markdown= "1">
 
-#### Réponse : D
+<strong>Réponse : D</strong> <br>
 
 La fonction `colorChange` est statique. Les méthodes statiques sont désignées pour vivre seulement dans le constructeur qui les a créé et ne peuvent pas être transférer aux enfants. Comme `freddie` est un enfant, la fonction n'est pas transférée et n'est pas disponible dans l'instance de `freddie` : une erreur `TypeError` est renvoyée.
 
@@ -298,7 +300,7 @@ console.log(greetign);
 <details><summary><b>Réponse</b></summary>
 <p markdown= "1">
 
-#### Réponse : A
+<strong> Réponse : A</strong> <br>
 
 Il affiche l'objet, car on a juste créé un objet vide dans l'objet global ! Quand on écrit mal `greeting` en `greetign`, JavaScript l'interprète comme il le voit `global.greetign = {}` (ou `window.greetign = {}` dans le navigateur).
 
@@ -327,7 +329,7 @@ bark.animal = "dog";
 <details><summary><b>Réponse</b></summary>
 <p marksown= "1">
 
-#### Réponse : A
+<strong> Réponse : A</strong> <br>
 
 C'est possible en JavaScript, car les fonctions sont des objets ! (Tout ce qui n'est pas de type primitif est un objet)
 
@@ -568,7 +570,7 @@ checkAge({ age: 18 });
 - C: `Hmm.. Vous n'avez pas l'âge, je suppose.`
 
 <details><summary><b>Réponse</b></summary>
-<p>
+<p markdown= "1">
 
 #### Réponse : C
 
@@ -599,7 +601,7 @@ getAge(21);
 - D: `"NaN"`
 
 <details><summary><b>Réponse</b></summary>
-<p>
+<p   markdown= "1">
 
 #### Réponse : C
 
@@ -628,7 +630,7 @@ getAge();
 - D: `TypeError`
 
 <details><summary><b>Réponse</b></summary>
-<p>
+<p markdown= "1">
 
 #### Réponse : C
 
@@ -651,7 +653,7 @@ const sum = eval("10*10+5");
 - D: `"10*10+5"`
 
 <details><summary><b>Réponse</b></summary>
-<p>
+<p  markdown= "1">
 
 #### Réponse : A
 
@@ -702,7 +704,7 @@ console.log(num);
 - D: `ReferenceError`
 
 <details><summary><b>Réponse</b></summary>
-<p>
+<p markdown="1">
 
 #### Réponse : B
 
@@ -733,7 +735,7 @@ set.has(1);
 - D: `true` `true` `true` `true`
 
 <details><summary><b>Réponse</b></summary>
-<p>
+<p markdown= "1">
 
 #### Réponse : C
 
