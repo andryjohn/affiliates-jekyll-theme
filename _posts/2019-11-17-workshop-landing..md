@@ -191,4 +191,4 @@ Share screenshots of your work on the forum 😎 (upload them to Dropbox for ins
 * CSS libraries: Bootstrap, Material Design
 
 
-Happy Hacking 🚀🚀🚀
+Happy Hacking and join us on [Meetup](https://www.meetup.com/fr-FR/Apprendre-le-developpement-web/) 🚀🚀🚀
