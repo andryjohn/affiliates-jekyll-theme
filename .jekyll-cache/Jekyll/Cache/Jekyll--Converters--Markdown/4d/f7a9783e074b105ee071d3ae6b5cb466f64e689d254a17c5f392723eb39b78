@@ -1,9 +1,15 @@
-I"�"<p>Time to discover HTML and CSS by coding our very first landing page!</p>
+I"e/<p>Time to discover HTML and CSS by coding our very first landing page!</p>
 
 <p>To proceed, make sure you have the following programs installed on your laptop:</p>
 
-<p><a href="">Sublime Text</a>, the text editor we use at Le Wagon;
-<a href="">Google Chrome</a> - the best browser for developers.</p>
+<ul>
+  <li>
+    <p><a href="">Sublime Text</a>, the text editor we use at Le Wagon;</p>
+  </li>
+  <li>
+    <p><a href="">Google Chrome</a> - the best browser for developers.</p>
+  </li>
+</ul>
 
 <p>Main takeaways
 HTML basics
@@ -19,7 +25,7 @@ HTML is a language that defines the structure and content of your web page. Ever
 
   <span class="nt">&lt;body&gt;</span>
     <span class="c">&lt;!-- page's content --&gt;</span>
-    <span class="nt">&lt;h1&gt;</span>My First Page<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>Awesome Product<span class="nt">&lt;/h1&gt;</span>
     <span class="nt">&lt;p&gt;</span>This is the important line everyone reads..<span class="nt">&lt;/p&gt;</span>
     <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Start Learning Now<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;/body&gt;</span>
@@ -92,10 +98,11 @@ CSS selectors enable you to grab one or more elements, on which you can define s
 <p>Classes and IDs
 Classes allow us to give multiple HTML elements the same name in order to change the css of all of them at the same time. IDs are only used when you want to manipulate one single element. For example:</p>
 
-<p><a href="..." class="link-blue">Google</a>
-<a href="..." id="link-wagon">Le Wagon</a>
-<a href="..." class="link-blue">Facebook</a>
-To design our classes and IDs, we need to use selectors. class selectors start with a . and id selectors start with a #.</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"..."</span> <span class="na">class=</span><span class="s">"link-blue"</span><span class="nt">&gt;</span>Google<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"..."</span> <span class="na">id=</span><span class="s">"link-codedot"</span> <span class="nt">&gt;</span>Le Wagon<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"..."</span> <span class="na">class=</span><span class="s">"link-blue"</span><span class="nt">&gt;</span>Facebook<span class="nt">&lt;/a&gt;</span>
+</code></pre></div></div>
+<p>To design our classes and IDs, we need to use selectors. class selectors start with a . and id selectors start with a #.</p>
 
 <p>To design the blue links we must use a class selector:</p>
 
@@ -104,56 +111,67 @@ To design our classes and IDs, we need to use selectors. class selectors start w
 }
 To design Le Wagon’s link, this time we use an id selector:</p>
 
-<p>#link-wagon {
-  color: white;
-  background-color: red;
-}
-Specificity of CSS selectors
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">#link-codedot</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">white</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Specificity of CSS selectors
 CSS selectors have priority levels that define which style rule should be applied on an element. IDs are more specific than classes, which are more specific than tags. Any clashing style command will follow this order of priority. For instance consider the following image:</p>
 
-<p><img src="..." class="img-big" />
-And the following CSS:</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">class=</span><span class="s">"img-big"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+<p>And the following CSS:</p>
 
-<p>img {
-  width: 20px;
-}
-.img-big {
-  width: 100px;
-}
-👉 The image will have a width of 100 pixels.</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">img</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.img-big</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>👉 The image will have a width of 100 pixels.</p>
 
 <p>Now if the HTML is:</p>
 
-<p><img src="..." class="img-big" id="logo" />Google&lt;/a&gt;
-And the CSS is :</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">class=</span><span class="s">"img-big"</span> <span class="na">id=</span><span class="s">"logo"</span><span class="nt">&gt;</span>Google<span class="nt">&lt;/a&gt;</span>
+</code></pre></div></div>
+<p>And the CSS is :</p>
 
-<p>img {
-  width: 20px;
-}
-.img-big {
-  width: 100px;
-}
-#logo {
-  witdh: 50px;
-}
-👉 The image will have a width of 50 pixels.</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">img</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.img-big</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nf">#logo</span> <span class="p">{</span>
+  <span class="py">witdh</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>👉 The image will have a width of 50 pixels.</p>
 
 <p>Descendant selectors
 You can also be more specific by combining selectors. For instance, to select all the links inside the element with the class=”banner” you can use a descendant selector:</p>
 
-<p>.banner a {
-  color: white;
-}
-Exercise
-Your turn! It’s time to code your own landing page based on what you’ve learnt.
-Share screenshots of your work on the forum 😎 (upload them to Dropbox for instance)
-Resources
-Icons: Icon store, The Noun Project, NucleoApp
-Fonts: Google Fonts
-Colors: Colorzilla, Coolors, Color Hunt
-Background images: Pexels
-CSS libraries: Bootstrap, Material Design
-Don’t forget to take the quiz!</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.banner</span> <span class="nt">a</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">white</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<h4 id="exercise">Exercise</h4>
 
-<p>Happy Hacking 🚀🚀🚀</p>
+<p>Your turn! It’s time to code your own landing page based on what you’ve learnt.
+Share screenshots of your work on the forum 😎 (upload them to Dropbox for instance)</p>
+
+<h4 id="resources">Resources</h4>
+
+<ul>
+  <li>Icons: Icon store, The Noun Project, NucleoApp</li>
+  <li>Fonts: Google Fonts</li>
+  <li>Colors: Colorzilla, Coolors, Color Hunt</li>
+  <li>Background images: Pexels</li>
+  <li>CSS libraries: Bootstrap, Material Design</li>
+</ul>
+
+<p>Happy Hacking and join us on <a href="https://www.meetup.com/fr-FR/Apprendre-le-developpement-web/">Meetup</a> 🚀🚀🚀</p>
 :ET
