@@ -1,4 +1,4 @@
-I"}H<blockquote>
+I"�G<blockquote>
   <p>Cette introduction a pour objectif de <em>dédiabolisé</em> le code en vous présentant le fonctionnement et les possibilités offertes par ce langage, evidemment accessible à tous et pourra être bénéfique à chacun, que vous n’ayez jamais codé ou si vous ètes un expert, cela va vous permettre de révisé les bases.</p>
 </blockquote>
 
@@ -41,28 +41,19 @@
 </blockquote>
 
 <h1 id="les-variables-en-javascript">Les variables en JavaScript:</h1>
-<p><img src="/images/var.png" alt="var" /></p>
 
 <p>Une <strong>variable JavaScript</strong> est un conteneur servant à <strong>stocker temporairement une information</strong>, comme un nombre ou une chaîne de caractères (c’est-à-dire un texte) par exemple, ici c’est <strong>firstName</strong>.</p>
 
 <p><img src="/images/var2.png" alt="var" /></p>
 
+<p>On a la possiblité de déclarer une variable avec <code class="highlighter-rouge">let</code> et <code class="highlighter-rouge">const</code>.</p>
+
 <p>Comme son nom l’indique, le propre d’une <em>variable</em> est de pouvoir varier, c’est-à-dire de pouvoir stocker (tel une boite)
 <em>différentes valeurs dans le temps, en « écrasant » sa valeur précédente.</em></p>
 
 <blockquote>
-  <p>En JavaScript, on déclare une variable avec le mot clef « var » suivi du nom de notre variable. Chaque nouvelle variable doit avoir un nom unique qu’on appelle également en anglais « identifier ».</p>
+  <p>Dans beaucoup de démonstrations JavaScript, vous pourrez croiser le mot-clé  <code class="highlighter-rouge">var</code>  plutôt que  <code class="highlighter-rouge">let</code>. Bien qu’il y ait une différence subtile entre les deux (que nous détaillerons dans le chapitre sur la portée), pour l’instant vous pouvez simplement voir  <code class="highlighter-rouge">var</code>  comme l’ancienne version de  <code class="highlighter-rouge">let</code> : c’est une autre façon de créer une variable.</p>
 </blockquote>
-
-<h3 id="le-nom-des-variables-en-javascript">Le nom des variables en JavaScript</h3>
-
-<p>On doit observer différentes règles lorsque l’on nomme une variable en JavaScript :</p>
-
-<p>Le nom des variables doit commencer par une lettre ;
-Le nom ne peut contenir que des lettres (non accentuées), des chiffres ou les signes « _ » et « $ » ;
-Le nom des variables est sensible à la casse (« a » est différent de « A ») ;</p>
-
-<p>Le JavaScript possède des mots « réservés » qu’on ne peut utiliser pour créer une variable. Nous verrons ces mots au fil de ce cours. Par exemple, le mot « var » est un mot réservé.</p>
 
 <h3 id="déclarer-une-variable-en-javascript">Déclarer une variable en JavaScript</h3>
 
@@ -78,15 +69,18 @@ Le nom des variables est sensible à la casse (« a » est différent de « A »
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="c1">//On declare une variable et lui assigner une valeur immédiatement ;</span>
-<span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">45</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">png</span> <span class="o">=</span> <span class="mi">45</span><span class="p">;</span>
+
 <span class="c1">//On declare une variable sans lui assigner de valeur et lui assigner une valeur ensuite(non recommandée) ;</span>
-<span class="kd">var</span> <span class="nx">age</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">age</span><span class="p">;</span>
 <span class="nx">age</span> <span class="o">=</span> <span class="mi">25</span>
+
 <span class="c1">// On crée une variable vide  à laquelle on affecte une valeur ar la suite (meilleur option)</span>
-<span class="kd">var</span> <span class="nx">ville</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
-<span class="nx">ville</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Paris</span><span class="dl">"</span>
+<span class="kd">let</span> <span class="nx">city</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
+<span class="nx">city</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Paris</span><span class="dl">"</span>
+
 <span class="c1">// une variable stockant un type particulier: un booléan</span>
-<span class="kd">var</span> <span class="nx">man</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">man</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
 
 </code></pre></div></div>
 <p><strong>Remarque: les types de valeurs et le signe « = »</strong></p>
@@ -107,11 +101,11 @@ Le nom des variables est sensible à la casse (« a » est différent de « A »
 <p>Pour vous donner un exemple concret, en JavaScript, nous allons pouvoir faire cela (ce qui n’aurait aucun sens en mathématiques) :</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// On stock la valeur 15 a notre variable x</span>
-<span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">num</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span>
 
 <span class="cm">/*On ajoute 5 à la dernière valeur connue stockée par x;
 *x stocke donc maitenant la valeur 30*/</span>
-<span class="nx">x</span> <span class="o">=</span> <span class="nx">x</span> <span class="o">+</span> <span class="mi">5</span><span class="p">;</span>
+<span class="nx">num</span> <span class="o">=</span> <span class="nx">num</span> <span class="o">+</span> <span class="mi">5</span><span class="p">;</span>
 
 <span class="c1">// En math, la reponse serait "l'ensemble des solution est nulles"</span>
 </code></pre></div></div>

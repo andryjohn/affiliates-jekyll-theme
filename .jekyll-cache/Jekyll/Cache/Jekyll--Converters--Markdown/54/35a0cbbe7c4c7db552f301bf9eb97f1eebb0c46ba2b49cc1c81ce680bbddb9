@@ -1,0 +1,135 @@
+I"�-<blockquote>
+  <p>Vous avez probablement entendu auparavant le terme <strong>objet</strong> dans un contexte de programmation.</p>
+</blockquote>
+
+<p>Commençons par nous intéresser à quelques objets du monde réel, comme les stylos, les livres, les smartphones, les ordinateurs, etc.</p>
+
+<p><img src="/images/objects.jpg" alt="sublime" /></p>
+
+<p>Vous reconnaissez tous les stylos — à piston, à bille, feutre, gel, etc. — comme faisant partie du type d’objet : stylos. Vous pouvez écrire avec, ils utilisent de l’encre et peuvent se tenir à une main.</p>
+
+<p>C’est la même chose pour les livres : ils ont une couverture, un certain nombre de pages, un titre, et un ou plusieurs auteurs.</p>
+
+<p>Vous remarquez des points communs entre différents objets et vous notez ces informations pour créer une représentation mentale d’une catégorie d’objets.</p>
+
+<p>Cette liste mentale d’attributs sert de <strong>modèle</strong> pour cet objet. En programmation, on l’appelle <strong>une classe.</strong> Pour créer une classe, vous pouvez choisir le nom de votre choix. C’est pour cela qu’on l’appelle un <strong>type nommé.</strong> Vous le verrez, les classes permettent aussi de regrouper beaucoup de détails ; c’est pourquoi elles s’appellent aussi des <strong>types complexes.</strong></p>
+
+<p>Avant de plonger dans les classes, observons un type JavaScript complexe : <strong>l’objet.</strong></p>
+
+<h4 id="découvrez-les-objets">Découvrez les objets</h4>
+
+<p>Les objets JavaScript sont écrits en <strong>JSON (JavaScript Object Notation).</strong> Ce sont des séries de paires <strong>clés/valeurs</strong> séparées par <strong>des virgules,</strong> entre <strong>des accolades.</strong></p>
+
+<p>Les objets peuvent être enregistrés dans une variable :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">myBook</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">title</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Le facteur temps ne sonne jamais deux fois</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">author</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Etienne Klein</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">numberOfPages</span><span class="p">:</span> <span class="mi">250</span><span class="p">,</span>
+    <span class="na">isAvailable</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>Chaque clé est une chaîne (title, author, numberOfPages…), et les valeurs associées peuvent avoir tout type de données (nombre, chaîne, etc).</p>
+
+<blockquote>
+  <p>Construire des objets présente un avantage essentiel : cela permet de regrouper les attributs d’une chose unique à un même emplacement, que ce soit un livre, un profil d’utilisateur ou la configuration d’une application, par exemple.</p>
+</blockquote>
+
+<h4 id="accédez-aux-données-dun-objet">Accédez aux données d’un objet</h4>
+
+<p>Maintenant que vous savez comment créer un objet en JavaScript, voyons comment accéder aux données dans un objet avec <strong>la notation pointée (dot notation),</strong> expliquée ci-dessous.</p>
+
+<p>Une fois qu’un objet est enregistré dans une variable, vous pouvez accéder à ses données comme dans l’exemple ci-dessous.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">myBook</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">title</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Le facteur temps ne sonne jamais deux fois</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">author</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Etienne Klein</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">numberOfPages</span><span class="p">:</span> <span class="mi">250</span><span class="p">,</span>
+    <span class="na">isAvailable</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+
+<span class="kd">let</span> <span class="nx">bookTitle</span> <span class="o">=</span> <span class="nx">myBook</span><span class="p">.</span><span class="nx">title</span><span class="p">;</span>  <span class="c1">// "Le facteur temps ne sonne jamais deux fois"</span>
+<span class="kd">let</span> <span class="nx">bookPages</span> <span class="o">=</span> <span class="nx">myBook</span><span class="p">.</span><span class="nx">numberOfPages</span>  <span class="c1">// 250</span>
+</code></pre></div></div>
+<p>Pour cela, utilisez le nom de la variable qui contient l’objet, un point <code class="highlighter-rouge">(  .  )</code>, puis le nom de la clé dont vous souhaitez récupérer la valeur.</p>
+
+<h4 id="manipulez-des-classes">Manipulez des classes</h4>
+
+<p>La construction d’un objet à la main, par la notation à accolades vue précédemment, convient bien à des objets simples et uniques. Mais vous aurez souvent besoin de beaucoup d’objets du même type. C’est là que les classes sont utiles.</p>
+
+<p>Comme expliqué précédemment, une classe est un modèle pour un objet dans le code. Elle permet de construire plusieurs objets du même type (appelés instances de la même classe) plus facilement, rapidement et en toute fiabilité.</p>
+
+<p>Voyons comment construire une classe dans le code.</p>
+
+<p>Pour créer une classe dans JavaScript, utilisez le mot clé  <code class="highlighter-rouge">class</code>, suivi par un nom. Encadrez ensuite le code de la classe entre accolades :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Book</span> <span class="p">{</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Pour cette classe, nous souhaitons que chaque  <code class="highlighter-rouge">Book</code>  ait un titre, un auteur et un nombre de pages. Pour cela, vous utilisez ce qu’on appelle <strong>un constructor</strong>.</p>
+
+<blockquote>
+  <p>NB: Le  <code class="highlighter-rouge">constructor</code> d’une classe est la fonction qui est appelée quand on crée une nouvelle instance de cette classe avec le mot clé <code class="highlighter-rouge">new</code>.</p>
+</blockquote>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Book</span> <span class="p">{</span>
+    <span class="kd">constructor</span> <span class="p">(</span><span class="nx">title</span><span class="p">,</span> <span class="nx">author</span><span class="p">,</span> <span class="nx">pages</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="p">}</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<p>Il y a un ensemble d’instructions à suivre à l’intérieur du  constructor  pour créer une instance de la classe  <code class="highlighter-rouge">Book</code>. Pour attribuer le titre, l’auteur et le nombre de pages reçus à cette instance, utilisez le mot clé  <code class="highlighter-rouge">this</code>  et la notation <code class="highlighter-rouge">dot</code>.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Book</span> <span class="p">{</span>
+    <span class="kd">constructor</span> <span class="p">(</span><span class="nx">title</span><span class="p">,</span> <span class="nx">author</span><span class="p">,</span> <span class="nx">pages</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="nx">title</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">author</span> <span class="o">=</span> <span class="nx">author</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">pages</span> <span class="o">=</span> <span class="nx">pages</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+</code></pre></div></div>
+<p>Ici, le mot clé  <code class="highlighter-rouge">this</code>  fait référence à la nouvelle instance. Donc, il utilise la notation dot pour attribuer les valeurs reçues aux clés correspondantes.</p>
+
+<p>Maintenant que la classe est terminée, vous pouvez créer des instances par le mot clé  <code class="highlighter-rouge">new</code>  :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Book</span> <span class="p">{</span>
+    <span class="kd">constructor</span> <span class="p">(</span><span class="nx">title</span><span class="p">,</span> <span class="nx">author</span><span class="p">,</span> <span class="nx">pages</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="nx">title</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">author</span> <span class="o">=</span> <span class="nx">author</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">pages</span> <span class="o">=</span> <span class="nx">pages</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="kd">let</span> <span class="nx">newBook</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Book</span><span class="p">(</span><span class="dl">'</span><span class="s1">Le facteur temps ne sonne jamais deux fois, </span><span class="dl">'</span><span class="nx">Etienne</span> <span class="nx">Klein</span><span class="dl">'</span><span class="s1">, 250 );
+</span></code></pre></div></div>
+<p>Cette ligne crée l’objet suivant :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+    <span class="nl">title</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Le facteur temps ne sonne jamais deux fois</span><span class="dl">'</span><span class="p">,</span>
+    <span class="nx">author</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Etienne Klein</span><span class="dl">'</span><span class="p">,</span>
+    <span class="nx">numberOfPages</span><span class="p">:</span> <span class="mi">250</span><span class="p">,</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+<p>Avec une classe  Book, vous pouvez créer facilement et rapidement de nouveaux objets ` Book`.</p>
+
+<p>Voilà ! Maintenant, à vous de jouer. La meilleure façon d’apprendre les classes est d’en créer une vous-même.</p>
+
+<h4 id="pour-résumer">Pour résumer</h4>
+
+<ul>
+  <li>
+    <p>les objets avec les paires clés/valeurs en notation JSON. Ils permettent d’enregistrer plusieurs éléments de données associés dans une même variable ;</p>
+  </li>
+  <li>
+    <p>la notation pointée (dot) qui donne accès aux valeurs d’un objet et la possibilité de les modifier ;</p>
+  </li>
+  <li>
+    <p>les classes, et comment l’utilisation de classes peut vous permettre de créer des objets plus facilement et de façon plus lisible.</p>
+  </li>
+</ul>
+:ET

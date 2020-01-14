@@ -1,15 +1,15 @@
 ---
 layout:     post
-title:      Modern JavaScript for Developer
+title:      JavaScript Moderne pour les développeurs
 date:       2019-07-07
-image: images/js.gif
+image: images/js_modern.jpg
 author: Andry
 categories: [ Developper skills, JavaScript, Modern, Programming ]
 mathjax: true
 featured: true
 ---
 
->Ce document est un condensé de tout ce que vous devriez savoir sur le JavaScript que vous allez rencontrer dans des projets modernes.
+>Ce document est un condensé de tout ce que vous devriez savoir sur le J*avaScript* que vous allez rencontrer dans des projets modernes.
 
 Ce guide n’a pas été conçu pour vous apprendre JavaScript à partir de rien, mais pour aider les développeurs ayant des connaissances basiques qui ont des problèmes avec les codebases modernes (ou pour apprendre React, par exemple) à cause des concepts JavaScript utilisés.
 

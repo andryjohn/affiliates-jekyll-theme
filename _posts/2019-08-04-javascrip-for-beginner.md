@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Introduction à JavaScript
+title:      Commencer avec JavaScript
 date:       2019-08-04
 summary:
 categories: [ JavaScript, beginner, introduction ]
@@ -44,27 +44,18 @@ On va pouvoir placer du code JavaScript à trois endroits différents :
 >Bien que cette dernière méthode soit généralement recommandée, notamment pour des gros projets, parfois vous serez « obligé » d’écrire votre code JavaScript dans votre fichier HTML.
 
 # Les variables en JavaScript:
-![var](/images/var.png)
 
 Une **variable JavaScript** est un conteneur servant à **stocker temporairement une information**, comme un nombre ou une chaîne de caractères (c’est-à-dire un texte) par exemple, ici c'est **firstName**.
 
 ![var](/images/var2.png)
 
+On a la possiblité de déclarer une variable avec `let` et `const`.
 
 Comme son nom l’indique, le propre d’une *variable* est de pouvoir varier, c’est-à-dire de pouvoir stocker (tel une boite)
 *différentes valeurs dans le temps, en « écrasant » sa valeur précédente.*
 
->En JavaScript, on déclare une variable avec le mot clef « var » suivi du nom de notre variable. Chaque nouvelle variable doit avoir un nom unique qu’on appelle également en anglais « identifier ».
+>Dans beaucoup de démonstrations JavaScript, vous pourrez croiser le mot-clé  `var`  plutôt que  `let`. Bien qu'il y ait une différence subtile entre les deux (que nous détaillerons dans le chapitre sur la portée), pour l'instant vous pouvez simplement voir  `var`  comme l'ancienne version de  `let` : c'est une autre façon de créer une variable.
 
-### Le nom des variables en JavaScript
-
-On doit observer différentes règles lorsque l’on nomme une variable en JavaScript :
-
-Le nom des variables doit commencer par une lettre ;
-Le nom ne peut contenir que des lettres (non accentuées), des chiffres ou les signes « _ » et « $ » ;
-Le nom des variables est sensible à la casse (« a » est différent de « A ») ;
-
-Le JavaScript possède des mots « réservés » qu’on ne peut utiliser pour créer une variable. Nous verrons ces mots au fil de ce cours. Par exemple, le mot « var » est un mot réservé.
 
 ### Déclarer une variable en JavaScript
 
@@ -79,15 +70,18 @@ Voyons immédiatement un premier exemple ensemble :
 ```javascript
 
 //On declare une variable et lui assigner une valeur immédiatement ;
-var x = 45;
+let numbers.png = 45;
+
 //On declare une variable sans lui assigner de valeur et lui assigner une valeur ensuite(non recommandée) ;
-var age;
+let age;
 age = 25
+
 // On crée une variable vide  à laquelle on affecte une valeur ar la suite (meilleur option)
-var ville = "";
-ville = "Paris"
+let city = "";
+city = "Paris"
+
 // une variable stockant un type particulier: un booléan
-var man = true;
+const man = true;
 
 ```
 **Remarque: les types de valeurs et le signe « = »**
@@ -108,11 +102,11 @@ Pour vous donner un exemple concret, en JavaScript, nous allons pouvoir faire ce
 
 ```javascript
 // On stock la valeur 15 a notre variable x
-var x = 15;
+let num = 15;
 
 /*On ajoute 5 à la dernière valeur connue stockée par x;
 *x stocke donc maitenant la valeur 30*/
-x = x + 5;
+num = num + 5;
 
 // En math, la reponse serait "l'ensemble des solution est nulles"
 ```
