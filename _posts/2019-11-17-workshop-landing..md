@@ -14,13 +14,15 @@ Time to discover HTML and CSS by coding our very first landing page!
 To proceed, make sure you have the following programs installed on your laptop:
 
 
-* [Sublime Text](), the text editor we use at Le Wagon;
+* [Sublime Text](), the text editor ;
 
 * [Google Chrome]() - the best browser for developers.
 
-Main takeaways
-HTML basics
-HTML is a language that defines the structure and content of your web page. Every HTML page has the same skeleton:
+#### Main takeaways
+
+##### HTML basics
+
+`HTML` is a language that defines the structure and content of your web page. Every `HTML` page has the same skeleton:
 
 ```html
 <html>
@@ -41,7 +43,7 @@ HTML is a language that defines the structure and content of your web page. Ever
 ```
 #### HTML main syntax
 
-HTML has a ton of different tags. Each tag has its own purpose, for example:
+`HTML` has a ton of different tags. Each tag has its own purpose, for example:
 
 `<h1>`, `<h2>`,  `<h3>`, `<h4>` and `<h5>` are used for headers and subheaders (titles)
 `<p>` for paragraphs of text
@@ -66,12 +68,15 @@ Some elements - such as `<img>` - don’t have closing tags. They just have attr
 ```
 We call these self-closing tags.
 
-HTML indentation
+##### HTML indentation
+
 Indenting your code is ⚠️ very important ⚠️ when you start coding:
 
 Your code needs to be readable by the future you 😣 or by your teammates 😖😫😩.
 Not only is it easier to read and maintain, but if you ever get syntax errors you’ll be able to debug it in the blink of an eye!
+
 It’s crucial to form good habits from the very beginning. Indenting will soon become as natural as breathing 🌬.
+
 To properly indent your HTML code, each opening `<tag>` and associated closing `</tag>` must be vertically aligned. Any nested content should then be indented 1 tab right (= 2 spaces). Here is an example of good indentation:
 
 ```html
@@ -97,7 +102,9 @@ Properly indented HTML code should draw waves in your file 🌊🌊🌊 (or shou
 #### Design in CSS
 
 CSS is the language that gives style 🎨 to your HTML elements.
-Without CSS, web pages all have the same, boring and ugly look.
+
+>Without CSS, web pages all have the same, boring and ugly look.
+
 CSS selectors enable you to grab one or more elements, on which you can define style rules:
 
 ```css
@@ -107,7 +114,8 @@ p {
 ```
 This will turn the text colour of all your <p> elements red!
 
-Classes and IDs
+##### Classes and IDs
+
 Classes allow us to give multiple HTML elements the same name in order to change the css of all of them at the same time. IDs are only used when you want to manipulate one single element. For example:
 
 ```html
@@ -119,10 +127,12 @@ To design our classes and IDs, we need to use selectors. class selectors start w
 
 To design the blue links we must use a class selector:
 
+```css
 .link-blue {
   color: blue;
 }
-To design Le Wagon’s link, this time we use an id selector:
+```
+To design Le Codedt’s link, this time we use an id selector:
 
 ```css
 #link-codedot {
@@ -131,7 +141,8 @@ To design Le Wagon’s link, this time we use an id selector:
 }
 ```
 
-Specificity of CSS selectors
+##### Specificity of CSS selectors
+
 CSS selectors have priority levels that define which style rule should be applied on an element. IDs are more specific than classes, which are more specific than tags. Any clashing style command will follow this order of priority. For instance consider the following image:
 
 ```html
@@ -184,11 +195,11 @@ Share screenshots of your work on the forum 😎 (upload them to Dropbox for ins
 
 #### Resources
 
-* Icons: Icon store, The Noun Project, NucleoApp
-* Fonts: Google Fonts
-* Colors: Colorzilla, Coolors, Color Hunt
-* Background images: Pexels
-* CSS libraries: Bootstrap, Material Design
+* Icons: [Icon store](), [The Noun Project](), [NucleoApp]()
+* Fonts: [Google Fonts](https://fonts.google.com/)
+* Colors: [Colorzilla]() , [Coolors](), [Color Hunt]()
+* Background images: [Pexels]()
+* CSS libraries: [Bootstrap]()
 
 
 Happy Hacking and join us on [Meetup](https://www.meetup.com/fr-FR/Apprendre-le-developpement-web/) 🚀🚀🚀
