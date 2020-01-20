@@ -120,7 +120,7 @@ Classes allow us to give multiple HTML elements the same name in order to change
 
 ```html
 <a href="..." class="link-blue">Google</a>
-<a href="..." id="link-codedot" >Le Wagon</a>
+<a href="..." id="link-codedot" >Codedot</a>
 <a href="..." class="link-blue">Facebook</a>
 ```
 To design our classes and IDs, we need to use selectors. class selectors start with a . and id selectors start with a #.
