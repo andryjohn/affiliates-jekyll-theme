@@ -1,4 +1,7 @@
-I"w)<h2 id="1-lets-set-up">1. LET’S SET UP</h2>
+I"�B<iframe src="//www.slideshare.net/slideshow/embed_code/key/2pRkQlCVreEvf0" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen=""> </iframe>
+<div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/AndryRajohnson/2h-landing-page" title="2h landing page " target="_blank">2h landing page </a> </strong> from <strong><a href="https://www.slideshare.net/AndryRajohnson" target="_blank">AndryRajohnson</a></strong> </div>
+
+<h2 id="1-lets-set-up">1. LET’S SET UP</h2>
 
 <ol>
   <li>Start Sublime Text. It will open a new black window.</li>
@@ -155,5 +158,59 @@
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 
+</code></pre></div></div>
+<p>And add this nice <code class="highlighter-rouge">css</code> code</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">html</span><span class="o">,</span> <span class="nt">body</span> <span class="p">{</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nf">#banner</span><span class="p">{</span>
+  <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">background-image</span><span class="p">:</span> <span class="n">linear-gradient</span><span class="p">(</span><span class="m">90deg</span><span class="p">,</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0.4</span><span class="p">)</span> <span class="m">3%</span><span class="p">,</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0.4</span><span class="p">)</span> <span class="m">50%</span><span class="p">),</span> <span class="sx">url("https://unsplash.it/1300/600?random")</span><span class="p">;</span>
+  <span class="nl">background-size</span><span class="p">:</span> <span class="n">cover</span><span class="p">;</span>
+  <span class="nl">padding-top</span><span class="p">:</span> <span class="m">25vh</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">75vh</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nf">#banner</span> <span class="nt">h1</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#ffff</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">60px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nf">#banner</span> <span class="nt">p</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#ffff</span><span class="p">;</span>
+  <span class="nl">opacity</span><span class="p">:</span> <span class="m">0.8</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">35px</span><span class="p">;</span>
+  <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">lighter</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nf">#footer</span><span class="p">{</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">30px</span><span class="p">;</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="nb">rgb</span><span class="p">(</span><span class="m">30</span><span class="p">,</span> <span class="m">30</span><span class="p">,</span> <span class="m">30</span><span class="p">);</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">lightgrey</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nf">#footer</span><span class="p">{</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">30px</span><span class="p">;</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="nb">rgb</span><span class="p">(</span><span class="m">30</span><span class="p">,</span> <span class="m">30</span><span class="p">,</span> <span class="m">30</span><span class="p">);</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">lightgrey</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nf">#footer</span> <span class="nt">a</span><span class="p">{</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">lightgrey</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.features</span><span class="p">{</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+  <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">lighter</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+</code></pre></div></div>
+<h2 id="6-footer">6. FOOTER</h2>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ul&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fab fa-youtube"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fab fa-facebook"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fab fa-twitter"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fab fa-github"</span><span class="nt">&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
 </code></pre></div></div>
 :ET
