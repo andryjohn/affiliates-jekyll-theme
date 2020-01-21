@@ -1,0 +1,18 @@
+I"�<h2 id="1-lets-set-up">1. LET’S SET UP</h2>
+
+<ol>
+  <li>Start Sublime Text. It will open a new black window.</li>
+  <li>
+    <p>Create a <strong>folder</strong> <code class="highlighter-rouge">landing</code> on your Desktop. Drag &amp; drop this folder in the Sublime Text window.</p>
+  </li>
+  <li>In Sublime Text left navigation:</li>
+</ol>
+
+<ul>
+  <li>Right click <code class="highlighter-rouge">"New file"</code></li>
+  <li>Save it as index.html with <code class="highlighter-rouge">Cmd + S</code> or <code class="highlighter-rouge">Ctrl + S</code></li>
+  <li>Do the same to create a style.css file</li>
+  <li>Then “New Folder” and create an images folder</li>
+  <li>Finally double click on index.html to open it with Chrome</li>
+</ul>
+:ET
