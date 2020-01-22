@@ -14,11 +14,13 @@ Tu souhaites débuter avec les super technos d'aujourd'hui comme **React**?
 
 > Et bien , il faut te familiarisé avec les nouvelles avancées en **JavaScript**. Ces avancées sont apparues à partir de **2015**, dans la version du langage *appelée ES2015 (également connue sous le nom « ES6 »).*
 
-Peut-être n’as tu tout simplement pas l’habitude de cette syntaxe : nous allons donc jeter un rapide coup d’œil sur les principales nouveautés que vous rencontrerez fréquemment à l’usage.
+Peut-être n’as tu tout simplement pas l’habitude de cette syntaxe : nous allons donc jeter un rapide coup d’œil sur les principales nouveautés que tu rencontrera fréquemment à l’usage.
 
 # Classes
 
-*Les composants React* peuvent être définis sous forme de **fonctions ou de classes**. **ES2015** fournit du *« sucre syntaxique »* qui facilite considérablement la définition de classes, comparée à l’approche traditionnelle en JavaScript.
+*Les composants React* peuvent être définis sous forme de **fonctions ou de classes**.
+
+**ES2015** fournit du *« sucre syntaxique »* qui facilite considérablement la définition de classes, comparée à l’approche traditionnelle en JavaScript.
 
 >Si tu viens d'un autre langage, POO , voir le  mot clé `Class` te fait peut-être dire, "Ah,🎟😆 JavaScript est enfin un langage orienté objet.." Détrompe-toi , il l'a toujours été , et même plus que `Java`. Bref...
 Saches juste qu'en POO, on manipule des objets qui représentent des entités de notre programme (des composants, des documents, des utilisateurs…), et qu'une classe est en quelque sorte le plan de construction pour une catégorie d'objets (et l'usine qui les fabrique).
@@ -215,7 +217,7 @@ export default class SuperComponent {
 
 import GreatComponent from './SuperComponent'
 ```
-Bravo 👏👏👏👏👏tu as désormais tous les éléments pour écrire vos composants React de façon moderne !
+Bravo 👏👏👏👏👏tu as désormais tous les éléments pour écrire tes composants React ou autres de façon moderne !
 
 
 
