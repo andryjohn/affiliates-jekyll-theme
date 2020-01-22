@@ -1,0 +1,16 @@
+I"�<p>Vous souhaitez commencer à utiliser les super technos d’aujourd’hui comme <strong>React</strong>?</p>
+
+<blockquote>
+  <p>Et bien , il faut vous familiarisé avec les nouvelles nouvelles avancées en <strong>JavaScript</strong>. Ces avancées sont apparues à partir de <strong>2015</strong>, dans la version du langage <em>appelée ES2015 (également connue sous le nom « ES6 »).</em></p>
+</blockquote>
+
+<p>Peut-être n’avez-vous pas l’habitude de cette syntaxe : nous allons donc jeter un rapide coup d’œil sur les principales nouveautés que vous rencontrerez fréquemment à l’usage.</p>
+
+<p>#Classes</p>
+
+<p><em>Les composants React</em> peuvent être définis sous forme de <strong>fonctions ou de classes</strong>. ES2015 fournit du « sucre syntaxique » qui facilite considérablement la définition de classes, comparée à l’approche traditionnelle en JavaScript.</p>
+
+<p>Vous n’y connaissez pas grand chose en Programmation Orientée Objet (POO) ? Vous pouvez faire un petit détour utile par ce joli cours pour remédier à ça. Pour le moment, sachez juste qu’en POO, on manipule des objets qui représentent des entités de notre programme (des composants, des documents, des utilisateurs…), et qu’une classe est en quelque sorte le plan de construction pour une catégorie d’objets (et l’usine qui les fabrique).</p>
+
+<p>Cette syntaxe est comparable à celle trouvée dans de nombreux langages courants. Voici un exemple :</p>
+:ET

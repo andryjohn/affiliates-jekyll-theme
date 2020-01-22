@@ -1,0 +1,95 @@
+I"P'<p>Vous souhaitez commencer à utiliser les super technos d’aujourd’hui comme <strong>React</strong>?</p>
+
+<blockquote>
+  <p>Et bien , il faut vous familiarisé avec les nouvelles nouvelles avancées en <strong>JavaScript</strong>. Ces avancées sont apparues à partir de <strong>2015</strong>, dans la version du langage <em>appelée ES2015 (également connue sous le nom « ES6 »).</em></p>
+</blockquote>
+
+<p>Peut-être n’avez-vous pas l’habitude de cette syntaxe : nous allons donc jeter un rapide coup d’œil sur les principales nouveautés que vous rencontrerez fréquemment à l’usage.</p>
+
+<h1 id="classes">Classes</h1>
+
+<p><em>Les composants React</em> peuvent être définis sous forme de <strong>fonctions ou de classes</strong>. <strong>ES2015</strong> fournit du <em>« sucre syntaxique »</em> qui facilite considérablement la définition de classes, comparée à l’approche traditionnelle en JavaScript.</p>
+
+<blockquote>
+  <p>Si vous venez d’un autre langage, POO , voir le  mot clé <code class="highlighter-rouge">Class</code> vous font peut-être dire, “ah, JavaScript est enfin un langage orienté objet..” Détromper-vous, il l’a toujours été , et même plus que <code class="highlighter-rouge">Java</code>. Bref…
+Sachez juste qu’en POO, on manipule des objets qui représentent des entités de notre programme (des composants, des documents, des utilisateurs…), et qu’une classe est en quelque sorte le plan de construction pour une catégorie d’objets (et l’usine qui les fabrique).</p>
+</blockquote>
+
+<p>Cette syntaxe est comparable à celle trouvée dans de nombreux langages courants. Voici un exemple :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Account</span> <span class="kd">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+  <span class="kd">constructor</span> <span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span> <span class="na">loginState</span><span class="p">:</span> <span class="dl">'</span><span class="s1">logged-out</span><span class="dl">'</span> <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">render</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// …</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Faites attention aux points suivants :</p>
+
+<ul>
+  <li>
+    <p>Le mot-clé  <code class="highlighter-rouge">class</code>  permet de définir un <strong>corps de classe</strong>, dont les éléments (constructeur, méthodes, etc.) n’ont pas besoin d’être séparés par des virgules, contrairement à ce qui se passe dans les littéraux objets.</p>
+  </li>
+  <li>
+    <p>Il est facile de spécialiser une classe par héritage à l’aide du mot-clé <code class="highlighter-rouge">extends</code></p>
+  </li>
+  <li>
+    <p>Le mot-clé  <code class="highlighter-rouge">constructor</code>  permet de définir le constructeur de la classe ; au sein du constructeur,  <code class="highlighter-rouge">super(…)</code>  permet d’appeler le constructeur hérité, ce qui est d’ailleurs <strong>obligatoire</strong> si la classe en spécialise une autre avec <code class="highlighter-rouge">extends</code>  (et doit impérativement précéder toute manipulation de <code class="highlighter-rouge">this</code> ).</p>
+  </li>
+</ul>
+
+<blockquote>
+  <p><strong>Notez bien :</strong> si vous écrivez une classe qui en spécialise une autre avec  <code class="highlighter-rouge">extends</code> , et que votre classe a son propre constructeur, celui-ci doit impérativement appeler le constructeur parent avec  <code class="highlighter-rouge">super(…)</code> , et ce avant de manipuler  <code class="highlighter-rouge">this</code>  de quelque façon que ce soit.
+C’est une obligation syntaxique dans la spec : votre code JavaScript ne devrait pas être valide sans cela. En pratique, la plupart des moteurs JS (hors Babel, qui justement tourne « sous le capot » dans Create React App et dans la plupart des projets) attendront l’invocation du  <code class="highlighter-rouge">new</code>  pour détecter le souci, et lever une  <code class="highlighter-rouge">ReferenceError</code>  plutôt qu’une  <code class="highlighter-rouge">SyntaxError</code>. En tous les cas, ça ne marchera pas <em>in fine.</em></p>
+</blockquote>
+
+<ul>
+  <li>Les méthodes doivent être déclarées avec la nouvelle syntaxe de « méthodes concises », également disponible dans les littéraux objets :  <code class="highlighter-rouge">nom (paramètres) { … }</code> , contrairement à ce que l’on faisait auparavant dans les littéraux objets, comme par exemple   nom: <code class="highlighter-rouge">function (paramètres) { … } </code>.</li>
+</ul>
+
+<p>Et parce que la Documentation , c’est la vie , c’est <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Classes">par ici</a></p>
+
+<h1 id="fonctions-fléchées">Fonctions fléchées</h1>
+
+<p>Une syntaxe plus concise</p>
+
+<p>Le premier avantage des fonctions fléchées est la concision de leur syntaxe.</p>
+
+<p>Traditionnellement, une fonction se déclare avec le mot-clé  <code class="highlighter-rouge">function</code>  suivi de la signature puis du bloc de fonction, au sein duquel tout  <code class="highlighter-rouge">return</code>  doit être explicite. Par exemple :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">adults</span> <span class="o">=</span> <span class="p">[],</span> <span class="nx">minors</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="nx">people</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">person</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">if</span> <span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">age</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">adults</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">person</span><span class="p">)</span>
+   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+       <span class="nx">minors</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">person</span><span class="p">)</span>
+   <span class="p">})</span>
+
+<span class="nx">people</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">person</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="nx">person</span><span class="p">.</span><span class="nx">firstName</span>
+<span class="p">})</span>
+
+</code></pre></div></div>
+<p>Les fonctions fléchées ne nécessitent pas de mot-clé déclaratif. Lorsqu’elles sont intégralement constituées d’une expression à renvoyer, les accolades du bloc de fonction peuvent être omises,  ainsi que le mot-clé <code class="highlighter-rouge">return</code> .</p>
+
+<p>Entre la signature et le bloc ou l’expression, on trouve une <em>fat arrow</em> (un nom bien naze!) , à savoir  <code class="highlighter-rouge">=&gt;</code></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">adults</span> <span class="o">=</span> <span class="p">[],</span> <span class="nx">minors</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="nx">people</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">person</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">age</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">adults</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">person</span><span class="p">)</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">minors</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">person</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+
+<span class="nx">people</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">person</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">person</span><span class="p">.</span><span class="nx">firstName</span><span class="p">)</span>
+
+</code></pre></div></div>
+<p>C’est une syntaxe raccourcie très pratique pour les <strong>prédicats</strong> (fonctions qui renvoient vrai ou faux selon leurs arguments, et qui sont par exemple passées aux méthodes <code class="highlighter-rouge">filter</code>, <code class="highlighter-rouge">every</code>  et  <code class="highlighter-rouge">some</code>) et les <strong>mappers</strong> (fonctions de transformation telles que celles passées à <code class="highlighter-rouge">map</code>). Dans ce deuxième cas, elles seront par exemple très utiles pour « réduire le bruit » dans les méthodes  <code class="highlighter-rouge">render</code> de nos composants React.</p>
+:ET

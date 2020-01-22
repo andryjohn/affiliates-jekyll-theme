@@ -1,0 +1,31 @@
+I"G
+<p>Vous souhaitez commencer à utiliser les super technos d’aujourd’hui comme <strong>React</strong>?</p>
+
+<blockquote>
+  <p>Et bien , il faut vous familiarisé avec les nouvelles nouvelles avancées en <strong>JavaScript</strong>. Ces avancées sont apparues à partir de <strong>2015</strong>, dans la version du langage <em>appelée ES2015 (également connue sous le nom « ES6 »).</em></p>
+</blockquote>
+
+<p>Peut-être n’avez-vous pas l’habitude de cette syntaxe : nous allons donc jeter un rapide coup d’œil sur les principales nouveautés que vous rencontrerez fréquemment à l’usage.</p>
+
+<h1 id="classes">Classes</h1>
+
+<p><em>Les composants React</em> peuvent être définis sous forme de <strong>fonctions ou de classes</strong>. <strong>ES2015</strong> fournit du <em>« sucre syntaxique »</em> qui facilite considérablement la définition de classes, comparée à l’approche traditionnelle en JavaScript.</p>
+
+<blockquote>
+  <p>L’apparition du mot clé <strong>Class</strong> vous font peut-être dire, “ah, enfin JavaScript est enfin un langage orienté objet..” Détromper vous, il l’a toujours été , et même plus que <em>Java</em>. Bref…  Sachez juste qu’en POO, on manipule des objets qui représentent des entités de notre programme (des composants, des documents, des utilisateurs…), et qu’une classe est en quelque sorte le plan de construction pour une catégorie d’objets (et l’usine qui les fabrique).</p>
+</blockquote>
+
+<p>Cette syntaxe est comparable à celle trouvée dans de nombreux langages courants. Voici un exemple :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Account</span> <span class="kd">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+  <span class="kd">constructor</span> <span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span> <span class="na">loginState</span><span class="p">:</span> <span class="dl">'</span><span class="s1">logged-out</span><span class="dl">'</span> <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">render</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// …</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+:ET
