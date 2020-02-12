@@ -11,9 +11,9 @@ image: images/trygit.jpg
 ---
 ⚠️ If you are not on macOS or a Linux distribution, don’t try to type those commands in the regular Windows Command Prompt, they won’t work. You need to do one of the following:
 
-* Install [Linux Bash Shell]() on your Windows 10
+* Install [Linux Bash Shell](https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/) on your Windows 10
 
-* You don’t have Windows 10? Head to [Cloud9]() and create a free account. You’ll have your personal “linux in the cloud” with a real terminal.
+* You don’t have Windows 10? Head to [Cloud9](https://aws.amazon.com/fr/cloud9/) and create a free account. You’ll have your personal “linux in the cloud” with a real terminal.
 
 In this workshop, you’ll learn how to:
 
@@ -31,7 +31,7 @@ In this workshop, you’ll learn how to:
 
 * Solve **conflicts** in your code between two versions
 
-You can go through the slides [here]()
+You can go through the slides [here](https://www.slideshare.net/AndryRajohnson/git-et-github-1)
 
 ---
 
